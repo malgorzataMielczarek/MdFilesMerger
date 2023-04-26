@@ -5,20 +5,53 @@ namespace MdFilesMerger
     internal class TableOfContents
     {
         private readonly List<MdFile> list;
+        public string? Text { get; private set; }
 
         public TableOfContents(List<MdFile> list)
         {
             this.list = list;
         }
+        public void DisplayMenu()
+        {
+            string? mainDirPath = null;
+            if (list != null && list.Count > 0)
+                mainDirPath = list.First().GetMainDirectoryPath();
+            int type = 0;
+            int numberOfTypes = 2;
+            bool isFirst = true;
+            do
+            {
+                Program.ChangeView(mainDirPath);
+                Program.DisplayTitle("Utwórz spis treści dla tworzonego pliku .md");
+                Console.WriteLine("Wybierz rodzaj spisu treści jaki chcesz utworzyć");
+                Console.WriteLine("1. Spis treści będący zwykłym tekstem");
+                Console.WriteLine("2. Spis treści złożony z hiperlinków do odpowiednich paragrafów");
+                Console.WriteLine();
+                if (isFirst) isFirst = false;
+                else Console.Write("Nie rozumiem co chcesz zrobić. ");
+                Console.Write("Podaj numer typu wybranego z powyższego menu: ");
+                _ = int.TryParse(Console.ReadLine(), out type);
+                if (type < 0 || type > numberOfTypes) type = 0;
+            }
+            while (type == 0);
+            switch (type)
+            {
+                case 1: Text = CreateTextTableOfContents(); break;
+                case 2: Text = CreateHyperlinksTableOfContents(); break;
+            }
+            Program.ChangeView(mainDirPath);
+            Console.WriteLine(Text);
+            Console.WriteLine();
+        }
 
-        public string CreateHyperlinksTableOfContents()
+        private string CreateHyperlinksTableOfContents()
         {
             List<string> appendedDirectories = new List<string>();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("## Spis treści");
             foreach (MdFile file in list)
             {
-                string title = file.GetFileHeader();
+                string title = "#" + file.GetFileHeader();
                 string directories = "";
                 int dirNumber = file.SubDirectories.Length;
                 //Don't add the name of the most nested directory if it is the only .md file in that directory
@@ -44,7 +77,7 @@ namespace MdFilesMerger
             }
             return stringBuilder.ToString();
         }
-        public string CreateTextTableOfContents()
+        private string CreateTextTableOfContents()
         {
             string hyperlinkTableOfContents = CreateHyperlinksTableOfContents();
             StringBuilder builder = new StringBuilder();
@@ -62,7 +95,7 @@ namespace MdFilesMerger
             for (int i = 0; i < link.Length; i++)
             {
                 char c = link[i];
-                if (!(char.IsLower(c) || char.IsNumber(c) || c == '-'))
+                if (!(char.IsLower(c) || char.IsNumber(c) || c == '-' || c == '#'))
                     link = link.Remove(i, 1);
             }
             while (text.StartsWith('#'))
