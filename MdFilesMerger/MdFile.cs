@@ -30,5 +30,17 @@
         {
             return file.Name.Replace(file.Extension, "");
         }
+        public string? GetMainDirectoryPath()
+        {
+            string? mainDirectoryPath = FileInfo.DirectoryName;
+            if (mainDirectoryPath != null)
+            {
+                if (SubDirectories.Length > 0)
+                {
+                    mainDirectoryPath = mainDirectoryPath.Remove(mainDirectoryPath.IndexOf("\\" + SubDirectories[0] + "\\"));
+                }
+            }
+            return mainDirectoryPath;
+        }
     }
 }
