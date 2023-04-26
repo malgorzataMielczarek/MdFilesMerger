@@ -93,6 +93,7 @@
             {
                 DisplayListOfFiles(this.First().GetMainDirectoryPath());
             }
+            else Console.WriteLine("Lista jest pusta");
         }
         private void DisplayListOfFiles(string? mainDirectoryPath)
         {
