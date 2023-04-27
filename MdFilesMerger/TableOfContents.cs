@@ -1,22 +1,21 @@
 ﻿using System.Text;
-using static MdFilesMerger.Helpers;
 
 namespace MdFilesMerger
 {
     internal class TableOfContents
     {
-        private readonly List<MdFile> list;
+        public readonly List<MdFile> ListOfFiles;
         public string? Text { get; private set; }
 
         public TableOfContents(List<MdFile> list)
         {
-            this.list = list;
+            this.ListOfFiles = list;
         }
         public void DisplayMenu()
         {
             string? mainDirPath = null;
-            if (list != null && list.Count > 0)
-                mainDirPath = list.First().GetMainDirectoryPath();
+            if (ListOfFiles != null && ListOfFiles.Count > 0)
+                mainDirPath = ListOfFiles.First().GetMainDirectoryPath();
             int type = 0;
             int numberOfTypes = 2;
             bool isFirst = true;
@@ -75,7 +74,7 @@ namespace MdFilesMerger
             List<string> appendedDirectories = new List<string>();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("## Spis treści");
-            foreach (MdFile file in list)
+            foreach (MdFile file in ListOfFiles)
             {
                 string title = file.GetFileHeader();
                 if (title != null)
