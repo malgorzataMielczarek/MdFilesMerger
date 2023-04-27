@@ -5,33 +5,34 @@ namespace MdFilesMerger
     internal class Program
     {
         public const string MAIN_DIRECTORY_PATH = @"C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET";
+        public const string MERGED_FILE_TITLE = "Kurs \"Zostań programistą ASP.NET\" - notatki";
         static void Main(string[] args)
         {
             string? mainDirectoryPath = SetMainDirectoryPath();
             int selectedFuncionality;
-            ListOfMdFiles? listOfFiles = GetListOfMdFiles(mainDirectoryPath);
-            TableOfContents tableOfContents;
+            TableOfContents tableOfContents = new TableOfContents(GetListOfMdFiles(mainDirectoryPath));
             do
             {
                 selectedFuncionality = DisplayMainMenu(mainDirectoryPath);
                 switch(selectedFuncionality)
                 {
                     case 1: mainDirectoryPath = ChangeMainDirectoryPath(mainDirectoryPath);
-                        listOfFiles = GetListOfMdFiles(mainDirectoryPath);
+                        tableOfContents = new TableOfContents(GetListOfMdFiles(mainDirectoryPath));
                         break;
                     case 2: ChangeView(mainDirectoryPath);
-                        listOfFiles.DisplayListOfFiles();
+                        tableOfContents.ListOfFiles.DisplayListOfFiles();
                         Console.WriteLine("Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.");
                         var key = Console.ReadKey();
                         if (key.Key == ConsoleKey.Escape) selectedFuncionality = 0;
                         break;
-                    case 3: tableOfContents = new TableOfContents(listOfFiles);
-                        tableOfContents.DisplayMenu();
+                    case 3: tableOfContents.DisplayMenu();
                         Console.WriteLine("Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.");
                         key = Console.ReadKey();
                         if (key.Key == ConsoleKey.Escape) selectedFuncionality = 0;
                         break;
                     case 4: Console.WriteLine("Scalanie plików...");
+                        Merger merger = new Merger(tableOfContents);
+                        merger.MergeFiles();
                         Thread.Sleep(1000);
                         break;
                 }
@@ -152,7 +153,7 @@ namespace MdFilesMerger
                 isReenter = true;
             }
             while (mainDirectoryPath == null || mainDirectoryPath.Trim().Length <= 0 || !Directory.Exists(mainDirectoryPath));
-            return mainDirectoryPath;
+            return new DirectoryInfo(mainDirectoryPath).FullName;
         }
     }
 }
