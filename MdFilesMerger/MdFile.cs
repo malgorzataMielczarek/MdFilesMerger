@@ -68,7 +68,13 @@ namespace MdFilesMerger
             {
                 if (SubDirectories.Length > 0)
                 {
-                    mainDirectoryPath = mainDirectoryPath.Remove(mainDirectoryPath.IndexOf("\\" + SubDirectories[0]));
+                    int index = mainDirectoryPath.IndexOf("\\" + SubDirectories[0] + "\\");
+                    if (index == -1 && mainDirectoryPath.EndsWith("\\" + SubDirectories[0])) 
+                        index = mainDirectoryPath.LastIndexOf("\\" + SubDirectories[0]);
+                    if (index == -1 && mainDirectoryPath.StartsWith(SubDirectories[0] + "\\"))
+                        index = 0;
+                    if (index == -1) index = mainDirectoryPath.IndexOf(SubDirectories[0]);
+                    mainDirectoryPath = mainDirectoryPath.Remove(index);
                 }
             }
             return mainDirectoryPath;
