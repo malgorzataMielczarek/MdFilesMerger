@@ -1,4 +1,6 @@
-﻿namespace MdFilesMerger
+﻿using System.Text;
+
+namespace MdFilesMerger
 {
     internal class MdFile
     {
@@ -21,14 +23,43 @@
             }
             return Array.Empty<string>();
         }
-        //TODO: Open the file and read first not empty line of text from it. If it is a header (starts with '#') return it. Else return file name, without extension.
+        //Open the file and read first not empty line of text from it. If it is a header (starts with '#') return it. Else return file name, without extension.
+        //If file header is a link return only text part
         public string GetFileHeader()
         {
             return GetFileHeader(FileInfo);
         }
         public static string GetFileHeader(FileInfo file)
         {
-            return file.Name.Replace(file.Extension, "");
+            string header = "";
+            using(FileStream fs = file.Open(FileMode.Open, FileAccess.Read))
+            {
+                byte[] buf = new byte[1024];
+                int c;
+                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                {
+                    string text = Encoding.UTF8.GetString(buf, 0, c);
+                    if (header.Length > 0 || text[0] == '#')
+                    {
+                        int index = text.IndexOf('\n');
+                        if (index == -1)
+                        {
+                            header += text;
+                        }
+                        else
+                        {
+                            header += text[..index];
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        header = file.Name.Replace(file.Extension, "");
+                        break;
+                    }
+                }
+            }
+            return Helpers.ConvertHyperlinkHeaderToTextHeader(header);
         }
         public string? GetMainDirectoryPath()
         {
@@ -37,7 +68,7 @@
             {
                 if (SubDirectories.Length > 0)
                 {
-                    mainDirectoryPath = mainDirectoryPath.Remove(mainDirectoryPath.IndexOf("\\" + SubDirectories[0] + "\\"));
+                    mainDirectoryPath = mainDirectoryPath.Remove(mainDirectoryPath.IndexOf("\\" + SubDirectories[0]));
                 }
             }
             return mainDirectoryPath;
