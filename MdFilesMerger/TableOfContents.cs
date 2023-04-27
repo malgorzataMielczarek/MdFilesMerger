@@ -4,21 +4,40 @@ namespace MdFilesMerger
 {
     internal class TableOfContents
     {
-        public readonly List<MdFile> ListOfFiles;
-        public string? Text { get; private set; }
+        public enum Types
+        {
+            None = 0,
+            Text = 1,
+            Hyperlink = 2
+        }
+        public readonly ListOfMdFiles ListOfFiles;
 
-        public TableOfContents(List<MdFile> list)
+        public string GetText()
+        {
+            switch (Type)
+            {
+                case Types.None: return string.Empty;
+                case Types.Text: return CreateTextTableOfContents();
+                case Types.Hyperlink: return CreateHyperlinksTableOfContents();
+                default: return string.Empty;
+            }
+        }
+
+        public Types Type { get; set; }
+
+        public TableOfContents(ListOfMdFiles list)
         {
             this.ListOfFiles = list;
+            Type = Types.None;
         }
         public void DisplayMenu()
         {
             string? mainDirPath = null;
             if (ListOfFiles != null && ListOfFiles.Count > 0)
                 mainDirPath = ListOfFiles.First().GetMainDirectoryPath();
-            int type = 0;
             int numberOfTypes = 2;
             bool isFirst = true;
+            int type;
             do
             {
                 Program.ChangeView(mainDirPath);
@@ -36,74 +55,98 @@ namespace MdFilesMerger
             while (type == 0);
             switch (type)
             {
-                case 1: Text = CreateTextTableOfContents(); break;
-                case 2: Text = CreateHyperlinksTableOfContents(); break;
+                case 1:
+                    Type = Types.Text; 
+                    break;
+                case 2:
+                    Type = Types.Hyperlink; 
+                    break;
             }
             Program.ChangeView(mainDirPath);
-            Console.WriteLine(Text);
+            Console.WriteLine(GetText());
             Console.WriteLine();
         }
 
-        private string CreateHyperlinksTableOfContents()
+        public string CreateHyperlinksTableOfContents()
         {
-            string tableOfContents = CreateTextTableOfContents();
+
+            List<string> appendedDirectories = new List<string>();
             Dictionary<string, int> links = new Dictionary<string, int>();
-            StringBuilder builder = new StringBuilder();
-            foreach(string entry in tableOfContents.Split("\n", StringSplitOptions.RemoveEmptyEntries))
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("## Spis treści");
+            foreach (MdFile file in ListOfFiles)
             {
-                int textStart = entry.IndexOf("# ") + 2;
-                string headerSpecifier = entry[..textStart];
-                string hyperlink = Helpers.ConvertTextToHyperlink(entry);
+                string title = GetFileTitle(file);
+                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
+                stringBuilder.Append(new String('#', dirNumber + 3));
+                stringBuilder.Append(' ');
+                string hyperlink = Helpers.ConvertTextToHyperlink(title);
                 string link = Helpers.GetLinkPartFromLinkBlock(hyperlink);
-                if (links.TryGetValue(link, out int qtt))
+                int qtt;
+                if (links.TryGetValue(link, out qtt))
                 {
-                    links[link] = qtt + 1;
-                    hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
+                    links[link] = ++qtt;
                 }
                 else
                 {
-                    links.Add(link, 1);
+                    qtt = 1;
+                    links.Add(link, qtt);
                 }
-                builder.Append(headerSpecifier);
-                builder.AppendLine(hyperlink);
+                hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
+                stringBuilder.AppendLine(hyperlink);
             }
-            return builder.ToString();
+            return stringBuilder.ToString();
         }
-        private string CreateTextTableOfContents()
+
+        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, MdFile file)
+        {
+            string directories = "";
+            int dirNumber = file.SubDirectories.Length;
+            //Don't add the name of the most nested directory if it is the only .md file in that directory
+            if (dirNumber > 0 && file.FileInfo.Directory != null && file.FileInfo.Directory.GetFiles("*.md").Length == 1)
+            {
+                dirNumber--;
+            }
+            for (int i = 0; i < dirNumber; i++)
+            {
+                string dir = file.SubDirectories[i];
+                directories += "\\" + dir;
+                if (!appendedDirectories.Contains(directories))
+                {
+                    appendedDirectories.Add(directories);
+                    for (int j = 0; j < i + 3; j++)
+                        stringBuilder.Append('#');
+                    stringBuilder.AppendLine(" " + dir);
+                }
+            }
+
+            return dirNumber;
+        }
+
+        private static string GetFileTitle(MdFile file)
+        {
+            string title = file.GetFileHeader();
+            if (title != null)
+            {
+                while (title.StartsWith('#'))
+                {
+                    title = title.Substring(1);
+                }
+                title = title.Trim();
+            }
+
+            return title;
+        }
+
+        public string CreateTextTableOfContents()
         {
             List<string> appendedDirectories = new List<string>();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("## Spis treści");
             foreach (MdFile file in ListOfFiles)
             {
-                string title = file.GetFileHeader();
-                if (title != null)
-                {
-                    while (title.StartsWith('#'))
-                    {
-                        title = title.Substring(1);
-                    }
-                    title = title.Trim();
-                }
-                string directories = "";
-                int dirNumber = file.SubDirectories.Length;
-                //Don't add the name of the most nested directory if it is the only .md file in that directory
-                if (dirNumber > 0 && file.FileInfo.Directory != null && file.FileInfo.Directory.GetFiles("*.md").Length == 1)
-                {
-                    dirNumber--;
-                }
-                for (int i = 0; i < dirNumber; i++)
-                {
-                    string dir = file.SubDirectories[i];
-                    directories += "\\" + dir;
-                    if (!appendedDirectories.Contains(directories))
-                    {
-                        appendedDirectories.Add(directories);
-                        for (int j = 0; j < i + 3; j++)
-                            stringBuilder.Append('#');
-                        stringBuilder.AppendLine(" " + dir);
-                    }
-                }
+                string title = GetFileTitle(file);
+                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
                 stringBuilder.Append(new String('#', dirNumber + 3));
                 stringBuilder.Append(' ');
                 stringBuilder.AppendLine(title);
