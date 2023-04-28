@@ -51,24 +51,21 @@ namespace MdFilesMerger
 
         public void MergeFiles()
         {
-            using(FileStream fs = new FileStream(File.FullName, FileMode.Create, FileAccess.Write))
+            if(File.Exists) File.Delete();
+            using (StreamWriter streamWriter = File.CreateText())
             {
-                //Enter title is exist
-                if(!string.IsNullOrEmpty(Title))
+                streamWriter.NewLine = Program.NEW_LINE;
+                //Enter title if exists
+                if (!string.IsNullOrEmpty(Title))
                 {
-                    string firstLine = "# " + Title + Program.NEW_LINE;
-                    byte[] buf = Encoding.UTF8.GetBytes(firstLine);
-                    fs.Write(buf, 0, buf.Length);
+                    string firstLine = "# " + Title;
+                    streamWriter.WriteLine(firstLine);
                 }
 
-                //Enter table of contents if exist
-                if(!string.IsNullOrEmpty(TableOfContents))
+                //Enter table of contents if exists
+                if (!string.IsNullOrEmpty(TableOfContents))
                 {
-                    byte[] buf = Encoding.UTF8.GetBytes(TableOfContents);
-                    fs.Write(buf, 0, buf.Length);
-
-                    byte[] newLine = Encoding.UTF8.GetBytes(Program.NEW_LINE);
-                    fs.Write(newLine, 0, newLine.Length);
+                    streamWriter.WriteLine(TableOfContents);
                 }
 
                 //Enter files content
@@ -76,21 +73,10 @@ namespace MdFilesMerger
                 {
                     foreach (MdFile file in mdFiles)
                     {
-                        using(FileStream copyFileStream = new FileStream(file.FileInfo.FullName, FileMode.Open, FileAccess.Read))
-                        {
-                            byte[] buf = new byte[1024];
-                            int c;
-                            while ((c = copyFileStream.Read(buf, 0, buf.Length)) > 0)
-                            {
-                                fs.Write(buf, 0, c);
-                            }
-                            copyFileStream.Close();
-                        }
-                        byte[] newLine = Encoding.UTF8.GetBytes(Program.NEW_LINE);
-                        fs.Write(newLine, 0, newLine.Length);
+                        file.CopyToOpenStreamWriter(streamWriter);
                     }
                 }
-                fs.Close();
+                streamWriter.Close();
             }
         }
 

@@ -32,35 +32,15 @@ namespace MdFilesMerger
         public static string GetFileHeader(FileInfo file)
         {
             string header = "";
-            using(FileStream fs = file.Open(FileMode.Open, FileAccess.Read))
+            using(StreamReader streamReader = new StreamReader(file.OpenRead()))
             {
-                byte[] buf = new byte[1024];
-                int c;
-                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-                {
-                    string text = Encoding.UTF8.GetString(buf, 0, c);
-                    if (header.Length > 0 || text[0] == '#')
-                    {
-                        int index = text.IndexOf('\n');
-                        if (index == -1)
-                        {
-                            header += text;
-                        }
-                        else
-                        {
-                            header += text[..index];
-                            if (header.EndsWith("\r")) header = header[0..^1];
-                            header = header.Trim();
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        header = file.Name.Replace(file.Extension, "");
-                        break;
-                    }
-                }
+                header = streamReader.ReadLine() ?? "";
+                streamReader.Close();
             }
+            header = header.Trim();
+            if (header.Length == 0 || header[0] != '#')
+                header = file.Name.Replace(file.Extension, "");
+
             return Helpers.ConvertHyperlinkHeaderToTextHeader(header);
         }
         public string? GetMainDirectoryPath()
@@ -80,6 +60,60 @@ namespace MdFilesMerger
                 }
             }
             return mainDirectoryPath;
+        }
+        public void CopyToOpenStreamWriter(StreamWriter streamWriter)
+        {
+            if(streamWriter == null) throw new ArgumentNullException(nameof(streamWriter));
+
+            using (StreamReader copyFileStream = FileInfo.OpenText())
+            {
+                string? line;
+                int findHeaderClosingTag = 0;
+                while((line = copyFileStream.ReadLine()) != null)
+                {
+                    //change all headers in file to one level less important (# to ##, ## to ###, h1 to h2, h2 to h3 etc.)
+                    //  for #*n header format
+                    if (line.Trim().StartsWith('#'))
+                    {
+                        line = "#" + line.TrimStart();
+                    }
+                    //  for <hn>header</hn> format
+                    if (findHeaderClosingTag != 0) ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
+                    if (line.Contains("<h"))
+                    {
+                        int headerLevelStartIndex = line.IndexOf("<h") + 2;
+                        int headerLevelEndIndex = line.IndexOfAny(new char[] { '>', ' ' }, headerLevelStartIndex);
+
+                        if (headerLevelEndIndex != -1)
+                        {
+                            if (int.TryParse(line[headerLevelStartIndex..headerLevelEndIndex], out int headerLevel))
+                            {
+                                findHeaderClosingTag = headerLevel;
+                                headerLevel++;
+                                line = line.Remove(headerLevelStartIndex, headerLevelEndIndex - headerLevelStartIndex);
+                                line = line.Insert(headerLevelStartIndex, headerLevel.ToString());
+
+                                ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
+                            }
+                        }
+                    }
+
+                    streamWriter.WriteLine(line);
+                }
+
+                copyFileStream.Close();
+            }
+            streamWriter.WriteLine();
+
+            static void ChangeHeaderClosingTag(ref string line, ref int findHeaderClosingTag)
+            {
+                if (line.Contains("</h" + findHeaderClosingTag + ">"))
+                {
+                    var splits = line.Split("</h" + findHeaderClosingTag + ">", 2);
+                    line = splits[0] + "</h" + (findHeaderClosingTag + 1).ToString() + ">" + splits[1];
+                    findHeaderClosingTag = 0;
+                }
+            }
         }
     }
 }
