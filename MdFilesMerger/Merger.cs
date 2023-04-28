@@ -8,7 +8,7 @@ namespace MdFilesMerger
         public FileInfo File { get; private set; }
         public string Title { get; set; }
 
-        public Merger(ListOfMdFiles? listOfFiles, string fileName = "README", string? directory = null)
+        public Merger(ListOfMdFiles? listOfFiles, string fileName = Program.MERGE_FILE_NAME, string? directory = null)
         {
             Title = Program.MERGED_FILE_TITLE;
             TableOfContents = string.Empty;
@@ -21,7 +21,7 @@ namespace MdFilesMerger
             }
             if (string.IsNullOrEmpty(directory)) directory = "..";
 
-            if (string.IsNullOrEmpty(fileName)) fileName = "README";
+            if (string.IsNullOrEmpty(fileName)) fileName = Program.MERGE_FILE_NAME;
             if (!fileName.EndsWith(".md")) fileName += ".md";
 
             File = new FileInfo(directory + "\\" + fileName);
@@ -33,7 +33,7 @@ namespace MdFilesMerger
                 mdFiles.Remove(mdFile);
             }
         }
-        public Merger(TableOfContents? tableOfContents, string fileName = "README", string? directory = null):this(tableOfContents?.ListOfFiles, fileName, directory)
+        public Merger(TableOfContents? tableOfContents, string fileName = Program.MERGE_FILE_NAME, string? directory = null):this(tableOfContents?.ListOfFiles, fileName, directory)
         {
             TableOfContents = tableOfContents?.GetText() ?? string.Empty;
             //If table of contents exist recreate if file was deleted from list in the above constructor
@@ -44,7 +44,7 @@ namespace MdFilesMerger
                 TableOfContents = tableOfContents.GetText();
             }
         }
-        public Merger(List<MdFile>? listOfFiles, string fileName = "README", string? directory = null):this((ListOfMdFiles?)listOfFiles, fileName, directory)
+        public Merger(List<MdFile>? listOfFiles, string fileName = Program.MERGE_FILE_NAME, string? directory = null):this((ListOfMdFiles?)listOfFiles, fileName, directory)
         {
 
         }

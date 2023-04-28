@@ -6,6 +6,7 @@ namespace MdFilesMerger
     {
         public const string MAIN_DIRECTORY_PATH = @"C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET";
         public const string MERGED_FILE_TITLE = "Kurs \"Zostań programistą ASP.NET\" - notatki";
+        public const string MERGE_FILE_NAME = "README.md";
         public const string NEW_LINE = "\n";
         static void Main(string[] args)
         {
@@ -31,10 +32,7 @@ namespace MdFilesMerger
                         key = Console.ReadKey();
                         if (key.Key == ConsoleKey.Escape) selectedFuncionality = 0;
                         break;
-                    case 4: Console.WriteLine("Scalanie plików...");
-                        Merger merger = new Merger(tableOfContents);
-                        merger.MergeFiles();
-                        Thread.Sleep(1000);
+                    case 4: DisplayMergeSettings(mainDirectoryPath, tableOfContents);
                         break;
                 }
             }
@@ -155,6 +153,87 @@ namespace MdFilesMerger
             }
             while (mainDirectoryPath == null || mainDirectoryPath.Trim().Length <= 0 || !Directory.Exists(mainDirectoryPath));
             return new DirectoryInfo(mainDirectoryPath).FullName;
+        }
+        private static void DisplayMergeSettings(string mainDirectoryPath, TableOfContents tableOfContents)
+        {
+            string fileName = MERGE_FILE_NAME;
+            string filePath = mainDirectoryPath;
+            string title = MERGED_FILE_TITLE;
+            bool changeSettings = true;
+            do
+            {
+                Program.ChangeView(mainDirectoryPath);
+                Program.DisplayTitle("Połącz wybrane pliki");
+                Console.WriteLine("Wybrane pliki zostaną połączone w plik: {0}", fileName);
+                Console.WriteLine("Który zostanie zapisany w katalogu: {0}", filePath);
+                Console.WriteLine("Nowy plik będzie mieć nagłówek: {0}", title);
+                Console.WriteLine();
+                Console.WriteLine("Jeżeli chcesz zmienić któreś z tych ustawień wybiesz odpowiedni numer z poniższego menu.\n");
+                Console.WriteLine("1. Zmień nazwę tworzonego pliku");
+                Console.WriteLine("2. Zmień ścieżkę katalogu");
+                Console.WriteLine("3. Zmień nagłówek");
+                Console.WriteLine();
+                Console.Write("Podaj numer ustawienia (1 - 3), które chcesz zmienić lub wciśnij Enter aby połączyć pliki z wybranymi ustawieniami: ");
+                string? option = Console.ReadLine();
+                if(string.IsNullOrEmpty(option))
+                    changeSettings = false;
+                else if(int.TryParse(option, out int value) && value >= 1 && value <= 3)
+                {
+                    switch(value)
+                    {
+                        case 1: fileName = ChangeMergeFileName(); break;
+                        case 2: filePath = ChangeMergeFilePath(); break;
+                        case 3: title = ChangeMergeFileHeader(); break;
+                    }
+                }
+            }
+            while (changeSettings);
+
+            Program.ChangeView(mainDirectoryPath);
+            Program.DisplayTitle("Połącz wybrane pliki");
+            Console.WriteLine("Scalanie plików...");
+            Merger merger = new Merger(tableOfContents, fileName, filePath) { Title = title };
+            merger.MergeFiles();
+            Thread.Sleep(1000);
+        }
+        private static string ChangeMergeFileName()
+        {
+            Console.Clear();
+            Program.DisplayTitle("Połącz wybrane pliki");
+            Console.Write("Podaj nazwę tworzonego pliku: ");
+            string? name;
+            while (string.IsNullOrEmpty(name = Console.ReadLine())) ;
+            return name;
+        }
+        private static string ChangeMergeFilePath()
+        {
+            Console.Clear();
+            Program.DisplayTitle("Połącz wybrane pliki");
+            Console.Write("Podaj ścieżkę do katalogu, w którym chcesz zapisać plik: ");
+            string? path;
+            do
+            {
+                path = Console.ReadLine();
+                try
+                { 
+                    DirectoryInfo dir = Directory.CreateDirectory(path);
+                    path = dir.FullName;
+                }
+                catch
+                {
+                    Console.Write("\rNie można zapisać pliku w podanej lokalizacji. Wybierz inną lokalizację: ");
+                    path = null;
+                }
+            }
+            while (path == null) ;
+            return path;
+        }
+        private static string ChangeMergeFileHeader()
+        {
+            Console.Clear();
+            Program.DisplayTitle("Połącz wybrane pliki");
+            Console.Write("Podaj nagłówek tworzonego pliku: ");
+            return Console.ReadLine() ?? String.Empty;
         }
     }
 }
