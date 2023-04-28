@@ -4,6 +4,7 @@ namespace MdFilesMerger
 {
     internal class TableOfContents
     {
+        private const string TABLE_OF_CONTENTS_HEADER = "## Spis treści" + Program.NEW_LINE;
         public enum Types
         {
             None = 0,
@@ -73,13 +74,12 @@ namespace MdFilesMerger
             List<string> appendedDirectories = new List<string>();
             Dictionary<string, int> links = new Dictionary<string, int>();
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("## Spis treści");
+            stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
             foreach (MdFile file in ListOfFiles)
             {
                 string title = GetFileTitle(file);
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
-                stringBuilder.Append(new String('#', dirNumber + 3));
-                stringBuilder.Append(' ');
+
                 string hyperlink = Helpers.ConvertTextToHyperlink(title);
                 string link = Helpers.GetLinkPartFromLinkBlock(hyperlink);
                 int qtt;
@@ -93,7 +93,7 @@ namespace MdFilesMerger
                     links.Add(link, qtt);
                 }
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
-                stringBuilder.AppendLine(hyperlink);
+                stringBuilder.Append(new String('#', dirNumber + 3) + " " + hyperlink + Program.NEW_LINE);
             }
             return stringBuilder.ToString();
         }
@@ -116,7 +116,7 @@ namespace MdFilesMerger
                     appendedDirectories.Add(directories);
                     for (int j = 0; j < i + 3; j++)
                         stringBuilder.Append('#');
-                    stringBuilder.AppendLine(" " + dir);
+                    stringBuilder.Append(" " + dir + Program.NEW_LINE);
                 }
             }
 
@@ -130,10 +130,11 @@ namespace MdFilesMerger
             {
                 while (title.StartsWith('#'))
                 {
-                    title = title.Substring(1);
+                    title = title[1..];
                 }
                 title = title.Trim();
             }
+            else return string.Empty;
 
             return title;
         }
@@ -142,14 +143,12 @@ namespace MdFilesMerger
         {
             List<string> appendedDirectories = new List<string>();
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("## Spis treści");
+            stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
             foreach (MdFile file in ListOfFiles)
             {
                 string title = GetFileTitle(file);
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
-                stringBuilder.Append(new String('#', dirNumber + 3));
-                stringBuilder.Append(' ');
-                stringBuilder.AppendLine(title);
+                stringBuilder.Append(new String('#', dirNumber + 3) + " " + title + Program.NEW_LINE);
             }
             return stringBuilder.ToString();
         }

@@ -6,6 +6,7 @@ namespace MdFilesMerger
     {
         public const string MAIN_DIRECTORY_PATH = @"C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET";
         public const string MERGED_FILE_TITLE = "Kurs \"Zostań programistą ASP.NET\" - notatki";
+        public const string NEW_LINE = "\n";
         static void Main(string[] args)
         {
             string? mainDirectoryPath = SetMainDirectoryPath();

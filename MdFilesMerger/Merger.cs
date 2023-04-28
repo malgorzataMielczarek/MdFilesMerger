@@ -56,7 +56,7 @@ namespace MdFilesMerger
                 //Enter title is exist
                 if(!string.IsNullOrEmpty(Title))
                 {
-                    string firstLine = "# " + Title + "\n";
+                    string firstLine = "# " + Title + Program.NEW_LINE;
                     byte[] buf = Encoding.UTF8.GetBytes(firstLine);
                     fs.Write(buf, 0, buf.Length);
                 }
@@ -66,6 +66,9 @@ namespace MdFilesMerger
                 {
                     byte[] buf = Encoding.UTF8.GetBytes(TableOfContents);
                     fs.Write(buf, 0, buf.Length);
+
+                    byte[] newLine = Encoding.UTF8.GetBytes(Program.NEW_LINE);
+                    fs.Write(newLine, 0, newLine.Length);
                 }
 
                 //Enter files content
@@ -83,7 +86,7 @@ namespace MdFilesMerger
                             }
                             copyFileStream.Close();
                         }
-                        byte[] newLine = Encoding.UTF8.GetBytes("\n");
+                        byte[] newLine = Encoding.UTF8.GetBytes(Program.NEW_LINE);
                         fs.Write(newLine, 0, newLine.Length);
                     }
                 }

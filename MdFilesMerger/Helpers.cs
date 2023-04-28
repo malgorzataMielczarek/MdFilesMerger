@@ -37,7 +37,7 @@ namespace MdFilesMerger
             int hyperlinkTextSectionEnd = hyperlinkHeader.LastIndexOf(']');
             string text = hyperlinkHeader[..hyperlinkStart] + hyperlinkHeader.Substring(hyperlinkStart + 1, hyperlinkTextSectionEnd - hyperlinkStart - 1);
 
-            return text;
+            return text.Trim();
         }
         public static string GetLinkPartFromLinkBlock(string linkBlock)
         {
@@ -49,7 +49,7 @@ namespace MdFilesMerger
             int linkEnd = linkBlock.IndexOf(')', linkStart);
             string text = linkBlock.Substring(linkStart + 2, linkEnd - linkStart - 2);
 
-            return text;
+            return text.Trim();
         }
     }
 }

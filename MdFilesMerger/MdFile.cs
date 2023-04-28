@@ -49,6 +49,8 @@ namespace MdFilesMerger
                         else
                         {
                             header += text[..index];
+                            if (header.EndsWith("\r")) header = header[0..^1];
+                            header = header.Trim();
                             break;
                         }
                     }

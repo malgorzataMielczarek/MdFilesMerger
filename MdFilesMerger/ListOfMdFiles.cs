@@ -122,10 +122,10 @@
                 int index2 = GetStartOfNumberSequence(name2);
                 if (index1 >= 0 && index2 >= 0)
                 {
-                    int number1 = int.Parse(name1.Substring(index1));
-                    int number2 = int.Parse(name2.Substring(index2));
-                    name1 = name1.Substring(0, index1);
-                    name2 = name2.Substring(0, index2);
+                    int number1 = int.Parse(name1[index1..]);
+                    int number2 = int.Parse(name2[index2..]);
+                    name1 = name1[..index1];
+                    name2 = name2[..index2];
                     if (string.Compare(name1, name2) == 0)
                     {
                         if (number1 < number2)
