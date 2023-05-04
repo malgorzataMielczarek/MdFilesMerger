@@ -4,7 +4,7 @@ namespace MdFilesMerger
 {
     internal class Program
     {
-        public const string MAIN_DIRECTORY_PATH = @"C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET";
+        public const string MAIN_DIRECTORY_PATH = @"..\..\..\..\..\KursZostanProgramistaASPdotNET";
         public const string MERGED_FILE_TITLE = "Kurs \"Zostań programistą ASP.NET\" - notatki";
         public const string MERGE_FILE_NAME = "README.md";
         public const string NEW_LINE = "\n";
@@ -71,12 +71,13 @@ namespace MdFilesMerger
             string? change;
             if (Directory.Exists(MAIN_DIRECTORY_PATH))
             {
+                mainDirectoryPath = new DirectoryInfo(MAIN_DIRECTORY_PATH).FullName;
                 bool isFirst = true;
                 do
                 {
                     Console.Clear();
                     DisplayTitle("Ustaw katalog, w którym chcesz wyszukiwać pliki .md");
-                    Console.WriteLine("Domyślna ścieżka do katalogu: {0}", MAIN_DIRECTORY_PATH);
+                    Console.WriteLine("Domyślna ścieżka do katalogu: {0}", mainDirectoryPath);
                     if (isFirst)
                     {
                         Console.Write("Czy chcesz ją zmienić? (t/n) ");
