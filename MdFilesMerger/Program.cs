@@ -169,7 +169,7 @@ namespace MdFilesMerger
                 Console.WriteLine("Który zostanie zapisany w katalogu: {0}", filePath);
                 Console.WriteLine("Nowy plik będzie mieć nagłówek: {0}", title);
                 Console.WriteLine();
-                Console.WriteLine("Jeżeli chcesz zmienić któreś z tych ustawień wybiesz odpowiedni numer z poniższego menu.\n");
+                Console.WriteLine("Jeżeli chcesz zmienić któreś z tych ustawień wybierz odpowiedni numer z poniższego menu.\n");
                 Console.WriteLine("1. Zmień nazwę tworzonego pliku");
                 Console.WriteLine("2. Zmień ścieżkę katalogu");
                 Console.WriteLine("3. Zmień nagłówek");
