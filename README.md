@@ -70,7 +70,6 @@ Once again on top, after colon, you can see the absolute path of currently selec
 This view will be shown to you after choosing '2' in previous view ([main menu view](#main-menu-view)). Like in previous views, on top of the widow you will see curren main directory absolute path. Beneath it is a list of selected files. Files are displayed as paths relative to main directory. Files are sorted by names alphabetically, but if directory contains few subdirectories that have the same names except of number at the end, then they are sorted ascending by this numbers. Selected files will be added to merged file in this order. At the bottom is located information to press Enter to go back to [main menu](#main-menu-view) or Esc to finish the program entirely. So if you want to go back to [main menu](#main-menu-view) press **Enter** (or any other key except Esc). If you press **Esc** whole program will be closed.
 
 Window example view:
-<!-- cSpell:disable -->
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -141,7 +140,6 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 
 ```
-<!-- cSpell:enable -->
 
 ## Table of contents menu view
 You will be transported to this view, if you choose '3' in [main menu view](#main-menu-view). As in the previous views, at the top you can see here absolute path to current main directory. Then after title you can see menu. Program asks you to select type of table of contents, that you want to add to your merged file. You can choose one of two options:
@@ -170,7 +168,6 @@ If you write anything else then '1' or '2', error message will be displayed and 
 You will be transported to this view if you choose option '1' in [previous one](#table-of-contents-menu-view). As in the previous views on top of the widow you can find absolute path to main directory. Beneath it is text of table of contents. It will contain second level header with table of contents title (`## Spis treści`), followed by list of headers of appropriate level. Each header is either subdirectory name (if there is more then one selected file in that subdirectory) or selected file title (if file has a title, if it doesn't then it is replaced with file name). So first we have headers with titles of files that are placed directly in main directory, then name of subfolder (if there is more then selected file in that subfolder), titles of files that are in that subfolder and so on.
 
 Example window view:
-<!-- cSpell:disable -->
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -248,14 +245,12 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 
 Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
-<!-- cSpell:enable -->
 Now you can close the program entirely by pressing **Esc** button or go back to [main menu](#main-menu-view) by pressing **Enter** button (or anything else except Esc).
 
 ### Hyperlinks table of contents view
 You will be transported to this view if you choose option '2' in [table of content menu view](#table-of-contents-menu-view). This view looks analogically to [the previous one](#plain-text-table-of-contents-view), except it displays other type of table contents. Table of contents is build according to the same rules as the one above. The only difference is that headers containing selected files titles (or names) aren't plain text, but hyperlinks transporting reader to right section of merged file.
 
 Example window view:
-<!-- cSpell:disable -->
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -333,7 +328,6 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 
 Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
-<!-- cSpell:enable -->
 Just as in [previous view](#plain-text-table-of-contents-view) you can now close the program entirely by pressing **Esc** button or go back to [main menu](#main-menu-view) by pressing **Enter** button (or anything else except Esc).
 
 ## Merged file menu view
