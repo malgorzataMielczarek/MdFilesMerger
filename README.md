@@ -250,9 +250,9 @@ Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 Now, if you want, you can completely close the program by pressing the **Esc** button, or return to the [main menu](#main-menu-view) by pressing **Enter** (or anything other then Esc).
 
 ### Hyperlinks table of contents view
-You will be transported to this view if you choose option '2' in [table of content menu view](#table-of-contents-menu-view). This view looks analogically to [the previous one](#plain-text-table-of-contents-view), except it displays other type of table contents. Table of contents is build according to the same rules as the one above. The only difference is that headers containing selected files titles (or names) aren't plain text, but hyperlinks transporting reader to right section of merged file.
+You will be taken to this view if you choose option '2' in [table of content menu view](#table-of-contents-menu-view). This view looks the same as [the previous one](#plain-text-table-of-contents-view), except that it displays a different type of table of contents. This type is build according to the same rules as the one above. The only difference is that headers containing the titles (or names) of the selected files are not plain text, but hyperlinks that take the reader to appropriate section of the merged file.
 
-Example window view:
+An example window view:
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -330,26 +330,26 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 
 Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
-Just as in [previous view](#plain-text-table-of-contents-view) you can now close the program entirely by pressing **Esc** button or go back to [main menu](#main-menu-view) by pressing **Enter** button (or anything else except Esc).
+As in [previous view](#plain-text-table-of-contents-view) you can now completely close the program by pressing **Esc** button or return to [main menu](#main-menu-view) by pressing **Enter** button (or anything else other than Esc).
 
 ## Merged file menu view
-You will be transported to this view if you choose '4' in [main menu view](#main-menu-view). Here you will be able to change some settings of merged file before creating it. Just like in most views at the top you can find main directory path. Then there is view title and currently set merged file settings. You can set three values for merged file:
-1. merged file name (default value is in the `MERGE_FILE_NAME` `Program` class constant and is set to `"README.md"`),
-2. path of the directory in which merged file will be created (by default it is set to main directory path),
-3. merged file title (default value is in the `MERGED_FILE_TITLE` `Program` class constant and is set to `"Kurs \"Zostań programistą ASP.NET\" - notatki"`).
+You will be taken to this view if you choose '4' in the [main menu view](#main-menu-view). Here you will be able to change some settings of the merged file before it is created. As in most views, at the top, you can find the main directory path. Then there is the view title and the currently set merged file settings. You can change three settings for the merged file:
+1. the filename of the merged file (the default value is in the `MERGE_FILE_NAME` constant of the `Program` class and is set to `"README.md"`),
+2. path of the directory where the merged file will be created (by default it is set to main directory path),
+3. the title of the merged file (the default value is in the `MERGED_FILE_TITLE` constant of the `Program` class and is set to `"Kurs \"Zostań programistą ASP.NET\" - notatki"`).
 
-Currently set values for those settings are located after colons.
+The current values for these settings are after the colons.
 
-Beneath currently set values there is a menu, that allows you to change one of this settings. So if you want to change
-1. merged file name write **_1_**, and you will be transported to [view](#merged-file-rename-view), that will allow you to do it
-2. path of the directory in which merged file will be created, write **_2_**, and you will be transported to [view](#merged-file-directory-change-view), that will allow you to do it
-3. merged file title, write **_3_**, and you will be transported to [view](#merged-file-title-change-view), that will alow you to do just that.
+Below is a menu to change one of these settings. So if you want to change:
+1. the filename of the merged file, type **_1_**, and you will be taken to the [view](#merged-file-rename-view), which will allow you to do it
+2. the path of the directory, where the merged file will be created, type **_2_**, and you will be taken to the [view](#merged-file-directory-change-view), which will allow you to do it
+3. the title of the merged file, type **_3_**, and you will be taken to the [view](#merged-file-title-change-view), which is responsible for that.
 
-After changing any of those setting you will be transported back to this view, so don't worry, you can change all the settings that you want.
+After changing any of these settings, you will return to this view, so don't worry, you can change all the settings that you want.
 
-When all merged file settings have desired values, press **Enter** to create merged file. You will be transported to [merged file creation view](#merged-file-creation-view) and the file will be created in set directory.
+When all the merged file settings have desired values, press **Enter** to create the merged file. You will be taken to the [merged file creation view](#merged-file-creation-view) and the file will be created in the set directory.
 
-Example window view:
+An example window view:
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -369,10 +369,10 @@ Jeżeli chcesz zmienić któreś z tych ustawień wybierz odpowiedni numer z pon
 Podaj numer ustawienia (1 - 3), które chcesz zmienić lub wciśnij Enter aby połączyć pliki z wybranymi ustawieniami:
 ```
 
-If you enter anything other than one of numbers 1 - 3 or pressing Enter button, error message will be displayed and you will be asked to once again choose, what you want to do.
+If you select anything other than one of numbers 1 - 3 or Enter, an error message will be displayed and you will be asked to choose once again, what you want to do.
 
 ### Merged file rename view
-If you chose '1' in [previous view](#merged-file-menu-view), you will be transported to this view. Here you will be asked to enter name that you want to give to your merged file. Enter only name, not the full path. You can include file extension (.md), but you don't have to. If you won't it will be automatically added at the end during file creation.
+If you chose '1' in the [previous view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter the name, you want to give to your merged file. Specify only the name, not the full path. You can include the file extension (.md), but you don't have to. If you don't, it will be added automatically when creating the file.
 
 Example window view:
 ```
@@ -382,12 +382,12 @@ Example window view:
 Podaj nazwę tworzonego pliku:
 ```
 
-After entering the name and pressing Enter, new merged file name will be set, and you will be transported back to [previous view](#merged-file-menu-view).
+After entering the name and pressing Enter, the new name of the merged file will be set, and you will return to the [previous view](#merged-file-menu-view).
 
 ### Merged file directory change view
-If you chose '2' in [merged file menu view](#merged-file-menu-view), you will be transported to this view. Here you will be asked to enter path to the directory where you want your merged file to be created. Just as in the [main directory change view](#main-directory-change-view), entered path can be absolute or relative to current directory (probably the directory where program is held - probably project's MdFilesMerger\bin\Debug\net6.0 subfolder or other directory from which program was executed). If this folder doesn't exist it will be created. If program won't be able to create directory of given path (and it doesn't already exists) error message will be shown and you will be asked to enter the path again.
+If you chose '2' in [merged file menu view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter the path to the directory where you want your merged file to be created. Similar to the [main directory change view](#main-directory-change-view), the path you enter can be absolute or relative to current directory (probably the directory where the program resides - probably subfolder MdFilesMerger\bin\Debug\net6.0 of the project or another directory from which the program was executed). If this folder does not exist, it will be created. If the program cannot create a directory with the given path (and such a directory does not exist yet), an error message will be displayed and you will be asked to re-enter the path.
 
-Example window view:
+An example window view:
 ```
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
@@ -395,12 +395,12 @@ Example window view:
 Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
 ```
 
-After entering valid directory path and pressing Enter, you will be transported back to [merged file menu view](#merged-file-menu-view), and new merged file directory path will be set.
+After entering a valid directory path and pressing Enter, you will return to the [merged file menu view](#merged-file-menu-view), and the new merged file directory path will be set.
 
 ### Merged file title change view
-If you chose '3' in [merged file menu view](#merged-file-menu-view), you will be transported to this view. Here you will be asked to enter merged file title.
+If you chose '3' in the [merged file menu view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter a title of the merged file.
 
-Example window view:
+An example window view:
 ```
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
@@ -408,12 +408,12 @@ Example window view:
 Podaj nagłówek tworzonego pliku:
 ```
 
-After entering desired merged file title and pressing Enter, you will be transported back to [merged file menu view](#merged-file-menu-view), and new merged file title will be set. If you don't want your merged file to have any title, just press Enter and title will be empty. If title is empty title header won't be included in merged file.
+After entering desired title of the merged file and pressing Enter, you will be taken back to the [merged file menu view](#merged-file-menu-view), and the new title will be set. If you don't want your merged file to have any title, just press Enter and the title will be set to empty. If the title is empty, the title header won't be included in the merged file.
 
 ### Merged file creation view
-If you didn't chosen any option in [merged file menu view](#merged-file-menu-view) pressed Enter, you will be transported to this view. Like in many other views you will see here current main directory absolute path on top of the window. Then you have [merged file menu view](#merged-file-menu-view) title and information, that merging files is in progress. After creating merged file is completed, you will be transported back to [main menu](#main-menu-view).
+If you have not selected any option in the [merged file menu view](#merged-file-menu-view), and pressed Enter, you will be taken to this view. As in many other views, you will see the absolute path of the current main directory, at the top of the window. Then you have the title of the [merged file menu view](#merged-file-menu-view) and an information, that merging of files is in progress. Once the merged file is complete, you will be taken back to the [main menu](#main-menu-view).
 
-Example window view:
+An example window view:
 ```
 Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
@@ -674,14 +674,177 @@ Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 Teraz, jeśli chcesz, możesz całkowicie zamknąć program, naciskając przycisk **Esc** lub wrócić do [menu głównego](#widok-menu-głównego) naciskając przycisk **Enter** (lub cokolwiek innego oprócz Esc).
 
 ### Widok spisu treści typu hiperlinki
+Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz opcję „2” w [widoku menu spisu treści](#widok-menu-spisu-treści). Ten widok wygląda analogicznie do [poprzedniego](#widok-spisu-treści-typu-zwykły-tekst), z tą różnicą, że wyświetla inny typ spisu treści. Ten typ jest budowany według tych samych zasad co powyższy. Jedyną różnicą jest to, że nagłówki zawierające tytuły (lub nazwy) wybranych plików nie są zwykłym tekstem, a hiperłączami przenoszącymi czytelnika do odpowiedniej części scalonego pliku.
+
+Przykładowy widok okna:
+```
+Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+## Spis treści
+### [Kurs "Zostań programistą ASP.NET" - notatki](#kurs-zostań-programistą-aspnet---notatki-1)
+### Tydzien1
+#### [BONUS 1 - Tworzenie Repozytorium GitHub](#bonus-1--tworzenie-repozytorium-github-1)
+#### [BONUS 2 - Podstawy pracy z GITem](#bonus-2--podstawy-pracy-z-gitem-1)
+#### [LEKCJA 1 - Powitanie](#lekcja-1--powitanie-1)
+#### [LEKCJA 2 - Plan gry](#lekcja-2--plan-gry-1)
+#### [LEKCJA 3 - Jak studiować ten kurs](#lekcja-3--jak-studiować-ten-kurs-1)
+#### [LEKCJA 4 - Co musisz umieć zanim przejdziesz dalej](#lekcja-4--co-musisz-umieć-zanim-przejdziesz-dalej-1)
+#### [LEKCJA 5 - Czym jest .NET](#lekcja-5--czym-jest-net-1)
+#### [LEKCJA 6 - Wymagania (potrzebne oprogramowanie)](#lekcja-6--wymagania-potrzebne-oprogramowanie-1)
+#### [LEKCJA 7 - Twój pierwszy program](#lekcja-7--twój-pierwszy-program-1)
+#### [LEKCJA 8 - Jak pracować z Visual Studio](#lekcja-8--jak-pracować-z-visual-studio-1)
+#### [LEKCJA 9 - Konwencje pisania (Dobre praktyki programowania)](#lekcja-9--konwencje-pisania-dobre-praktyki-programowania-1)
+#### [LEKCJA 10 - Kompilator](#lekcja-10--kompilator-1)
+#### [LEKCJA 11 - Debugowanie](#lekcja-11--debugowanie-1)
+#### [LEKCJA 12 - Błędy początkujących](#lekcja-12--błędy-początkujących-1)
+#### [LEKCJA 13 - Praca domowa](#lekcja-13--praca-domowa-1)
+### Tydzien2
+#### [LEKCJA 1 - Powitanie](#lekcja-1--powitanie-2)
+#### [LEKCJA 2 - Zmienne i stałe](#lekcja-2--zmienne-i-stałe-1)
+#### [LEKCJA 3 - Typy wartościowe](#lekcja-3--typy-wartościowe-1)
+#### [LEKCJA 4 - Typy referencyjne](#lekcja-4--typy-referencyjne-1)
+#### [LEKCJA 5 - Warunki](#lekcja-5--warunki-1)
+#### [LEKCJA 6 - Operatory](#lekcja-6--operatory-1)
+#### [LEKCJA 7 - Operatory Logiczne](#lekcja-7--operatory-logiczne-1)
+#### [LEKCJA 8 - Pętle](#lekcja-8--pętle-1)
+#### [LEKCJA 9 - Instrukcje skoku](#lekcja-9--instrukcje-skoku-1)
+#### [LEKCJA 10 - Tablice](#lekcja-10--tablice-1)
+#### [LEKCJA 11 - Listy](#lekcja-11--listy-1)
+#### [LEKCJA 12 - Enum](#lekcja-12--enum-1)
+#### [LEKCJA 13 - Klasy i obiekty](#lekcja-13--klasy-i-obiekty-1)
+#### [LEKCJA 14 - Metody](#lekcja-14--metody-1)
+#### [LEKCJA 15 - Parametry metod](#lekcja-15--parametry-metod-1)
+#### [LEKCJA 16 - Pola i właściwości](#lekcja-16--pola-i-właściwości-1)
+#### [LEKCJA 17 - Zakresy widoczności](#lekcja-17--zakresy-widoczności-1)
+#### [LEKCJA 18 - Piszemy aplikację](#lekcja-18--piszemy-aplikację-1)
+#### [LEKCJA 19 - Błędy początkujących](#lekcja-19--błędy-początkujących-1)
+#### [LEKCJA 20 - Praca domowa](#lekcja-20--praca-domowa-1)
+### Tydzien3
+#### [LEKCJA 1 - Powitanie](#lekcja-1--powitanie-3)
+#### [LEKCJA 2 - Konstruktory](#lekcja-2--konstruktory-1)
+#### [LEKCJA 3 - Przeciążenia](#lekcja-3--przeciążenia-1)
+#### [LEKCJA 4 - Dziedziczenie](#lekcja-4--dziedziczenie-1)
+#### [LEKCJA 5 - Polimorfizm](#lekcja-5--polimorfizm-1)
+#### [LEKCJA 6 - Hermetyzacja](#lekcja-6--hermetyzacja-1)
+#### [LEKCJA 7 - Klasy abstrakcyjne](#lekcja-7--klasy-abstrakcyjne-1)
+#### [LEKCJA 8 - Interfejsy](#lekcja-8--interfejsy-1)
+#### [LEKCJA 9 - Typy generyczne](#lekcja-9--typy-generyczne-1)
+#### [LEKCJA 10 - Refaktoryzacja](#lekcja-10--refaktoryzacja-1)
+#### [LEKCJA 11 - Błędy początkujących](#lekcja-11--błędy-początkujących-1)
+#### [LEKCJA 12 - Praca domowa](#lekcja-12--praca-domowa-1)
+### Tydzien4
+#### [LEKCJA 1 - Powitanie](#lekcja-1--powitanie-4)
+#### [LEKCJA 2 - Projekt z testami](#lekcja-2--projekt-z-testami-1)
+#### [LEKCJA 3 - Twój pierwszy test](#lekcja-3--twój-pierwszy-test-1)
+#### [LEKCJA 4 - Testy jednostkowe](#lekcja-4--testy-jednostkowe-1)
+#### [LEKCJA 5 - Moq](#lekcja-5--moq-1)
+#### [LEKCJA 6 - FluentAssertions](#lekcja-6--fluentassertions-1)
+#### [LEKCJA 7 - Pokrycie kodu testami](#lekcja-7--pokrycie-kodu-testami-1)
+#### [LEKCJA 8 - TDD](#lekcja-8--tdd-1)
+#### [LEKCJA 9 - Testy integracyjne](#lekcja-9--testy-integracyjne-1)
+#### [LEKCJA 10 - Błędy początkujących](#lekcja-10--błędy-początkujących-1)
+#### [LEKCJA 11 - Praca domowa](#lekcja-11--praca-domowa-1)
+### Tydzien5
+#### [LEKCJA 1 - Powitanie](#lekcja-1--powitanie-5)
+#### [LEKCJA 2 - Kolekcje w .NET](#lekcja-2--kolekcje-w-net-1)
+#### [LEKCJA 3 - IQueryable i IEnumerable](#lekcja-3--iqueryable-i-ienumerable-1)
+#### [LEKCJA 4 - LINQ podstawy](#lekcja-4--linq-podstawy-1)
+#### [LEKCJA 5 - Manipulacje plikami](#lekcja-5--manipulacje-plikami-1)
+
+
+Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
+```
+
+Tak jak w [poprzednim widoku](#widok-spisu-treści-typu-zwykły-tekst) możesz teraz całkowicie zamknąć program, naciskając przycisk **Esc** lub wrócić do [menu głównego](#widok-menu-głównego) naciskając przycisk **Enter** (lub cokolwiek innego oprócz Esc).
 
 ## Widok menu scalonego pliku
+Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz „4” w [widok menu głównego](#widok-menu-głównego). Tutaj będziesz mógł(mogła) zmienić niektóre ustawienia scalonego pliku przed jego utworzeniem. Tak jak w większości widoków u góry znajduje się ścieżka do katalogu głównego. Następnie jest tytuł widoku i aktualnie wybrane ustawienia scalonego pliku. Możesz zmienić trzy ustawienia dla scalonego pliku:
+1. nazwę scalonego pliku (wartość domyślna to stała `MERGE_FILE_NAME` klasy `Program` i jest ona ustawiona na `"README.md"`),
+2. ścieżkę katalogu, w którym zostanie utworzony scalony plik (domyślnie ustawiona jest ścieżka do katalogu głównego),
+3. tytuł scalonego pliku (wartość domyślna jest w stałej `MERGED_FILE_TITLE` klasy `Program` i jest ustawiona na `"Kurs \"Zostań programistą ASP.NET\" - notatki"`).
+
+Aktualne wartości dla tych ustawień znajdują się po dwukropkach.
+
+Poniżej znajduje się menu umożliwiające zmianę jednego z tych ustawień. Więc jeśli chcesz zmienić:
+1. nazwę scalonego pliku napisz **_1_**, a zostaniesz przeniesiony(a) do [widoku](#widok-zmiany-nazwy-scalonego-pliku), który pozwoli to zrobić
+2. ścieżkę do katalogu, w którym zostanie utworzony scalony plik, napisz **_2_**, a zostaniesz przeniesiony(a) do [widoku](#widok-zmiany-katalogu-scalonego-pliku), który na to pozwoli
+3. tytuł scalonego pliku, napisz **_3_**, a zostaniesz przeniesiony(a) do [widoku](#widok-zmiany-tytułu-scalonego-pliku), który za to odpowiada.
+
+Po zmianie dowolnego z tych ustawień powrócisz do widoku tego menu, więc nie martw się, możesz zmienić wszystkie ustawienia, które chcesz.
+
+Gdy wszystkie ustawienia scalonego pliku mają pożądane wartości, naciśnij **Enter**, aby utworzyć scalony plik. Zostaniesz przeniesiony(a) do [widoku tworzenia scalonego plików](#widok-tworzenia-scalonego-pliku) i plik zostanie wygenerowany i zapisany w ustawionym katalogu.
+
+Przykładowy widok okna:
+```
+Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+Wybrane pliki zostaną połączone w plik: README.md
+Który zostanie zapisany w katalogu: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Nowy plik będzie mieć nagłówek: Kurs "Zostań programistą ASP.NET" - notatki
+
+Jeżeli chcesz zmienić któreś z tych ustawień wybierz odpowiedni numer z poniższego menu.
+
+1. Zmień nazwę tworzonego pliku
+2. Zmień ścieżkę katalogu
+3. Zmień nagłówek
+
+Podaj numer ustawienia (1 - 3), które chcesz zmienić lub wciśnij Enter aby połączyć pliki z wybranymi ustawieniami:
+```
+
+Jeśli wybierzesz coś innego niż jedną z cyfr 1 - 3 lub Enter, wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wybranie, co chcesz zrobić.
 
 ### Widok zmiany nazwy scalonego pliku
+Jeśli wybrałeś(aś) „1” w [poprzednim widok](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o podanie nazwy, którą chcesz nadać scalonemu plikowi. Podaj tylko nazwę, a nie pełną ścieżkę. Możesz dołączyć rozszerzenie pliku (.md), ale nie musisz. Jeśli tego nie zrobisz, zostanie ono dodane automatycznie, podczas tworzenia pliku.
+
+Przykładowy widok okna:
+```
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+Podaj nazwę tworzonego pliku:
+```
+
+Po wprowadzeniu nazwy i naciśnięciu Enter, zostanie ustawiona nowa nazwa scalonego pliku i nastąpi powrót do [poprzedniego widoku](#widok-menu-scalonego-pliku).
 
 ### Widok zmiany katalogu scalonego pliku
+Jeśli wybierzesz „2” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o podanie ścieżki do katalogu, w którym chcesz utworzyć scalony plik. Podobnie jak w [widoku zmiany katalogu głównego](#widok-zmiany-katalogu-głównego), wprowadzona ścieżka może być bezwzględna lub względna w stosunku do bieżącego katalogu (prawdopodobnie katalogu, w którym znajduje się program - prawdopodobnie podfolderu MdFilesMerger\bin\Debug\net6.0 projektu lub innego katalog, z którego wykonywany był program). Jeśli ten folder nie istnieje, zostanie on utworzony. Jeżeli program nie będzie mógł utworzyć katalogu o podanej ścieżce (a taki katalog jeszcze nie istnieje) wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wprowadzenie ścieżki.
+
+Przykładowy widok okna:
+```
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
+```
+
+Po wprowadzeniu poprawnej ścieżki do katalogu i naciśnięciu Enter, zostaniesz przeniesiony(a) z powrotem do [widok menu scalonego pliku](#widok-menu-scalonego-pliku), a nowa ścieżka do katalogu scalonego pliku zostanie ustawiona.
 
 ### Widok zmiany tytułu scalonego pliku
+Jeśli wybrałeś(łaś) „3” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o wprowadzenie tytułu scalonego pliku.
+
+Przykładowy widok okna:
+```
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+Podaj nagłówek tworzonego pliku:
+```
+
+Po wprowadzeniu tytułu scalonego pliku i naciśnięciu klawisza Enter, zostaniesz przeniesiony(a) z powrotem do [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), a nowy tytuł zostanie ustawiony. Jeśli nie chcesz, aby scalony plik miał jakikolwiek tytuł, po prostu naciśnij Enter, a tytuł będzie pusty. Jeśli tytuł jest pusty, nagłówek tytułu nie zostanie uwzględniony w scalonym pliku.
 
 ### Widok tworzenia scalonego pliku
+Jeśli nie wybrałeś żadnej opcji w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku) wcisnąłeś(łaś) Enter, zostaniesz przeniesiony(a) do tego widoku. Podobnie jak w wielu innych widokach, w górnej części okna zobaczysz bezwzględną ścieżkę aktualnego katalogu głównego. Następnie masz tytuł [widoku menu scalonego plików](#widok-menu-scalonego-pliku) i informację, że trwa scalanie plików. Po zakończeniu tworzenia scalonego pliku zostaniesz przeniesiony(a) z powrotem do [menu głównego](#widok-menu-głównego).
+
+Przykładowy widok okna:
+```
+Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+
+---------------------------------------------------POŁĄCZ WYBRANE PLIKI---------------------------------------------------
+
+Scalanie plików...
+```
 </details>
