@@ -2,12 +2,10 @@
 {
     internal class MainDirectory
     {
-        public string Path => _path;
+        public DirectoryInfo? Info => _info;
 
         public MainDirectory()
         {
-            _path = String.Empty;
-
             SetMainDirectory(Program.MAIN_DIRECTORY_PATH);
         }
 
@@ -15,8 +13,7 @@
         {
             if(Directory.Exists(path))
             {
-                var directory = new DirectoryInfo(path);
-                _path = directory.FullName;
+                _info = new DirectoryInfo(path);
 
                 return true;
             }
@@ -27,6 +24,6 @@
         }
 
 
-        private string _path;
+        private DirectoryInfo? _info;
     }
 }
