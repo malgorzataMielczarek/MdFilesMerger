@@ -10,6 +10,23 @@ namespace MdFilesMerger
         public const string NEW_LINE = "\n";
         static void Main(string[] args)
         {
+            //if default directory does not exist set it
+            MainDirectoryService mainDirectoryService = new MainDirectoryService();
+            if(String.IsNullOrEmpty(mainDirectoryService.GetPath()))
+            {
+                DisplayTitle(mainDirectoryService.Title);
+
+                while(!mainDirectoryService.SetPath())
+                {
+                    Console.Clear();
+
+                    DisplayTitle(mainDirectoryService.Title);
+                    
+                    Console.WriteLine(mainDirectoryService.ErrorMessage);
+                }
+            }
+
+            //display main menu
             string? mainDirectoryPath = SetMainDirectoryPath();
             int selectedFuncionality;
             TableOfContents tableOfContents = new TableOfContents(GetListOfMdFiles(mainDirectoryPath));
@@ -47,6 +64,7 @@ namespace MdFilesMerger
             if (windowWidth > numberOfHyphens * 2 + title.Length)
                 Console.Write("-");
             Console.WriteLine(hyphens + title.ToUpper() + hyphens + "\n");
+            Console.WriteLine();
         }
         internal static void ChangeView(string? mainDirectoryPath = null)
         {

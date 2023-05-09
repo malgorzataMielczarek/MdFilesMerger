@@ -11,20 +11,7 @@
             SetMainDirectory(Program.MAIN_DIRECTORY_PATH);
         }
 
-        public bool Display()
-        {
-            if(String.IsNullOrEmpty(_path))
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Domyślna ścieżka do katalogu: {0}", _path);
-                return true;
-            }
-        }
-
-        public bool SetMainDirectory(string path)
+        public bool SetMainDirectory(string? path)
         {
             if(Directory.Exists(path))
             {
