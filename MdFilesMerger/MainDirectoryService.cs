@@ -9,8 +9,7 @@
             Title = "Ustaw katalog, w którym chcesz wyszukiwać pliki .md";
             _mainDirectory = new MainDirectory();
             _files = new ListOfMdFiles();
-
-
+            SetFiles();
         }
 
         public void Display()

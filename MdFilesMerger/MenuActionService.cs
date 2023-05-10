@@ -2,27 +2,15 @@
 {
     internal class MenuActionService
     {
-        public int Id => menuAction.Id;
-        public MenuActionService(int id, string description)
+        public MenuAction MenuAction { get; }
+        public MenuActionService(int id, string description, string menu)
         {
-            menuAction = new MenuAction(id, description);
+            MenuAction = new MenuAction(id, description, menu);
         }
 
         public void Display()
         {
-            Console.WriteLine($"{menuAction.Id}. {menuAction.Description}");
+            Console.WriteLine($"{MenuAction.Id}. {MenuAction.Description}");
         }
-
-        public bool Equals(int id)
-        {
-            return menuAction.Id == id;
-        }
-
-        public bool Equals(string description)
-        {
-            return description == menuAction.Description;
-        }
-
-        private readonly MenuAction menuAction;
     }
 }

@@ -4,11 +4,13 @@
     {
         public string Title { get; }
 
+        public MainMenu MainMenu { get; }
+
         public MainMenuService()
         {
             Title = "Menu główne";
 
-            mainMenu = new MainMenu();
+            MainMenu = new MainMenu();
         }
 
         public MenuActionService? SelectAction()
@@ -18,7 +20,7 @@
             var key = Console.ReadKey();
             if (key.Key == ConsoleKey.Escape)
             {
-                return new MenuActionService(0, "Zamknij program");
+                return new MenuActionService(0, "Exit", nameof(MdFilesMerger.MainMenu));
             }
             else
             {
@@ -26,7 +28,7 @@
 
                 if (int.TryParse(input, out int result))
                 {
-                    return mainMenu.SelectActionById(result);
+                    return MainMenu.SelectActionById(result);
                 }
                 else
                 {
@@ -36,7 +38,7 @@
         }
         public void DisplayMenu()
         {
-            foreach (var action in mainMenu.Actions)
+            foreach (var action in MainMenu.Actions)
             {
                 action.Display();
             }
@@ -49,8 +51,6 @@
                 Console.WriteLine("Wybrana czynność nie istnieje.");
             }
         }
-
-        private readonly MainMenu mainMenu;
 
     }
 }

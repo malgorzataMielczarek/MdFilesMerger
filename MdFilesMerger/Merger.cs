@@ -1,86 +1,78 @@
-﻿using System.Reflection.PortableExecutable;
-using System.Text;
+﻿using System.Text;
+using System.Xml.Linq;
 
 namespace MdFilesMerger
 {
     internal class Merger
     {
-        public FileInfo File { get; private set; }
+        public FileInfo File { get; set; }
         public string Title { get; set; }
 
-        public Merger(ListOfMdFiles? listOfFiles, string fileName = Program.MERGE_FILE_NAME, string? directory = null)
+        public Merger(DirectoryInfo directory, string fileName = Program.MERGE_FILE_NAME)
         {
             Title = Program.MERGED_FILE_TITLE;
-            TableOfContents = string.Empty;
-            mdFiles = listOfFiles;
-            if (directory == null)
-            {
-                if (mdFiles != null && mdFiles.Count > 0)
-                    directory = mdFiles.First().GetMainDirectoryPath();
-                else directory = Program.MAIN_DIRECTORY_PATH;
-            }
-            if (string.IsNullOrEmpty(directory)) directory = "..";
-
-            if (string.IsNullOrEmpty(fileName)) fileName = Program.MERGE_FILE_NAME;
-            if (!fileName.EndsWith(".md")) fileName += ".md";
-
-            File = new FileInfo(directory + "\\" + fileName);
-
-            //If file that will contain marged files is on the list of files to merge
-            if(mdFiles != null && mdFiles.Count > 0 && File.Exists && mdFiles.Where(mdFile => mdFile.FileInfo.FullName == File.FullName).Any())
-            {
-                MdFile mdFile = mdFiles.First(mdFl => mdFl.FileInfo.FullName == File.FullName);
-                mdFiles.Remove(mdFile);
-            }
+            
+            File = new FileInfo(CreatePath(directory.FullName, fileName));
         }
-        public Merger(TableOfContents? tableOfContents, string fileName = Program.MERGE_FILE_NAME, string? directory = null):this(tableOfContents?.ListOfFiles, fileName, directory)
+        public Merger(string path)
         {
-            TableOfContents = tableOfContents?.GetText() ?? string.Empty;
-            //If table of contents exist recreate if file was deleted from list in the above constructor
-            if (tableOfContents != null && mdFiles != null && tableOfContents.ListOfFiles.Count != mdFiles.Count)
+            Title = Program.MERGED_FILE_TITLE;
+
+            if (!path.EndsWith(".md")) path += ".md";
+            File = new FileInfo(path);
+        }
+        public bool SetFileName(string? fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
             {
-                var tableOfContentsType = tableOfContents.Type;
-                tableOfContents = new TableOfContents(mdFiles) { Type = tableOfContentsType };
-                TableOfContents = tableOfContents.GetText();
+                return false;
+            }
+            else
+            {
+                File = new FileInfo(CreatePath(File.DirectoryName, fileName));
+
+                return true;
             }
         }
-        public Merger(List<MdFile>? listOfFiles, string fileName = Program.MERGE_FILE_NAME, string? directory = null):this((ListOfMdFiles?)listOfFiles, fileName, directory)
+        public bool SetDirectory(string? path)
         {
-
-        }
-
-        public void MergeFiles()
-        {
-            if(File.Exists) File.Delete();
-            using (StreamWriter streamWriter = File.CreateText())
+            if (String.IsNullOrEmpty(path))
             {
-                streamWriter.NewLine = Program.NEW_LINE;
-                //Enter title if exists
-                if (!string.IsNullOrEmpty(Title))
+                return false;
+            }
+            else
+            {
+                try
                 {
-                    string firstLine = "# " + Title;
-                    streamWriter.WriteLine(firstLine);
-                }
+                    DirectoryInfo dir = Directory.CreateDirectory(path.ToString());
 
-                //Enter table of contents if exists
-                if (!string.IsNullOrEmpty(TableOfContents))
-                {
-                    streamWriter.WriteLine(TableOfContents);
-                }
+                    File = new FileInfo(CreatePath(dir.FullName, File.Name));
 
-                //Enter files content
-                if (mdFiles != null)
-                {
-                    foreach (MdFile file in mdFiles)
-                    {
-                        file.CopyToOpenStreamWriter(streamWriter);
-                    }
+                    return true;
                 }
-                streamWriter.Close();
+                catch
+                {
+                    return false;
+                }
             }
         }
+        public bool SetTitle(string? title)
+        {
+            Title = title ?? string.Empty;
+            return true;
+        }
 
-        private readonly string TableOfContents;
-        private readonly ListOfMdFiles? mdFiles;
+        private string CreatePath(string? directoryPath, string fileName)
+        {
+            StringBuilder path = new StringBuilder(directoryPath?.Trim());
+            path.Append('\\');
+            path.Append(fileName.Trim());
+            if (!fileName.TrimEnd().EndsWith(".md"))
+            {
+                path.Append(".md");
+            }
+
+            return path.ToString();
+        }
     }
 }

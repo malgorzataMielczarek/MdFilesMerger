@@ -7,75 +7,83 @@ namespace MdFilesMerger
         private const string TABLE_OF_CONTENTS_HEADER = "## Spis treści" + Program.NEW_LINE;
         public enum Types
         {
-            None = 0,
             Text = 1,
-            Hyperlink = 2
+            Hyperlink = 2,
+            None = 3
         }
-        public readonly ListOfMdFiles ListOfFiles;
+        public string Title { get; }
 
-        public string GetText()
+        public string? CreateTableOfContents(ListOfMdFiles listOfFiles)
         {
             switch (Type)
             {
-                case Types.None: return string.Empty;
-                case Types.Text: return CreateTextTableOfContents();
-                case Types.Hyperlink: return CreateHyperlinksTableOfContents();
-                default: return string.Empty;
+                case Types.Text: return CreateTextTableOfContents(listOfFiles);
+                case Types.Hyperlink: return CreateHyperlinksTableOfContents(listOfFiles);
+                default: return null;
             }
         }
 
         public Types Type { get; set; }
 
-        public TableOfContents(ListOfMdFiles list)
+        public TableOfContents()
         {
-            this.ListOfFiles = list;
+            Title = "Utwórz spis treści dla tworzonego pliku .md";
+            
+            actions = new MenuActionService[3];
+
+            string menu = this.GetType().Name;
+            actions[0] = new MenuActionService(1, "Spis treści będący zwykłym tekstem", menu);
+            actions[1] = new MenuActionService(2, "Spis treści złożony z hiperlinków do odpowiednich paragrafów", menu);
+            actions[2] = new MenuActionService(3, "Bez spisu treści", menu);
+
             Type = Types.None;
         }
         public void DisplayMenu()
         {
-            string? mainDirPath = null;
-            if (ListOfFiles != null && ListOfFiles.Count > 0)
-                mainDirPath = ListOfFiles.First().GetMainDirectoryPath();
-            int numberOfTypes = 2;
-            bool isFirst = true;
-            int type;
-            do
+            foreach(var action in actions)
             {
-                Program.ChangeView(mainDirPath);
-                Program.DisplayTitle("Utwórz spis treści dla tworzonego pliku .md");
-                Console.WriteLine("Wybierz rodzaj spisu treści jaki chcesz utworzyć");
-                Console.WriteLine("1. Spis treści będący zwykłym tekstem");
-                Console.WriteLine("2. Spis treści złożony z hiperlinków do odpowiednich paragrafów");
-                Console.WriteLine();
-                if (isFirst) isFirst = false;
-                else Console.Write("Nie rozumiem co chcesz zrobić. ");
-                Console.Write("Podaj numer typu wybranego z powyższego menu: ");
-                _ = int.TryParse(Console.ReadLine(), out type);
-                if (type < 0 || type > numberOfTypes) type = 0;
+                action.Display();
             }
-            while (type == 0);
-            switch (type)
-            {
-                case 1:
-                    Type = Types.Text; 
-                    break;
-                case 2:
-                    Type = Types.Hyperlink; 
-                    break;
-            }
-            Program.ChangeView(mainDirPath);
-            Console.WriteLine(GetText());
             Console.WriteLine();
         }
+        public void DisplayError(bool isError)
+        {
+            if(isError)
+            {
+                Console.WriteLine("Nie rozpoznano wybranego typu.");
+            }
+        }
+        public MenuActionService? SelectAction()
+        {
+            Console.Write("Podaj numer typu wybranego z powyższego menu: ");
 
-        public string CreateHyperlinksTableOfContents()
+            _ = int.TryParse(Console.ReadLine(), out int type);
+
+            switch(type)
+            {
+                case 1:
+                    Type = Types.Text;
+                    break;
+                case 2:
+                    Type = Types.Hyperlink;
+                    break;
+                case 3:
+                    Type = Types.None;
+                    break;
+                default:
+                    return null;
+            }
+            return actions[type - 1];
+        }
+
+        public string CreateHyperlinksTableOfContents(ListOfMdFiles listOfFiles)
         {
 
             List<string> appendedDirectories = new List<string>();
             Dictionary<string, int> links = new Dictionary<string, int>();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
-            foreach (MdFile file in ListOfFiles)
+            foreach (MdFile file in listOfFiles)
             {
                 string title = GetFileTitle(file);
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
@@ -93,7 +101,10 @@ namespace MdFilesMerger
                     links.Add(link, qtt);
                 }
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
-                stringBuilder.Append(new String('#', dirNumber + 3) + " " + hyperlink + Program.NEW_LINE);
+                stringBuilder.Append('#', dirNumber + 3);
+                stringBuilder.Append(" ");
+                stringBuilder.Append(hyperlink);
+                stringBuilder.Append(Program.NEW_LINE);
             }
             return stringBuilder.ToString();
         }
@@ -114,9 +125,11 @@ namespace MdFilesMerger
                 if (!appendedDirectories.Contains(directories))
                 {
                     appendedDirectories.Add(directories);
-                    for (int j = 0; j < i + 3; j++)
-                        stringBuilder.Append('#');
-                    stringBuilder.Append(" " + dir + Program.NEW_LINE);
+
+                    stringBuilder.Append('#', i + 3);
+                    stringBuilder.Append(" ");
+                    stringBuilder.Append(dir);
+                    stringBuilder.Append(Program.NEW_LINE);
                 }
             }
 
@@ -139,18 +152,28 @@ namespace MdFilesMerger
             return title;
         }
 
-        public string CreateTextTableOfContents()
+        public string CreateTextTableOfContents(ListOfMdFiles listOfFiles)
         {
             List<string> appendedDirectories = new List<string>();
+
             StringBuilder stringBuilder = new StringBuilder();
+            
             stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
-            foreach (MdFile file in ListOfFiles)
+
+            foreach (MdFile file in listOfFiles)
             {
                 string title = GetFileTitle(file);
+
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
-                stringBuilder.Append(new String('#', dirNumber + 3) + " " + title + Program.NEW_LINE);
+
+                stringBuilder.Append('#', dirNumber + 3);
+                stringBuilder.Append(" ");
+                stringBuilder.Append(title);
+                stringBuilder.Append(Program.NEW_LINE);
             }
             return stringBuilder.ToString();
         }
+
+        private MenuActionService[] actions;
     }
 }
