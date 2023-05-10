@@ -28,25 +28,27 @@
             return _mainDirectory.Info?.FullName ?? String.Empty;
         }
 
-        public bool SetPath()
+        public bool ChangePath()
         {
             Console.Write("Wprowadź ścieżkę dostępu do katalogu: ");
-            string? mainDirectoryPath = Console.ReadLine();
 
-            if(_mainDirectory.SetMainDirectory(mainDirectoryPath))
+            bool isSuccess = SetPath(Console.ReadLine());
+            
+            if(isSuccess)
             {
                 SetFiles();
-                return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return isSuccess;
         }
 
         private MainDirectory _mainDirectory;
         private ListOfMdFiles _files;
 
+        private bool SetPath(string? mainDirectoryPath)
+        {
+            return _mainDirectory.SetMainDirectory(mainDirectoryPath);
+        }
         private void SetFiles()
         {
             _files.Clear();
