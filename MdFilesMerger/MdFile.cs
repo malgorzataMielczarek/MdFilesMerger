@@ -27,19 +27,15 @@ namespace MdFilesMerger
         //If file header is a link return only text part
         public string GetFileHeader()
         {
-            return GetFileHeader(FileInfo);
-        }
-        public static string GetFileHeader(FileInfo file)
-        {
             string header = "";
-            using(StreamReader streamReader = new StreamReader(file.OpenRead()))
+            using(StreamReader streamReader = new StreamReader(FileInfo.OpenRead()))
             {
                 header = streamReader.ReadLine() ?? "";
                 streamReader.Close();
             }
             header = header.Trim();
             if (header.Length == 0 || header[0] != '#')
-                header = file.Name.Replace(file.Extension, "");
+                header = FileInfo.Name.Replace(FileInfo.Extension, "");
 
             return Helpers.ConvertHyperlinkHeaderToTextHeader(header);
         }
