@@ -1,6 +1,6 @@
 # MdFilesMerger
 <details>
-<summary>Program description in english</summary>
+<summary>Program description in English</summary>
 Application to merge all .md files in a set directory (and its subdirectories) into one file. 
 
 ## Dictionary
@@ -10,46 +10,17 @@ Application to merge all .md files in a set directory (and its subdirectories) i
 4. **Merged file** - new file that contains title, table of contents (if you choose it) and content of all selected files. If selected files contain file with the same name (full path) as merged file, its content is not included in this file (old file is deleted and new one is created) and that file will be removed from selected files list during merged file creating. It will also cause recreating of table of contents (if it was selected), so it no longer contains headers associated with file removed from list.
 
 ## Program start view
-When launched, the program will ask if you want to change the main directory. Default main directory path is stored in `MAIN_DIRECTORY_PATH` constant of the `Program` class. If the directory of stored path exists on your computer, the program will asks you whether you want to change it or not.
-
-An example window view:
-```
-----------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD---------------------
-
-Domyślna ścieżka do katalogu: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-Czy chcesz ją zmienić? (t/n)
-```
-Type **_t_** if you want to change the main directory or **_n_** if you want to keep default one. If you choose **_t_** you will be taken to [the next view](#main-directory-change-view). If you choose **_n_** you will by taken to [the main menu view](#main-menu-view). If you type anything else an error message will be displayed and you will be asked to answer again.
-
-If the directory with the path stored in the constant `MAIN_DIRECTORY_PATH` does not exist on your computer, you will be prompted directly to enter the path to the main directory (instead of this view you will see [the next one](#main-directory-change-view)).
-
-## Main directory change view
-This view will be shown to you in one of the following situations:
-1. After starting the program if directory of path stored in `MAIN_DIRECTORY_PATH` `Program` class constant doesn't exists on your computer,
-2. If you chose 't' in [previous view](#program-start-view),
-3. If you chose '1' in [main menu view](#main-menu-view).
-
-An example window view:
-```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
-
-------------------------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD-----------------------------------
-
-Wprowadź ścieżkę dostępu do katalogu:
-```
-
-At the top, after colon, you will see the absolute path of currently selected main directory. Now enter the path of your chosen directory that you want to set as main directory. The path can be absolute or relative to current directory (probably the directory where program is located - presumably MdFilesMerger\bin\Debug\net6.0 subfolder of the project or another directory where the program was executed from). If the entered path exists on your computer you will be taken to the next view ([main menu view](#main-menu-view)). If the directory of the given path does not exist, an error message will appear and you will be asked to re-enter the path.
+When launched, the program will take you directly to the [main menu view](#main-menu-view), unless default main directory (stored in `MAIN_DIRECTORY_PATH` constant of the `Program` class) does not exist on your computer. In that case you will by asked to enter main directory path first. So first view that you will see, will be the [main directory change view](#main-directory-change-view).
 
 ## Main menu view
 This is the main view of the program. It contains list of the main functionalities of the program. You will be transferred to it after completing any functionality, unless you exit the entire program.
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
+-------------------------------------------------------MENU GŁÓWNE------------------------------------------------------
 
---------------------------------------------------------MENU GŁÓWNE-------------------------------------------------------
 
 1. Zmień katalog główny
 2. Wyświetl listę plików do scalenia
@@ -59,7 +30,7 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 Podaj numer czynności z powyższego menu, którą chcesz wykonać lub wciśnij Esc, aby zakończyć działanie programu:
 ```
 
-Once again at the top, after colon, you can see the absolute path of currently selected main directory. Then we have the title of the view and a list of the main functionalities of the program. And so:
+At the top, after colon, you can see the absolute path of currently selected main directory. Then we have the title of the view and a list of the main functionalities of the program. And so:
 * If you want to change main directory type **_1_**, and you will be taken to the previous view ([main directory change view](#main-directory-change-view)), to enter the new path.
 * If you want to see what files will be used in the merge type **_2_**, and you will be taken to [list of selected files view](#list-of-selected-files-view), to see a list of selected files.
 * If you want to place a table of contents at the beginning of the merged file (after the merged file title) type **_3_**, and you will be taken to [table of contents menu view](#table-of-contents-menu-view), to select one of table of contents types.
@@ -67,12 +38,32 @@ Once again at the top, after colon, you can see the absolute path of currently s
 * If you want to close the program press **Esc** button.
 * If you enter anything else, an error message will by displayed and you will be asked to choose again, what you want to do.
 
-## List of selected files view
-This view will be shown to you after choosing '2' in previous view ([main menu view](#main-menu-view)). As in the previous views, at the top of the widow you can see the absolute path of the curren main directory. Below is a list of selected files. Files are displayed as relative paths to the main directory. Files are sorted alphabetically by name, but if a directory contains several subdirectories that have the same name except of a number at the end, then they are sorted by those numbers in ascending order. The selected files will be added to the merged file in that order. At the bottom is located information, to press Enter to go back to the [main menu](#main-menu-view) or Esc to completely exit the program. So if you want to go back to [main menu](#main-menu-view) press **Enter** (or any other key except Esc). If you press **Esc** the entire program will be closed.
+## Main directory change view
+This view will be shown to you in one of the following situations:
+1. After starting the program if directory of path stored in `MAIN_DIRECTORY_PATH` `Program` class constant doesn't exists on your computer,
+2. If you chose '1' in [main menu view](#main-menu-view).
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+-----------------------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD----------------------------------
+
+
+Wprowadź ścieżkę dostępu do katalogu:
+```
+
+At the top, after colon, you will see the absolute path of currently selected main directory (unless you are here because of the first situation, than this line will be omitted). Now enter the path of your chosen directory that you want to set as main directory. The path can be absolute or relative to current directory (probably the directory where program is located - presumably MdFilesMerger\bin\Debug\net6.0 subfolder of the project or another directory where the program was executed from). If the entered path exists on your computer you will be taken to the previous view ([main menu view](#main-menu-view)). If the directory of the given path does not exist, an error message will appear and you will be asked to re-enter the path.
+
+## List of selected files view
+This view will be shown to you after choosing '2' in the [main menu view](#main-menu-view). As in the previous views, at the top of the widow you can see the absolute path of the curren main directory. Below is a title of the view and a list of selected files. Files are displayed as relative paths to the main directory. Files are sorted alphabetically by name, but if a directory contains several subdirectories that have the same name except of a number at the end, then they are sorted by those numbers in ascending order. The selected files will be added to the merged file in that order. At the bottom is located information, to press Enter to go back to the [main menu](#main-menu-view) or Esc to completely exit the program. So if you want to go back to [main menu](#main-menu-view) press **Enter** (or any other key except Esc). If you press **Esc** the entire program will be closed.
+
+An example window view:
+```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+------------------------------------------------LISTA PLIKÓW DO SCALENIA------------------------------------------------
+
 
 \README.md
 \Tydzien1\Bonus1\BONUS1-TworzenieRepozytoriumGitHub.md
@@ -138,39 +129,43 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 \Tydzien5\Lekcja3\LEKCJA3-IQueryableIIEnumerable.md
 \Tydzien5\Lekcja4\LEKCJA4-LINQPodstawy.md
 \Tydzien5\Lekcja5\LEKCJA5-ManipulacjePlikami.md
-Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 
+Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
 
 ## Table of contents menu view
-You will be taken to this view, if you choose '3' in [main menu view](#main-menu-view). As in the previous views, the path to the current main directory is shown at the top. Then after the title you can see the menu. The program will ask you to select the type of table of contents, that you want to add to your merged file. You can choose one of two options:
+You will be taken to this view, if you choose '3' in [main menu view](#main-menu-view). As in the previous views, the path to the current main directory is shown at the top. Then after the title you can see the menu. The program will ask you to select the type of table of contents, that you want to add to your merged file. You can choose one of three options:
 1. Type **_1_** if you want your table of contents to be plain text, or more specifically a set of appropriate level headers. Selecting this option will take you to [view](#plain-text-table-of-contents-view), which will create such a table of contents and display it.
 2. Type **_2_** if you want your table of contents to contain hyperlinks in the file titles headers, instead of plain text. Later, that will allow you to click them and go directly to the fragment of the merged file that contains contents of the corresponding file. Selecting this option will take you to [view](#hyperlinks-table-of-contents-view), which will create and display the text of this type of table of contents.
+3. Type **_3_** if you changed your mind and don't want a table of contents in your merged file. Selecting this option will take you to [no table of contents view](#no-table-of-contents-view), where information about the lack of a table of contents will be displayed.
 
-When you select one of these options, the table of content of the selected type (the one that you selected last, if you have visited this view several times) will be added to the merged file, if you create one later.
+When you select option '1' or '2', the table of content of the selected type (the one that you selected last, if you have visited this view several times) will be added to the merged file, if you create one later.
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 ---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
 
-Wybierz rodzaj spisu treści jaki chcesz utworzyć
+
 1. Spis treści będący zwykłym tekstem
 2. Spis treści złożony z hiperlinków do odpowiednich paragrafów
+3. Bez spisu treści
 
 Podaj numer typu wybranego z powyższego menu:
 ```
 
-If you enter anything else then '1' or '2', an error message will appear and you will be prompted to re-select an option.
+If you enter anything else then '1', '2' or '3', an error message will appear and you will be prompted to re-select an option.
 
 ### Plain text table of contents view
 You will be taken to this view if you choose option '1' in [previous view](#table-of-contents-menu-view). As in the previous views, at the top of the window is the absolute path to the main directory. Below is the text of the table of contents. It will contain second-level header with the title of the table of contents (`## Spis treści`), followed by a list of headers of appropriate level. Each header is either the name of subdirectory (if there is more then one selected file in that subdirectory) or the title of the selected file (if the file has no title, it is replaced by the filename). So first we have the headers with the titles of the files that are placed directly in the main directory, then the name of the subfolder (if there is more then one selected file in this subfolder), the titles of the files that are in this subfolder, and so on.
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
 
 ## Spis treści
 ### Kurs "Zostań programistą ASP.NET" - notatki
@@ -254,7 +249,10 @@ You will be taken to this view if you choose option '2' in [table of content men
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
 
 ## Spis treści
 ### [Kurs "Zostań programistą ASP.NET" - notatki](#kurs-zostań-programistą-aspnet---notatki-1)
@@ -332,6 +330,23 @@ Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
 As in [previous view](#plain-text-table-of-contents-view) you can now completely close the program by pressing **Esc** button or return to [main menu](#main-menu-view) by pressing **Enter** button (or anything else other than Esc).
 
+### No table of contents view
+You will be taken to this view if you choose option '3' in [table of content menu view](#table-of-contents-menu-view). This view looks the same as the previous two, except, instead of a table of contents, it displays information about the lack of it (`Brak`).
+
+An example window view:
+```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
+
+Brak
+
+Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
+```
+As in two previous views, you can now completely close the program by pressing **Esc** button or return to [main menu](#main-menu-view) by pressing **Enter** button (or anything else other than Esc).
+
+
 ## Merged file menu view
 You will be taken to this view if you choose '4' in the [main menu view](#main-menu-view). Here you will be able to change some settings of the merged file before it is created. As in most views, at the top, you can find the main directory path. Then there is the view title and the currently set merged file settings. You can change three settings for the merged file:
 1. the filename of the merged file (the default value is in the `MERGE_FILE_NAME` constant of the `Program` class and is set to `"README.md"`),
@@ -351,17 +366,17 @@ When all the merged file settings have desired values, press **Enter** to create
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
-Wybrane pliki zostaną połączone w plik: README.md
-Który zostanie zapisany w katalogu: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-Nowy plik będzie mieć nagłówek: Kurs "Zostań programistą ASP.NET" - notatki
 
-Jeżeli chcesz zmienić któreś z tych ustawień wybierz odpowiedni numer z poniższego menu.
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
+Zmień ustawienia
 1. Zmień nazwę tworzonego pliku
 2. Zmień ścieżkę katalogu
 3. Zmień nagłówek
@@ -372,12 +387,19 @@ Podaj numer ustawienia (1 - 3), które chcesz zmienić lub wciśnij Enter aby po
 If you select anything other than one of numbers 1 - 3 or Enter, an error message will be displayed and you will be asked to choose once again, what you want to do.
 
 ### Merged file rename view
-If you chose '1' in the [previous view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter the name, you want to give to your merged file. Specify only the name, not the full path. You can include the file extension (.md), but you don't have to. If you don't, it will be added automatically when creating the file.
+If you chose '1' in the [previous view](#merged-file-menu-view), you will be taken to this view. As with most views, you will find the path to the main directory at the top. This is followed by the title of the [merged file menu view](#merged-file-menu-view) and the currently selected values of the merged file settings. Here you will be asked to enter the name, you want to give to your merged file. Specify only the name, not the full path. You can include the file extension (.md), but you don't have to. If you don't, it will be added automatically when creating the file.
 
 Example window view:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
 Podaj nazwę tworzonego pliku:
 ```
@@ -385,12 +407,19 @@ Podaj nazwę tworzonego pliku:
 After entering the name and pressing Enter, the new name of the merged file will be set, and you will return to the [previous view](#merged-file-menu-view).
 
 ### Merged file directory change view
-If you chose '2' in [merged file menu view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter the path to the directory where you want your merged file to be created. Similar to the [main directory change view](#main-directory-change-view), the path you enter can be absolute or relative to current directory (probably the directory where the program resides - probably subfolder MdFilesMerger\bin\Debug\net6.0 of the project or another directory from which the program was executed). If this folder does not exist, it will be created. If the program cannot create a directory with the given path (and such a directory does not exist yet), an error message will be displayed and you will be asked to re-enter the path.
+If you chose '2' in [merged file menu view](#merged-file-menu-view), you will be taken to this view. This view is built analogously to [the previous one](#merged-file-rename-view). Here you will be asked to enter the path to the directory where you want your merged file to be created. Similar to the [main directory change view](#main-directory-change-view), the path you enter can be absolute or relative to current directory (probably the directory where the program resides - probably subfolder MdFilesMerger\bin\Debug\net6.0 of the project or another directory from which the program was executed). If this folder does not exist, it will be created. If the program cannot create a directory with the given path (and such a directory does not exist yet), an error message will be displayed and you will be asked to re-enter the path.
 
 An example window view:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
 Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
 ```
@@ -398,29 +427,42 @@ Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
 After entering a valid directory path and pressing Enter, you will return to the [merged file menu view](#merged-file-menu-view), and the new merged file directory path will be set.
 
 ### Merged file title change view
-If you chose '3' in the [merged file menu view](#merged-file-menu-view), you will be taken to this view. Here you will be asked to enter a title of the merged file.
+If you chose '3' in the [merged file menu view](#merged-file-menu-view), you will be taken to this view. It is built the same as the previous two. Here you will be asked to enter a title of the merged file.
 
 An example window view:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
-Podaj nagłówek tworzonego pliku:
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
+
+Podaj nagłówek (tytuł) tworzonego pliku:
 ```
 
 After entering desired title of the merged file and pressing Enter, you will be taken back to the [merged file menu view](#merged-file-menu-view), and the new title will be set. If you don't want your merged file to have any title, just press Enter and the title will be set to empty. If the title is empty, the title header won't be included in the merged file.
 
 ### Merged file creation view
-If you have not selected any option in the [merged file menu view](#merged-file-menu-view), and pressed Enter, you will be taken to this view. As in many other views, you will see the absolute path of the current main directory, at the top of the window. Then you have the title of the [merged file menu view](#merged-file-menu-view) and an information, that merging of files is in progress. Once the merged file is complete, you will be taken back to the [main menu](#main-menu-view).
+If you have not selected any option in the [merged file menu view](#merged-file-menu-view), and pressed Enter, you will be taken to this view. As in many other views, you will see the absolute path of the current main directory, at the top of the window. Then you have the title of the [merged file menu view](#merged-file-menu-view), selected merged file settings and an information about the progress of merging. Once the merged file is complete, you will be taken back to the [main menu](#main-menu-view).
 
 An example window view:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
 
----------------------------------------------------POŁĄCZ WYBRANE PLIKI---------------------------------------------------
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
-Scalanie plików...
+Scalanie plików                                                   55%
+
 ```
 </details>
 <details>
@@ -434,45 +476,17 @@ Aplikacja do łączenia wszystkich plików .md w ustawionym katalogu (i jego pod
 4. **Scalony plik** - nowy plik zawierający tytuł, spis treści (jeśli go wybierzesz) oraz zawartość wszystkich wybranych plików. Jeśli wybrane pliki zawierają plik o takiej samej nazwie (pełna ścieżka) jak scalony plik, jego zawartość nie zostanie uwzględniona w tym pliku (stary plik zostanie usunięty, a nowy zostanie utworzony) i plik ten zostanie usunięty z listy wybranych plików podczas tworzenia scalonego pliku. Spowoduje to również ponowne utworzenie spisu treści (jeśli został wybrany), tak aby nie zawierał on już nagłówków związanych z plikiem usuniętym z listy.
 
 ## Widok startowy programu
-Po uruchomieniu program zapyta, czy chcesz zmienić katalog główny. Domyślna ścieżka do katalogu głównego jest przechowywana w stałej `MAIN_DIRECTORY_PATH` klasy `Program`. Jeśli katalog z zapisaną ścieżką istnieje na twoim komputerze, program zapyta cię, czy chcesz go zmienić, czy nie.
-
-Przykładowy widok okna:
-```
-----------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD---------------------
-
-Domyślna ścieżka do katalogu: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-Czy chcesz ją zmienić? (t/n)
-```
-Napisz **_t_**, jeśli chcesz zmienić katalog główny lub **_n_**, jeśli chcesz zachować domyślny. Jeśli wybierzesz **_t_**, zostaniesz przeniesiony(a) do [następnego widoku](#widok-zmiany-katalogu-głównego). Jeśli wybierzesz **_n_**, zostaniesz przeniesiony(a) do [widoku menu głównego](#widok-menu-głównego). Jeśli napiszesz coś innego, wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowną odpowiedź.
-
-Jeżeli katalog o ścieżce zapisanej w stałej `MAIN_DIRECTORY_PATH` nie istnieje na twoim komputerze zostaniesz poproszony(a) o podanie ścieżki do głównego katalogu (zamiast tego widoku zobaczysz [następny](#widok-zmiany-katalogu-głównego)).
-
-## Widok zmiany katalogu głównego
-Ten widok zostanie wyświetlony w jednej z następujących sytuacji:
-1. Po uruchomieniu programu, jeśli katalog ścieżki zapisanej w stałej `MAIN_DIRECTORY_PATH` klasy `Program` nie istnieje na twoim komputerze,
-2. Jeśli wybrałeś(aś) „t” w [poprzedni widok](#widok-startowy-programu),
-3. Jeśli wybrałeś(aś) „1” w [widok menu głównego](#widok-menu-głównego).
-
-Przykładowy widok okna:
-```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
-
-------------------------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD-----------------------------------
-
-Wprowadź ścieżkę dostępu do katalogu:
-```
-Na górze, po dwukropku, zobaczysz bezwzględną ścieżkę do aktualnie wybranego katalogu głównego. Teraz wprowadź ścieżkę wybranego katalogu, który chcesz ustawić jako katalog główny. Ścieżka może być bezwzględna lub względna w stosunku do bieżącego katalogu (prawdopodobnie jest to katalog, w którym znajduje się program - przypuszczalnie podfolder MdFilesMerger\bin\Debug\net6.0 projektu lub inny katalog, z którego program został uruchomiony). Jeśli wprowadzona ścieżka istnieje na Twoim komputerze, zostaniesz przeniesiony(a) do następnego widoku ([widok menu głównego](#widok-menu-głównego)). Jeżeli katalog o podanej ścieżce nie istnieje, pojawi się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wprowadzenie ścieżki.
+Po uruchomieniu program, zostaniesz bezpośrednio przeniesiony(a) do [menu głównego](#widok-menu-głównego), chyba że, domyślny katalog główny (którego ścieżkę zapisano w stałej `MAIN_DIRECTORY_PATH` klasy `Program`) nie istnieje na twoim komputerze. Wówczas zostaniesz najpierw poproszony(a) o wybranie katalogu głównego. W tym wypadku, pierwszym widokiem, jaki zobaczysz, będzie [widok zmiany katalogu głównego](#widok-zmiany-katalogu-głównego).
 
 ## Widok menu głównego
 To jest główny widok programu. Zawiera listę głównych funkcjonalności programu. Zostaniesz do niego przeniesiony(a) po zakończeniu wykonywania dowolnej funkcjonalności, chyba że wyjdziesz z całego programu.
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
+-------------------------------------------------------MENU GŁÓWNE------------------------------------------------------
 
---------------------------------------------------------MENU GŁÓWNE-------------------------------------------------------
 
 1. Zmień katalog główny
 2. Wyświetl listę plików do scalenia
@@ -482,7 +496,7 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 Podaj numer czynności z powyższego menu, którą chcesz wykonać lub wciśnij Esc, aby zakończyć działanie programu:
 ```
 
-Ponownie na górze, po dwukropku, widać bezwzględną ścieżkę do aktualnie wybranego katalogu głównego. Następnie mamy tytuł widoku i listę głównych funkcjonalności programu. A więc:
+Na górze, po dwukropku, widać bezwzględną ścieżkę do aktualnie wybranego katalogu głównego. Następnie mamy tytuł widoku i listę głównych funkcjonalności programu. A więc:
 * Jeśli chcesz zmienić katalog główny napisz **_1_**, a zostaniesz przeniesiony(a) do poprzedniego widoku ([widok zmiany katalogu głównego](#widok-zmiany-katalogu-głównego)), aby wprowadzić nową ścieżkę.
 * Jeśli chcesz zobaczyć jakie pliki zostaną użyte w scalaniu napisz **_2_**, a zostaniesz przeniesiony(a) do [widoku listy wybranych plików](#widok-listy-wybranych-plików), aby zobaczyć listę wybranych plików.
 * Jeśli chcesz umieścić spis treści na początku scalonego pliku (po tytule scalonego pliku) napisz **_3_**, a zostaniesz przeniesiony(a) do [widoku menu spisu treści](#widok-menu-spisu-treści), aby wybrać jeden z typów spisu treści.
@@ -490,12 +504,31 @@ Ponownie na górze, po dwukropku, widać bezwzględną ścieżkę do aktualnie w
 * Jeśli chcesz zamknąć program, naciśnij przycisk **Esc**.
 * Jeśli wpiszesz cokolwiek innego, wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wybranie tego, co chcesz zrobić.
 
-## Widok listy wybranych plików
-Ten widok zostanie wyświetlony po wybraniu opcji „2” w poprzednim widoku ([widok menu głównego](#widok-menu-głównego)). Podobnie jak w poprzednich widokach, na górze okna widoczna jest ścieżka bezwzględna aktualnego katalogu głównego. Poniżej znajduje się lista wybranych plików. Pliki są wyświetlane jako ścieżki względne w stosunku do katalogu głównego. Pliki są posortowane alfabetycznie według nazw, ale jeśli katalog zawiera kilka podkatalogów, które mają takie same nazwy poza numerem na końcu, to są one posortowane rosnąco według tych numerów. Wybrane pliki zostaną dodane do scalonego pliku w tej właśnie kolejności. Na dole znajduje się informacja, żeby nacisnąć Enter, aby wrócić do [menu głównego](#widok-menu-głównego) lub Esc, aby całkowicie zakończyć działanie programu. Jeśli więc chcesz wrócić do [menu głównego](#widok-menu-głównego) naciśnij **Enter** (lub dowolny inny klawisz oprócz Esc). Jeśli naciśniesz **Esc**, cały program zostanie zamknięty.
+## Widok zmiany katalogu głównego
+Ten widok zostanie wyświetlony w jednej z następujących sytuacji:
+1. Po uruchomieniu programu, jeśli katalog ścieżki zapisanej w stałej `MAIN_DIRECTORY_PATH` klasy `Program` nie istnieje na twoim komputerze,
+2. Jeśli wybrałeś(aś) „1” w [widok menu głównego](#widok-menu-głównego).
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+-----------------------------------USTAW KATALOG, W KTÓRYM CHCESZ WYSZUKIWAĆ PLIKI .MD----------------------------------
+
+
+Wprowadź ścieżkę dostępu do katalogu:
+```
+Na górze, po dwukropku, zobaczysz bezwzględną ścieżkę do aktualnie wybranego katalogu głównego (jeżeli znalazłeś(łaś) się w tym widoku z powodu pierwszej sytuacji, to ta linia będzie pominięta). Teraz wprowadź ścieżkę wybranego katalogu, który chcesz ustawić jako katalog główny. Ścieżka może być bezwzględna lub względna w stosunku do bieżącego katalogu (prawdopodobnie jest to katalog, w którym znajduje się program - przypuszczalnie podfolder MdFilesMerger\bin\Debug\net6.0 projektu lub inny katalog, z którego program został uruchomiony). Jeśli wprowadzona ścieżka istnieje na Twoim komputerze, zostaniesz przeniesiony(a) do poprzedniego widoku ([widok menu głównego](#widok-menu-głównego)). Jeżeli katalog o podanej ścieżce nie istnieje, pojawi się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wprowadzenie ścieżki.
+
+## Widok listy wybranych plików
+Ten widok zostanie wyświetlony po wybraniu opcji „2” w [widoku menu głównego](#widok-menu-głównego). Podobnie jak w poprzednich widokach, na górze okna widoczna jest ścieżka bezwzględna aktualnego katalogu głównego. Poniżej znajduje się tytuł widoku i lista wybranych plików. Pliki są wyświetlane jako ścieżki względne w stosunku do katalogu głównego. Pliki są posortowane alfabetycznie według nazw, ale jeśli katalog zawiera kilka podkatalogów, które mają takie same nazwy poza numerem na końcu, to są one posortowane rosnąco według tych numerów. Wybrane pliki zostaną dodane do scalonego pliku w tej właśnie kolejności. Na dole znajduje się informacja, żeby nacisnąć Enter, aby wrócić do [menu głównego](#widok-menu-głównego) lub Esc, aby całkowicie zakończyć działanie programu. Jeśli więc chcesz wrócić do [menu głównego](#widok-menu-głównego) naciśnij **Enter** (lub dowolny inny klawisz oprócz Esc). Jeśli naciśniesz **Esc**, cały program zostanie zamknięty.
+
+Przykładowy widok okna:
+```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+------------------------------------------------LISTA PLIKÓW DO SCALENIA------------------------------------------------
+
 
 \README.md
 \Tydzien1\Bonus1\BONUS1-TworzenieRepozytoriumGitHub.md
@@ -561,40 +594,44 @@ Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczar
 \Tydzien5\Lekcja3\LEKCJA3-IQueryableIIEnumerable.md
 \Tydzien5\Lekcja4\LEKCJA4-LINQPodstawy.md
 \Tydzien5\Lekcja5\LEKCJA5-ManipulacjePlikami.md
-Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 
+Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 ```
 
 
 ## Widok menu spisu treści
-Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz „3” w [widoku menu głównego](#widok-menu-głównego). Podobnie jak w poprzednich widokach, u góry widoczna jest ścieżka do bieżącego katalogu głównego. Następnie po tytule możesz zobaczyć menu. Program poprosi Cię o wybranie typu spisu treści, który chcesz dodać do scalonego pliku. Możesz wybrać jedną z dwóch opcji:
+Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz „3” w [widoku menu głównego](#widok-menu-głównego). Podobnie jak w poprzednich widokach, u góry widoczna jest ścieżka do bieżącego katalogu głównego. Następnie po tytule możesz zobaczyć menu. Program poprosi Cię o wybranie typu spisu treści, który chcesz dodać do scalonego pliku. Możesz wybrać jedną z trzech opcji:
 1. Napisz **_1_**, jeśli chcesz, aby Twój spis treści był zwykłym tekstem, a dokładniej zestawem nagłówków odpowiedniego poziomu. Wybranie tej opcji przeniesie Cię do [widoku](#widok-spisu-treści-typu-zwykły-tekst), który stworzy taki spis treści i wyświetli jak będzie on wyglądać.
 2. Napisz **_2_**, jeśli chcesz, aby Twój spis treści zawierał w nagłówkach tytułów plików, zamiast zwykłego tekstu, hiperłącza, które pozwolą później, po ich kliknięciu, przejść bezpośrednio do fragmentu scalonego pliku zawierającego zawartość odpowiedniego pliku. Wybranie tej opcji przeniesie Cię do [widoku](#widok-spisu-treści-typu-hiperlinki), który stworzy i wyświetli tekst spisu treści tego typu.
+3. Napisz **_3_**, jeśli zmieniłeś(łaś) zdanie i nie chcesz umieszczać w swoim scalonym pliku żadnego spisu treści. Wybranie tej opcji przeniesie Cię do [widoku braku spisu treści](#widok-braku-spisu-treści), gdzie zastanie Ci wyświetlona informacja, o braku spisu treści.
 
-Po wybraniu jednej z tych opcji spis treści wybranego typu (taki, który ostatnio wybrałeś(aś), jeśli odwiedziłeś(aś) ten widok kilka razy) zostanie dodany do scalonego pliku, jeśli go później utworzysz.
+Po wybraniu opcji „1” lub „2” spis treści wybranego typu (taki, który ostatnio wybrałeś(aś), jeśli odwiedziłeś(aś) ten widok kilka razy) zostanie dodany do scalonego pliku, jeśli go później utworzysz.
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 ---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
 
-Wybierz rodzaj spisu treści jaki chcesz utworzyć
+
 1. Spis treści będący zwykłym tekstem
 2. Spis treści złożony z hiperlinków do odpowiednich paragrafów
+3. Bez spisu treści
 
 Podaj numer typu wybranego z powyższego menu:
 ```
 
-Jeśli wpiszesz coś innego niż „1” lub „2”, pojawi się komunikat o błędzie i zostaniesz poproszony(a) o ponowny wybór opcji.
+Jeśli wpiszesz coś innego niż „1”, „2” lub „3”, pojawi się komunikat o błędzie i zostaniesz poproszony(a) o ponowny wybór opcji.
 
 ### Widok spisu treści typu zwykły tekst
 Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz opcję „1” w [poprzednim widoku](#widok-menu-spisu-treści). Podobnie jak w poprzednich widokach, na górze okna znajduje się ścieżka bezwzględna do głównego katalogu. Poniżej jest tekst spisu treści. Będzie on zawierał nagłówek drugiego poziomu z tytułem spisu treści (`## Spis treści`), po którym następuje lista nagłówków odpowiedniego poziomu. Każdy nagłówek to albo nazwa podkatalogu (jeśli w tym podkatalogu jest więcej niż jeden wybrany plik) albo tytuł wybranego pliku (jeśli plik nie ma tytułu, to jest on zastępowany nazwą pliku). Więc najpierw mamy nagłówki z tytułami plików, które są umieszczone bezpośrednio w katalogu głównym, następnie nazwę podfolderu (jeśli w tym podfolderze jest więcej niż jeden wybrany plik), tytuły plików, które znajdują się w tym podfolderze i tak dalej.
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
 
 ## Spis treści
 ### Kurs "Zostań programistą ASP.NET" - notatki
@@ -678,7 +715,10 @@ Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz opcję „2” w [w
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
 
 ## Spis treści
 ### [Kurs "Zostań programistą ASP.NET" - notatki](#kurs-zostań-programistą-aspnet---notatki-1)
@@ -757,6 +797,23 @@ Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
 
 Tak jak w [poprzednim widoku](#widok-spisu-treści-typu-zwykły-tekst) możesz teraz całkowicie zamknąć program, naciskając przycisk **Esc** lub wrócić do [menu głównego](#widok-menu-głównego) naciskając przycisk **Enter** (lub cokolwiek innego oprócz Esc).
 
+### Widok braku spisu treści
+Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz opcję „3” w [widoku menu spisu treści](#widok-menu-spisu-treści). Ten widok wygląda analogicznie jak dwa poprzednie, z tą różnicą, że zamiast spisu treści, wyświetla informację o jego braku (`Brak`).
+
+Przykładowy widok okna:
+```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+---------------------------------------UTWÓRZ SPIS TREŚCI DLA TWORZONEGO PLIKU .MD--------------------------------------
+
+
+Brak
+
+Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.
+```
+
+Tak jak w poprzednich dwóch widokach możesz teraz całkowicie zamknąć program, naciskając przycisk **Esc** lub wrócić do [menu głównego](#widok-menu-głównego) naciskając przycisk **Enter** (lub cokolwiek innego oprócz Esc).
+
 ## Widok menu scalonego pliku
 Zostaniesz przeniesiony(a) do tego widoku, jeśli wybierzesz „4” w [widok menu głównego](#widok-menu-głównego). Tutaj będziesz mógł(mogła) zmienić niektóre ustawienia scalonego pliku przed jego utworzeniem. Tak jak w większości widoków u góry znajduje się ścieżka do katalogu głównego. Następnie jest tytuł widoku i aktualnie wybrane ustawienia scalonego pliku. Możesz zmienić trzy ustawienia dla scalonego pliku:
 1. nazwę scalonego pliku (wartość domyślna to stała `MERGE_FILE_NAME` klasy `Program` i jest ona ustawiona na `"README.md"`),
@@ -776,17 +833,17 @@ Gdy wszystkie ustawienia scalonego pliku mają pożądane wartości, naciśnij *
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
-Wybrane pliki zostaną połączone w plik: README.md
-Który zostanie zapisany w katalogu: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
-Nowy plik będzie mieć nagłówek: Kurs "Zostań programistą ASP.NET" - notatki
 
-Jeżeli chcesz zmienić któreś z tych ustawień wybierz odpowiedni numer z poniższego menu.
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
+Zmień ustawienia
 1. Zmień nazwę tworzonego pliku
 2. Zmień ścieżkę katalogu
 3. Zmień nagłówek
@@ -797,12 +854,19 @@ Podaj numer ustawienia (1 - 3), które chcesz zmienić lub wciśnij Enter aby po
 Jeśli wybierzesz coś innego niż jedną z cyfr 1 - 3 lub Enter, wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wybranie, co chcesz zrobić.
 
 ### Widok zmiany nazwy scalonego pliku
-Jeśli wybrałeś(aś) „1” w [poprzednim widok](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o podanie nazwy, którą chcesz nadać scalonemu plikowi. Podaj tylko nazwę, a nie pełną ścieżkę. Możesz dołączyć rozszerzenie pliku (.md), ale nie musisz. Jeśli tego nie zrobisz, zostanie ono dodane automatycznie, podczas tworzenia pliku.
+Jeśli wybrałeś(aś) „1” w [poprzednim widok](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Jak w większości widoków, na górze znajdziesz ścieżkę do katalogu głównego. Następnie znajduje się tytuł [widoku menu scalonego pliku](#widok-menu-scalonego-pliku) oraz aktualnie wybrane wartości ustawień scalonego pliku. Tutaj zostaniesz poproszony(a) o podanie nazwy, którą chcesz nadać scalonemu plikowi. Podaj tylko nazwę, a nie pełną ścieżkę. Możesz dołączyć rozszerzenie pliku (.md), ale nie musisz. Jeśli tego nie zrobisz, zostanie ono dodane automatycznie, podczas tworzenia pliku.
 
 Przykładowy widok okna:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
 Podaj nazwę tworzonego pliku:
 ```
@@ -810,12 +874,19 @@ Podaj nazwę tworzonego pliku:
 Po wprowadzeniu nazwy i naciśnięciu Enter, zostanie ustawiona nowa nazwa scalonego pliku i nastąpi powrót do [poprzedniego widoku](#widok-menu-scalonego-pliku).
 
 ### Widok zmiany katalogu scalonego pliku
-Jeśli wybierzesz „2” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o podanie ścieżki do katalogu, w którym chcesz utworzyć scalony plik. Podobnie jak w [widoku zmiany katalogu głównego](#widok-zmiany-katalogu-głównego), wprowadzona ścieżka może być bezwzględna lub względna w stosunku do bieżącego katalogu (prawdopodobnie katalogu, w którym znajduje się program - prawdopodobnie podfolderu MdFilesMerger\bin\Debug\net6.0 projektu lub innego katalog, z którego wykonywany był program). Jeśli ten folder nie istnieje, zostanie on utworzony. Jeżeli program nie będzie mógł utworzyć katalogu o podanej ścieżce (a taki katalog jeszcze nie istnieje) wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wprowadzenie ścieżki.
+Jeśli wybierzesz „2” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Widok ten jest zbudowany analogicznie jak [poprzedni](#widok-zmiany-nazwy-scalonego-pliku). Tutaj zostaniesz poproszony(a) o podanie ścieżki do katalogu, w którym chcesz utworzyć scalony plik. Podobnie jak w [widoku zmiany katalogu głównego](#widok-zmiany-katalogu-głównego), wprowadzona ścieżka może być bezwzględna lub względna w stosunku do bieżącego katalogu (prawdopodobnie katalogu, w którym znajduje się program - prawdopodobnie podfolderu MdFilesMerger\bin\Debug\net6.0 projektu lub innego katalog, z którego wykonywany był program). Jeśli ten folder nie istnieje, zostanie on utworzony. Jeżeli program nie będzie mógł utworzyć katalogu o podanej ścieżce (a taki katalog jeszcze nie istnieje) wyświetli się komunikat o błędzie i zostaniesz poproszony(a) o ponowne wprowadzenie ścieżki.
 
 Przykładowy widok okna:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
+
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
 Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
 ```
@@ -823,28 +894,41 @@ Podaj ścieżkę do katalogu, w którym chcesz zapisać plik:
 Po wprowadzeniu poprawnej ścieżki do katalogu i naciśnięciu Enter, zostaniesz przeniesiony(a) z powrotem do [widok menu scalonego pliku](#widok-menu-scalonego-pliku), a nowa ścieżka do katalogu scalonego pliku zostanie ustawiona.
 
 ### Widok zmiany tytułu scalonego pliku
-Jeśli wybrałeś(łaś) „3” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Tutaj zostaniesz poproszony(a) o wprowadzenie tytułu scalonego pliku.
+Jeśli wybrałeś(łaś) „3” w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), zostaniesz przeniesiony(a) do tego widoku. Jest on zbudowany tak samo jak dwa poprzednie. Tutaj zostaniesz poproszony(a) o wprowadzenie tytułu scalonego pliku.
 
 Przykładowy widok okna:
 ```
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
 
 --------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
-Podaj nagłówek tworzonego pliku:
+
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
+
+Podaj nagłówek (tytuł) tworzonego pliku:
 ```
 
 Po wprowadzeniu tytułu scalonego pliku i naciśnięciu klawisza Enter, zostaniesz przeniesiony(a) z powrotem do [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), a nowy tytuł zostanie ustawiony. Jeśli nie chcesz, aby scalony plik miał jakikolwiek tytuł, po prostu naciśnij Enter, a tytuł będzie pusty. Jeśli tytuł jest pusty, nagłówek tytułu nie zostanie uwzględniony w scalonym pliku.
 
 ### Widok tworzenia scalonego pliku
-Jeśli nie wybrałeś żadnej opcji w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku) wcisnąłeś(łaś) Enter, zostaniesz przeniesiony(a) do tego widoku. Podobnie jak w wielu innych widokach, w górnej części okna zobaczysz bezwzględną ścieżkę aktualnego katalogu głównego. Następnie masz tytuł [widoku menu scalonego plików](#widok-menu-scalonego-pliku) i informację, że trwa scalanie plików. Po zakończeniu tworzenia scalonego pliku zostaniesz przeniesiony(a) z powrotem do [menu głównego](#widok-menu-głównego).
+Jeśli nie wybrałeś żadnej opcji w [widoku menu scalonego pliku](#widok-menu-scalonego-pliku), a wcisnąłeś(łaś) Enter, zostaniesz przeniesiony(a) do tego widoku. Podobnie jak w wielu innych widokach, w górnej części okna zobaczysz bezwzględną ścieżkę aktualnego katalogu głównego. Następnie masz tytuł [widoku menu scalonego plików](#widok-menu-scalonego-pliku), wybrane ustawienia scalonego pliku i informację o postępie scalania plików. Po zakończeniu tworzenia scalonego pliku zostaniesz przeniesiony(a) z powrotem do [menu głównego](#widok-menu-głównego).
 
 Przykładowy widok okna:
 ```
-Katalog główny, w którym wyszukiwane są pliki do scalenia: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Katalog główny: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+
+--------------------------------------------------POŁĄCZ WYBRANE PLIKI--------------------------------------------------
 
 
----------------------------------------------------POŁĄCZ WYBRANE PLIKI---------------------------------------------------
+Ustawienia
+Nazwa tworzonego pliku: README.md
+Położenie pliku: C:\Users\mielczarek\source\repos\KursZostanProgramistaASPdotNET
+Tytuł: Kurs "Zostań programistą ASP.NET" - notatki
 
-Scalanie plików...
+Scalanie plików                                                   55%
+
 ```
 </details>
