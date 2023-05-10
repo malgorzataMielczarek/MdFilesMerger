@@ -20,7 +20,7 @@ namespace MdFilesMerger
             {
                 DisplayTitle(mainDirectoryService.Title);
 
-                while(!mainDirectoryService.SetPath())
+                while(!mainDirectoryService.ChangePath())
                 {
                     Console.Clear();
 
@@ -63,7 +63,7 @@ namespace MdFilesMerger
 
                             mainDirectoryService.DisplayErrorMessage(isError);
 
-                            if (mainDirectoryService.SetPath())
+                            if (mainDirectoryService.ChangePath())
                             {
                                 selectedActionService = null;
                                 isError = false;
