@@ -160,7 +160,7 @@ namespace MdFilesMerger
         private static MenuActionService? ExitOnEsc()
         {
             Console.WriteLine();
-            Console.WriteLine("Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.");
+            Console.Write("Wciśnij Enter aby wrócić do menu głównego lub Esc by zakończyć program.");
             var key = Console.ReadKey();
             if (key.Key == ConsoleKey.Escape)
             {
