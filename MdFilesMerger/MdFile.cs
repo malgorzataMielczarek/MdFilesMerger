@@ -96,7 +96,7 @@ namespace MdFilesMerger
                             }
                         }
 
-                        fileStream.WriteLine(AdjustRelativeLinkInText(line, this.FileInfo, file));
+                        fileStream.WriteLine(AdjustRelativeLinksInText(line, this.FileInfo, file));
                     }
 
                     copyFileStream.Close();
@@ -115,27 +115,35 @@ namespace MdFilesMerger
                 }
             }
         }
-        public string AdjustRelativeLinkInText(string textLine, FileInfo sourceFile, FileInfo targetFile)
+        public string AdjustRelativeLinksInText(string textLine, FileInfo sourceFile, FileInfo targetFile)
         {
-            if(Helpers.ContainsLinkBlock(textLine))
-            {
-                string link = Helpers.GetLinkPartFromLinkBlock(textLine);
+            int startIndex = 0;
+            string substring = textLine;
 
-                //check if web, absolute or to section link
-                if (link.StartsWith(@"http://") || link.StartsWith(@"https://") || (char.IsLetter(link[0]) && link[1] == ':') || link[0] == '#')
-                {
-                    return textLine;
-                }
-                else if (sourceFile.DirectoryName != null && targetFile.DirectoryName != null)
+            StringBuilder adjustedText = new StringBuilder(textLine);
+
+            while (Helpers.ContainsLinkBlock(substring))
+            {
+                string link = Helpers.GetLinkPartFromLinkBlock(substring);
+
+                startIndex = textLine.IndexOf(link, startIndex);
+
+                //check if not web, absolute or to section link
+                if (!(link.StartsWith(@"http://") || link.StartsWith(@"https://") || (char.IsLetter(link[0]) && link[1] == ':') || link[0] == '#')
+                 && (sourceFile.DirectoryName != null && targetFile.DirectoryName != null))
                 {
                     string absoluteLink = Path.GetFullPath(link, sourceFile.DirectoryName);
                     string newRelativeLink = Path.GetRelativePath(targetFile.DirectoryName, absoluteLink).Replace('\\', '/'); //change to unix style
 
-                    return textLine.Replace(link, newRelativeLink);
+                    adjustedText.Remove(startIndex, link.Length);
+                    adjustedText.Insert(startIndex, newRelativeLink);
                 }
+
+                startIndex += link.Length + 1;
+                substring = textLine[startIndex..];
             }
             
-            return textLine;
+            return adjustedText.ToString();
         }
     }
 }
