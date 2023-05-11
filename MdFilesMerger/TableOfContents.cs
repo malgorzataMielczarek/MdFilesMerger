@@ -107,7 +107,7 @@ namespace MdFilesMerger
 
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
 
-                string hyperlink = Helpers.ConvertTextToHyperlink(title);
+                string hyperlink = Helpers.ConvertTextToSectionHyperlink(title);
 
                 int qtt = titles[title]++;
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());

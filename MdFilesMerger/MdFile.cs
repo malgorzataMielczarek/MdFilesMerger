@@ -117,12 +117,11 @@ namespace MdFilesMerger
         }
         public string AdjustRelativeLinkInText(string textLine, FileInfo sourceFile, FileInfo targetFile)
         {
-            //adjusting links in markdown format: [displayed text](relative link), it also includes images in format: ![alternative text](relative link)
             if(Helpers.ContainsLinkBlock(textLine))
             {
                 string link = Helpers.GetLinkPartFromLinkBlock(textLine);
 
-                //check if web, absolute or hyper link
+                //check if web, absolute or to section link
                 if (link.StartsWith(@"http://") || link.StartsWith(@"https://") || (char.IsLetter(link[0]) && link[1] == ':') || link[0] == '#')
                 {
                     return textLine;
