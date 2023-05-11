@@ -138,7 +138,7 @@ namespace MdFilesMerger
                         progress.Append(procent);
                         progress.Append('%');
                         Console.WriteLine(progress.ToString());
-                        Thread.Sleep(10);
+                        Thread.Sleep(1);
                     }
                 }
                 streamWriter.Close();
