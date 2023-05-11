@@ -57,50 +57,54 @@ namespace MdFilesMerger
             }
             return mainDirectoryPath;
         }
-        public void CopyToOpenStreamWriter(StreamWriter streamWriter)
+        public void AppendTo(FileInfo file)
         {
-            if(streamWriter == null) throw new ArgumentNullException(nameof(streamWriter));
+            if(file == null) throw new ArgumentNullException(nameof(file));
 
-            using (StreamReader copyFileStream = FileInfo.OpenText())
+            using (StreamWriter fileStream = file.AppendText())
             {
-                string? line;
-                int findHeaderClosingTag = 0;
-                while((line = copyFileStream.ReadLine()) != null)
+                using (StreamReader copyFileStream = FileInfo.OpenText())
                 {
-                    //change all headers in file to one level less important (# to ##, ## to ###, h1 to h2, h2 to h3 etc.)
-                    //  for #*n header format
-                    if (line.Trim().StartsWith('#'))
+                    string? line;
+                    int findHeaderClosingTag = 0;
+                    while ((line = copyFileStream.ReadLine()) != null)
                     {
-                        line = "#" + line.TrimStart();
-                    }
-                    //  for <hn>header</hn> format
-                    if (findHeaderClosingTag != 0) ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
-                    if (line.Contains("<h"))
-                    {
-                        int headerLevelStartIndex = line.IndexOf("<h") + 2;
-                        int headerLevelEndIndex = line.IndexOfAny(new char[] { '>', ' ' }, headerLevelStartIndex);
-
-                        if (headerLevelEndIndex != -1)
+                        //change all headers in file to one level less important (# to ##, ## to ###, h1 to h2, h2 to h3 etc.)
+                        //  for #*n header format
+                        if (line.Trim().StartsWith('#'))
                         {
-                            if (int.TryParse(line[headerLevelStartIndex..headerLevelEndIndex], out int headerLevel))
-                            {
-                                findHeaderClosingTag = headerLevel;
-                                headerLevel++;
-                                line = line.Remove(headerLevelStartIndex, headerLevelEndIndex - headerLevelStartIndex);
-                                line = line.Insert(headerLevelStartIndex, headerLevel.ToString());
+                            line = "#" + line.TrimStart();
+                        }
+                        //  for <hn>header</hn> format
+                        if (findHeaderClosingTag != 0) ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
+                        if (line.Contains("<h"))
+                        {
+                            int headerLevelStartIndex = line.IndexOf("<h") + 2;
+                            int headerLevelEndIndex = line.IndexOfAny(new char[] { '>', ' ' }, headerLevelStartIndex);
 
-                                ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
+                            if (headerLevelEndIndex != -1)
+                            {
+                                if (int.TryParse(line[headerLevelStartIndex..headerLevelEndIndex], out int headerLevel))
+                                {
+                                    findHeaderClosingTag = headerLevel;
+                                    headerLevel++;
+                                    line = line.Remove(headerLevelStartIndex, headerLevelEndIndex - headerLevelStartIndex);
+                                    line = line.Insert(headerLevelStartIndex, headerLevel.ToString());
+
+                                    ChangeHeaderClosingTag(ref line, ref findHeaderClosingTag);
+                                }
                             }
                         }
+
+                        fileStream.WriteLine(AdjustRelativeLinkInText(line, this.FileInfo, file));
                     }
 
-                    streamWriter.WriteLine(line);
+                    copyFileStream.Close();
                 }
+                fileStream.WriteLine();
 
-                copyFileStream.Close();
+                fileStream.Close();
             }
-            streamWriter.WriteLine();
-
             static void ChangeHeaderClosingTag(ref string line, ref int findHeaderClosingTag)
             {
                 if (line.Contains("</h" + findHeaderClosingTag + ">"))
@@ -110,6 +114,29 @@ namespace MdFilesMerger
                     findHeaderClosingTag = 0;
                 }
             }
+        }
+        public string AdjustRelativeLinkInText(string textLine, FileInfo sourceFile, FileInfo targetFile)
+        {
+            //adjusting links in markdown format: [displayed text](relative link), it also includes images in format: ![alternative text](relative link)
+            if(Helpers.ContainsLinkBlock(textLine))
+            {
+                string link = Helpers.GetLinkPartFromLinkBlock(textLine);
+
+                //check if web, absolute or hyper link
+                if (link.StartsWith(@"http://") || link.StartsWith(@"https://") || (char.IsLetter(link[0]) && link[1] == ':') || link[0] == '#')
+                {
+                    return textLine;
+                }
+                else if (sourceFile.DirectoryName != null && targetFile.DirectoryName != null)
+                {
+                    string absoluteLink = Path.GetFullPath(link, sourceFile.DirectoryName);
+                    string newRelativeLink = Path.GetRelativePath(targetFile.DirectoryName, absoluteLink).Replace('\\', '/'); //change to unix style
+
+                    return textLine.Replace(link, newRelativeLink);
+                }
+            }
+            
+            return textLine;
         }
     }
 }

@@ -123,25 +123,26 @@ namespace MdFilesMerger
                     {
                         streamWriter.WriteLine(tableOfContents.CreateTableOfContents(listOfFiles));
                     }
-
-                    //Enter files content
-                    for (int i = 0; i < listOfFiles.Count; i++)
-                    {
-                        MdFile file = listOfFiles[i];
-
-                        //show progress
-                        file.CopyToOpenStreamWriter(streamWriter);
-                        Console.SetCursorPosition(0, Console.GetCursorPosition().Top - 1);
-                        int procent = (i + 1) * 100 / listOfFiles.Count;
-                        StringBuilder progress = new StringBuilder(mergingMsg);
-                        progress.Append(' ', (Console.WindowWidth - mergingMsg.Length - procent.ToString().Length - 1) / 2);
-                        progress.Append(procent);
-                        progress.Append('%');
-                        Console.WriteLine(progress.ToString());
-                        Thread.Sleep(1);
-                    }
                 }
                 streamWriter.Close();
+            }
+
+            //Enter files content
+            for (int i = 0; i < (listOfFiles?.Count ?? 0); i++)
+            {
+                MdFile file = listOfFiles[i];
+
+                //show progress
+                file.AppendTo(Merger.File);
+
+                Console.SetCursorPosition(0, Console.GetCursorPosition().Top - 1);
+                int procent = (i + 1) * 100 / listOfFiles.Count;
+                StringBuilder progress = new StringBuilder(mergingMsg);
+                progress.Append(' ', (Console.WindowWidth - mergingMsg.Length - procent.ToString().Length - 1) / 2);
+                progress.Append(procent);
+                progress.Append('%');
+                Console.WriteLine(progress.ToString());
+                Thread.Sleep(1);
             }
         }
 
