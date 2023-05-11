@@ -78,28 +78,38 @@ namespace MdFilesMerger
 
         public string CreateHyperlinksTableOfContents(ListOfMdFiles listOfFiles)
         {
-
-            List<string> appendedDirectories = new List<string>();
-            Dictionary<string, int> links = new Dictionary<string, int>();
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
-            foreach (MdFile file in listOfFiles)
+            //Count files with the same title
+            List<string> titlesOfFiles = new List<string>();
+            Dictionary<string, int> titles = new Dictionary<string, int>();
+            foreach(var file in listOfFiles)
             {
                 string title = GetFileTitle(file);
-                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
-
-                string hyperlink = Helpers.ConvertTextToHyperlink(title);
-                string link = Helpers.GetLinkPartFromLinkBlock(hyperlink);
-                int qtt;
-                if (links.TryGetValue(link, out qtt))
+                titlesOfFiles.Add(title);
+                if(titles.ContainsKey(title))
                 {
-                    links[link] = ++qtt;
+                    titles[title]++;
                 }
                 else
                 {
-                    qtt = 1;
-                    links.Add(link, qtt);
+                    titles.Add(title, 1);
                 }
+            }
+
+            List<string> appendedDirectories = new List<string>();
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(TABLE_OF_CONTENTS_HEADER);
+            for (int i = 0; i < listOfFiles.Count; i++)
+            {
+                MdFile file = listOfFiles[i];
+                string title = titlesOfFiles[i];
+
+                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
+
+                string hyperlink = Helpers.ConvertTextToHyperlink(title);
+
+                int qtt = titles[title]++;
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
                 stringBuilder.Append('#', dirNumber + 3);
                 stringBuilder.Append(" ");
