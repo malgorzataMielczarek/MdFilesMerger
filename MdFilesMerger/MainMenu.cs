@@ -1,12 +1,8 @@
-﻿using System;
-
-namespace MdFilesMerger
+﻿namespace MdFilesMerger
 {
     internal class MainMenu
     {
-
         public MenuActionService[] Actions { get; }
-
 
         public MainMenu()
         {

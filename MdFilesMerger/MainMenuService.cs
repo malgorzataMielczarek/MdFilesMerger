@@ -9,8 +9,25 @@
         public MainMenuService()
         {
             Title = "Menu główne";
-
             MainMenu = new MainMenu();
+        }
+
+        public void DisplayErrorMessage(bool isError)
+        {
+            if (isError)
+            {
+                Console.WriteLine("Wybrana czynność nie istnieje.");
+            }
+        }
+
+        public void DisplayMenu()
+        {
+            foreach (var action in MainMenu.Actions)
+            {
+                action.Display();
+            }
+
+            Console.WriteLine();
         }
 
         public MenuActionService? SelectAction()
@@ -22,6 +39,7 @@
             {
                 return new MenuActionService(0, "Exit", nameof(MdFilesMerger.MainMenu));
             }
+
             else
             {
                 string input = key.KeyChar.ToString() + Console.ReadLine();
@@ -30,27 +48,12 @@
                 {
                     return MainMenu.SelectActionById(result);
                 }
+
                 else
                 {
                     return null;
                 }
             }
         }
-        public void DisplayMenu()
-        {
-            foreach (var action in MainMenu.Actions)
-            {
-                action.Display();
-            }
-            Console.WriteLine();
-        }
-        public void DisplayErrorMessage(bool isError)
-        {
-            if(isError)
-            {
-                Console.WriteLine("Wybrana czynność nie istnieje.");
-            }
-        }
-
     }
 }

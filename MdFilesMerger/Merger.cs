@@ -8,38 +8,33 @@ namespace MdFilesMerger
         public FileInfo File { get; set; }
         public string Title { get; set; }
 
-        public Merger(DirectoryInfo directory, string fileName = Program.MERGE_FILE_NAME)
+        public Merger(DirectoryInfo? directory, string fileName):this()
         {
-            Title = Program.MERGED_FILE_TITLE;
-            
-            File = new FileInfo(CreatePath(directory.FullName, fileName));
+            File = new FileInfo(CreatePath(directory?.FullName, fileName));
         }
-        public Merger(string path)
-        {
-            Title = Program.MERGED_FILE_TITLE;
 
-            if (!path.EndsWith(".md")) path += ".md";
+        public Merger(string path):this()
+        {
+            if (!path.EndsWith(".md"))
+            {
+                path += ".md";
+            }
+
             File = new FileInfo(path);
         }
-        public bool SetFileName(string? fileName)
-        {
-            if (string.IsNullOrEmpty(fileName))
-            {
-                return false;
-            }
-            else
-            {
-                File = new FileInfo(CreatePath(File.DirectoryName, fileName));
 
-                return true;
-            }
+        private Merger()
+        {
+            Title = "Kurs \"Zostań programistą ASP.NET\" - notatki";
         }
+
         public bool SetDirectory(string? path)
         {
             if (String.IsNullOrEmpty(path))
             {
                 return false;
             }
+
             else
             {
                 try
@@ -50,10 +45,25 @@ namespace MdFilesMerger
 
                     return true;
                 }
-                catch
+
+                catch (Exception ex)
                 {
                     return false;
                 }
+            }
+        }
+
+        public bool SetFileName(string? fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return false;
+            }
+
+            else
+            {
+                File = new FileInfo(CreatePath(File.DirectoryName, fileName));
+                return true;
             }
         }
         public bool SetTitle(string? title)
