@@ -4,25 +4,18 @@ namespace MdFilesMerger
 {
     internal class TableOfContents
     {
-        private const string TABLE_OF_CONTENTS_HEADER = "## Spis treści" + Program.NEW_LINE;
         public enum Types
         {
             Text = 1,
             Hyperlink = 2,
             None = 3
         }
+
+        private const string TABLE_OF_CONTENTS_HEADER = "## Spis treści" + Program.NEW_LINE;
+
+        private MenuActionService[] actions;
+
         public string Title { get; }
-
-        public string? CreateTableOfContents(ListOfMdFiles listOfFiles)
-        {
-            switch (Type)
-            {
-                case Types.Text: return CreateTextTableOfContents(listOfFiles);
-                case Types.Hyperlink: return CreateHyperlinksTableOfContents(listOfFiles);
-                default: return null;
-            }
-        }
-
         public Types Type { get; set; }
 
         public TableOfContents()
@@ -38,21 +31,40 @@ namespace MdFilesMerger
 
             Type = Types.None;
         }
-        public void DisplayMenu()
+
+        public string? Create(ListOfMdFiles listOfFiles)
         {
-            foreach(var action in actions)
+            switch (Type)
             {
-                action.Display();
+                case Types.Text: 
+                    return CreateTextTOC(listOfFiles);
+
+                case Types.Hyperlink: 
+                    return CreateHyperlinksTOC(listOfFiles);
+
+                default: 
+                    return null;
             }
-            Console.WriteLine();
         }
-        public void DisplayError(bool isError)
+
+        public void DisplayErrorMessage(bool isError)
         {
-            if(isError)
+            if (isError)
             {
                 Console.WriteLine("Nie rozpoznano wybranego typu.");
             }
         }
+
+        public void DisplayMenu()
+        {
+            foreach (var action in actions)
+            {
+                action.Display();
+            }
+
+            Console.WriteLine();
+        }
+
         public MenuActionService? SelectAction()
         {
             Console.Write("Podaj numer typu wybranego z powyższego menu: ");
@@ -64,31 +76,68 @@ namespace MdFilesMerger
                 case 1:
                     Type = Types.Text;
                     break;
+
                 case 2:
                     Type = Types.Hyperlink;
                     break;
+
                 case 3:
                     Type = Types.None;
                     break;
+
                 default:
                     return null;
             }
+
             return actions[type - 1];
         }
 
-        public string CreateHyperlinksTableOfContents(ListOfMdFiles listOfFiles)
+        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, MdFile file)
         {
-            //Count files with the same title
+            string directories = "";
+            int dirNumber = file.SubDirectories.Length;
+
+            // Don't add the name of the most nested directory if it is the only .md file in that directory
+            if (dirNumber > 0 && file.FileInfo.Directory != null && file.FileInfo.Directory.GetFiles("*.md").Length == 1)
+            {
+                dirNumber--;
+            }
+
+            for (int i = 0; i < dirNumber; i++)
+            {
+                string dir = file.SubDirectories[i];
+                directories += "\\" + dir;
+
+                if (!appendedDirectories.Contains(directories))
+                {
+                    appendedDirectories.Add(directories);
+
+                    stringBuilder.Append('#', i + 3);
+                    stringBuilder.Append(" ");
+                    stringBuilder.Append(dir);
+                    stringBuilder.Append(Program.NEW_LINE);
+                }
+            }
+
+            return dirNumber;
+        }
+
+        private string CreateHyperlinksTOC(ListOfMdFiles listOfFiles)
+        {
+            // Count files with the same title
             List<string> titlesOfFiles = new List<string>();
             Dictionary<string, int> titles = new Dictionary<string, int>();
-            foreach(var file in listOfFiles)
+
+            foreach (var file in listOfFiles)
             {
                 string title = GetFileTitle(file);
                 titlesOfFiles.Add(title);
-                if(titles.ContainsKey(title))
+
+                if (titles.ContainsKey(title))
                 {
                     titles[title]++;
                 }
+
                 else
                 {
                     titles.Add(title, 1);
@@ -107,62 +156,21 @@ namespace MdFilesMerger
 
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, file);
 
-                string hyperlink = Helpers.ConvertTextToSectionHyperlink(title);
+                string hyperlink = Helpers.TextToHyperlink(title);
 
                 int qtt = titles[title]++;
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
+
                 stringBuilder.Append('#', dirNumber + 3);
                 stringBuilder.Append(" ");
                 stringBuilder.Append(hyperlink);
                 stringBuilder.Append(Program.NEW_LINE);
             }
+
             return stringBuilder.ToString();
         }
 
-        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, MdFile file)
-        {
-            string directories = "";
-            int dirNumber = file.SubDirectories.Length;
-            //Don't add the name of the most nested directory if it is the only .md file in that directory
-            if (dirNumber > 0 && file.FileInfo.Directory != null && file.FileInfo.Directory.GetFiles("*.md").Length == 1)
-            {
-                dirNumber--;
-            }
-            for (int i = 0; i < dirNumber; i++)
-            {
-                string dir = file.SubDirectories[i];
-                directories += "\\" + dir;
-                if (!appendedDirectories.Contains(directories))
-                {
-                    appendedDirectories.Add(directories);
-
-                    stringBuilder.Append('#', i + 3);
-                    stringBuilder.Append(" ");
-                    stringBuilder.Append(dir);
-                    stringBuilder.Append(Program.NEW_LINE);
-                }
-            }
-
-            return dirNumber;
-        }
-
-        private static string GetFileTitle(MdFile file)
-        {
-            string title = file.GetFileHeader();
-            if (title != null)
-            {
-                while (title.StartsWith('#'))
-                {
-                    title = title[1..];
-                }
-                title = title.Trim();
-            }
-            else return string.Empty;
-
-            return title;
-        }
-
-        public string CreateTextTableOfContents(ListOfMdFiles listOfFiles)
+        private string CreateTextTOC(ListOfMdFiles listOfFiles)
         {
             List<string> appendedDirectories = new List<string>();
 
@@ -181,9 +189,30 @@ namespace MdFilesMerger
                 stringBuilder.Append(title);
                 stringBuilder.Append(Program.NEW_LINE);
             }
+
             return stringBuilder.ToString();
         }
 
-        private MenuActionService[] actions;
+        private static string GetFileTitle(MdFile file)
+        {
+            string title = file.GetFileHeader();
+
+            if (title != null)
+            {
+                while (title.StartsWith('#'))
+                {
+                    title = title[1..];
+                }
+
+                title = title.Trim();
+            }
+
+            else
+            {
+                return string.Empty;
+            }
+
+            return title;
+        }
     }
 }
