@@ -3,7 +3,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace MdFilesMerger
 {
-    internal static class Helpers
+    public static class Helpers
     {
         public static bool ContainsHyperlink(string? text)
         {
@@ -44,7 +44,7 @@ namespace MdFilesMerger
                 return GetQuoteText(hyperlink, srcIndex + 4);
             }
 
-            return String.Empty;
+            return string.Empty;
         }
 
         public static string GetText(string hyperlink)
@@ -74,7 +74,7 @@ namespace MdFilesMerger
 
             if (hyperlinkTextSectionStart == -1 || hyperlinkTextSectionEnd == -1)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             text = hyperlink.Substring(hyperlinkTextSectionStart + 1, hyperlinkTextSectionEnd - hyperlinkTextSectionStart - 1);
@@ -200,7 +200,7 @@ namespace MdFilesMerger
 
             if (textStart == -1 || textEnd == -1)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             return text.Substring(textStart + 1, textEnd - textStart - 1).Trim();
