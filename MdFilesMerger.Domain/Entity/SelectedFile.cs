@@ -18,20 +18,6 @@ namespace MdFilesMerger.Domain.Entity
             ModifiedDate = modifiedDate;
         }
 
-        public override bool SetFullPath(string? path)
-        {
-            if (base.SetFullPath(path) && File.Exists(Name))
-            {
-                return true;
-            }
-
-            else
-            {
-                Name = null;
-                return false;
-            }
-        }
-
         //public string[] SubDirectories { get; }
 
         //public SelectedFile(int id, FileInfo fileInfo, string mainDirectory)
