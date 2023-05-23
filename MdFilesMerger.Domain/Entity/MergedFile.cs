@@ -8,10 +8,17 @@ namespace MdFilesMerger.Domain.Entity
         public int UserId { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string? Title { get; set; }
+        public TableOfContent TableOfContent { get; set; }
+        public string NewLineStyle { get; set; }
+        public string? TOCHeader { get; set; }
+
         public MergedFile() : base()
         {
             Title = "Kurs \"Zostań programistą ASP.NET\" - notatki";
             ModifiedDate = DateTime.Now;
+            TableOfContent = TableOfContent.None;
+            NewLineStyle = "\n";
+            TOCHeader = "## Spis treści";
         }
 
         public MergedFile(int id, int mainDirectoryId) : this()
