@@ -1,6 +1,5 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.App.Common
 {
