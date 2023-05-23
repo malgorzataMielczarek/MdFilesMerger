@@ -8,7 +8,7 @@ namespace MdFilesMerger.Domain.Entity
         public int UserId { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string? Title { get; set; }
-        public TableOfContent TableOfContent { get; set; }
+        public TableOfContents TableOfContent { get; set; }
         public string NewLineStyle { get; set; }
         public string? TOCHeader { get; set; }
 
@@ -16,7 +16,7 @@ namespace MdFilesMerger.Domain.Entity
         {
             Title = "Kurs \"Zostań programistą ASP.NET\" - notatki";
             ModifiedDate = DateTime.Now;
-            TableOfContent = TableOfContent.None;
+            TableOfContent = TableOfContents.None;
             NewLineStyle = "\n";
             TOCHeader = "## Spis treści";
         }
