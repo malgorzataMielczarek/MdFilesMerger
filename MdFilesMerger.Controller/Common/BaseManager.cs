@@ -1,10 +1,9 @@
 ﻿using MdFilesMerger.App.Common;
 using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.Controller.Common
 {
-    public abstract class BaseManager<T> : IManager<T> where T : BaseItem
+    public abstract class BaseManager<T> : IManager where T : BaseItem
     {
         public BaseService<T> _service;
 
@@ -13,67 +12,37 @@ namespace MdFilesMerger.Controller.Common
             _service = service;
         }
 
-        public abstract int AddItem();
+        public void DisplayItem(int id)
+        {
+            DisplayItem(_service.GetItemById(id));
+        }
 
-        public abstract void DisplayItems(IReadOnlyList<T> items);
+        public abstract void DisplayTitle();
 
-        public void DisplayMenu(IReadOnlyList<MenuAction> actions)
+        public virtual int SelectItem()
+        {
+            var list = GetFilteredList();
+            DisplayItems(list);
+
+            return SelectItem(list);
+        }
+
+        protected abstract void DisplayItem(T? item);
+
+        protected virtual void DisplayItems(IReadOnlyList<T> items)
         {
             Console.WriteLine();
-            for (int i = 1; i <= actions.Count; i++)
+
+            for (int i = 0; i < items.Count; i++)
             {
-                var action = actions[i];
-                Console.WriteLine($"{i}. {action.Name}");
+                T? item = items[i];
+
+                Console.Write($"{i}. ");
+                DisplayItem(item);
             }
 
             Console.WriteLine();
         }
-
-        public virtual int RemoveItem(int id)
-        {
-            T? item = _service.GetItemById(id);
-
-            if (item != null)
-            {
-                return _service.RemoveItem(item);
-            }
-
-            else
-            {
-                return -1;
-            }
-        }
-
-        public virtual int SelectAction(IReadOnlyList<MenuAction> actions)
-        {
-            if (actions.Count > 0)
-            {
-                Console.Write("Podaj numer czynności, którą chcesz wykonać, wciśnij Esc aby zakończyć działanie programu");
-
-                if (actions[0].Menu != MenuType.Main)
-                {
-                    Console.Write(" lub Enter, aby wrócić do menu głównego");
-                }
-
-                Console.Write(": ");
-
-                var key = Console.ReadKey();
-
-                return key.Key switch
-                {
-                    ConsoleKey.Escape => 0,
-                    ConsoleKey.Enter => 1,
-                    >= ConsoleKey.D1 and <= ConsoleKey.D9 => GetIdByIndex(key.Key - ConsoleKey.D0, actions),
-                    _ => -1
-                };
-            }
-
-            return -1;
-        }
-
-        public abstract int SelectItem(IReadOnlyList<T> items);
-
-        public abstract int UpdateItem();
 
         protected void DisplayTitle(string title)
         {
@@ -109,6 +78,20 @@ namespace MdFilesMerger.Controller.Common
             {
                 return -1;
             }
+        }
+
+        protected abstract IReadOnlyList<T> GetFilteredList();
+
+        protected virtual int SelectItem(IReadOnlyList<T> list)
+        {
+            Console.Write("Podaj numer elementu, który chcesz wybrać: ");
+
+            if (int.TryParse(Console.ReadLine(), out int index))
+            {
+                return GetIdByIndex(index, list);
+            }
+
+            return -1;
         }
     }
 }
