@@ -10,5 +10,7 @@ namespace MdFilesMerger.App.Abstract
         public IReadOnlyList<T> GetItemsByName(string name);
         public IReadOnlyList<T> GetAllItems();
         public int GetNewId();
+        public int RemoveItem(T item);
+        public int UpdateItem(T item);
     }
 }
