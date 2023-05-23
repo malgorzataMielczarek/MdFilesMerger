@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.App.Common
 {
@@ -27,6 +28,23 @@ namespace MdFilesMerger.App.Common
             _items.Add(item);
 
             return item.Id;
+        }
+
+        // returns id of first added element
+        public int AddRange(List<T> items)
+        {
+            int id = -1;
+            foreach (var item in items)
+            {
+                AddItem(item);
+
+                if (id == -1)
+                {
+                    id = item.Id;
+                }
+            }
+
+            return id;
         }
 
         public T? GetItemById(int id)
