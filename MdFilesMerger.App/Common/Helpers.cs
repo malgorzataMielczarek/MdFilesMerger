@@ -1,7 +1,6 @@
 ﻿using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace MdFilesMerger
+namespace MdFilesMerger.App.Common
 {
     public static class Helpers
     {
