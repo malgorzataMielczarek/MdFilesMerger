@@ -7,7 +7,10 @@ namespace MdFilesMerger.Domain.Common
     /// </summary>
     public class BaseItem : IItem
     {
+        /// <inheritdoc/>
         public int Id { get; set; }
+
+        /// <inheritdoc/>
         public string? Name { get; set; }
 
         /// <summary>
