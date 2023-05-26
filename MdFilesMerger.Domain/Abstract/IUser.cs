@@ -6,9 +6,9 @@
     public interface IUser : IItem
     {
         /// <value>Encrypted password used to authorize user</value>
-        public string? Password { get; set; }
+        public byte[]? Password { get; set; }
 
-        ///<value>Value used for password encryptation/decryptation</value>
-        public string Salt { get; }
+        ///<value>Value used for password encryption/decryption</value>
+        public byte[] Salt { get; set; }
     }
 }
