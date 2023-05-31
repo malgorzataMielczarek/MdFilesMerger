@@ -3,18 +3,50 @@ using MdFilesMerger.Domain.Common;
 
 namespace MdFilesMerger.Domain.Entity
 {
-    public class MenuAction : BaseItem, IMenuAction
+    /// <summary>
+    ///     Representation of menu item.
+    /// </summary>
+    public sealed class MenuAction : BaseItem, IMenuAction
     {
+        /// <summary>
+        ///     Sets <see cref="BaseItem.Id"> Id </see> to <see langword="0"/>, <see
+        ///     cref="BaseItem.Name"> Name </see> to <paramref name="description"/>, <see
+        ///     cref="Menu"> Menu </see> to <paramref name="menu"/> and <see cref="NextMenu">
+        ///     NextMenu </see> to <paramref name="nextMenu"/>.
+        /// </summary>
+        /// <param name="description"> Description of action that will by displayed in menu. </param>
+        /// <param name="menu"> Type of menu that this item is a part of. </param>
+        /// <param name="nextMenu">
+        ///     Menu that will be displayed after action described by this item will be performed.
+        /// </param>
+        public MenuAction(string description, MenuType menu, MenuType nextMenu) : base(0, description)
+        {
+            Menu = menu;
+            NextMenu = nextMenu;
+        }
+
+        /// <summary>
+        ///     Sets <see cref="BaseItem.Id"> Id </see> to <paramref name="id"/>, <see
+        ///     cref="BaseItem.Name"> Name </see> to <paramref name="description"/>, <see
+        ///     cref="Menu"> Menu </see> to <paramref name="menu"/> and <see cref="NextMenu">
+        ///     NextMenu </see> to <paramref name="nextMenu"/>.
+        /// </summary>
+        /// <param name="id"> Unique identification number of action. </param>
+        /// <param name="description"> Description of action that will by displayed in menu. </param>
+        /// <param name="menu"> Type of menu that this item is a part of. </param>
+        /// <param name="nextMenu">
+        ///     Menu that will be displayed after action described by this item will be performed.
+        /// </param>
+        public MenuAction(int id, string description, MenuType menu, MenuType nextMenu) : base(id, description)
+        {
+            Menu = menu;
+            NextMenu = nextMenu;
+        }
+
+        /// <inheritdoc/>
         public MenuType Menu { get; set; }
 
-        public MenuAction(string description, MenuType menu) : base(0, description)
-        {
-            Menu = menu;
-        }
-
-        public MenuAction(int id, string description, MenuType menu) : base(id, description)
-        {
-            Menu = menu;
-        }
+        /// <inheritdoc/>
+        public MenuType NextMenu { get; set; }
     }
 }

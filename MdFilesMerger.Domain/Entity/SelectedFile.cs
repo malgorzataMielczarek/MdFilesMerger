@@ -1,197 +1,131 @@
 ﻿using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace MdFilesMerger.Domain.Entity
 {
-    public class SelectedFile : MdFile, ISelectedFile
+    /// <summary>
+    ///     Implementation of selected file model associated with located in main directory .md
+    ///     file, whose content will be included in created merged file.
+    /// </summary>
+    public sealed class SelectedFile : RelativeFile, IEditFile
     {
-        public DateTime ModifiedDate { get; set; }
-        public string? Title { get; set; }
-
-        public SelectedFile(int id, int mainDirectoryId):base(id, mainDirectoryId)
+        /// <inheritdoc/>
+        public SelectedFile() : base()
         {
             ModifiedDate = DateTime.Now;
+            Title = null;
         }
 
-        public SelectedFile(int id, int mainDirectoryId, DateTime modifiedDate) : base(id, mainDirectoryId)
+        /// <inheritdoc/>
+        public SelectedFile(int id) : base(id)
+        {
+            ModifiedDate = DateTime.Now;
+            Title = null;
+        }
+
+        /// <summary>
+        ///     Sets all properties to values of appropriate arguments.
+        /// </summary>
+        /// <remarks>
+        ///     No evaluation or adjusting is performed, so use this method only for already
+        ///     evaluated and prepared data, for example from database.
+        /// </remarks>
+        /// <param name="id"> Identification number of item. </param>
+        /// <param name="path">
+        ///     Valid relative path to existing .md file associated with this item. Path should use
+        ///     <see langword="'/'"/> as directory separator.
+        /// </param>
+        /// <param name="mainDirId">
+        ///     <see cref="BaseItem.Id"/> of <see cref="MainDirectory"/> object associated with this item.
+        /// </param>
+        /// <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        /// <param name="title">
+        ///     Text put as table of contents entry connected with contend of associated .md file.
+        /// </param>
+        public SelectedFile(int id, string? path, int mainDirId, DateTime modifiedDate, string? title) : base(id, path, mainDirId)
         {
             ModifiedDate = modifiedDate;
+            Title = title;
         }
 
-        //public string[] SubDirectories { get; }
+        /// <summary>
+        ///     <inheritdoc/>
+        /// </summary>
+        /// <value> By default it is set to <see langword="null"/>. </value>
+        public DateTime ModifiedDate { get; set; }
 
-        //public SelectedFile(int id, FileInfo fileInfo, string mainDirectory)
-        //{
-        //    Id = id;
-        //    Info = fileInfo;
-        //    SubDirectories = GetSubDirectories(mainDirectory);
-        //    Title = GetFileHeader();
-        //}
+        /// <summary>
+        ///     Text that will be put in table of contents (if it will be included) as header
+        ///     pointing in created merged file to content of associated with this instance file.
+        /// </summary>
+        /// <value>
+        ///     By default set to <see langword="null"/> or, if <see cref="BaseItem.Name"/> is set
+        ///     to associated .md file path, to text of header of this file (if exists) or filename
+        ///     without extension (if file doesn't have header).
+        /// </value>
+        public string? Title { get; set; }
 
-        //public void AppendTo(FileInfo file)
-        //{
-        //    if (file == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(file));
-        //    }
+        /// <summary>
+        ///     <inheritdoc/>
+        /// </summary>
+        /// <remarks>
+        ///     <inheritdoc/>
+        ///     <para>
+        ///         If <see cref="BaseItem.Name"/> was successfully set to path and <see
+        ///         cref="Title"/> is <see langword="null"/>, <see cref="Title"/> is set to
+        ///         appropriate default value.
+        ///     </para>
+        /// </remarks>
+        /// <param name="path"> <inheritdoc/> </param>
+        /// <returns> <inheritdoc/> </returns>
+        public override bool SetPath([NotNullWhen(true)] string? path)
+        {
+            bool result = base.SetPath(path);
+            if (result && Title == null)
+            {
+                Title = GetFileHeader();
+            }
 
-        //    using (StreamWriter fileStream = file.AppendText())
-        //    {
-        //        using (StreamReader copyFileStream = Info.OpenText())
-        //        {
-        //            string? line;
-        //            int prevHeaderLvl = 0;
-        //            while ((line = copyFileStream.ReadLine()) != null)
-        //            {
-        //                // change all headers in file to one level less important (# to ##, ## to ###, h1 to h2, h2 to h3 etc.)
+            return result;
+        }
 
-        //                // for #*n header format
-        //                if (line.Trim().StartsWith('#'))
-        //                {
-        //                    line = "#" + line.TrimStart();
-        //                }
+        // Open the file and read first not empty line of text from it. If it is a header (starts
+        // with '#') return it. Else return filename, without extension. If file header is a link
+        // return only text part
+        private string GetFileHeader()
+        {
+            string header = "";
 
-        //                // for <hn>header</hn> format
-        //                if (prevHeaderLvl != 0)
-        //                {
-        //                    ChangeHeaderClosingTag(ref line, ref prevHeaderLvl);
-        //                }
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                // as file title
+                using (StreamReader streamReader = new StreamReader(new FileInfo(Name).OpenRead()))
+                {
+                    // get first not empty line
+                    while (string.IsNullOrWhiteSpace(header = streamReader.ReadLine() ?? "")) { }
+                    streamReader.Close();
+                }
 
-        //                if (line.Contains("<h", StringComparison.Ordinal))
-        //                {
-        //                    int headerLvlStart = line.IndexOf("<h", StringComparison.Ordinal) + 2;
-        //                    int headerLvlEnd = line.IndexOfAny(new char[] { '>', ' ' }, headerLvlStart);
+                // as filename
+                if (string.IsNullOrWhiteSpace(header) || header[0] != '#')
+                {
+                    header = Path.GetFileNameWithoutExtension(Name);
+                }
+                else
+                {
+                    StringBuilder sb = new StringBuilder(header.TrimEnd());
+                    while (char.IsWhiteSpace(sb[0]) || sb[0] == '#')
+                    {
+                        sb.Remove(0, 1);
+                    }
 
-        //                    if (headerLvlEnd != -1)
-        //                    {
-        //                        if (int.TryParse(line[headerLvlStart..headerLvlEnd], out int HeaderLvl))
-        //                        {
-        //                            prevHeaderLvl = HeaderLvl;
-        //                            HeaderLvl++;
-        //                            line = line.Remove(headerLvlStart, headerLvlEnd - headerLvlStart);
-        //                            line = line.Insert(headerLvlStart, HeaderLvl.ToString());
+                    return sb.ToString();
+                }
+            }
 
-        //                            ChangeHeaderClosingTag(ref line, ref prevHeaderLvl);
-        //                        }
-        //                    }
-        //                }
-
-        //                fileStream.WriteLine(AdjustHyperlinks(line, file));
-        //            }
-
-        //            copyFileStream.Close();
-        //        }
-
-        //        fileStream.WriteLine();
-        //        fileStream.Close();
-        //    }
-
-        //    static void ChangeHeaderClosingTag(ref string line, ref int headerLvl)
-        //    {
-        //        if (line.Contains("</h" + headerLvl + ">", StringComparison.Ordinal))
-        //        {
-        //            var splits = line.Split("</h" + headerLvl + ">", 2);
-        //            line = splits[0] + "</h" + (headerLvl + 1).ToString() + ">" + splits[1];
-        //            headerLvl = 0;
-        //        }
-        //    }
-        //}
-
-        //public string? GetMainDirectoryPath()
-        //{
-        //    string? mainDirectoryPath = Info.DirectoryName;
-        //    if (mainDirectoryPath != null)
-        //    {
-        //        if (SubDirectories.Length > 0)
-        //        {
-        //            int index = mainDirectoryPath.IndexOf("\\" + SubDirectories[0] + "\\", StringComparison.Ordinal);
-
-        //            if (index == -1)
-        //            {
-        //                if (mainDirectoryPath.EndsWith("\\" + SubDirectories[0], StringComparison.Ordinal))
-        //                {
-        //                    index = mainDirectoryPath.Length - SubDirectories[0].Length - 1;
-        //                }
-
-        //                else if (mainDirectoryPath.StartsWith(SubDirectories[0] + "\\", StringComparison.Ordinal))
-        //                {
-        //                    index = 0;
-        //                }
-
-        //                else
-        //                {
-        //                    index = mainDirectoryPath.IndexOf(SubDirectories[0], StringComparison.Ordinal);
-        //                }
-        //            }
-
-        //            return mainDirectoryPath[..index];
-        //        }
-        //    }
-
-        //    return mainDirectoryPath;
-        //}
-
-        //private string AdjustHyperlinks(string text, FileInfo targetFile)
-        //{
-        //    int startIndex = 0;
-        //    string substring = text;
-
-        //    StringBuilder adjustedText = new StringBuilder(text);
-
-        //    while (ContainsHyperlink(substring))
-        //    {
-        //        string link = GetLink(substring);
-
-        //        startIndex = text.IndexOf(link, startIndex, StringComparison.Ordinal);
-
-        //        // check if not web, absolute or to section link
-        //        if (!(link.StartsWith(@"http://", StringComparison.Ordinal) || link.StartsWith(@"https://", StringComparison.Ordinal) || (char.IsLetter(link[0]) && link[1] == ':') || link[0] == '#') && (Info.DirectoryName != null && targetFile.DirectoryName != null))
-        //        {
-        //            string absoluteLink = Path.GetFullPath(link, Info.DirectoryName);
-        //            string newRelativeLink = Path.GetRelativePath(targetFile.DirectoryName, absoluteLink).Replace('\\', '/'); // change to unix style
-
-        //            adjustedText.Remove(startIndex, link.Length);
-        //            adjustedText.Insert(startIndex, newRelativeLink);
-        //        }
-
-        //        startIndex += link.Length + 1;
-        //        substring = text[startIndex..];
-        //    }
-
-        //    return adjustedText.ToString();
-        //}
-
-        //// Open the file and read first not empty line of text from it. If it is a header (starts with '#') return it. Else return filename, without extension.
-        //// If file header is a link return only text part
-        //private string GetFileHeader()
-        //{
-        //    string header = "";
-        //    // as file title
-        //    using (StreamReader streamReader = new StreamReader(Info.OpenRead()))
-        //    {
-        //        header = streamReader.ReadLine() ?? "";
-        //        streamReader.Close();
-        //    }
-
-        //    // as filename
-        //    if (string.IsNullOrWhiteSpace(header) || header[0] != '#')
-        //    {
-        //        header = Info.Name.Replace(Info.Extension, "");
-        //    }
-
-        //    return Helpers.HyperlinkToText(header.Trim());
-        //}
-
-        //private string[] GetSubDirectories(string mainDirectory)
-        //{
-        //    if (Info.DirectoryName != null)
-        //    {
-        //        string dirs = Info.DirectoryName.Replace(mainDirectory, "");
-        //        var directories = dirs.Split('\\', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
-
-        //        return directories;
-        //    }
-        //    return Array.Empty<string>();
-        //}
+            return header;
+        }
     }
 }

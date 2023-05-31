@@ -1,14 +1,18 @@
 ﻿namespace MdFilesMerger.Domain.Abstract
 {
     /// <summary>
-    /// Base iterface for all models.
+    ///     Base interface for all models.
     /// </summary>
     public interface IItem
     {
-        /// <value>Distinct identification number of element</value>
+        /// <summary>
+        ///     Distinct identification number of item.
+        /// </summary>
         public int Id { get; set; }
 
-        /// <value>Description of element. It will be user name or path of directory/file</value>
+        /// <summary>
+        ///     Description of item. It will be description of menu element, user name or path of directory/file.
+        /// </summary>
         public string? Name { get; set; }
     }
 }

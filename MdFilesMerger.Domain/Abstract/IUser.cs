@@ -1,14 +1,18 @@
 ﻿namespace MdFilesMerger.Domain.Abstract
 {
     /// <summary>
-    /// User interface
+    ///     Interface of user model.
     /// </summary>
     public interface IUser : IItem
     {
-        /// <value>Encrypted password used to authorize user</value>
+        /// <summary>
+        ///     Encrypted password used to authorize user.
+        /// </summary>
         public byte[]? Password { get; set; }
 
-        ///<value>Value used for password encryption/decryption</value>
+        /// <summary>
+        ///     Value used for password encryption/decryption.
+        /// </summary>
         public byte[] Salt { get; set; }
     }
 }
