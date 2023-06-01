@@ -5,7 +5,15 @@ namespace MdFilesMerger.Domain.Common
 {
     /// <summary>
     ///     Base implementation for all directory and file related models.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; BaseDirectory <br/><b> Implements:
+    ///         </b><see cref="IComparable{BaseDirectory}"/>, <see cref="IDirectory"/>, <see cref="IItem"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+    /// <seealso cref="IComparable{T}"> System.IComparable&lt;T&gt; </seealso>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
     public class BaseDirectory : BaseItem, IDirectory, IComparable<BaseDirectory>
     {
         /// <inheritdoc/>
@@ -127,7 +135,7 @@ namespace MdFilesMerger.Domain.Common
                 // if other has the same subdirectories as this one
 
                 // if this directory (file) has more subdirectories then the other it lays lower in
-                // directory tree. Change order
+                // the directory tree. Change order
                 if (thisSubdirCount > otherSubdirCount)
                 {
                     return -1;

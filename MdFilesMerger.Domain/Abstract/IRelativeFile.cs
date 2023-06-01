@@ -5,7 +5,17 @@ namespace MdFilesMerger.Domain.Abstract
     /// <summary>
     ///     Interface for models associated with the <see cref="IMainDirectory"/> instance (selected
     ///     and ignored file models).
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="IItem"/> -&gt; <see cref="IDirectory"/> -&gt;
+    ///         IRelativeFile <br/><b> Implementations: </b><see cref="Common.RelativeFile"/>, <see
+    ///         cref="Entity.IgnoredFile"/>, <see cref="Entity.SelectedFile"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+    /// <seealso cref="Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
+    /// <seealso cref="Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
     public interface IRelativeFile : IDirectory
     {
         /// <summary>

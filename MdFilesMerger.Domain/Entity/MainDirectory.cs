@@ -5,11 +5,22 @@ namespace MdFilesMerger.Domain.Entity
 {
     /// <summary>
     ///     Base directory for selected and ignored files.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; <see cref="BaseDirectory"/> -&gt;
+    ///         MainDirectory <br/><b> Implements: </b><see cref="IComparable{BaseDirectory}"/>,
+    ///         <see cref="IDirectory"/>, <see cref="IItem"/>, <see cref="IMainDirectory"/>
+    ///     </para>
     /// </summary>
     /// <remarks>
     ///     This directory will be searched for .md files. Saved paths of all selected and ignored
     ///     files, associated with this instance, will be relative to this instance path ( <see cref="BaseItem.Name"/>).
     /// </remarks>
+    /// <seealso cref="BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+    /// <seealso cref="IComparable{T}"> System.IComparable&lt;T&gt; </seealso>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
     public sealed class MainDirectory : BaseDirectory, IMainDirectory
     {
         /// <inheritdoc/>

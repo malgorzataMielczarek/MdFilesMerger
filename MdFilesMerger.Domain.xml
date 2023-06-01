@@ -7,7 +7,21 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IDirectory">
             <summary>
                 Base interface for all directory or file related models.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; IDirectory <br/><b> Implementations:
+                    </b><see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/>, <see cref="T:MdFilesMerger.Domain.Common.MdFile"/>, <see
+                    cref="T:MdFilesMerger.Domain.Common.RelativeFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>, <see
+                    cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/>, <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDictionary </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Abstract.IDirectory.GetPath">
             <summary>
@@ -23,7 +37,15 @@
             <summary>
                 Base interface for .md files related models with update option (for example with
                 property <see cref="P:MdFilesMerger.Domain.Abstract.IEditFile.Title"/> that can be updated - merged and selected file models).
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt;
+                    IEditFile <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IEditFile.ModifiedDate">
             <summary>
@@ -38,7 +60,25 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IItem">
             <summary>
                 Base interface for all models.
+                <para>
+                    <b> Inheritance: </b> IItem <br/><b> Implementations: </b><see
+                    cref="T:MdFilesMerger.Domain.Common.BaseItem"/>, <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/>, <see
+                    cref="T:MdFilesMerger.Domain.Common.MdFile"/>, <see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/>, <see
+                    cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/>, <see
+                    cref="T:MdFilesMerger.Domain.Entity.MenuAction"/>, <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>, <see
+                    cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.User"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IItem.Id">
             <summary>
@@ -53,7 +93,14 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IMainDirectory">
             <summary>
                 Interface of main directory model
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt;
+                    IMainDirectory <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IMainDirectory.MergedFileId">
             <summary>
@@ -63,7 +110,13 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IMenuAction">
             <summary>
                 Interface for menu action item.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; IMenuAction <br/><b> Implementations:
+                    </b><see cref="T:MdFilesMerger.Domain.Entity.MenuAction"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IMenuAction.Menu">
             <summary>
@@ -79,7 +132,15 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IMergedFile">
             <summary>
                 Interface for merged file model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt; <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/> -&gt; IMergedFile <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IMergedFile.MergeDate">
             <summary>
@@ -109,15 +170,15 @@
         </member>
         <member name="M:MdFilesMerger.Domain.Abstract.IMergedFile.GetParentDirectory">
             <summary>
-                Extract parent directory path from path stored in <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>.
+                Extract parent directory path from path stored in <see cref="!:BaseItem.Name"/>.
             </summary>
             <returns>
-                Path of parent directory of the file whose path is stored in <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>.
+                Path of parent directory of the file whose path is stored in <see cref="!:BaseItem.Name"/>.
             </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Abstract.IMergedFile.SetFileName(System.String)">
             <summary>
-                Changes filename in path saved in <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>, without changing
+                Changes filename in path saved in <see cref="!:BaseItem.Name"/>, without changing
                 parent directory path.
             </summary>
             <param name="fileName"> New filename. </param>
@@ -130,7 +191,7 @@
                 Changes parent directory of associated merged file.
             </summary>
             <remarks>
-                Changes parent directory in path stored in <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> without
+                Changes parent directory in path stored in <see cref="!:BaseItem.Name"/> without
                 changing filename.
             </remarks>
             <param name="directoryPath"> New parent directory path. </param>
@@ -143,7 +204,17 @@
             <summary>
                 Interface for models associated with the <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> instance (selected
                 and ignored file models).
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt;
+                    IRelativeFile <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/>, <see
+                    cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IRelativeFile.MainDirId">
             <summary>
@@ -165,7 +236,13 @@
         <member name="T:MdFilesMerger.Domain.Abstract.IUser">
             <summary>
                 Interface of user model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; IUser <br/><b> Implementations:
+                    </b><see cref="T:MdFilesMerger.Domain.Entity.User"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IUser.Password">
             <summary>
@@ -180,7 +257,15 @@
         <member name="T:MdFilesMerger.Domain.Common.BaseDirectory">
             <summary>
                 Base implementation for all directory and file related models.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; BaseDirectory <br/><b> Implements:
+                    </b><see cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.#ctor">
             <inheritdoc/>
@@ -298,7 +383,9 @@
         <member name="T:MdFilesMerger.Domain.Common.BaseItem">
             <summary>
                 Implementation of base model for all models.
+                <para> <b> Inheritance: </b> BaseItem <br/><b> Implements: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.BaseItem.#ctor">
             <summary>
@@ -341,8 +428,18 @@
         </member>
         <member name="T:MdFilesMerger.Domain.Common.MdFile">
             <summary>
-            Base class for all models associated with .md files (merged, selected and ignored file models).
+                Base class for all models associated with .md files (merged, selected and ignored file models).
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    MdFile <br/><b> Implements: </b><see cref="T:System.IComparable`1"/>, <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.MdFile.#ctor">
             <inheritdoc/>
@@ -352,46 +449,44 @@
         </member>
         <member name="M:MdFilesMerger.Domain.Common.MdFile.#ctor(System.String)">
             <summary>
-            <inheritdoc/>
+                <inheritdoc/>
             </summary>
             <remarks>
-            If <paramref name="path"/> is a valid path to .md file, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to path to this file, that uses <see langword="'/'"/> as directory separator character. Otherwise <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to <see langword="null"/>.
+                If <paramref name="path"/> is a valid path to .md file, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
+                is set to path to this file, that uses <see langword="'/'"/> as directory separator
+                character. Otherwise <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to <see langword="null"/>.
             </remarks>
-            
             <param name="path">
-            Path to the .md file associated with this item. It can include extension or not.
+                Path to the .md file associated with this item. It can include extension or not.
             </param>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.MdFile.#ctor(System.Int32,System.String)">
             <summary>
-            <inheritdoc/>
+                <inheritdoc/>
             </summary>
             <remarks>
-            If <paramref name="path"/> is a valid path to .md file, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to path to this file, that uses <see langword="'/'"/> as directory separator character. Otherwise <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to <see langword="null"/>.
+                If <paramref name="path"/> is a valid path to .md file, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
+                is set to path to this file, that uses <see langword="'/'"/> as directory separator
+                character. Otherwise <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> is set to <see langword="null"/>.
             </remarks>
-            
-            <param name="id">
-            This item identification number.
-            </param>
+            <param name="id"> This item identification number. </param>
             <param name="path">
-            Path to the .md file associated with this item. It can include extension or not.
+                Path to the .md file associated with this item. It can include extension or not.
             </param>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.MdFile.SetPath(System.String)">
             <summary>
-            <inheritdoc/>
+                <inheritdoc/>
             </summary>
             <remarks>
-            <inheritdoc/> If <paramref name="path"/> doesn't end with ".md" it adds this extension to <paramref name="path"/>.
+                <inheritdoc/> If <paramref name="path"/> doesn't end with ".md" it adds this
+                extension to <paramref name="path"/>.
             </remarks>
-            
             <param name="path">
-            Valid absolute or relative path to the .md file, that you want to associate with this item.
+                Valid absolute or relative path to the .md file, that you want to associate with
+                this item.
             </param>
-            
-            <returns>
-            <inheritdoc/>
-            </returns>
+            <returns> <inheritdoc/> </returns>
         </member>
         <member name="T:MdFilesMerger.Domain.Common.MenuType">
             <summary>
@@ -416,7 +511,20 @@
         <member name="T:MdFilesMerger.Domain.Common.RelativeFile">
             <summary>
                 Base class for selected and ignored file models.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; RelativeFile <br/><b> Implements: </b><see
+                    cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>,
+                    <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor">
             <summary>
@@ -511,7 +619,21 @@
             <summary>
                 Implementation of ignored file model associated with .md file located in main directory,
                 whose content won't be included in created merged file.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/> -&gt; IgnoredFile <br/><b>
+                    Implements: </b><see cref="T:System.IComparable`1"/>, <see
+                                cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor">
             <inheritdoc/>
@@ -525,11 +647,22 @@
         <member name="T:MdFilesMerger.Domain.Entity.MainDirectory">
             <summary>
                 Base directory for selected and ignored files.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    MainDirectory <br/><b> Implements: </b><see cref="T:System.IComparable`1"/>,
+                    <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/>
+                </para>
             </summary>
             <remarks>
                 This directory will be searched for .md files. Saved paths of all selected and ignored
                 files, associated with this instance, will be relative to this instance path ( <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>).
             </remarks>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.MainDirectory.#ctor">
             <inheritdoc/>
@@ -596,7 +729,14 @@
         <member name="T:MdFilesMerger.Domain.Entity.MenuAction">
             <summary>
                 Representation of menu item.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; MenuAction <br/><b> Implements:
+                    </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Entity.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.MenuAction.#ctor(System.String,MdFilesMerger.Domain.Common.MenuType,MdFilesMerger.Domain.Common.MenuType)">
             <summary>
@@ -634,7 +774,21 @@
         <member name="T:MdFilesMerger.Domain.Entity.MergedFile">
             <summary>
                 Implementation of merged file model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; MergedFile <br/><b> Implements: </b><see
+                    cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.MergedFile.#ctor">
             <inheritdoc/>
@@ -742,7 +896,22 @@
             <summary>
                 Implementation of selected file model associated with located in main directory .md
                 file, whose content will be included in created merged file.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
+                    <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/> -&gt; SelectedFile <br/><b>
+                    Implements: </b><see cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>,
+                                <see cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor">
             <inheritdoc/>
@@ -806,7 +975,14 @@
         <member name="T:MdFilesMerger.Domain.Entity.User">
             <summary>
                 Implementation of user model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; User <br/><b> Implements: </b><see
+                    cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IUser"/>
+                </para>
             </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Entity.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.User.#ctor">
             <summary>

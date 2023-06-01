@@ -4,7 +4,9 @@ namespace MdFilesMerger.Domain.Common
 {
     /// <summary>
     ///     Implementation of base model for all models.
+    ///     <para> <b> Inheritance: </b> BaseItem <br/><b> Implements: </b><see cref="IItem"/> </para>
     /// </summary>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
     public class BaseItem : IItem
     {
         /// <summary>

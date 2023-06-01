@@ -5,7 +5,14 @@ namespace MdFilesMerger.Domain.Entity
 {
     /// <summary>
     ///     Representation of menu item.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; MenuAction <br/><b> Implements:
+    ///         </b><see cref="IItem"/>, <see cref="IMenuAction"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Entity.BaseItem </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
     public sealed class MenuAction : BaseItem, IMenuAction
     {
         /// <summary>

@@ -6,7 +6,14 @@ namespace MdFilesMerger.Domain.Entity
 {
     /// <summary>
     ///     Implementation of user model.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; User <br/><b> Implements: </b><see
+    ///         cref="IItem"/>, <see cref="IUser"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Entity.BaseItem </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
     public sealed class User : BaseItem, IUser
     {
         /// <summary>

@@ -2,7 +2,13 @@
 {
     /// <summary>
     ///     Interface of user model.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="IItem"/> -&gt; IUser <br/><b> Implementations:
+    ///         </b><see cref="Entity.User"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
     public interface IUser : IItem
     {
         /// <summary>

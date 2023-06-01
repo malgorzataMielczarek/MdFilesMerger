@@ -5,7 +5,20 @@ namespace MdFilesMerger.Domain.Common
 {
     /// <summary>
     ///     Base class for selected and ignored file models.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; <see cref="BaseDirectory"/> -&gt;
+    ///         <see cref="MdFile"/> -&gt; RelativeFile <br/><b> Implements: </b><see
+    ///         cref="IComparable{BaseDirectory}"/>, <see cref="IDirectory"/>, <see cref="IItem"/>,
+    ///         <see cref="IRelativeFile"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+    /// <seealso cref="MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
+    /// <seealso cref="IComparable{T}"> System.IComparable&lt;T&gt; </seealso>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
     public class RelativeFile : MdFile, IRelativeFile
     {
         /// <summary>

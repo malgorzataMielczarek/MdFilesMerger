@@ -1,10 +1,16 @@
-﻿using MdFilesMerger.Domain.Common;
-
-namespace MdFilesMerger.Domain.Abstract
+﻿namespace MdFilesMerger.Domain.Abstract
 {
     /// <summary>
     ///     Interface for merged file model.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="IItem"/> -&gt; <see cref="IDirectory"/> -&gt; <see
+    ///         cref="IEditFile"/> -&gt; IMergedFile <br/><b> Implementations: </b><see cref="Entity.MergedFile"/>
+    ///     </para>
     /// </summary>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
     public interface IMergedFile : IEditFile
     {
         /// <summary>
@@ -21,7 +27,7 @@ namespace MdFilesMerger.Domain.Abstract
         /// <summary>
         ///     Type of the table of contents that will by placed at the beginning of created merged file.
         /// </summary>
-        public TableOfContents TableOfContents { get; set; }
+        public Common.TableOfContents TableOfContents { get; set; }
 
         /// <summary>
         ///     Header placed in the merged file before the table of contents content.
