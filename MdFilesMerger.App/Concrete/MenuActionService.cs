@@ -36,7 +36,7 @@ namespace MdFilesMerger.App.Concrete
         ///     <see cref="MenuAction"/> object with <see cref="BaseItem.Id"/> equal <paramref
         ///     name="id"/>, if there is one, otherwise <see langword="null"/>.
         /// </returns>
-        public MenuAction? GetById(int id)
+        public MenuAction? ReadById(int id)
         {
             if (_actions.Count >= id && _actions[id - 1].Id == id)
             {
