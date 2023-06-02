@@ -36,5 +36,38 @@ namespace MdFilesMerger.App.Abstract
         ///     collection, method returns <see langword="null"/>.
         /// </returns>
         public User? ReadByName(string name);
+
+        /// <summary>
+        ///     Updates the name of user with specified identification number.
+        /// </summary>
+        /// <param name="id"> The identification number of updated user. </param>
+        /// <param name="name"> The new name of the user. </param>
+        /// <returns>
+        ///     Id of updated user, unless:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             name is <see langword="null"/>, <see cref="string.Empty"/> or consists only
+        ///             from white-spaces characters,
+        ///         </item>
+        ///         <item>
+        ///             in the collection, there is no user with specified id, or user with
+        ///             specified name already exists,
+        ///         </item>
+        ///     </list>
+        ///     then <see langword="-1"/>.
+        /// </returns>
+        public int UpdateName(int id, string name);
+
+        /// <summary>
+        ///     Updates the password of user with specified identification number.
+        /// </summary>
+        /// <param name="id"> The identification number of updated user. </param>
+        /// <param name="password"> The new password of the user. </param>
+        /// <returns>
+        ///     Id of updated user, unless, in the collection, there is no user with specified id,
+        ///     or specified password is <see langword="null"/>, <see cref="string.Empty"/> or
+        ///     consists only from white-spaces characters.
+        /// </returns>
+        public int UpdatePassword(int id, string password);
     }
 }

@@ -53,6 +53,60 @@ namespace MdFilesMerger.App.Concrete
             return null;
         }
 
+        /// <inheritdoc/>
+        public int UpdateName(int id, string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return -1;
+            }
+
+            User? oldUser = ReadById(id);
+
+            if (oldUser == null)
+            {
+                return -1;
+            }
+            else
+            {
+                if (oldUser.Name == name)
+                {
+                    return oldUser.Id;
+                }
+
+                if (ReadByName(name) == null)
+                {
+                    oldUser.Name = name;
+                    return oldUser.Id;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public int UpdatePassword(int id, string password)
+        {
+            User? user = ReadById(id);
+
+            if (user != null)
+            {
+                var oldPwd = user.Password;
+                if (user.SetPassword(password))
+                {
+                    return user.Id;
+                }
+                else
+                {
+                    user.Password = oldPwd;
+                }
+            }
+
+            return -1;
+        }
+
         private void Initialize()
         {
             Create(new User(1, "user", "password"));
