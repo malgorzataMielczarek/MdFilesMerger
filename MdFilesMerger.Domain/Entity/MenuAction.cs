@@ -55,5 +55,19 @@ namespace MdFilesMerger.Domain.Entity
 
         /// <inheritdoc/>
         public MenuType NextMenu { get; set; }
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is MenuAction other)
+            {
+                return this.Name == other.Name && this.Menu == other.Menu;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

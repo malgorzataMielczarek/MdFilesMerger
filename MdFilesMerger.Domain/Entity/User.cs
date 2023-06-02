@@ -92,6 +92,20 @@ namespace MdFilesMerger.Domain.Entity
         /// <value> Set to auto-generated random value. </value>
         public byte[] Salt { get; set; }
 
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is User other)
+            {
+                return this.Name == other.Name;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
+
         /// <summary>
         ///     Checks if decrypted <see cref="Password"/> is equal to <paramref name="password"/>
         /// </summary>

@@ -82,6 +82,20 @@ namespace MdFilesMerger.Domain.Entity
         /// </value>
         public string? Title { get; set; }
 
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is SelectedFile other)
+            {
+                return this.Name == other.Name && this.MainDirId == other.MainDirId;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
+
         /// <summary>
         ///     <inheritdoc/>
         /// </summary>

@@ -139,6 +139,20 @@ namespace MdFilesMerger.Domain.Entity
         public int UserId { get; set; }
 
         /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is MergedFile other)
+            {
+                return this.Name == other.Name && this.UserId == other.UserId;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
+
+        /// <inheritdoc/>
         public string? GetParentDirectory()
         {
             return Path.GetDirectoryName(Name);

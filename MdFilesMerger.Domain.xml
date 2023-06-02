@@ -426,6 +426,9 @@
             </summary>
             <value> By default set to <see langword="null"/>. </value>
         </member>
+        <member name="M:MdFilesMerger.Domain.Common.BaseItem.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="T:MdFilesMerger.Domain.Common.MdFile">
             <summary>
                 Base class for all models associated with .md files (merged, selected and ignored file models).
@@ -644,6 +647,12 @@
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.String,System.Int32)">
             <inheritdoc/>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="T:MdFilesMerger.Domain.Entity.MainDirectory">
             <summary>
                 Base directory for selected and ignored files.
@@ -712,6 +721,12 @@
             </summary>
             <value> By default set to <see langword="0"/>. </value>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MainDirectory.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MainDirectory.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="M:MdFilesMerger.Domain.Entity.MainDirectory.SetPath(System.String)">
             <summary>
                 Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> as absolute path of existing directory or <see
@@ -769,6 +784,12 @@
             <inheritdoc/>
         </member>
         <member name="P:MdFilesMerger.Domain.Entity.MenuAction.NextMenu">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MenuAction.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MenuAction.GetHashCode">
             <inheritdoc/>
         </member>
         <member name="T:MdFilesMerger.Domain.Entity.MergedFile">
@@ -883,6 +904,12 @@
             </summary>
             <value> By default set to <see langword="0"/>. </value>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MergedFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MergedFile.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="M:MdFilesMerger.Domain.Entity.MergedFile.GetParentDirectory">
             <inheritdoc/>
         </member>
@@ -956,6 +983,12 @@
                 to associated .md file path, to text of header of this file (if exists) or filename
                 without extension (if file doesn't have header).
             </value>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.GetHashCode">
+            <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.SetPath(System.String)">
             <summary>
@@ -1051,6 +1084,12 @@
                 <inheritdoc/>
             </summary>
             <value> Set to auto-generated random value. </value>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.User.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.User.GetHashCode">
+            <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.User.PasswordEquals(System.String)">
             <summary>

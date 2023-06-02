@@ -31,5 +31,19 @@ namespace MdFilesMerger.Domain.Entity
 
         /// <inheritdoc/>
         public IgnoredFile(int id, string? path, int mainDirId) : base(id, path, mainDirId) { }
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is IgnoredFile other)
+            {
+                return this.Name == other.Name && this.MainDirId == other.MainDirId;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

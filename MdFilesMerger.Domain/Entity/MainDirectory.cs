@@ -85,6 +85,20 @@ namespace MdFilesMerger.Domain.Entity
         /// <value> By default set to <see langword="0"/>. </value>
         public int MergedFileId { get; set; }
 
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is MainDirectory other)
+            {
+                return this.Name == other.Name && this.MergedFileId == other.MergedFileId;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
+
         /// <summary>
         ///     Sets <see cref="BaseItem.Name"/> as absolute path of existing directory or <see
         ///     langword="null"/> if <paramref name="path"/> is invalid.

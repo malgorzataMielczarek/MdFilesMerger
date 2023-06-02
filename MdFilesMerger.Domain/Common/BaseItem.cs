@@ -63,5 +63,11 @@ namespace MdFilesMerger.Domain.Common
         /// </summary>
         /// <value> By default set to <see langword="null"/>. </value>
         public string? Name { get; set; }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return Id;
+        }
     }
 }
