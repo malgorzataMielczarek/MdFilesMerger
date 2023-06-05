@@ -80,6 +80,29 @@ namespace MdFilesMerger.Domain.Entity
         }
 
         /// <summary>
+        ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/>, <see cref="BaseItem.Name"/>
+        ///     to <paramref name="path"/>, <see cref="MergedFileId"/> to <paramref
+        ///     name="mergedFileId"/> and <see cref="BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
+        /// </summary>
+        /// <remarks>
+        ///     No evaluation or adjusting is performed, so use this method only for already
+        ///     evaluated and prepared data, for example from database.
+        /// </remarks>
+        /// <param name="id"> The item identification number. </param>
+        /// <param name="path">
+        ///     Valid absolute path to existing directory associated with this item. Path should use
+        ///     <see langword="'/'"/> as directory separator.
+        /// </param>
+        /// <param name="mergedFileId">
+        ///     Identification number of <see cref="MergedFile"/> object associated with this instance.
+        /// </param>
+        /// <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        public MainDirectory(int id, string? path, int mergedFileId, DateTime modifiedDate) : base(id, path, modifiedDate)
+        {
+            MergedFileId = mergedFileId;
+        }
+
+        /// <summary>
         ///     <inheritdoc/>
         /// </summary>
         /// <value> By default set to <see langword="0"/>. </value>
@@ -113,6 +136,7 @@ namespace MdFilesMerger.Domain.Entity
         /// </returns>
         public override bool SetPath(string? path)
         {
+            DateTime oldModifiedDate = ModifiedDate;
             if (base.SetPath(path) && Directory.Exists(Name))
             {
                 Name = Path.GetFullPath(Name).Replace('\\', '/');
@@ -121,6 +145,7 @@ namespace MdFilesMerger.Domain.Entity
             else
             {
                 Name = null;
+                ModifiedDate = oldModifiedDate;
                 return false;
             }
         }

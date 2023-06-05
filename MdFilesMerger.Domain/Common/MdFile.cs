@@ -58,6 +58,22 @@ namespace MdFilesMerger.Domain.Common
         }
 
         /// <summary>
+        ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/>, <see cref="BaseItem.Name"/>
+        ///     to <paramref name="path"/> and <see cref="BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
+        /// </summary>
+        /// <remarks>
+        ///     No evaluation or adjusting is performed, so use this method only for already
+        ///     evaluated and prepared data, for example from database.
+        /// </remarks>
+        /// <param name="id"> The item identification number. </param>
+        /// <param name="path">
+        ///     Valid path to .md file associated with this item. Path should use <see
+        ///     langword="'/'"/> as directory separator.
+        /// </param>
+        /// <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        public MdFile(int id, string? path, DateTime modifiedDate) : base(id, path, modifiedDate) { }
+
+        /// <summary>
         ///     <inheritdoc/>
         /// </summary>
         /// <remarks>

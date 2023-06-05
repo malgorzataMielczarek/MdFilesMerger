@@ -22,6 +22,11 @@ namespace MdFilesMerger.Domain.Abstract
     public interface IDirectory : IItem
     {
         /// <summary>
+        ///     Date and time of last update or creation if entry wasn't modified.
+        /// </summary>
+        DateTime ModifiedDate { get; set; }
+
+        /// <summary>
         ///     Gets directory/file path held in <see cref="IItem.Name"/> property.
         /// </summary>
         [return: NotNullIfNotNull(nameof(Name))]

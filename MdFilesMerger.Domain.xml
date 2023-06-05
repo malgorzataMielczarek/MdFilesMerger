@@ -23,6 +23,11 @@
             <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
         </member>
+        <member name="P:MdFilesMerger.Domain.Abstract.IDirectory.ModifiedDate">
+            <summary>
+                Date and time of last update or creation if entry wasn't modified.
+            </summary>
+        </member>
         <member name="M:MdFilesMerger.Domain.Abstract.IDirectory.GetPath">
             <summary>
                 Gets directory/file path held in <see cref="P:MdFilesMerger.Domain.Abstract.IItem.Name"/> property.
@@ -35,8 +40,8 @@
         </member>
         <member name="T:MdFilesMerger.Domain.Abstract.IEditFile">
             <summary>
-                Base interface for .md files related models with update option (for example with
-                property <see cref="P:MdFilesMerger.Domain.Abstract.IEditFile.Title"/> that can be updated - merged and selected file models).
+                Base interface for models related with .md files involved in the merge (merged and
+                selected file models).
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt;
                     IEditFile <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>
@@ -46,11 +51,6 @@
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-        </member>
-        <member name="P:MdFilesMerger.Domain.Abstract.IEditFile.ModifiedDate">
-            <summary>
-                Date and time of last update or creation if entry wasn't modified.
-            </summary>
         </member>
         <member name="P:MdFilesMerger.Domain.Abstract.IEditFile.Title">
             <summary>
@@ -290,8 +290,8 @@
         </member>
         <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.Int32,System.String)">
             <summary>
-                Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/> and <see
-                cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> to adjusted <paramref name="path"/>.
+                Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
+                to adjusted <paramref name="path"/> and <see cref="P:MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate"/> to <see cref="P:System.DateTime.Now"/>.
             </summary>
             <remarks>
                 If <paramref name="path"/> is a valid path to directory (file), <see
@@ -303,6 +303,27 @@
             <param name="path">
                 Path to the directory (file) that you want to associate with this object.
             </param>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.Int32,System.String,System.DateTime)">
+            <summary>
+                Sets all properties to values of appropriate arguments.
+            </summary>
+            <remarks>
+                No evaluation or adjusting is performed, so use this method only for already
+                evaluated and prepared data, for example from database.
+            </remarks>
+            <param name="id"> Identification number of item. </param>
+            <param name="path">
+                Valid path to directory/file associated with this item. Path should use <see
+                langword="'/'"/> as directory separator.
+            </param>
+            <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        </member>
+        <member name="P:MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate">
+            <summary>
+                <inheritdoc/>
+            </summary>
+            <value> By default it is set to <see cref="P:System.DateTime.Now"/>. </value>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)">
             <summary>
@@ -477,6 +498,22 @@
                 Path to the .md file associated with this item. It can include extension or not.
             </param>
         </member>
+        <member name="M:MdFilesMerger.Domain.Common.MdFile.#ctor(System.Int32,System.String,System.DateTime)">
+            <summary>
+                Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
+                to <paramref name="path"/> and <see cref="P:MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
+            </summary>
+            <remarks>
+                No evaluation or adjusting is performed, so use this method only for already
+                evaluated and prepared data, for example from database.
+            </remarks>
+            <param name="id"> The item identification number. </param>
+            <param name="path">
+                Valid path to .md file associated with this item. Path should use <see
+                langword="'/'"/> as directory separator.
+            </param>
+            <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        </member>
         <member name="M:MdFilesMerger.Domain.Common.MdFile.SetPath(System.String)">
             <summary>
                 <inheritdoc/>
@@ -537,10 +574,11 @@
         <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32,System.String,System.Int32)">
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <summary>
                 Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
-                to <paramref name="path"/> and <see cref="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId"/> to <paramref name="mainDirId"/>.
+                to <paramref name="path"/>, <see cref="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId"/> to <paramref name="mainDirId"/>
+                and <see cref="P:MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
             </summary>
             <remarks>
                 No evaluation or adjusting is performed, so use this method only for already
@@ -554,12 +592,19 @@
             <param name="mainDirId">
                 <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> of <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> object associated with this item.
             </param>
+            <param name="modifiedDate"> Date and time of last modification of this entity. </param>
         </member>
         <member name="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId">
             <summary>
                 <inheritdoc/>
             </summary>
             <value> By default set to <see langword="0"/> </value>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.GetHashCode">
+            <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.RelativeFile.GetPath(System.String)">
             <summary>
@@ -644,7 +689,7 @@
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.String,System.Int32)">
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.Equals(System.Object)">
@@ -714,6 +759,26 @@
             <param name="mergedFileId">
                 Identification number of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> object associated with this instance.
             </param>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
+            <summary>
+                Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
+                to <paramref name="path"/>, <see cref="P:MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId"/> to <paramref
+                name="mergedFileId"/> and <see cref="P:MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
+            </summary>
+            <remarks>
+                No evaluation or adjusting is performed, so use this method only for already
+                evaluated and prepared data, for example from database.
+            </remarks>
+            <param name="id"> The item identification number. </param>
+            <param name="path">
+                Valid absolute path to existing directory associated with this item. Path should use
+                <see langword="'/'"/> as directory separator.
+            </param>
+            <param name="mergedFileId">
+                Identification number of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> object associated with this instance.
+            </param>
+            <param name="modifiedDate"> Date and time of last modification of this entity. </param>
         </member>
         <member name="P:MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId">
             <summary>
@@ -863,12 +928,6 @@
             </summary>
             <value> By default it is set to <see langword="null"/>. </value>
         </member>
-        <member name="P:MdFilesMerger.Domain.Entity.MergedFile.ModifiedDate">
-            <summary>
-                <inheritdoc/>
-            </summary>
-            <value> By default set to <see cref="P:System.DateTime.Now"/>. </value>
-        </member>
         <member name="P:MdFilesMerger.Domain.Entity.MergedFile.NewLineStyle">
             <summary>
                 <inheritdoc/>
@@ -966,12 +1025,6 @@
             <param name="title">
                 Text put as table of contents entry connected with contend of associated .md file.
             </param>
-        </member>
-        <member name="P:MdFilesMerger.Domain.Entity.SelectedFile.ModifiedDate">
-            <summary>
-                <inheritdoc/>
-            </summary>
-            <value> By default it is set to <see langword="null"/>. </value>
         </member>
         <member name="P:MdFilesMerger.Domain.Entity.SelectedFile.Title">
             <summary>

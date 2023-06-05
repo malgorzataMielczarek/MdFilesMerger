@@ -17,10 +17,16 @@ namespace MdFilesMerger.Domain.Common
     public class BaseDirectory : BaseItem, IDirectory, IComparable<BaseDirectory>
     {
         /// <inheritdoc/>
-        public BaseDirectory() : base() { }
+        public BaseDirectory() : base()
+        {
+            ModifiedDate = DateTime.Now;
+        }
 
         /// <inheritdoc/>
-        public BaseDirectory(int id) : base(id) { }
+        public BaseDirectory(int id) : base(id)
+        {
+            ModifiedDate = DateTime.Now;
+        }
 
         /// <summary>
         ///     Sets <see cref="BaseItem.Name"/> to adjusted <paramref name="path"/> and rest
@@ -37,12 +43,13 @@ namespace MdFilesMerger.Domain.Common
         /// </param>
         public BaseDirectory(string? path) : base(path)
         {
+            ModifiedDate = DateTime.Now;
             SetPath(path);
         }
 
         /// <summary>
-        ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/> and <see
-        ///     cref="BaseItem.Name"/> to adjusted <paramref name="path"/>.
+        ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/>, <see cref="BaseItem.Name"/>
+        ///     to adjusted <paramref name="path"/> and <see cref="ModifiedDate"/> to <see cref="DateTime.Now"/>.
         /// </summary>
         /// <remarks>
         ///     If <paramref name="path"/> is a valid path to directory (file), <see
@@ -56,8 +63,33 @@ namespace MdFilesMerger.Domain.Common
         /// </param>
         public BaseDirectory(int id, string? path) : base(id, path)
         {
+            ModifiedDate = DateTime.Now;
             SetPath(path);
         }
+
+        /// <summary>
+        ///     Sets all properties to values of appropriate arguments.
+        /// </summary>
+        /// <remarks>
+        ///     No evaluation or adjusting is performed, so use this method only for already
+        ///     evaluated and prepared data, for example from database.
+        /// </remarks>
+        /// <param name="id"> Identification number of item. </param>
+        /// <param name="path">
+        ///     Valid path to directory/file associated with this item. Path should use <see
+        ///     langword="'/'"/> as directory separator.
+        /// </param>
+        /// <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        public BaseDirectory(int id, string? path, DateTime modifiedDate) : base(id, path)
+        {
+            ModifiedDate = modifiedDate;
+        }
+
+        /// <summary>
+        ///     <inheritdoc/>
+        /// </summary>
+        /// <value> By default it is set to <see cref="DateTime.Now"/>. </value>
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
         ///     Compares paths ( <see cref="BaseItem.Name"/>) of the current instance and another
@@ -200,6 +232,7 @@ namespace MdFilesMerger.Domain.Common
             else
             {
                 Name = path.Replace('\\', '/');
+                ModifiedDate = DateTime.Now;
                 return true;
             }
         }

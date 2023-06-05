@@ -30,7 +30,7 @@ namespace MdFilesMerger.Domain.Entity
         public IgnoredFile(int id) : base(id) { }
 
         /// <inheritdoc/>
-        public IgnoredFile(int id, string? path, int mainDirId) : base(id, path, mainDirId) { }
+        public IgnoredFile(int id, string? path, int mainDirId, DateTime modifiedDate) : base(id, path, mainDirId, modifiedDate) { }
 
         /// <inheritdoc/>
         public override bool Equals(object? obj)

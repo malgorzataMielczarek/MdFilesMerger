@@ -29,14 +29,12 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public SelectedFile() : base()
         {
-            ModifiedDate = DateTime.Now;
             Title = null;
         }
 
         /// <inheritdoc/>
         public SelectedFile(int id) : base(id)
         {
-            ModifiedDate = DateTime.Now;
             Title = null;
         }
 
@@ -59,17 +57,10 @@ namespace MdFilesMerger.Domain.Entity
         /// <param name="title">
         ///     Text put as table of contents entry connected with contend of associated .md file.
         /// </param>
-        public SelectedFile(int id, string? path, int mainDirId, DateTime modifiedDate, string? title) : base(id, path, mainDirId)
+        public SelectedFile(int id, string? path, int mainDirId, DateTime modifiedDate, string? title) : base(id, path, mainDirId, modifiedDate)
         {
-            ModifiedDate = modifiedDate;
             Title = title;
         }
-
-        /// <summary>
-        ///     <inheritdoc/>
-        /// </summary>
-        /// <value> By default it is set to <see langword="null"/>. </value>
-        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
         ///     Text that will be put in table of contents (if it will be included) as header

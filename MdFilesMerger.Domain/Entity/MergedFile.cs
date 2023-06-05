@@ -26,7 +26,6 @@ namespace MdFilesMerger.Domain.Entity
         public MergedFile() : base()
         {
             MergeDate = null;
-            ModifiedDate = DateTime.Now;
             NewLineStyle = "\n";
             TableOfContents = TableOfContents.None;
             Title = "Kurs \"Zostań programistą ASP.NET\" - notatki";
@@ -79,11 +78,9 @@ namespace MdFilesMerger.Domain.Entity
         /// <param name="userId">
         ///     Identification number of <see cref="User"/> associated with this instance.
         /// </param>
-        public MergedFile(int id, string? path, DateTime? mergeDate, DateTime modifiedDate, string newLineStyle, TableOfContents tableOfContents, string? title, string? tOCHeader, int userId) : base(id)
+        public MergedFile(int id, string? path, DateTime? mergeDate, DateTime modifiedDate, string newLineStyle, TableOfContents tableOfContents, string? title, string? tOCHeader, int userId) : base(id, path, modifiedDate)
         {
             MergeDate = mergeDate;
-            ModifiedDate = modifiedDate;
-            Name = path;
             NewLineStyle = newLineStyle;
             TableOfContents = tableOfContents;
             Title = title;
@@ -96,12 +93,6 @@ namespace MdFilesMerger.Domain.Entity
         /// </summary>
         /// <value> By default it is set to <see langword="null"/>. </value>
         public DateTime? MergeDate { get; set; }
-
-        /// <summary>
-        ///     <inheritdoc/>
-        /// </summary>
-        /// <value> By default set to <see cref="DateTime.Now"/>. </value>
-        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
         ///     <inheritdoc/>

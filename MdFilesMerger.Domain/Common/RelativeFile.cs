@@ -37,7 +37,8 @@ namespace MdFilesMerger.Domain.Common
 
         /// <summary>
         ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/>, <see cref="BaseItem.Name"/>
-        ///     to <paramref name="path"/> and <see cref="MainDirId"/> to <paramref name="mainDirId"/>.
+        ///     to <paramref name="path"/>, <see cref="MainDirId"/> to <paramref name="mainDirId"/>
+        ///     and <see cref="BaseDirectory.ModifiedDate"/> to <paramref name="modifiedDate"/>.
         /// </summary>
         /// <remarks>
         ///     No evaluation or adjusting is performed, so use this method only for already
@@ -51,10 +52,9 @@ namespace MdFilesMerger.Domain.Common
         /// <param name="mainDirId">
         ///     <see cref="BaseItem.Id"/> of <see cref="MainDirectory"/> object associated with this item.
         /// </param>
-        public RelativeFile(int id, string? path, int mainDirId) : base()
+        /// <param name="modifiedDate"> Date and time of last modification of this entity. </param>
+        public RelativeFile(int id, string? path, int mainDirId, DateTime modifiedDate) : base(id, path, modifiedDate)
         {
-            Id = id;
-            Name = path;
             MainDirId = mainDirId;
         }
 
@@ -63,6 +63,20 @@ namespace MdFilesMerger.Domain.Common
         /// </summary>
         /// <value> By default set to <see langword="0"/> </value>
         public int MainDirId { get; set; }
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (obj != null && obj is RelativeFile other)
+            {
+                return this.Name == other.Name && this.MainDirId == other.MainDirId;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         ///     <inheritdoc/>
@@ -107,14 +121,23 @@ namespace MdFilesMerger.Domain.Common
         /// </returns>
         public bool SetPath(string? path, string? mainDirPath)
         {
-            if (base.SetPath(path) && File.Exists(path = Path.GetFullPath(Name!)))
+            DateTime oldModifiedDate = ModifiedDate;
+            if (base.SetPath(path))
             {
-                if (!string.IsNullOrWhiteSpace(mainDirPath))
+                if (File.Exists(path = Path.GetFullPath(Name!)))
                 {
-                    Name = Path.GetRelativePath(Path.GetFullPath(mainDirPath), path).Replace('\\', '/');
-                }
+                    if (!string.IsNullOrWhiteSpace(mainDirPath))
+                    {
+                        Name = Path.GetRelativePath(Path.GetFullPath(mainDirPath), path).Replace('\\', '/');
+                    }
 
-                return true;
+                    return true;
+                }
+                else
+                {
+                    ModifiedDate = oldModifiedDate;
+                    Name = null;
+                }
             }
 
             return false;
