@@ -8,13 +8,15 @@ namespace MdFilesMerger.App.Abstract
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; ICRUDService&lt;T&gt; <br/><b>
     ///         Implementations: </b><see cref="Common.BaseDirectoryService{T}"/>, <see
-    ///                          cref="Common.BaseService{T}"/>, <see cref="Concrete.UserService"/>
+    ///                          cref="Common.BaseService{T}"/>, <see
+    ///                          cref="Concrete.MainDirectoryService"/>, <see cref="Concrete.UserService"/>
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Type of handled entity. </typeparam>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Common.BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="Common.BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
     /// <seealso cref="Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
     /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
     public interface ICRUDService<T> : IService<T> where T : IItem

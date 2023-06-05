@@ -6,13 +6,15 @@ namespace MdFilesMerger.App.Abstract
     ///     Base interface to service collection of entities implementing <see cref="IDirectory"/> interface.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
-    ///         -&gt; IDirectoryService&lt;T&gt; <br/><b> Implementations: </b><see cref="Common.BaseDirectoryService{T}"/>
+    ///         -&gt; IDirectoryService&lt;T&gt; <br/><b> Implementations: </b><see
+    ///          cref="Common.BaseDirectoryService{T}"/>, <see cref="Concrete.MainDirectoryService"/>
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Class implementing <see cref="IDirectory"/> interface. </typeparam>
     /// <seealso cref="ICRUDService{T}"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Common.BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
+    /// <seealso cref="Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
     /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
     public interface IDirectoryService<T> : ICRUDService<T> where T : IDirectory
     {
