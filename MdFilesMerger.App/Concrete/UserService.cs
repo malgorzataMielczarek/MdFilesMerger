@@ -16,7 +16,7 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
     /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
-    public class UserService : BaseService<User>, IUserService
+    public sealed class UserService : BaseService<User>, IUserService
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="UserService"/> class.
@@ -107,9 +107,10 @@ namespace MdFilesMerger.App.Concrete
             return -1;
         }
 
+        //TODO: Set default user password after implementing encrypting/decrypting methods of User class
         private void Initialize()
         {
-            Create(new User(1, "user", "password"));
+            Create(new User(1, "user", null));
         }
     }
 }
