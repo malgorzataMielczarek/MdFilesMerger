@@ -8,7 +8,7 @@ namespace MdFilesMerger.App.Abstract
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
     ///         -&gt; <see cref="IDirectoryService{T}"/> -&gt; IRelativeFileService&lt;T&gt;
-    ///          <br/><b> Implementations: </b><see cref="Common.RelativeFileService{T}"/>
+    ///          <br/><b> Implementations: </b><see cref="Common.RelativeFileService{T}"/>, <see cref="Concrete.IgnoredFileService"/>
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Type implementing <see cref="IRelativeFile"/> interface. </typeparam>
@@ -16,6 +16,7 @@ namespace MdFilesMerger.App.Abstract
     /// <seealso cref="IDirectoryService{T}"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Common.RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+    /// <seealso cref="Concrete.IgnoredFileService"> MdFilesMerger.App.Concrete.IgnoredFileService </seealso>
     /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRaletiveFile </seealso>
     public interface IRelativeFileService<T> : IDirectoryService<T> where T : IRelativeFile
     {
