@@ -1,11 +1,10 @@
 ﻿using MdFilesMerger.App.Abstract;
-using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Common
 {
     /// <summary>
-    ///     Base implementation of <see cref="IDirectoryService{T}"/> for <see
-    ///     cref="BaseDirectory"/> objects.
+    ///     Base implementation of <see cref="IDirectoryService{T}"/> for <see cref="IDirectory"/> objects.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="BaseService{T}"/> -&gt;
     ///         BaseDirectoryService&lt;T&gt; <br/><b> Implements: </b><see
@@ -17,8 +16,8 @@ namespace MdFilesMerger.App.Common
     /// <seealso cref="IDirectoryService{T}"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
-    /// <seealso cref="BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
-    public class BaseDirectoryService<T> : BaseService<T>, IDirectoryService<T> where T : BaseDirectory
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
+    public class BaseDirectoryService<T> : BaseService<T>, IDirectoryService<T> where T : class, IDirectory
     {
         /// <inheritdoc/>
         public int UpdatePath(int id, string path)

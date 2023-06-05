@@ -1,5 +1,5 @@
 ﻿using MdFilesMerger.App.Abstract;
-using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Common
 {
@@ -11,10 +11,10 @@ namespace MdFilesMerger.App.Common
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Type of handled entity. </typeparam>
-    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="ICRUDService{T}"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
-    public class BaseService<T> : ICRUDService<T> where T : BaseItem
+    public class BaseService<T> : ICRUDService<T> where T : class, IItem
     {
         /// <summary>
         ///     The stored collection of <typeparamref name="T"/> objects, that will be managed by
