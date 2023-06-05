@@ -7,6 +7,7 @@ namespace MdFilesMerger.App.Abstract
     ///     <para>
     ///         <b> Inheritance: </b> IService&lt;T&gt; <br/><b> Implementations: </b><see
     ///         cref="Common.BaseDirectoryService{T}"/>, <see cref="Common.BaseService{T}"/>, <see
+    ///         cref="Common.BaseDirectoryService{T}"/>, <see
     ///         cref="Concrete.MainDirectoryService"/>, <see cref="Concrete.MenuActionService"/>,
     ///         <see cref="Concrete.UserService"/>
     ///     </para>
@@ -14,6 +15,7 @@ namespace MdFilesMerger.App.Abstract
     /// <typeparam name="T"> Type of stored and serviced objects. </typeparam>
     /// <seealso cref="Common.BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="Common.BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="Common.RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
     /// <seealso cref="Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
     /// <seealso cref="Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
