@@ -48,6 +48,7 @@ namespace MdFilesMerger.App.Concrete
                     result.Add(directory);
                 }
             }
+            result.Sort();
 
             return result;
         }
