@@ -119,7 +119,7 @@ namespace MdFilesMerger.Domain.Common
         ///     <see langword="true"/>, if <see cref="BaseItem.Name"/> was successfully set to path;
         ///     otherwise <see langword="false"/>.
         /// </returns>
-        public bool SetPath(string? path, string? mainDirPath)
+        public virtual bool SetPath(string? path, string? mainDirPath)
         {
             DateTime oldModifiedDate = ModifiedDate;
             if (base.SetPath(path))

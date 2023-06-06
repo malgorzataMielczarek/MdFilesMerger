@@ -99,10 +99,11 @@ namespace MdFilesMerger.Domain.Entity
         ///     </para>
         /// </remarks>
         /// <param name="path"> <inheritdoc/> </param>
+        /// <param name="mainDirPath"> <inheritdoc/> </param>
         /// <returns> <inheritdoc/> </returns>
-        public override bool SetPath([NotNullWhen(true)] string? path)
+        public override bool SetPath([NotNullWhen(true)] string? path, string? mainDirPath)
         {
-            bool result = base.SetPath(path);
+            bool result = base.SetPath(path, mainDirPath);
             if (result && Title == null)
             {
                 Title = GetFileHeader();

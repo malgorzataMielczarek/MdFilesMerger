@@ -1043,7 +1043,7 @@
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.SetPath(System.String)">
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.SetPath(System.String,System.String)">
             <summary>
                 <inheritdoc/>
             </summary>
@@ -1056,6 +1056,7 @@
                 </para>
             </remarks>
             <param name="path"> <inheritdoc/> </param>
+            <param name="mainDirPath"> <inheritdoc/> </param>
             <returns> <inheritdoc/> </returns>
         </member>
         <member name="T:MdFilesMerger.Domain.Entity.User">
