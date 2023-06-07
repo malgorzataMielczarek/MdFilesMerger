@@ -12,7 +12,8 @@ namespace MdFilesMerger.Domain.Entity
     ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; <see cref="BaseDirectory"/> -&gt;
     ///         <see cref="MdFile"/> -&gt; <see cref="RelativeFile"/> -&gt; SelectedFile <br/><b>
     ///         Implements: </b><see cref="IComparable{BaseDirectory}"/>, <see cref="IDirectory"/>,
-    ///                     <see cref="IEditFile"/>, <see cref="IItem"/>, <see cref="IRelativeFile"/>
+    ///                     <see cref="IEditFile"/>, <see cref="IItem"/>, <see
+    ///                     cref="IRelativeFile"/>, <see cref="ISelectedFile"/>
     ///     </para>
     /// </summary>
     /// <seealso cref="BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
@@ -24,7 +25,8 @@ namespace MdFilesMerger.Domain.Entity
     /// <seealso cref="IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
     /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
     /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
-    public sealed class SelectedFile : RelativeFile, IEditFile
+    /// <seealso cref="ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
+    public sealed class SelectedFile : RelativeFile, ISelectedFile
     {
         /// <inheritdoc/>
         public SelectedFile() : base()
@@ -36,6 +38,14 @@ namespace MdFilesMerger.Domain.Entity
         public SelectedFile(int id) : base(id)
         {
             Title = null;
+        }
+
+        /// <inheritdoc/>
+        public SelectedFile(int id, int mainDirId) : base(id, mainDirId) { }
+
+        /// <inheritdoc/>
+        public SelectedFile(FileInfo fileInfo, MainDirectory mainDirectory) : base(fileInfo, mainDirectory)
+        {
         }
 
         /// <summary>
@@ -73,6 +83,48 @@ namespace MdFilesMerger.Domain.Entity
         /// </value>
         public string? Title { get; set; }
 
+        /// <summary>
+        ///     Opens the file and reads first not empty line of text from it.
+        /// </summary>
+        /// <param name="filePath"> Absolute path of file. </param>
+        /// <returns>
+        ///     If read line is a header (starts with '#') return it. Else return filename, without
+        ///     extension. If file header is a link return only text part.
+        /// </returns>
+        public static string GetDefaultTitle(string? filePath)
+        {
+            string header = "";
+
+            if (!string.IsNullOrWhiteSpace(filePath))
+            {
+                // as file title
+                using (StreamReader streamReader = new StreamReader(new FileInfo(filePath).OpenRead()))
+                {
+                    // get first not empty line
+                    while (string.IsNullOrWhiteSpace(header = streamReader.ReadLine() ?? "")) { }
+                    streamReader.Close();
+                }
+
+                // as filename
+                if (string.IsNullOrWhiteSpace(header) || header[0] != '#')
+                {
+                    header = Path.GetFileNameWithoutExtension(filePath);
+                }
+                else
+                {
+                    StringBuilder sb = new StringBuilder(header.TrimEnd());
+                    while (char.IsWhiteSpace(sb[0]) || sb[0] == '#')
+                    {
+                        sb.Remove(0, 1);
+                    }
+
+                    return sb.ToString();
+                }
+            }
+
+            return header;
+        }
+
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
@@ -82,6 +134,12 @@ namespace MdFilesMerger.Domain.Entity
             }
 
             return false;
+        }
+
+        /// <inheritdoc/>
+        public string GetFileHeader(string? mainDirPath)
+        {
+            return GetDefaultTitle(GetPath(mainDirPath));
         }
 
         /// <inheritdoc/>
@@ -106,47 +164,13 @@ namespace MdFilesMerger.Domain.Entity
             bool result = base.SetPath(path, mainDirPath);
             if (result && Title == null)
             {
-                Title = GetFileHeader();
+                Title = GetFileHeader(mainDirPath);
             }
 
             return result;
         }
 
-        // Open the file and read first not empty line of text from it. If it is a header (starts
-        // with '#') return it. Else return filename, without extension. If file header is a link
-        // return only text part
-        private string GetFileHeader()
-        {
-            string header = "";
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                // as file title
-                using (StreamReader streamReader = new StreamReader(new FileInfo(Name).OpenRead()))
-                {
-                    // get first not empty line
-                    while (string.IsNullOrWhiteSpace(header = streamReader.ReadLine() ?? "")) { }
-                    streamReader.Close();
-                }
-
-                // as filename
-                if (string.IsNullOrWhiteSpace(header) || header[0] != '#')
-                {
-                    header = Path.GetFileNameWithoutExtension(Name);
-                }
-                else
-                {
-                    StringBuilder sb = new StringBuilder(header.TrimEnd());
-                    while (char.IsWhiteSpace(sb[0]) || sb[0] == '#')
-                    {
-                        sb.Remove(0, 1);
-                    }
-
-                    return sb.ToString();
-                }
-            }
-
-            return header;
-        }
+        /// <inheritdoc/>
+        public IgnoredFile ToIgnoredFile() => new IgnoredFile(0, Name, MainDirId, DateTime.Now);
     }
 }

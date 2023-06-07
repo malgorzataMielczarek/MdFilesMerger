@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MdFilesMerger.Domain.Common
 {
@@ -33,6 +34,33 @@ namespace MdFilesMerger.Domain.Common
         public RelativeFile(int id) : base(id)
         {
             MainDirId = 0;
+        }
+
+        /// <summary>
+        ///     Sets <see cref="BaseItem.Id"/> to <paramref name="id"/>, <see cref="MainDirId"/> to
+        ///     <paramref name="mainDirId"/> and rest properties to its' default values
+        /// </summary>
+        /// <param name="id"> The identifier. </param>
+        /// <param name="mainDirId"> The main directory identifier. </param>
+        public RelativeFile(int id, int mainDirId) : base(id)
+        {
+            MainDirId = mainDirId;
+        }
+
+        /// <summary>
+        ///     Sets <see cref="MainDirId"/> to <paramref name="mainDirectory"/>.Id, <see
+        ///     cref="BaseItem.Name"/> to <paramref name="fileInfo"/> path, relative to path of
+        ///     directory associated with <paramref name="mainDirectory"/> and rest properties, to
+        ///     its' default values.
+        /// </summary>
+        /// <param name="fileInfo">
+        ///     The file information of file, that will be associated with this instance.
+        /// </param>
+        /// <param name="mainDirectory"> The main directory object connected with this instance. </param>
+        public RelativeFile(FileInfo fileInfo, MainDirectory mainDirectory) : base()
+        {
+            MainDirId = mainDirectory.Id;
+            SetPath(fileInfo.FullName, mainDirectory.GetPath());
         }
 
         /// <summary>
@@ -89,6 +117,7 @@ namespace MdFilesMerger.Domain.Common
         ///     System specific absolute path created by combining <paramref name="mainDirPath"/>
         ///     and relative path saved in <see cref="BaseItem.Name"/>.
         /// </returns>
+        [return: NotNullIfNotNull(nameof(Name))]
         public string? GetPath(string? mainDirPath)
         {
             if (string.IsNullOrWhiteSpace(mainDirPath))
@@ -141,6 +170,14 @@ namespace MdFilesMerger.Domain.Common
             }
 
             return false;
+        }
+
+        /// <inheritdoc/>
+        public SelectedFile ToSelectedFile(string? mainDirPath)
+        {
+            string title = SelectedFile.GetDefaultTitle(GetPath(mainDirPath));
+
+            return new SelectedFile(0, Name, MainDirId, DateTime.Now, title);
         }
     }
 }

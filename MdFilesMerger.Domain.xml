@@ -233,6 +233,48 @@
                 to <see langword="null"/>, if <paramref name="path"/> doesn't point to existing .md file.
             </summary>
         </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.IRelativeFile.ToSelectedFile(System.String)">
+            <summary>
+                Converts to <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>.
+            </summary>
+            <param name="mainDirPath"> The main directory path. </param>
+            <returns>
+                New <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/> object associated with the same file and connected
+                with the same <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> object as this instance.
+            </returns>
+        </member>
+        <member name="T:MdFilesMerger.Domain.Abstract.ISelectedFile">
+            <summary>
+                Interface of selected file model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt; <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/> -&gt; ISelectedFile <br/><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/> -&gt; ISelectedFile <br/><b>
+                    Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>
+                </para>
+            </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.ISelectedFile.GetFileHeader(System.String)">
+            <summary>
+                Opens the file and reads first not empty line of text from it.
+            </summary>
+            <param name="mainDirPath"> Absolute path of main directory. </param>
+            <returns>
+                If read line is a header (starts with '#') return it. Else return filename, without
+                extension. If file header is a link return only text part.
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.ISelectedFile.ToIgnoredFile">
+            <summary>
+                Converts to <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>.
+            </summary>
+            <returns>
+                New <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/> object associated with the same file and
+                connected with the same <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> object as this instance.
+            </returns>
+        </member>
         <member name="T:MdFilesMerger.Domain.Abstract.IUser">
             <summary>
                 Interface of user model.
@@ -574,6 +616,26 @@
         <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32)">
             <inheritdoc/>
         </member>
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32,System.Int32)">
+            <summary>
+                Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId"/> to
+                <paramref name="mainDirId"/> and rest properties to its' default values
+            </summary>
+            <param name="id"> The identifier. </param>
+            <param name="mainDirId"> The main directory identifier. </param>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+            <summary>
+                Sets <see cref="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId"/> to <paramref name="mainDirectory"/>.Id, <see
+                cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> to <paramref name="fileInfo"/> path, relative to path of
+                directory associated with <paramref name="mainDirectory"/> and rest properties, to
+                its' default values.
+            </summary>
+            <param name="fileInfo">
+                The file information of file, that will be associated with this instance.
+            </param>
+            <param name="mainDirectory"> The main directory object connected with this instance. </param>
+        </member>
         <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <summary>
                 Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"/> to <paramref name="id"/>, <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
@@ -641,6 +703,9 @@
                 otherwise <see langword="false"/>.
             </returns>
         </member>
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.ToSelectedFile(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:MdFilesMerger.Domain.Common.TableOfContents">
             <summary>
                 Types of table of contents that can be placed in merged file.
@@ -689,7 +754,13 @@
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32)">
             <inheritdoc/>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.Equals(System.Object)">
@@ -986,7 +1057,8 @@
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
                     <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/> -&gt; SelectedFile <br/><b>
                     Implements: </b><see cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>,
-                                <see cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
+                                <see cref="T:MdFilesMerger.Domain.Abstract.IEditFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see
+                                cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"/>
                 </para>
             </summary>
             <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
@@ -998,11 +1070,18 @@
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime,System.String)">
@@ -1037,7 +1116,20 @@
                 without extension (if file doesn't have header).
             </value>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.GetDefaultTitle(System.String)">
+            <summary>
+                Opens the file and reads first not empty line of text from it.
+            </summary>
+            <param name="filePath"> Absolute path of file. </param>
+            <returns>
+                If read line is a header (starts with '#') return it. Else return filename, without
+                extension. If file header is a link return only text part.
+            </returns>
+        </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.GetFileHeader(System.String)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.GetHashCode">
@@ -1058,6 +1150,9 @@
             <param name="path"> <inheritdoc/> </param>
             <param name="mainDirPath"> <inheritdoc/> </param>
             <returns> <inheritdoc/> </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.ToIgnoredFile">
+            <inheritdoc/>
         </member>
         <member name="T:MdFilesMerger.Domain.Entity.User">
             <summary>

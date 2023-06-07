@@ -1,4 +1,5 @@
-﻿using MdFilesMerger.Domain.Common;
+﻿using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.Domain.Common;
 
 namespace MdFilesMerger.Domain.Entity
 {
@@ -17,9 +18,9 @@ namespace MdFilesMerger.Domain.Entity
     /// <seealso cref="MdFile"> MdFilesMerger.Domain.Common.MdFile </seealso>
     /// <seealso cref="RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
     /// <seealso cref="IComparable{T}"> System.IComparable&lt;T&gt; </seealso>
-    /// <seealso cref="Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
-    /// <seealso cref="Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
-    /// <seealso cref="Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+    /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
     public sealed class IgnoredFile : RelativeFile
     {
         /// <inheritdoc/>
@@ -30,7 +31,13 @@ namespace MdFilesMerger.Domain.Entity
         public IgnoredFile(int id) : base(id) { }
 
         /// <inheritdoc/>
+        public IgnoredFile(int id, int mainDirId) : base(id, mainDirId) { }
+
+        /// <inheritdoc/>
         public IgnoredFile(int id, string? path, int mainDirId, DateTime modifiedDate) : base(id, path, mainDirId, modifiedDate) { }
+
+        /// <inheritdoc/>
+        public IgnoredFile(FileInfo fileInfo, MainDirectory mainDirectory) : base(fileInfo, mainDirectory) { }
 
         /// <inheritdoc/>
         public override bool Equals(object? obj)

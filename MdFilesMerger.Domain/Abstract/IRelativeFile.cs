@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using MdFilesMerger.Domain.Entity;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MdFilesMerger.Domain.Abstract
 {
@@ -35,5 +36,15 @@ namespace MdFilesMerger.Domain.Abstract
         ///     to <see langword="null"/>, if <paramref name="path"/> doesn't point to existing .md file.
         /// </summary>
         public bool SetPath([NotNullWhen(true)] string? path, string? mainDirPath);
+
+        /// <summary>
+        ///     Converts to <see cref="SelectedFile"/>.
+        /// </summary>
+        /// <param name="mainDirPath"> The main directory path. </param>
+        /// <returns>
+        ///     New <see cref="SelectedFile"/> object associated with the same file and connected
+        ///     with the same <see cref="MainDirectory"/> object as this instance.
+        /// </returns>
+        public SelectedFile ToSelectedFile(string? mainDirPath);
     }
 }
