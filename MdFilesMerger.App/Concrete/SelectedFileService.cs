@@ -79,7 +79,7 @@ namespace MdFilesMerger.App.Concrete
                         string firstLine = "## " + appendedFile.Title;
                         streamWriter.WriteLine(firstLine);
 
-                        if (line != null && Helpers.GetText(line).ToLower() == appendedFile.Title.ToLower())
+                        if (line != null && Hyperlinks.GetText(line).ToLower() == appendedFile.Title.ToLower())
                         {
                             line = copyFileStream.ReadLine();
                         }
@@ -150,9 +150,9 @@ namespace MdFilesMerger.App.Concrete
 
                 StringBuilder adjustedText = new StringBuilder(text);
 
-                while (Helpers.ContainsHyperlink(substring))
+                while (Hyperlinks.ContainsHyperlink(substring))
                 {
-                    string link = Helpers.GetLink(substring);
+                    string link = Hyperlinks.GetLink(substring);
 
                     startIndex = text.IndexOf(link, startIndex, StringComparison.Ordinal);
 

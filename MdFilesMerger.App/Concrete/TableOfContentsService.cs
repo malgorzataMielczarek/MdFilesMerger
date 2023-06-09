@@ -12,9 +12,7 @@ namespace MdFilesMerger.App.Concrete
         /// <summary>
         ///     Creates the table of contents of specified type.
         /// </summary>
-        /// <param name="mergedFile">
-        ///     The merged file for which table of content will be created.
-        /// </param>
+        /// <param name="mergedFile"> The merged file for which table of content will be created. </param>
         /// <param name="selectedFiles">
         ///     The list of all files, whose content will be placed in the merged file.
         /// </param>
@@ -108,7 +106,7 @@ namespace MdFilesMerger.App.Concrete
 
                 int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, listOfFiles, i, newLine);
 
-                string hyperlink = Common.Helpers.TextToHyperlink(title);
+                string hyperlink = Common.Hyperlinks.TextToHyperlink(title);
 
                 int qtt = titles[title]++;
                 hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
