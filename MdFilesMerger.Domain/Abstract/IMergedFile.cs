@@ -40,16 +40,16 @@
         public int UserId { get; set; }
 
         /// <summary>
-        ///     Extract parent directory path from path stored in <see cref="BaseItem.Name"/>.
+        ///     Extract parent directory path from path stored in <see cref="IItem.Name"/>.
         /// </summary>
         /// <returns>
-        ///     Path of parent directory of the file whose path is stored in <see cref="BaseItem.Name"/>.
+        ///     Path of parent directory of the file whose path is stored in <see cref="IItem.Name"/>.
         /// </returns>
         public string? GetParentDirectory();
 
         /// <summary>
-        ///     Changes filename in path saved in <see cref="BaseItem.Name"/>, without changing
-        ///     parent directory path.
+        ///     Changes filename in path saved in <see cref="IItem.Name"/>, without changing parent
+        ///     directory path.
         /// </summary>
         /// <param name="fileName"> New filename. </param>
         /// <returns>
@@ -61,8 +61,7 @@
         ///     Changes parent directory of associated merged file.
         /// </summary>
         /// <remarks>
-        ///     Changes parent directory in path stored in <see cref="BaseItem.Name"/> without
-        ///     changing filename.
+        ///     Changes parent directory in path stored in <see cref="IItem.Name"/> without changing filename.
         /// </remarks>
         /// <param name="directoryPath"> New parent directory path. </param>
         /// <returns>
