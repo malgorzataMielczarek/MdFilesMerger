@@ -91,7 +91,7 @@ namespace MdFilesMerger.App.Common
         {
             T? item = ReadById(id);
 
-            if (_items.Remove(item))
+            if (item != null && _items.Remove(item))
             {
                 // patch up id "holes" after item removal
                 DecreseGreaterIds(id);

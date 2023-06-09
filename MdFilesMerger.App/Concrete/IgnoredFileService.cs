@@ -30,6 +30,12 @@ namespace MdFilesMerger.App.Concrete
         /// <param name="mainDirService"> The main directory service. </param>
         public IgnoredFileService(MainDirectoryService mainDirService) : base(mainDirService) { }
 
+        /// <summary>
+        ///     Converts <see cref="IgnoredFile"/> objects to <see cref="SelectedFile"/> objects.
+        /// </summary>
+        /// <param name="list"> The list of <see cref="IgnoredFile"/> objects to convert. </param>
+        /// <param name="mainDirectoryService"> The main directory service. </param>
+        /// <returns> List of objects after conversion. </returns>
         public static List<SelectedFile> ToSelectedFile(List<IgnoredFile> list, MainDirectoryService mainDirectoryService)
         {
             var selectedFiles = new List<SelectedFile>();
