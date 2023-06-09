@@ -8,14 +8,15 @@ namespace MdFilesMerger.App.Abstract
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
     ///         -&gt; <see cref="IDirectoryService{T}"/> -&gt; IEditFileService&lt;T&gt; <br/><b>
-    ///         Implementations: </b><see cref="Common.EditFileService{T}"/>
+    ///         Implementations: </b><see cref="Concrete.MergedFileService"/>, <see cref="Concrete.SelectedFileService"/>
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Class implementing <see cref="IEditFile"/> interface. </typeparam>
     /// <seealso cref="ICRUDService{T}"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
     /// <seealso cref="IDirectoryService{T}"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
-    /// <seealso cref="Common.EditFileService{T}"> MdFilesMerger.App.Common.EditFileService&lt;T&gt; </seealso>
+    /// <seealso cref="Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
+    /// <seealso cref="Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
     /// <seealso cref="IEditFile"> MdFilesMerger.Domain.Abstract.IEditFile </seealso>
     public interface IEditFileService<T> : IDirectoryService<T> where T : IEditFile
     {

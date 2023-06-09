@@ -18,6 +18,25 @@ namespace MdFilesMerger.App.Abstract
     public interface IMainDirectoryService : IDirectoryService<MainDirectory>
     {
         /// <summary>
+        ///     Finds all .md files in specified main directory and it's subdirectories.
+        /// </summary>
+        /// <param name="id">
+        ///     The identifier of <see cref="MainDirectory"/> object associated with directory
+        ///     searched for .md files.
+        /// </param>
+        /// <returns> Collection of found .md files. </returns>
+        IEnumerable<FileInfo> FindAllFiles(int id);
+
+        /// <summary>
+        ///     Finds all .md files in specified main directory and it's subdirectories.
+        /// </summary>
+        /// <param name="mainDirectory">
+        ///     The <see cref="MainDirectory"/> object associated with directory searched for .md files.
+        /// </param>
+        /// <returns> Collection of found .md files. </returns>
+        IEnumerable<FileInfo> FindAllFiles(MainDirectory mainDirectory);
+
+        /// <summary>
         ///     Gets, from the stored collection of <see cref="MainDirectory"/> objects, elements
         ///     with the specified merged file identifier.
         /// </summary>

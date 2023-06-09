@@ -6,7 +6,9 @@ using System.Reflection;
 namespace MdFilesMerger.App.Concrete
 {
     /// <summary>
-    ///     Service handling private <see cref="List{T}"/> list of <see cref="MainDirectory"/> objects.
+    ///     Service handling private <see cref="List{T}"/> list of <see cref="MainDirectory"/>
+    ///     objects associated with existing directories, whose absolute paths they store and where
+    ///     .md files will be searched.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="BaseService{T}"/> -&gt; <see
     ///         cref="BaseDirectoryService{T}"/> -&gt; MainDirectoryService <br/><b> Implements:
@@ -34,6 +36,31 @@ namespace MdFilesMerger.App.Concrete
         public MainDirectoryService()
         {
             Initialize();
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<FileInfo> FindAllFiles(int id)
+        {
+            MainDirectory? mainDirectory = ReadById(id);
+            if (mainDirectory != null)
+            {
+                return FindAllFiles(mainDirectory);
+            }
+
+            return Array.Empty<FileInfo>();
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<FileInfo> FindAllFiles(MainDirectory mainDirectory)
+        {
+            string? mainDirPath = mainDirectory?.GetPath();
+
+            if (mainDirPath != null)
+            {
+                return new DirectoryInfo(mainDirPath).EnumerateFiles("*.md", new EnumerationOptions { IgnoreInaccessible = true, RecurseSubdirectories = true });
+            }
+
+            return Array.Empty<FileInfo>();
         }
 
         /// <inheritdoc/>

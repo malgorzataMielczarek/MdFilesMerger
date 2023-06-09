@@ -20,7 +20,7 @@ namespace MdFilesMerger.App.Common
     public class BaseDirectoryService<T> : BaseService<T>, IDirectoryService<T> where T : class, IDirectory
     {
         /// <inheritdoc/>
-        public int UpdatePath(int id, string path)
+        public virtual int UpdatePath(int id, string path)
         {
             T? item = ReadById(id);
 

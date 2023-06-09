@@ -1,5 +1,7 @@
 ﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.App.Common
 {
@@ -23,6 +25,61 @@ namespace MdFilesMerger.App.Common
     /// <seealso cref="RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
     public class RelativeFileService<T> : BaseDirectoryService<T>, IRelativeFileService<T> where T : RelativeFile
     {
+        /// <summary>
+        ///     The main directory service.
+        /// </summary>
+        protected readonly MainDirectoryService _mainDirService;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RelativeFileService{T}"/> class.
+        /// </summary>
+        /// <param name="mainDirService"> The main directory service. </param>
+        public RelativeFileService(MainDirectoryService mainDirService)
+        {
+            _mainDirService = mainDirService;
+        }
+
+        /// <inheritdoc/>
+        public List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, MainDirectory mainDirectory)
+        {
+            var files = new List<FileInfo>();
+            if (!string.IsNullOrWhiteSpace(mainDirectory?.Name))
+            {
+                foreach (var file in list)
+                {
+                    if (!string.IsNullOrWhiteSpace(file?.Name))
+                    {
+                        T? item = Activator.CreateInstance(typeof(T), file, mainDirectory) as T;
+                        if (GetEqual(item) == null)
+                        {
+                            files.Add(file);
+                        }
+                    }
+                }
+            }
+
+            return files;
+        }
+
+        /// <inheritdoc/>
+        public string? GetFullPath(int id)
+        {
+            return GetFullPath(ReadById(id));
+        }
+
+        /// <inheritdoc/>
+        public string? GetFullPath(T? relativeFile)
+        {
+            if (relativeFile != null)
+            {
+                MainDirectory? mainDirectory = _mainDirService.ReadById(relativeFile.MainDirId);
+
+                return relativeFile.GetPath(mainDirectory?.GetPath());
+            }
+
+            return null;
+        }
+
         /// <inheritdoc/>
         public List<T> ReadByMainDirId(int mainDirId)
         {
@@ -41,15 +98,26 @@ namespace MdFilesMerger.App.Common
             return list;
         }
 
-        /// <inheritdoc/>
-        public int UpdatePath(int id, string path, string mainDirPath)
+        /// <summary>
+        ///     Updates the relative path of .md file associated with the element with specified
+        ///     identification number.
+        /// </summary>
+        /// <param name="id"> The identification number of updated element. </param>
+        /// <param name="path">
+        ///     Absolute or relative (to current directory) path to existing .md file, that you want
+        ///     to associate with the element being updated.
+        /// </param>
+        /// <returns>
+        ///     Identification number of updated element or <see langword="-1"/>, if update failed.
+        /// </returns>
+        public override int UpdatePath(int id, string path)
         {
             T? file = ReadById(id);
 
             if (file != null)
             {
                 string? oldPath = file.Name;
-                if (file.SetPath(path, mainDirPath))
+                if (file.SetPath(path, _mainDirService.ReadById(file.MainDirId)?.GetPath()))
                 {
                     return file.Id;
                 }

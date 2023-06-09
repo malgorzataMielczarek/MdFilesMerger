@@ -24,5 +24,22 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
     public sealed class IgnoredFileService : RelativeFileService<IgnoredFile>
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="IgnoredFileService"/> class.
+        /// </summary>
+        /// <param name="mainDirService"> The main directory service. </param>
+        public IgnoredFileService(MainDirectoryService mainDirService) : base(mainDirService) { }
+
+        public static List<SelectedFile> ToSelectedFile(List<IgnoredFile> list, MainDirectoryService mainDirectoryService)
+        {
+            var selectedFiles = new List<SelectedFile>();
+            foreach (var file in list)
+            {
+                MainDirectory? mainDirectory = mainDirectoryService.ReadById(file.MainDirId);
+                selectedFiles.Add(file.ToSelectedFile(mainDirectory?.GetPath()));
+            }
+
+            return selectedFiles;
+        }
     }
 }
