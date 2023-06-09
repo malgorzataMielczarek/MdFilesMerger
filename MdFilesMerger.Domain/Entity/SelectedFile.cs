@@ -93,7 +93,7 @@ namespace MdFilesMerger.Domain.Entity
         /// </returns>
         public static string GetDefaultTitle(string? filePath)
         {
-            string header = "";
+            string? header = "";
 
             if (!string.IsNullOrWhiteSpace(filePath))
             {
@@ -101,7 +101,15 @@ namespace MdFilesMerger.Domain.Entity
                 using (StreamReader streamReader = new StreamReader(new FileInfo(filePath).OpenRead()))
                 {
                     // get first not empty line
-                    while (string.IsNullOrWhiteSpace(header = streamReader.ReadLine() ?? "")) { }
+                    while (string.IsNullOrWhiteSpace(header = streamReader.ReadLine()?.Trim()))
+                    {
+                        if (header == null)
+                        {
+                            header = "";
+                            break;
+                        }
+                    }
+
                     streamReader.Close();
                 }
 
