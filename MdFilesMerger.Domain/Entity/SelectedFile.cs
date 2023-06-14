@@ -114,8 +114,6 @@ namespace MdFilesMerger.Domain.Entity
                     streamReader.Close();
                 }
 
-                header = Hyperlinks.GetText(header);
-
                 // as filename
                 if (string.IsNullOrWhiteSpace(header) || header[0] != '#')
                 {
@@ -123,6 +121,11 @@ namespace MdFilesMerger.Domain.Entity
                 }
                 else
                 {
+                    if (Hyperlinks.ContainsHyperlink(header))
+                    {
+                        header = Hyperlinks.GetText(header);
+                    }
+
                     StringBuilder sb = new StringBuilder(header.TrimEnd());
                     while (char.IsWhiteSpace(sb[0]) || sb[0] == '#')
                     {
