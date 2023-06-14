@@ -47,7 +47,7 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public List<MenuAction> GetByMenuType(MenuType menuType)
+        public List<MenuAction> ReadByMenuType(MenuType menuType)
         {
             List<MenuAction> result = new List<MenuAction>();
 

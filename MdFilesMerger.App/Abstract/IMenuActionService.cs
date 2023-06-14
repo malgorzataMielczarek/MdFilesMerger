@@ -20,6 +20,6 @@ namespace MdFilesMerger.App.Abstract
         /// </summary>
         /// <param name="menuType"> Type of the menu. </param>
         /// <returns> List with object of menu <paramref name="menuType"/>. </returns>
-        public List<MenuAction> GetByMenuType(MenuType menuType);
+        public List<MenuAction> ReadByMenuType(MenuType menuType);
     }
 }
