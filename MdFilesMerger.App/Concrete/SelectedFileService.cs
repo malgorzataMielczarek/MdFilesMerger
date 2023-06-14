@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Common;
+using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using System.Text;
 
