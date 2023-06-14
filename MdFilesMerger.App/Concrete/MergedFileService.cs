@@ -94,6 +94,21 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
+        public List<MergedFile> ReadByUserId(int userId)
+        {
+            List<MergedFile> mergedFiles = new List<MergedFile>();
+            foreach (var file in _items)
+            {
+                if (file.UserId == userId)
+                {
+                    mergedFiles.Add(file);
+                }
+            }
+
+            return mergedFiles;
+        }
+
+        /// <inheritdoc/>
         public int UpdateFileName(int id, string fileName)
         {
             MergedFile? file = ReadById(id);

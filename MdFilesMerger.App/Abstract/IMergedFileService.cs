@@ -39,6 +39,18 @@ namespace MdFilesMerger.App.Abstract
         public FileInfo? CreateFile(MergedFile? mergedFile, List<SelectedFile> selectedFiles);
 
         /// <summary>
+        ///     Gets, from the stored collection of <see cref="MergedFile"/> objects, elements with
+        ///     the specified user identifier.
+        /// </summary>
+        /// <param name="userId"> The searched user identifier. </param>
+        /// <returns>
+        ///     The list of <see cref="MergedFile"/> objects with the specified user identifier. If
+        ///     there is no objects with <see cref="MergedFile.UserId"/> equal <paramref
+        ///     name="userId"/>, returned list is empty.
+        /// </returns>
+        public List<MergedFile> ReadByUserId(int userId);
+
+        /// <summary>
         ///     Updates the name of the file associated with specified object.
         /// </summary>
         /// <param name="id"> The identifier of merged file to update. </param>

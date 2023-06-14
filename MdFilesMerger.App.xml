@@ -279,7 +279,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IMenuActionService.GetByMenuType(MdFilesMerger.Domain.Common.MenuType)">
+        <member name="M:MdFilesMerger.App.Abstract.IMenuActionService.ReadByMenuType(MdFilesMerger.Domain.Common.MenuType)">
             <summary>
                 Gets elements from <see cref="F:MdFilesMerger.App.Concrete.MenuActionService._actions"/> with <see
                 cref="P:MdFilesMerger.Domain.Entity.MenuAction.Menu"/><paramref name="menuType"/>.
@@ -320,6 +320,18 @@
             <returns>
                 <see cref="T:System.IO.FileInfo"/> of created file or <see langword="null"/> if no file was
                 specified, or specified file couldn't be created.
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.ReadByUserId(System.Int32)">
+            <summary>
+                Gets, from the stored collection of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> objects, elements with
+                the specified user identifier.
+            </summary>
+            <param name="userId"> The searched user identifier. </param>
+            <returns>
+                The list of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> objects with the specified user identifier. If
+                there is no objects with <see cref="P:MdFilesMerger.Domain.Entity.MergedFile.UserId"/> equal <paramref
+                name="userId"/>, returned list is empty.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.UpdateFileName(System.Int32,System.String)">
@@ -911,7 +923,7 @@
                 name="id"/>, if there is one, otherwise <see langword="null"/>.
             </returns>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MenuActionService.GetByMenuType(MdFilesMerger.Domain.Common.MenuType)">
+        <member name="M:MdFilesMerger.App.Concrete.MenuActionService.ReadByMenuType(MdFilesMerger.Domain.Common.MenuType)">
             <inheritdoc/>
         </member>
         <member name="T:MdFilesMerger.App.Concrete.MergedFileService">
@@ -946,6 +958,9 @@
             </remarks>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.ReadByUserId(System.Int32)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.UpdateFileName(System.Int32,System.String)">
