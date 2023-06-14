@@ -85,6 +85,7 @@ namespace MdFilesMerger.App.Concrete
             Add("Zmień nazwę tworzonego pliku", MenuType.MergedFile, MenuType.MergedFile);
             Add("Zmień ścieżkę katalogu", MenuType.MergedFile, MenuType.MergedFile);
             Add("Zmień nagłówek", MenuType.MergedFile, MenuType.MergedFile);
+            Add("Scal pliki", MenuType.MergedFile, MenuType.Main);
         }
     }
 }
