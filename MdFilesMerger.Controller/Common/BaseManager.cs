@@ -1,35 +1,45 @@
-﻿using MdFilesMerger.App.Common;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Domain.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MdFilesMerger.Controller.Common
 {
-    public abstract class BaseManager<T> : IManager where T : BaseItem
+    public abstract class BaseManager<T, U> : IManager<T, U> where T : BaseItem where U : IService<T>
     {
-        public BaseService<T> _service;
+        public int SelectedItem { get; protected set; }
 
-        protected BaseManager(BaseService<T> service)
+        public U Service { get; }
+
+        public BaseManager(U service)
         {
-            _service = service;
+            SelectedItem = -1;
+            Service = service;
         }
 
-        public void DisplayItem(int id)
+        public void Display()
         {
-            DisplayItem(_service.GetItemById(id));
+            DisplayItem(Service.ReadById(SelectedItem));
         }
 
         public abstract void DisplayTitle();
 
-        public virtual int SelectItem()
+        public virtual void Select(int connectedItemId)
         {
-            var list = GetFilteredList();
+            var list = GetFilteredList(connectedItemId);
             DisplayItems(list);
-
-            return SelectItem(list);
+            SelectItem(list);
         }
 
-        protected abstract void DisplayItem(T? item);
+        protected virtual void DisplayItem(T? item)
+        {
+            if (item != null)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
 
-        protected virtual void DisplayItems(IReadOnlyList<T> items)
+        protected virtual void DisplayItems(List<T> items)
         {
             Console.WriteLine();
 
@@ -37,7 +47,7 @@ namespace MdFilesMerger.Controller.Common
             {
                 T? item = items[i];
 
-                Console.Write($"{i}. ");
+                Console.Write($"{i + 1}. ");
                 DisplayItem(item);
             }
 
@@ -67,31 +77,40 @@ namespace MdFilesMerger.Controller.Common
             Console.WriteLine("\n");
         }
 
-        protected int GetIdByIndex(int index, IReadOnlyList<BaseItem> list)
+        protected int GetIdByIndex(int index, IReadOnlyList<T> list)
         {
-            if (index > 0 && index <= list.Count)
+            if (index >= 0 && index < list.Count)
             {
                 return list[index].Id;
             }
-
             else
             {
                 return -1;
             }
         }
 
-        protected abstract IReadOnlyList<T> GetFilteredList();
+        protected abstract List<T> GetFilteredList(int connectedItemId);
 
-        protected virtual int SelectItem(IReadOnlyList<T> list)
+        protected virtual void SelectItem(IReadOnlyList<T> list)
         {
-            Console.Write("Podaj numer elementu, który chcesz wybrać: ");
-
-            if (int.TryParse(Console.ReadLine(), out int index))
+            var cursor = Console.GetCursorPosition();
+            while (true)
             {
-                return GetIdByIndex(index, list);
-            }
+                Console.Write("Podaj numer elementu, który chcesz wybrać: ");
 
-            return -1;
+                if (int.TryParse(Console.ReadLine(), out int index))
+                {
+                    SelectedItem = GetIdByIndex(index - 1, list);
+
+                    if (SelectedItem != -1)
+                    {
+                        return;
+                    }
+                }
+
+                Console.SetCursorPosition(cursor.Left, cursor.Top);
+                Console.WriteLine("Nie rozpoznano wybranego elementu. Wybierz ponownie, podając numer elementu.");
+            }
         }
     }
 }
