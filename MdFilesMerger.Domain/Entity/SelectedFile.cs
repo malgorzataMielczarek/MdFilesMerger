@@ -88,8 +88,9 @@ namespace MdFilesMerger.Domain.Entity
         /// </summary>
         /// <param name="filePath"> Absolute path of file. </param>
         /// <returns>
-        ///     If read line is a header (starts with '#') return it. Else return filename, without
-        ///     extension. If file header is a link return only text part.
+        ///     If read line is a header (starts with '#') return it. If header contains hyperlink,
+        ///     method returns only text part of it. If read line is not a header, return filename,
+        ///     without extension. If file header is a link return only text part.
         /// </returns>
         public static string GetDefaultTitle(string? filePath)
         {
@@ -112,6 +113,8 @@ namespace MdFilesMerger.Domain.Entity
 
                     streamReader.Close();
                 }
+
+                header = Hyperlinks.GetText(header);
 
                 // as filename
                 if (string.IsNullOrWhiteSpace(header) || header[0] != '#')

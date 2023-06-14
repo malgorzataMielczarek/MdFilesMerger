@@ -1189,8 +1189,9 @@
             </summary>
             <param name="filePath"> Absolute path of file. </param>
             <returns>
-                If read line is a header (starts with '#') return it. Else return filename, without
-                extension. If file header is a link return only text part.
+                If read line is a header (starts with '#') return it. If header contains hyperlink,
+                method returns only text part of it. If read line is not a header, return filename,
+                without extension. If file header is a link return only text part.
             </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.Equals(System.Object)">
