@@ -141,6 +141,12 @@ namespace MdFilesMerger.Domain.Entity
         }
 
         /// <inheritdoc/>
+        public string? GetFileName()
+        {
+            return Path.GetFileName(Name);
+        }
+
+        /// <inheritdoc/>
         public override int GetHashCode() => base.GetHashCode();
 
         /// <inheritdoc/>

@@ -40,6 +40,12 @@
         public int UserId { get; set; }
 
         /// <summary>
+        ///     Extract filename from path stored in <see cref="IItem.Name"/>.
+        /// </summary>
+        /// <returns> Name of the file whose path is stored in <see cref="IItem.Name"/>. </returns>
+        string? GetFileName();
+
+        /// <summary>
         ///     Extract parent directory path from path stored in <see cref="IItem.Name"/>.
         /// </summary>
         /// <returns>

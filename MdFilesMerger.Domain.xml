@@ -168,6 +168,12 @@
                 Identification number of <see cref="T:MdFilesMerger.Domain.Entity.User"/> associated with this item.
             </summary>
         </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.IMergedFile.GetFileName">
+            <summary>
+                Extract filename from path stored in <see cref="P:MdFilesMerger.Domain.Abstract.IItem.Name"/>.
+            </summary>
+            <returns> Name of the file whose path is stored in <see cref="P:MdFilesMerger.Domain.Abstract.IItem.Name"/>. </returns>
+        </member>
         <member name="M:MdFilesMerger.Domain.Abstract.IMergedFile.GetParentDirectory">
             <summary>
                 Extract parent directory path from path stored in <see cref="P:MdFilesMerger.Domain.Abstract.IItem.Name"/>.
@@ -1034,6 +1040,9 @@
             <value> By default set to <see langword="0"/>. </value>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.MergedFile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MergedFile.GetFileName">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.MergedFile.GetHashCode">
