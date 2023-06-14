@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace MdFilesMerger.App.Common
+namespace MdFilesMerger.Domain.Common
 {
     /// <summary>
     ///     Static class containing methods for hyperlinks management.

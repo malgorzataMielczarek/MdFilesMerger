@@ -497,6 +497,65 @@
         <member name="M:MdFilesMerger.Domain.Common.BaseItem.GetHashCode">
             <inheritdoc/>
         </member>
+        <member name="T:MdFilesMerger.Domain.Common.Hyperlinks">
+            <summary>
+                Static class containing methods for hyperlinks management.
+            </summary>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.ContainsHyperlink(System.String)">
+            <summary>
+                Determines whether the specified text contains hyperlink.
+            </summary>
+            <param name="text"> The text. </param>
+            <returns>
+                <see langword="true"/> if the specified text contains hyperlink; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.GetLink(System.String)">
+            <summary>
+                Gets the link part of the first hyperlink (underlying destination, where link points
+                and directs to after clicking).
+            </summary>
+            <param name="hyperlink"> The text containing hyperlink. </param>
+            <returns>
+                String with the link, if passed value contained hyperlink; otherwise <see cref="F:System.String.Empty"/>.
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.GetText(System.String)">
+            <summary>
+                Gets the text part of the first hyperlink (text that will be displayed as link).
+            </summary>
+            <param name="hyperlink"> The text containing hyperlink. </param>
+            <returns>
+                String with the link description (visible text), if passed value contained
+                hyperlink; otherwise <see cref="F:System.String.Empty"/>.
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.HyperlinkToText(System.String)">
+            <summary>
+                Converts the text containing hyperlink to the plain text.
+            </summary>
+            <remarks>
+                The first hyperlink in the given text is replaced by its text part. The rest of the
+                passed text stays the same.
+            </remarks>
+            <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
+            <returns> The passed text with it's first hyperlink converted. </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.TextToHyperlink(System.String)">
+            <summary>
+                Converts text to Markdown hyperlink leading to appropriate section of the file that
+                it will be placed in.
+            </summary>
+            <remarks>
+                The specified text is treated as text part of Markdown hyperlink. If text is a
+                Markdown style header the leading '#' characters are previously removed. The text is
+                also trimmed. Link leads to appropriate section of the file (that it will be place
+                in). Name of the section is the same as the text.
+            </remarks>
+            <param name="text"> The text to convert. </param>
+            <returns> Prepared hyperlink. </returns>
+        </member>
         <member name="T:MdFilesMerger.Domain.Common.MdFile">
             <summary>
                 Base class for all models associated with .md files (merged, selected and ignored file models).
