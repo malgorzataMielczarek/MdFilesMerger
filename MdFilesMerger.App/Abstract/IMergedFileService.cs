@@ -21,22 +21,33 @@ namespace MdFilesMerger.App.Abstract
     public interface IMergedFileService : IEditFileService<MergedFile>
     {
         /// <summary>
-        ///     Creates the file associated with specified <see cref="MergedFile"/> object.
+        ///     Appends the table of contents at the end of the file.
         /// </summary>
-        /// <remarks>
-        ///     If the file already exists, it is deleted. New file is created and fill with
-        ///     specified header and table of contents.
-        /// </remarks>
-        /// <param name="mergedFile"> The merged file to create. </param>
+        /// <param name="destinationFile">
+        ///     The destination file, where table of contents text will be added.
+        /// </param>
+        /// <param name="mergedFileId">
+        ///     The identifier of the merged file associated with <paramref name="destinationFile"/>.
+        /// </param>
         /// <param name="selectedFiles">
         ///     The list of all selected files that will be merged into the merged file. It is used
         ///     to create table of contents.
         /// </param>
+        void AppendTableOfContents(FileInfo destinationFile, int mergedFileId, List<SelectedFile> selectedFiles);
+
+        /// <summary>
+        ///     Creates the file associated with specified <see cref="MergedFile"/> object.
+        /// </summary>
+        /// <remarks>
+        ///     If the file already exists, it is deleted. New file is created and fill with
+        ///     specified header.
+        /// </remarks>
+        /// <param name="mergedFile"> The merged file to create. </param>
         /// <returns>
         ///     <see cref="FileInfo"/> of created file or <see langword="null"/> if no file was
         ///     specified, or specified file couldn't be created.
         /// </returns>
-        public FileInfo? CreateFile(MergedFile? mergedFile, List<SelectedFile> selectedFiles);
+        public FileInfo? CreateFile(MergedFile? mergedFile);
 
         /// <summary>
         ///     Gets, from the stored collection of <see cref="MergedFile"/> objects, elements with

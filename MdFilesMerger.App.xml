@@ -304,19 +304,30 @@
             <seealso cref="T:MdFilesMerger.App.Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Concrete.MergedFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+            <summary>
+                Appends the table of contents at the end of the file.
+            </summary>
+            <param name="destinationFile">
+                The destination file, where table of contents text will be added.
+            </param>
+            <param name="mergedFileId">
+                The identifier of the merged file associated with <paramref name="destinationFile"/>.
+            </param>
+            <param name="selectedFiles">
+                The list of all selected files that will be merged into the merged file. It is used
+                to create table of contents.
+            </param>
+        </member>
+        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile)">
             <summary>
                 Creates the file associated with specified <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> object.
             </summary>
             <remarks>
                 If the file already exists, it is deleted. New file is created and fill with
-                specified header and table of contents.
+                specified header.
             </remarks>
             <param name="mergedFile"> The merged file to create. </param>
-            <param name="selectedFiles">
-                The list of all selected files that will be merged into the merged file. It is used
-                to create table of contents.
-            </param>
             <returns>
                 <see cref="T:System.IO.FileInfo"/> of created file or <see langword="null"/> if no file was
                 specified, or specified file couldn't be created.
@@ -898,7 +909,10 @@
                 [MyDocuments]/MergedFiles/README.md file.
             </remarks>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+            <inheritdoc/>
+        </member>
+        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.ReadByUserId(System.Int32)">

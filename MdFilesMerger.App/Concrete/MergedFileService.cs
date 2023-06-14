@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using System.Security;
@@ -41,7 +42,34 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public FileInfo? CreateFile(MergedFile? mergedFile, List<SelectedFile> selectedFiles)
+        public void AppendTableOfContents(FileInfo? destinationFile, int mergedFileId, List<SelectedFile> selectedFiles)
+        {
+            if (destinationFile == null || mergedFileId == -1)
+            {
+                return;
+            }
+
+            MergedFile? mergedFile = ReadById(mergedFileId);
+            if (mergedFile == null || mergedFile.TableOfContents == TableOfContents.None)
+            {
+                return;
+            }
+
+            using (StreamWriter streamWriter = destinationFile.AppendText())
+            {
+                // Enter table of contents
+                if (!string.IsNullOrWhiteSpace(mergedFile.TOCHeader))
+                {
+                    streamWriter.WriteLine(mergedFile.TOCHeader);
+                }
+                streamWriter.WriteLine(TableOfContentsService.CreateTOC(mergedFile, selectedFiles));
+
+                streamWriter.Close();
+            }
+        }
+
+        /// <inheritdoc/>
+        public FileInfo? CreateFile(MergedFile? mergedFile)
         {
             string? mergedFilePath = mergedFile?.GetPath();
             if (string.IsNullOrWhiteSpace(mergedFilePath))
@@ -69,17 +97,6 @@ namespace MdFilesMerger.App.Concrete
                         {
                             string firstLine = "# " + mergedFile.Title;
                             streamWriter.WriteLine(firstLine);
-                        }
-
-                        // Enter table of contents
-                        if (mergedFile.TableOfContents != TableOfContents.None)
-                        {
-                            if (!string.IsNullOrWhiteSpace(mergedFile.TOCHeader))
-                            {
-                                streamWriter.WriteLine(mergedFile.TOCHeader);
-                            }
-
-                            streamWriter.WriteLine(TableOfContentsService.CreateTOC(mergedFile, selectedFiles));
                         }
 
                         streamWriter.Close();
