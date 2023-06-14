@@ -69,8 +69,9 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public FileInfo? CreateFile(MergedFile? mergedFile)
+        public FileInfo? CreateFile(int id)
         {
+            MergedFile? mergedFile = ReadById(id);
             string? mergedFilePath = mergedFile?.GetPath();
             if (string.IsNullOrWhiteSpace(mergedFilePath))
             {

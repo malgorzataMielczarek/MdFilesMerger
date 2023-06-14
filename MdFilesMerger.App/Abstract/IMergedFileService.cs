@@ -42,12 +42,14 @@ namespace MdFilesMerger.App.Abstract
         ///     If the file already exists, it is deleted. New file is created and fill with
         ///     specified header.
         /// </remarks>
-        /// <param name="mergedFile"> The merged file to create. </param>
+        /// <param name="id">
+        ///     The identifier of the object associated with the merged file to create.
+        /// </param>
         /// <returns>
         ///     <see cref="FileInfo"/> of created file or <see langword="null"/> if no file was
         ///     specified, or specified file couldn't be created.
         /// </returns>
-        public FileInfo? CreateFile(MergedFile? mergedFile);
+        public FileInfo? CreateFile(int id);
 
         /// <summary>
         ///     Gets, from the stored collection of <see cref="MergedFile"/> objects, elements with

@@ -319,7 +319,7 @@
                 to create table of contents.
             </param>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile)">
+        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(System.Int32)">
             <summary>
                 Creates the file associated with specified <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> object.
             </summary>
@@ -327,7 +327,9 @@
                 If the file already exists, it is deleted. New file is created and fill with
                 specified header.
             </remarks>
-            <param name="mergedFile"> The merged file to create. </param>
+            <param name="id">
+                The identifier of the object associated with the merged file to create.
+            </param>
             <returns>
                 <see cref="T:System.IO.FileInfo"/> of created file or <see langword="null"/> if no file was
                 specified, or specified file couldn't be created.
@@ -912,7 +914,7 @@
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(MdFilesMerger.Domain.Entity.MergedFile)">
+        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(System.Int32)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.ReadByUserId(System.Int32)">
