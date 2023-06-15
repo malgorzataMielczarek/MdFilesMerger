@@ -1,5 +1,4 @@
-﻿using MdFilesMerger.App.Concrete;
-using MdFilesMerger.Controller.Concrete;
+﻿using MdFilesMerger.Controller.Concrete;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 
