@@ -1,21 +1,59 @@
 ﻿using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
-using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.Controller.Concrete
 {
-    public class UserManager : BaseManager<User, UserService>, ICRUDManager<User, UserService>
+    /// <summary>
+    ///     Manager for user model.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseManager{T, TService}"/> -&gt; UserManager <br/><b>
+    ///         Implements: </b><see cref="ICRUDManager{T, TService}"/>, <see cref="IManager{T,
+    ///                     TService}"/>, <see cref="IUserManager"/>
+    ///     </para>
+    /// </summary>
+    /// <seealso cref="UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
+    /// <seealso cref="ICRUDManager{T, TService}">
+    ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="IManager{T, TService}">
+    ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="IUserManager"> MdFilesMerger.Controller.Abstract.IUserManager </seealso>
+    /// <seealso cref="BaseManager{T, TService}">
+    ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
+    public class UserManager : BaseManager<User, UserService>, IUserManager
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="UserManager"/> class and all it's properties.
+        /// </summary>
+        /// <remarks>
+        ///     Sets <see cref="BaseManager{T, TService}.Service"/> to the newly created <see
+        ///     cref="UserService"/> object, <see cref="BaseManager{T, TService}.SelectedItem"/> to
+        ///     first object of service's collection and <see cref="MergedFileManager"/> to the
+        ///     newly created <see cref="Concrete.MergedFileManager"/> object.
+        /// </remarks>
         public UserManager() : base(new UserService())
         {
             SelectedItem = 1;
             MergedFileManager = new MergedFileManager();
         }
 
+        /// <inheritdoc/>
         public MergedFileManager MergedFileManager { get; }
 
+        /// <summary>
+        ///     Asks user for login and password and creates new user based on the input.
+        /// </summary>
+        /// <remarks> Created user is added to collection and selected item is set to it. </remarks>
+        /// <param name="connectedItemId">
+        ///     The value of this parameter doesn't matter in this implementation. It has set
+        ///     default value, so it can be omitted all together.
+        /// </param>
+        /// <returns> <inheritdoc/> </returns>
         public bool Create(int connectedItemId = 0)
         {
             User user = new User();
@@ -62,6 +100,7 @@ namespace MdFilesMerger.Controller.Concrete
             return true;
         }
 
+        /// <inheritdoc/>
         public bool Delete()
         {
             bool result = MergedFileManager.Delete(SelectedItem);
@@ -79,8 +118,21 @@ namespace MdFilesMerger.Controller.Concrete
             return result;
         }
 
+        /// <summary>
+        ///     Deletes from the service's collection selected item and all elements of other models
+        ///     connected with it.
+        /// </summary>
+        /// <remarks> It calls <see cref="Delete()"/> method. </remarks>
+        /// <param name="connectedItemId">
+        ///     The value of this parameter doesn't matter in this implementation. It has set
+        ///     default value, so it can be omitted all together.
+        /// </param>
+        /// <returns>
+        ///     <see langword="true"/> if all elements was successfully deleted; otherwise <see langword="false"/>.
+        /// </returns>
         public bool Delete(int connectedItemId = 0) => Delete();
 
+        /// <inheritdoc/>
         public override void DisplayTitle()
         {
             DisplayTitle(SelectedItem switch
@@ -90,6 +142,16 @@ namespace MdFilesMerger.Controller.Concrete
             });
         }
 
+        /// <summary>
+        ///     Log in method.
+        /// </summary>
+        /// <remarks>
+        ///     Asks about user's login and password and select appropriate user based on input.
+        /// </remarks>
+        /// <param name="connectedItemId">
+        ///     The value of this parameter doesn't matter in this implementation. It has set
+        ///     default value, so it can be omitted all together.
+        /// </param>
         public override void Select(int connectedItemId = 0)
         {
             var cursor = Console.GetCursorPosition();
@@ -110,6 +172,7 @@ namespace MdFilesMerger.Controller.Concrete
             }
         }
 
+        /// <inheritdoc/>
         public bool UpdatePassword()
         {
             User? user;
@@ -182,6 +245,14 @@ namespace MdFilesMerger.Controller.Concrete
             return false;
         }
 
+        /// <summary>
+        ///     Gets all stored users.
+        /// </summary>
+        /// <param name="connectedItemId">
+        ///     The value of this parameter doesn't matter in this implementation. It has set
+        ///     default value, so it can be omitted all together.
+        /// </param>
+        /// <returns> List of all users. </returns>
         protected override List<User> GetFilteredList(int connectedItemId = 0) => Service.ReadAll();
 
         private string GetNotEmptyLogin((int Left, int Top) cursor)

@@ -1,40 +1,81 @@
-﻿using MdFilesMerger.Controller.Abstract;
+﻿using MdFilesMerger.App.Concrete;
+using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
-using MdFilesMerger.Controller.Concrete;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
-using Microsoft.VisualBasic.FileIO;
 using System.Text;
 
-namespace MdFilesMerger.App.Concrete
+namespace MdFilesMerger.Controller.Concrete
 {
-    public class MergedFileManager : BaseManager<MergedFile, MergedFileService>, ICRUDManager<MergedFile, MergedFileService>
+    /// <summary>
+    ///     Manager for merged file model.
+    ///     <para>
+    ///         <b> Inheritance: </b><see cref="BaseManager{T, TService}"/> -&gt; MergedFileManager
+    ///         <br/><b> Implements: </b><see cref="ICRUDManager{T, TService}"/>, <see
+    ///         cref="IManager{T, TService}"/>, <see cref="IMergedFileManager"/>
+    ///     </para>
+    /// </summary>
+    /// <seealso cref="MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
+    /// <seealso cref="ICRUDManager{T, TService}">
+    ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="IManager{T, TService}">
+    ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="IMergedFileManager"> MdFilesMerger.Controller.Abstract.IMergedFileManager </seealso>
+    /// <seealso cref="BaseManager{T, TService}">
+    ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
+    /// </seealso>
+    /// <seealso cref="MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+    public sealed class MergedFileManager : BaseManager<MergedFile, MergedFileService>, IMergedFileManager
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MergedFileManager"/> class and all it's properties.
+        /// </summary>
+        /// <remarks>
+        ///     Sets <see cref="BaseManager{T, TService}.Service"/> to the newly created instance of
+        ///     <see cref="MergedFileService"/> class, <see cref="BaseManager{T,
+        ///     TService}.SelectedItem"/> to the first object of service's collection and <see
+        ///     cref="MainDirectoryManager"/> to newly created <see
+        ///     cref="Concrete.MainDirectoryManager"/> object. Next sets parent directory of
+        ///     selected item to path of currently selected main directory.
+        /// </remarks>
         public MergedFileManager() : base(new MergedFileService())
         {
             SelectedItem = 1;
             MainDirectoryManager = new MainDirectoryManager();
 
             // set merged file parent directory to main directory
-            string? path = MainDirectoryManager.Service.ReadById(SelectedItem)?.GetPath();
+            string? path = MainDirectoryManager.Service.ReadById(MainDirectoryManager.SelectedItem)?.GetPath();
             if (!string.IsNullOrWhiteSpace(path))
             {
                 Service.ReadById(SelectedItem)?.SetParentDirectory(path);
             }
         }
 
+        /// <inheritdoc/>
         public MainDirectoryManager MainDirectoryManager { get; }
 
+        /// <inheritdoc/>
+        /// <param name="userId">
+        ///     The identifier of user that created item will be connected with.
+        /// </param>
+        // TODO: Implement creating new merged file object by getting appropriate data from user.
         public bool Create(int userId)
         {
             throw new NotImplementedException();
         }
 
+        /// <inheritdoc/>
         public bool Delete()
         {
             return Delete(Service.ReadById(SelectedItem));
         }
 
+        /// <inheritdoc/>
+        /// <param name="userId">
+        ///     The identifier of the user, that elements to delete are connected with.
+        /// </param>
         public bool Delete(int userId)
         {
             foreach (var file in GetFilteredList(userId))
@@ -48,21 +89,13 @@ namespace MdFilesMerger.App.Concrete
             return true;
         }
 
-        protected override void DisplayItem(MergedFile? item)
-        {
-            if (item != null)
-            {
-                DisplaySetting("Nazwa tworzonego pliku", item.GetFileName());
-                DisplaySetting("Położenie pliku", item.GetParentDirectory());
-                DisplaySetting("Tytuł", item.Title);
-            }
-        }
-
+        /// <inheritdoc/>
         public override void DisplayTitle()
         {
             DisplayTitle("Połącz wybrane pliki");
         }
 
+        /// <inheritdoc/>
         public void Merge()
         {
             FileInfo? file = Service.CreateFile(SelectedItem);
@@ -100,6 +133,7 @@ namespace MdFilesMerger.App.Concrete
             }
         }
 
+        /// <inheritdoc/>
         public void UpdateFileName()
         {
             if (SelectedItem != -1)
@@ -130,6 +164,7 @@ namespace MdFilesMerger.App.Concrete
             }
         }
 
+        /// <inheritdoc/>
         public void UpdateParentDirectory()
         {
             if (SelectedItem != -1)
@@ -160,15 +195,7 @@ namespace MdFilesMerger.App.Concrete
             }
         }
 
-        public void UpdateTitle()
-        {
-            if (SelectedItem != 1)
-            {
-                Console.Write("Podaj nagłówek (tytuł) tworzonego pliku: ");
-                Service.UpdateTitle(SelectedItem, Console.ReadLine());
-            }
-        }
-
+        /// <inheritdoc/>
         public void UpdateTableOfContents(TableOfContents newTableOfContents)
         {
             if (SelectedItem == -1)
@@ -200,6 +227,31 @@ namespace MdFilesMerger.App.Concrete
             }
         }
 
+        /// <inheritdoc/>
+        public void UpdateTitle()
+        {
+            if (SelectedItem != 1)
+            {
+                Console.Write("Podaj nagłówek (tytuł) tworzonego pliku: ");
+                Service.UpdateTitle(SelectedItem, Console.ReadLine());
+            }
+        }
+
+        /// <inheritdoc/>
+        protected override void DisplayItem(MergedFile? item)
+        {
+            if (item != null)
+            {
+                DisplaySetting("Nazwa tworzonego pliku", item.GetFileName());
+                DisplaySetting("Położenie pliku", item.GetParentDirectory());
+                DisplaySetting("Tytuł", item.Title);
+            }
+        }
+
+        /// <inheritdoc/>
+        /// <param name="userId">
+        ///     The identifier of user, that retrieved elements are connected with.
+        /// </param>
         protected override List<MergedFile> GetFilteredList(int userId) => Service.ReadByUserId(userId);
 
         private bool Delete(MergedFile? file)
