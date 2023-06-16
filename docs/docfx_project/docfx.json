@@ -8,7 +8,7 @@
             "MdFilesMerger.Controller/*.csproj",
             "MdFilesMerger.Domain/*.csproj"
           ],
-          "src": "../"
+          "src": "../.."
         }
       ],
       "dest": "api",
