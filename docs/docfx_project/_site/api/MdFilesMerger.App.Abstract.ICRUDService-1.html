@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ICRUDService&lt;T&gt;
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ICRUDService&lt;T&gt;
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Abstract_ICRUDService_1.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.ICRUDService%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.App.Abstract.ICRUDService`1">
+
+
+
+  <h1 id="MdFilesMerger_App_Abstract_ICRUDService_1" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1" class="text-break">
+    Interface ICRUDService&lt;T&gt;
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MdFilesMerger.html">MdFilesMerger</a>.<a class="xref" href="MdFilesMerger.App.html">App</a>.<a class="xref" href="MdFilesMerger.App.Abstract.html">Abstract</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MdFilesMerger.App.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface with base CRUD functionalities to serve stored private collection of <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> objects.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService&lt;T&gt;</a> -&gt; ICRUDService&lt;T&gt; <br><b>
+    Implementations: </b><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService&lt;T&gt;</a>, <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService&lt;T&gt;</a>, <a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService&lt;T&gt;</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a>, <a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a>, <a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a>
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICRUDService&lt;T&gt; : IService&lt;T&gt; where T : IItem</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Type of handled entity.</p>
+</dd>
+  </dl>
+
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;T&gt;.ReadById(int)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_Create_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Create*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_Create__0_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Create(`0)">
+  Create(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds the item to the stored collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Create(T item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The item to add.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of added item. It can be:</p>
+<ul><li>
+        <code class="paramref">item</code>.Id, if it is greater than <code>0</code> and
+        there was no equal element or element with the same id in the collection,
+    </li><li>
+        new identification number (one grater than max id value in the collection),
+        if there is no equal element in the collection, but there is already element
+        with this id or value of <code class="paramref">item</code>.Id is less equal <code>0</code>,
+    </li><li>
+        <code>-1</code>, if <code class="paramref">item</code> wasn't added to the
+        collection (for example <code class="paramref">item</code> was <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>
+        or there already is equal item in the collection).
+    </li></ul>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_CreateRange_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.CreateRange*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_CreateRange_System_Collections_Generic_List__0__" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.CreateRange(System.Collections.Generic.List{`0})">
+  CreateRange(List&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds the range of items to the stored collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CreateRange(List&lt;T&gt; items)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>items</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The list of items to add.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><table><thead><tr></tr></thead><tbody><tr></tr><tr></tr><tr></tr><tr></tr></tbody></table>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_Delete_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Delete*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_Delete_System_Int32_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Delete(System.Int32)">
+  Delete(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes the item with the specified identification number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Delete(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The identification number of the item to removed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of removed item or <code>-1</code>, if item wasn't
+removed, also if there is no element with identification number <code class="paramref">id</code> in the stored collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_Delete_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Delete*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_Delete__0_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Delete(`0)">
+  Delete(T?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes the specified item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Delete(T? item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The item to delete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of removed item or <code>-1</code>, if item wasn't
+removed, also if there is no element with id <code class="paramref">item</code>.Id in the
+stored collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_GetEqual_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.GetEqual*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_GetEqual__0_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.GetEqual(`0)">
+  GetEqual(T?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets element from collection that is equal to specified, according to appropriate
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Equals(object)</a> override.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T? GetEqual(T? item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The item, whose counterpart is searched for in the collection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p><code class="paramref">item</code> counterpart from the collection, if found; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_GetNewId_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.GetNewId*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_GetNewId" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.GetNewId">
+  GetNewId()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the identification number for new element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetNewId()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Returns number one greater then max Id in the stored collection, or <code>1</code>, if list is empty.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_IsEmpty_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.IsEmpty*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_IsEmpty" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.IsEmpty">
+  IsEmpty()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the stored collection is empty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsEmpty()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the list is empty; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_ReadAll_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.ReadAll*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_ReadAll" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.ReadAll">
+  ReadAll()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the whole stored collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;T&gt; ReadAll()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The stored collection as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_App_Abstract_ICRUDService_1_Update_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Update*"></a>
+
+  <h3 id="MdFilesMerger_App_Abstract_ICRUDService_1_Update__0_" data-uid="MdFilesMerger.App.Abstract.ICRUDService`1.Update(`0)">
+  Update(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the specified item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Update(T item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The updated item.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of updated item or <code>-1</code>, if there is no
+element with id <code class="paramref">item</code>.Id in the stored collection, old value
+wasn't successfully removed or there is already equal object in the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_App_Abstract_ICRUDService_1_Update__0__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>First method removes from the collection element with the same identification
+number. If removal succeeded, calls <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Create__0_"> Create( item) </a> method. If <code class="paramref">item</code> wasn't successfully added
+to the collection, previous object is restored.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ICRUDService.cs/#L30" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

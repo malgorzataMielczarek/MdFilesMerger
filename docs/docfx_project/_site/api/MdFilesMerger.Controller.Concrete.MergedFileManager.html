@@ -1,0 +1,784 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MergedFileManager
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MergedFileManager
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Controller_Concrete_MergedFileManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Concrete.MergedFileManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager">
+
+
+
+  <h1 id="MdFilesMerger_Controller_Concrete_MergedFileManager" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager" class="text-break">
+    Class MergedFileManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MdFilesMerger.html">MdFilesMerger</a>.<a class="xref" href="MdFilesMerger.Controller.html">Controller</a>.<a class="xref" href="MdFilesMerger.Controller.Concrete.html">Concrete</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MdFilesMerger.Controller.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Manager for merged file model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager&lt;T, TService&gt;</a> -&gt; MergedFileManager
+    <br><b> Implements: </b><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a>
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class MergedFileManager : BaseManager&lt;MergedFile, MergedFileService&gt;, IMergedFileManager, ICRUDManager&lt;MergedFile, MergedFileService&gt;, IManager&lt;MergedFile, MergedFileService&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a>&gt;</div>
+      <div><span class="xref">MergedFileManager</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">BaseManager&lt;MergedFile, MergedFileService&gt;.SelectedItem</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">BaseManager&lt;MergedFile, MergedFileService&gt;.Service</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Display">BaseManager&lt;MergedFile, MergedFileService&gt;.Display()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_DisplayTitle">BaseManager&lt;MergedFile, MergedFileService&gt;.DisplayTitle()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Select_System_Int32_">BaseManager&lt;MergedFile, MergedFileService&gt;.Select(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager__ctor_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager__ctor" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.#ctor">
+  MergedFileManager()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.Controller.Concrete.MergedFileManager.html">MergedFileManager</a> class and all it's properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MergedFileManager()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Controller_Concrete_MergedFileManager__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Sets <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">Service</a> to the newly created instance of
+<a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a> class, <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">SelectedItem</a> to the first object of service's collection and <a class="xref" href="MdFilesMerger.Controller.Concrete.MergedFileManager.html#MdFilesMerger_Controller_Concrete_MergedFileManager_MainDirectoryManager">MainDirectoryManager</a> to newly created <a class="xref" href="MdFilesMerger.Controller.Concrete.MainDirectoryManager.html">MainDirectoryManager</a> object. Next sets parent directory of
+selected item to path of currently selected main directory.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_MainDirectoryManager_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.MainDirectoryManager*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_MainDirectoryManager" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.MainDirectoryManager">
+  MainDirectoryManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The main directory manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectoryManager MainDirectoryManager { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MdFilesMerger.Controller.Concrete.MainDirectoryManager.html">MainDirectoryManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_Create_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Create*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_Create_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Create(System.Int32)">
+  Create(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates new entity of the appropriate model, adds it to service collection and sets
+as selected item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Create(int userId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The identifier of user that created item will be connected with.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if new entity was successfully created; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_Delete_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Delete*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_Delete" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Delete">
+  Delete()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes from the service's collection selected item and all elements of other
+models, that are connected with it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Delete()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if selected item was successfully deleted; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_Delete_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Delete*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_Delete_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Delete(System.Int32)">
+  Delete(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes from the service's collection all elements connected with the item with
+specified identifier. Removing every element includes also removing all elements of
+other models that are connected with it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Delete(int userId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The identifier of the user, that elements to delete are connected with.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if all elements was successfully deleted; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayItem_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayItem_MdFilesMerger_Domain_Entity_MergedFile_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile)">
+  DisplayItem(MergedFile?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Displays the information about specified item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void DisplayItem(MergedFile? item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></dt>
+    <dd><p>The item to display.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayTitle_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayTitle*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayTitle" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayTitle">
+  DisplayTitle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Displays the title of the manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void DisplayTitle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_GetFilteredList_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.GetFilteredList*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_GetFilteredList_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.GetFilteredList(System.Int32)">
+  GetFilteredList(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets elements from the collection that are connected with element with specified identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override List&lt;MergedFile&gt; GetFilteredList(int userId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The identifier of user, that retrieved elements are connected with.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</dt>
+    <dd><p>List of received elements.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_Merge_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Merge*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_Merge" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.Merge">
+  Merge()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Merges appropriate files into one .md file specified by selected item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Merge()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Controller_Concrete_MergedFileManager_Merge_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>New file with specified path is created. If selected item has title set, file
+contains it. If created file is associated with any of the selected files connected
+with selected item, file is set as ignored. Next, all selected files connected with
+this merged file are retrieved. If selected item has table of content of type other
+then <a class="xref" href="MdFilesMerger.Domain.Common.TableOfContents.html#MdFilesMerger_Domain_Common_TableOfContents_None">None</a>, then appropriate table of content is
+appended to file. At last content of all files associated with retrieved selected
+files is consecutively appended at the end of created file.</p>
+<p> Progress of the files merging is displayed in the console. </p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateFileName_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateFileName*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateFileName" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateFileName">
+  UpdateFileName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the filename of file associated with currently selected item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateFileName()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateParentDirectory_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateParentDirectory*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateParentDirectory" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateParentDirectory">
+  UpdateParentDirectory()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the path of parent directory of file associated with currently selected item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateParentDirectory()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateTableOfContents_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateTableOfContents*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateTableOfContents_MdFilesMerger_Domain_Common_TableOfContents_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateTableOfContents(MdFilesMerger.Domain.Common.TableOfContents)">
+  UpdateTableOfContents(TableOfContents)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the table of contents type of selected item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateTableOfContents(TableOfContents newTableOfContents)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newTableOfContents</code> <a class="xref" href="MdFilesMerger.Domain.Common.TableOfContents.html">TableOfContents</a></dt>
+    <dd><p>The new table of contents type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateTitle_" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateTitle*"></a>
+
+  <h3 id="MdFilesMerger_Controller_Concrete_MergedFileManager_UpdateTitle" data-uid="MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateTitle">
+  UpdateTitle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the title (header) of the currently selected merged file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateTitle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMergedFileManager.html">IMergedFileManager</a></div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MergedFileManager.cs/#L30" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
