@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MainDirectory
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MainDirectory
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Domain_Entity_MainDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Entity.MainDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.Domain.Entity.MainDirectory">
+
+
+
+  <h1 id="MdFilesMerger_Domain_Entity_MainDirectory" data-uid="MdFilesMerger.Domain.Entity.MainDirectory" class="text-break">
+    Class MainDirectory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MdFilesMerger.html">MdFilesMerger</a>.<a class="xref" href="MdFilesMerger.Domain.html">Domain</a>.<a class="xref" href="MdFilesMerger.Domain.Entity.html">Entity</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MdFilesMerger.Domain.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base directory for selected and ignored files.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a> -&gt;
+    MainDirectory <br><b> Implements: </b><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable&lt;T&gt;</a>,
+    <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a>
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class MainDirectory : BaseDirectory, IComparable&lt;BaseDirectory&gt;, IMainDirectory, IDirectory, IItem</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+      <div><span class="xref">MainDirectory</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_ModifiedDate">BaseDirectory.ModifiedDate</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory_">BaseDirectory.CompareTo(BaseDirectory)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_GetPath">BaseDirectory.GetPath()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">BaseItem.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">BaseItem.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="MdFilesMerger_Domain_Entity_MainDirectory_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This directory will be searched for .md files. Saved paths of all selected and ignored
+files, associated with this instance, will be relative to this instance path ( <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>).</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor">
+  MainDirectory()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all properties to its default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectory()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32)">
+  MainDirectory(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id"> Id </a> to <code class="paramref">id</code> and rest properties to its
+default value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectory(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>This item identification number.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32,System.String,System.Int32)">
+  MainDirectory(int, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>
+to adjusted <code class="paramref">path</code> or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> and <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html#MdFilesMerger_Domain_Entity_MainDirectory_MergedFileId">MergedFileId</a> to <code class="paramref">mergedFileId</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectory(int id, string? path, int mergedFileId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of item.</p>
+</dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Path to the existing directory that you want to associate with this object. It can
+be absolute or relative to the current directory.</p>
+</dd>
+    <dt><code>mergedFileId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> object associated with this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If <code class="paramref">path</code> is a valid path of existing directory, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> is set to absolute path to this directory, that uses <code>'/'</code> as directory separator character. Otherwise <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32_System_DateTime_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
+  MainDirectory(int, string?, int, DateTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>
+to <code class="paramref">path</code>, <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html#MdFilesMerger_Domain_Entity_MainDirectory_MergedFileId">MergedFileId</a> to <code class="paramref">mergedFileId</code> and <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_ModifiedDate">ModifiedDate</a> to <code class="paramref">modifiedDate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectory(int id, string? path, int mergedFileId, DateTime modifiedDate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The item identification number.</p>
+</dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Valid absolute path to existing directory associated with this item. Path should use
+<code>'/'</code> as directory separator.</p>
+</dd>
+    <dt><code>mergedFileId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> object associated with this instance.</p>
+</dd>
+    <dt><code>modifiedDate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>Date and time of last modification of this entity.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32_System_DateTime__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>No evaluation or adjusting is performed, so use this method only for already
+evaluated and prepared data, for example from database.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_String_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.String)">
+  MainDirectory(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> to adjusted <code class="paramref">path</code> and rest
+properties to its default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainDirectory(string? path)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Path to the existing directory that you want to associate with this object. It can
+be absolute or relative to the current directory.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If <code class="paramref">path</code> is a valid path of existing directory, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> is set to absolute path to this directory, that uses <code>'/'</code> as directory separator character. Otherwise <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory_MergedFileId_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_MergedFileId" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId">
+  MergedFileId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identification number of merged file associated with this main directory instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MergedFileId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>By default set to <code>0</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory_Equals_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.Equals*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_Equals_System_Object_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory_GetHashCode_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.GetHashCode*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_GetHashCode" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MainDirectory_SetPath_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.SetPath*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_SetPath_System_String_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.SetPath(System.String)">
+  SetPath(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> as absolute path of existing directory or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if <code class="paramref">path</code> is invalid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool SetPath(string? path)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Path to the existing directory that you want to associate with this object. It can
+be absolute or relative to the current directory.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if path was successfully set, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if
+given <code class="paramref">path</code> is invalid or points to a non-existent directory.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

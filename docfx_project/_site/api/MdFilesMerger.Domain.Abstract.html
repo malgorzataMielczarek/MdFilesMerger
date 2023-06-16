@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace MdFilesMerger.Domain.Abstract
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace MdFilesMerger.Domain.Abstract
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.Domain.Abstract">
+
+  <h1 id="MdFilesMerger_Domain_Abstract" data-uid="MdFilesMerger.Domain.Abstract" class="text-break">Namespace MdFilesMerger.Domain.Abstract
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></dt>
+      <dd><p>Base interface for all directory or file related models.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; IDirectory <br><b> Implementations:
+    </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a>, <a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></dt>
+      <dd><p>Base interface for models related with .md files involved in the merge (merged and
+selected file models).</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt;
+    IEditFile <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></dt>
+      <dd><p>Base interface for all models.</p>
+<p>
+    <b> Inheritance: </b> IItem <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a>, <a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MenuAction.html">MenuAction</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
+      <dd><p>Interface of main directory model</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt;
+    IMainDirectory <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IMenuAction.html">IMenuAction</a></dt>
+      <dd><p>Interface for menu action item.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; IMenuAction <br><b> Implementations:
+    </b><a class="xref" href="MdFilesMerger.Domain.Entity.MenuAction.html">MenuAction</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></dt>
+      <dd><p>Interface for merged file model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a> -&gt; IMergedFile <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></dt>
+      <dd><p>Interface for models associated with the <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a> instance (selected
+and ignored file models).</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt;
+    IRelativeFile <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></dt>
+      <dd><p>Interface of selected file model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a> -&gt; ISelectedFile <br><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a> -&gt; ISelectedFile <br><b>
+    Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></dt>
+      <dd><p>Interface of user model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; IUser <br><b> Implementations:
+    </b><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a>
+</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

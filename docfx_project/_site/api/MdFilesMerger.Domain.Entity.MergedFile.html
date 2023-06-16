@@ -1,0 +1,957 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MergedFile
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MergedFile
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Domain_Entity_MergedFile.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Entity.MergedFile%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.Domain.Entity.MergedFile">
+
+
+
+  <h1 id="MdFilesMerger_Domain_Entity_MergedFile" data-uid="MdFilesMerger.Domain.Entity.MergedFile" class="text-break">
+    Class MergedFile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MdFilesMerger.html">MdFilesMerger</a>.<a class="xref" href="MdFilesMerger.Domain.html">Domain</a>.<a class="xref" href="MdFilesMerger.Domain.Entity.html">Entity</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MdFilesMerger.Domain.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Implementation of merged file model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a> -&gt;
+    <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a> -&gt; MergedFile <br><b> Implements: </b><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable&lt;T&gt;</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a>, <a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class MergedFile : MdFile, IComparable&lt;BaseDirectory&gt;, IMergedFile, IEditFile, IDirectory, IItem</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+      <div><span class="xref">MergedFile</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html#MdFilesMerger_Domain_Common_MdFile_SetPath_System_String_">MdFile.SetPath(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_ModifiedDate">BaseDirectory.ModifiedDate</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory_">BaseDirectory.CompareTo(BaseDirectory)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_GetPath">BaseDirectory.GetPath()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">BaseItem.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">BaseItem.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile__ctor_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile__ctor" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor">
+  MergedFile()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all properties to its default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MergedFile()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile__ctor_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile__ctor_System_Int32_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor(System.Int32,System.Int32)">
+  MergedFile(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html#MdFilesMerger_Domain_Entity_MergedFile_UserId">UserId</a> to
+<code class="paramref">userId</code> and rest properties to its default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MergedFile(int id, int userId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of this item.</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of <a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a> object connected with this item.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile__ctor_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile__ctor_System_Int32_System_String_System_Nullable_System_DateTime__System_DateTime_System_String_MdFilesMerger_Domain_Common_TableOfContents_System_String_System_String_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.#ctor(System.Int32,System.String,System.Nullable{System.DateTime},System.DateTime,System.String,MdFilesMerger.Domain.Common.TableOfContents,System.String,System.String,System.Int32)">
+  MergedFile(int, string?, DateTime?, DateTime, string, TableOfContents, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all properties accordingly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MergedFile(int id, string? path, DateTime? mergeDate, DateTime modifiedDate, string newLineStyle, TableOfContents tableOfContents, string? title, string? tOCHeader, int userId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of item.</p>
+</dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Absolute path to .md file, where merged file will be created.</p>
+</dd>
+    <dt><code>mergeDate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd><p>Date and time of last creation of merged file associated with this instance or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if file wasn't created yet.</p>
+</dd>
+    <dt><code>modifiedDate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>Date and time of last modification of this entity.</p>
+</dd>
+    <dt><code>newLineStyle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String that will be placed at the end of each line of text placed in created merged
+file and is treated as a newline character.</p>
+</dd>
+    <dt><code>tableOfContents</code> <a class="xref" href="MdFilesMerger.Domain.Common.TableOfContents.html">TableOfContents</a></dt>
+    <dd><p>Type of table of contents that will be placed at the beginning of created merged file.</p>
+</dd>
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Text that will be placed as first line of created merged file. Title (header) of the file.</p>
+</dd>
+    <dt><code>tOCHeader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Text that will be placed in created merged file in the line below <code class="paramref">title</code> and before content of table of contents.</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Identification number of <a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a> associated with this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Domain_Entity_MergedFile__ctor_System_Int32_System_String_System_Nullable_System_DateTime__System_DateTime_System_String_MdFilesMerger_Domain_Common_TableOfContents_System_String_System_String_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>No evaluation or adjusting is performed, so use it only for previously checked and
+adjusted data, for example from database.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_MergeDate_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.MergeDate*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_MergeDate" data-uid="MdFilesMerger.Domain.Entity.MergedFile.MergeDate">
+  MergeDate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Last date and time of creating the merged file. If merged file wasn't created yet,
+it is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime? MergeDate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd><p>By default it is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_NewLineStyle_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.NewLineStyle*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_NewLineStyle" data-uid="MdFilesMerger.Domain.Entity.MergedFile.NewLineStyle">
+  NewLineStyle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>String that will be put at the end of each line of text in created merged file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NewLineStyle { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>By default it is set to <code> &quot;\n&quot; </code>, but it can by any string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_TOCHeader_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.TOCHeader*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_TOCHeader" data-uid="MdFilesMerger.Domain.Entity.MergedFile.TOCHeader">
+  TOCHeader
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Header placed in the merged file before the table of contents content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? TOCHeader { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>By default it is set to <code> &quot;## Spis treści&quot; </code> (second level header with &quot;Spis
+treści&quot; text).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_TableOfContents_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.TableOfContents*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_TableOfContents" data-uid="MdFilesMerger.Domain.Entity.MergedFile.TableOfContents">
+  TableOfContents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type of the table of contents that will by placed at the beginning of created merged file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableOfContents TableOfContents { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MdFilesMerger.Domain.Common.TableOfContents.html">TableOfContents</a></dt>
+    <dd><p>By default it is set to <a class="xref" href="MdFilesMerger.Domain.Common.TableOfContents.html#MdFilesMerger_Domain_Common_TableOfContents_None">None</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_Title_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.Title*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_Title" data-uid="MdFilesMerger.Domain.Entity.MergedFile.Title">
+  Title
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Title (header) of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Title { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>By default it is set to <code> &quot;Kurs &quot;Zostań programistą ASP.NET&quot; - notatki&quot; </code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_UserId_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.UserId*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_UserId" data-uid="MdFilesMerger.Domain.Entity.MergedFile.UserId">
+  UserId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identification number of <a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a> associated with this item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UserId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>By default set to <code>0</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_Equals_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.Equals*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_Equals_System_Object_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_GetFileName_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetFileName*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_GetFileName" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetFileName">
+  GetFileName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Extract filename from path stored in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? GetFileName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the file whose path is stored in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_GetHashCode_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetHashCode*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_GetHashCode" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_GetParentDirectory_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetParentDirectory*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_GetParentDirectory" data-uid="MdFilesMerger.Domain.Entity.MergedFile.GetParentDirectory">
+  GetParentDirectory()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Extract parent directory path from path stored in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? GetParentDirectory()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Path of parent directory of the file whose path is stored in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_SetFileName_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.SetFileName*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_SetFileName_System_String_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.SetFileName(System.String)">
+  SetFileName(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes filename in path saved in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a>, without changing parent
+directory path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetFileName(string fileName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>New filename.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if filename was successfully changed; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="MdFilesMerger_Domain_Entity_MergedFile_SetParentDirectory_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.SetParentDirectory*"></a>
+
+  <h3 id="MdFilesMerger_Domain_Entity_MergedFile_SetParentDirectory_System_String_" data-uid="MdFilesMerger.Domain.Entity.MergedFile.SetParentDirectory(System.String)">
+  SetParentDirectory(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes parent directory of associated merged file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetParentDirectory(string directoryPath)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>directoryPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>New parent directory path.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if parent directory path was successfully changed; otherwise
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="MdFilesMerger_Domain_Entity_MergedFile_SetParentDirectory_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Changes parent directory in path stored in <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">Name</a> without changing filename.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+    </dd>
+  </dl>
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html">BaseItem</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IEditFile.html">IEditFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MergedFile.cs/#L23" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
