@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>..\MdFilesMerger.Domain.xml</DocumentationFile>
+    <DocumentationFile>..\Help\MdFilesMerger.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
