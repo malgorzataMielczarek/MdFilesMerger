@@ -52,7 +52,7 @@ namespace MdFilesMerger.App.Abstract
         ///         </item>
         ///     </list>
         /// </returns>
-        public int Create(T item);
+        int Create(T item);
 
         /// <summary>
         ///     Adds the range of items to the stored collection.
@@ -85,7 +85,7 @@ namespace MdFilesMerger.App.Abstract
         ///         </item>
         ///     </list>
         /// </returns>
-        public int CreateRange(List<T> items);
+        int CreateRange(List<T> items);
 
         /// <summary>
         ///     Deletes the specified item.
@@ -96,7 +96,7 @@ namespace MdFilesMerger.App.Abstract
         ///     removed, also if there is no element with id <paramref name="item"/>.Id in the
         ///     stored collection.
         /// </returns>
-        public int Delete(T? item);
+        int Delete(T? item);
 
         /// <summary>
         ///     Deletes the item with the specified identification number.
@@ -107,7 +107,7 @@ namespace MdFilesMerger.App.Abstract
         ///     removed, also if there is no element with identification number <paramref
         ///     name="id"/> in the stored collection.
         /// </returns>
-        public int Delete(int id);
+        int Delete(int id);
 
         /// <summary>
         ///     Gets element from collection that is equal to specified, according to appropriate
@@ -117,7 +117,7 @@ namespace MdFilesMerger.App.Abstract
         /// <returns>
         ///     <paramref name="item"/> counterpart from the collection, if found; otherwise <see langword="null"/>.
         /// </returns>
-        public T? GetEqual(T? item);
+        T? GetEqual(T? item);
 
         /// <summary>
         ///     Gets the identification number for new element.
@@ -126,19 +126,19 @@ namespace MdFilesMerger.App.Abstract
         ///     Returns number one greater then max Id in the stored collection, or <see
         ///     langword="1"/>, if list is empty.
         /// </returns>
-        public int GetNewId();
+        int GetNewId();
 
         /// <summary>
         ///     Determines whether the stored collection is empty.
         /// </summary>
         /// <returns> <see langword="true"/> if the list is empty; otherwise, <see langword="false"/>. </returns>
-        public bool IsEmpty();
+        bool IsEmpty();
 
         /// <summary>
         ///     Gets the whole stored collection.
         /// </summary>
         /// <returns> The stored collection as <see cref="List{T}"/>. </returns>
-        public List<T> ReadAll();
+        List<T> ReadAll();
 
         /// <summary>
         ///     Updates the specified item.
@@ -155,6 +155,6 @@ namespace MdFilesMerger.App.Abstract
         ///     element with id <paramref name="item"/>.Id in the stored collection, old value
         ///     wasn't successfully removed or there is already equal object in the collection.
         /// </returns>
-        public int Update(T item);
+        int Update(T item);
     }
 }

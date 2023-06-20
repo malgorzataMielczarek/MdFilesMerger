@@ -1,6 +1,7 @@
 ﻿using MdFilesMerger.Controller.Concrete;
 using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.Controller.Abstract;
 
 namespace MdFilesMerger
 {
@@ -10,12 +11,12 @@ namespace MdFilesMerger
         {
             MenuActionManager menuActionManager = new MenuActionManager();
             UserManager userMenager = new UserManager();
-            MergedFileManager mergedFileManager = userMenager.MergedFileManager;
-            MainDirectoryManager mainDirManager = mergedFileManager.MainDirectoryManager;
-            SelectedFileManager selectedFileMenager = mainDirManager.SelectedFileManager;
-            IgnoredFileManager ignoredFileManager = mainDirManager.IgnoredFileManager;
+            IMergedFileManager mergedFileManager = userMenager.MergedFileManager;
+            IMainDirectoryManager mainDirManager = mergedFileManager.MainDirectoryManager;
+            ISelectedFileManager selectedFileMenager = mainDirManager.SelectedFileManager;
+            IIgnoredFileManager ignoredFileManager = mainDirManager.IgnoredFileManager;
 
-            MenuAction? action = menuActionManager.Service.ReadById(menuActionManager.SelectedItem);
+            IMenuAction? action = menuActionManager.Service.ReadById(menuActionManager.SelectedItem);
 
             while (menuActionManager.SelectedItem != 1)
             {

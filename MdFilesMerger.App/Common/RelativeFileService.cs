@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Concrete;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 
@@ -22,25 +23,26 @@ namespace MdFilesMerger.App.Common
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
     /// <seealso cref="RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
-    public class RelativeFileService<T> : BaseDirectoryService<T>, IRelativeFileService<T> where T : RelativeFile
+    public class RelativeFileService<T> : BaseDirectoryService<T>, IRelativeFileService<T> where T : class, IRelativeFile
     {
         /// <summary>
         ///     The main directory service.
         /// </summary>
-        protected readonly MainDirectoryService _mainDirService;
+        protected readonly IMainDirectoryService _mainDirService;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RelativeFileService{T}"/> class.
         /// </summary>
         /// <param name="mainDirService"> The main directory service. </param>
-        public RelativeFileService(MainDirectoryService mainDirService)
+        public RelativeFileService(IMainDirectoryService mainDirService)
         {
             _mainDirService = mainDirService;
         }
 
         /// <inheritdoc/>
-        public List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, MainDirectory mainDirectory)
+        public List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, IMainDirectory mainDirectory)
         {
             var files = new List<FileInfo>();
             if (!string.IsNullOrWhiteSpace(mainDirectory?.Name))
@@ -72,7 +74,7 @@ namespace MdFilesMerger.App.Common
         {
             if (relativeFile != null)
             {
-                MainDirectory? mainDirectory = _mainDirService.ReadById(relativeFile.MainDirId);
+                IMainDirectory? mainDirectory = _mainDirService.ReadById(relativeFile.MainDirId);
 
                 return relativeFile.GetPath(mainDirectory?.GetPath());
             }

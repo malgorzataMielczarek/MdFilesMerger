@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.App.Concrete
@@ -15,8 +16,9 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
     /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
-    public sealed class UserService : BaseService<User>, IUserService
+    public sealed class UserService : BaseService<IUser>, IUserService
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="UserService"/> class.
@@ -40,7 +42,7 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public User? ReadByName(string name)
+        public IUser? ReadByName(string name)
         {
             foreach (var item in _items)
             {
@@ -61,7 +63,7 @@ namespace MdFilesMerger.App.Concrete
                 return -1;
             }
 
-            User? oldUser = ReadById(id);
+            IUser? oldUser = ReadById(id);
 
             if (oldUser == null)
             {
@@ -89,7 +91,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdatePassword(int id, string password)
         {
-            User? user = ReadById(id);
+            IUser? user = ReadById(id);
 
             if (user != null)
             {

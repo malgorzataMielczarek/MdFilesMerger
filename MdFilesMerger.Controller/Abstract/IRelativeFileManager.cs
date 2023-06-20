@@ -1,5 +1,5 @@
-﻿using MdFilesMerger.App.Common;
-using MdFilesMerger.Domain.Common;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Abstract
 {
@@ -16,7 +16,7 @@ namespace MdFilesMerger.Controller.Abstract
     /// <typeparam name="TService">
     ///     Service handling collection of object of specified model.
     /// </typeparam>
-    /// <seealso cref="RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+    /// <seealso cref="IRelativeFileService{T}"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -28,8 +28,8 @@ namespace MdFilesMerger.Controller.Abstract
     /// </seealso>
     /// <seealso cref="Concrete.IgnoredFileManager"> MdFilesMerger.Controller.Concrete.IgnoredFileManager </seealso>
     /// <seealso cref="Concrete.SelectedFileManager"> MdFilesMerger.Controller.Concrete.SelectedFileManager </seealso>
-    /// <seealso cref="RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
-    public interface IRelativeFileManager<T, TService> : ICRUDManager<T, TService> where T : RelativeFile where TService : RelativeFileService<T>
+    /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+    public interface IRelativeFileManager<T, TService> : ICRUDManager<T, TService> where T : IRelativeFile where TService : IRelativeFileService<T>
     {
         /// <summary>
         ///     Sets selected item to specified identifier.

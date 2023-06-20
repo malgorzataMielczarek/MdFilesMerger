@@ -16,12 +16,12 @@ namespace MdFilesMerger.Domain.Abstract
         /// <summary>
         ///     Value assigning item to specific menu.
         /// </summary>
-        public MenuType Menu { get; set; }
+        MenuType Menu { get; set; }
 
         /// <summary>
         ///     Says what menu will be displayed when performing action described by this item will
         ///     by finish.
         /// </summary>
-        public MenuType NextMenu { get; set; }
+        MenuType NextMenu { get; set; }
     }
 }

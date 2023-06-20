@@ -1,9 +1,9 @@
-﻿using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Abstract
 {
     /// <summary>
-    ///     Interface to service collection of <see cref="MainDirectory"/> objects.
+    ///     Interface to service collection of <see cref="IMainDirectory"/> objects.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
     ///         -&gt; <see cref="IDirectoryService{T}"/> -&gt; IMainDirectoryService <br/><b>
@@ -14,8 +14,8 @@ namespace MdFilesMerger.App.Abstract
     /// <seealso cref="IDirectoryService{T}"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
-    /// <seealso cref="MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
-    public interface IMainDirectoryService : IDirectoryService<MainDirectory>
+    /// <seealso cref="IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
+    public interface IMainDirectoryService : IDirectoryService<IMainDirectory>
     {
         /// <summary>
         ///     Finds all .md files in specified main directory and it's subdirectories.
@@ -34,7 +34,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The <see cref="MainDirectory"/> object associated with directory searched for .md files.
         /// </param>
         /// <returns> Collection of found .md files. </returns>
-        IEnumerable<FileInfo> FindAllFiles(MainDirectory mainDirectory);
+        IEnumerable<FileInfo> FindAllFiles(IMainDirectory mainDirectory);
 
         /// <summary>
         ///     Gets, from the stored collection of <see cref="MainDirectory"/> objects, elements
@@ -46,6 +46,6 @@ namespace MdFilesMerger.App.Abstract
         ///     identifier. If there is no objects with <see cref="MainDirectory.MergedFileId"/>
         ///     equal <paramref name="mergedFileId"/>, returned list is empty.
         /// </returns>
-        public List<MainDirectory> ReadByMergedFileId(int mergedFileId);
+        List<IMainDirectory> ReadByMergedFileId(int mergedFileId);
     }
 }

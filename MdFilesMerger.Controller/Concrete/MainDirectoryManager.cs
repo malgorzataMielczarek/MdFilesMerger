@@ -1,6 +1,8 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.Controller.Concrete
@@ -13,7 +15,7 @@ namespace MdFilesMerger.Controller.Concrete
     ///         TService}"/>, <see cref="IMainDirectoryManager"/>, <see cref="IManager{T, TService}"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
+    /// <seealso cref="IMainDirectoryService"> MdFilesMerger.App.Abstract.IMainDirectoryService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -24,8 +26,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
-    public sealed class MainDirectoryManager : BaseManager<MainDirectory, MainDirectoryService>, IMainDirectoryManager
+    /// <seealso cref="IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
+    public sealed class MainDirectoryManager : BaseManager<IMainDirectory, IMainDirectoryService>, IMainDirectoryManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainDirectoryManager"/> class and all
@@ -48,10 +50,10 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        public IgnoredFileManager IgnoredFileManager { get; }
+        public IIgnoredFileManager IgnoredFileManager { get; }
 
         /// <inheritdoc/>
-        public SelectedFileManager SelectedFileManager { get; }
+        public ISelectedFileManager SelectedFileManager { get; }
 
         /// <inheritdoc/>
         /// <param name="mergedFileId">
@@ -129,14 +131,14 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        public void IgnoreFile(FileInfo file, MainDirectory? mainDirectory)
+        public void IgnoreFile(FileInfo file, IMainDirectory? mainDirectory)
         {
             if (mainDirectory == null || string.IsNullOrWhiteSpace(file?.FullName))
             {
                 return;
             }
 
-            SelectedFile? selectedFile = new SelectedFile(file, mainDirectory);
+            ISelectedFile? selectedFile = new SelectedFile(file, mainDirectory);
             if ((selectedFile = SelectedFileManager.Service.GetEqual(selectedFile)) != null)
             {
                 SelectedFileManager.SelectItem(selectedFile.Id);
@@ -152,7 +154,7 @@ namespace MdFilesMerger.Controller.Concrete
         /// <inheritdoc/>
         public void IgnoreFile(FileInfo file)
         {
-            MainDirectory? mainDirectory = Service.ReadById(SelectedItem);
+            IMainDirectory? mainDirectory = Service.ReadById(SelectedItem);
             IgnoreFile(file, mainDirectory);
         }
 
@@ -182,7 +184,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        protected override void DisplayItem(MainDirectory? item)
+        protected override void DisplayItem(IMainDirectory? item)
         {
             if (item != null)
             {
@@ -194,9 +196,9 @@ namespace MdFilesMerger.Controller.Concrete
         /// <param name="mergedFileId">
         ///     The identifier of merged file object, that elements are filtered by.
         /// </param>
-        protected override List<MainDirectory> GetFilteredList(int mergedFileId) => Service.ReadByMergedFileId(mergedFileId);
+        protected override List<IMainDirectory> GetFilteredList(int mergedFileId) => Service.ReadByMergedFileId(mergedFileId);
 
-        private bool Delete(MainDirectory? mainDirectory)
+        private bool Delete(IMainDirectory? mainDirectory)
         {
             if (mainDirectory == null)
             {

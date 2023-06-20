@@ -29,6 +29,6 @@ namespace MdFilesMerger.App.Abstract
         ///     Identification number of updated item, or <see langword="-1"/>, if update failed
         ///     (for example there are no item with specified id in the collection).
         /// </returns>
-        public int UpdateTitle(int id, string? title);
+        int UpdateTitle(int id, string? title);
     }
 }

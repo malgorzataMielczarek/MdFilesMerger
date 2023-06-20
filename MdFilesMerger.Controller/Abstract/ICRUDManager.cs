@@ -43,7 +43,7 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if new entity was successfully created; otherwise <see langword="false"/>.
         /// </returns>
-        public bool Create(int connectedItemId);
+        bool Create(int connectedItemId);
 
         /// <summary>
         ///     Deletes from the service's collection selected item and all elements of other
@@ -52,7 +52,7 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if selected item was successfully deleted; otherwise <see langword="false"/>.
         /// </returns>
-        public bool Delete();
+        bool Delete();
 
         /// <summary>
         ///     Deletes from the service's collection all elements connected with the item with
@@ -66,6 +66,6 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if all elements was successfully deleted; otherwise <see langword="false"/>.
         /// </returns>
-        public bool Delete(int connectedItemId);
+        bool Delete(int connectedItemId);
     }
 }

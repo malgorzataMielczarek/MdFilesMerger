@@ -111,7 +111,7 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is MainDirectory other)
+            if (obj != null && obj is IMainDirectory other)
             {
                 return this.Name == other.Name && this.MergedFileId == other.MergedFileId;
             }

@@ -15,7 +15,9 @@ namespace MdFilesMerger.Controller.Abstract
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Type of model. </typeparam>
-    /// <typeparam name="TService"> Type of service handling collection of specified models. </typeparam>
+    /// <typeparam name="TService">
+    ///     Type of service handling collection of specified models.
+    /// </typeparam>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt;} </seealso>
     /// <seealso cref="Common.BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
@@ -37,23 +39,23 @@ namespace MdFilesMerger.Controller.Abstract
         ///     one of the manager's methods.
         /// </summary>
         /// <value> By default it is set to <see langword="-1"/>, before any item is selected. </value>
-        public int SelectedItem { get; }
+        int SelectedItem { get; }
 
         /// <summary>
         ///     Service handling collection of objects implementing model associated with this manager.
         /// </summary>
         /// <value> The appropriate service. Service object is created in constructor. </value>
-        public TService Service { get; }
+        TService Service { get; }
 
         /// <summary>
         ///     Displays information about the currently selected item.
         /// </summary>
-        public void Display();
+        void Display();
 
         /// <summary>
         ///     Displays the title of the manager.
         /// </summary>
-        public void DisplayTitle();
+        void DisplayTitle();
 
         /// <summary>
         ///     Selects the item from service's collection.
@@ -66,6 +68,6 @@ namespace MdFilesMerger.Controller.Abstract
         ///     If model supported by this manager is connected with another model, it is the
         ///     identifier of appropriate connected object. Otherwise parameter's value doesn't matter.
         /// </param>
-        public void Select(int connectedItemId);
+        void Select(int connectedItemId);
     }
 }

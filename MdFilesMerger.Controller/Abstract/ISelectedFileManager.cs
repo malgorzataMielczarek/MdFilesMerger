@@ -1,5 +1,5 @@
-﻿using MdFilesMerger.App.Concrete;
-using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Abstract
 {
@@ -11,7 +11,7 @@ namespace MdFilesMerger.Controller.Abstract
     ///         TService}"/> -&gt; ISelectedFileManager <br/><b> Implementations: </b><see cref="Concrete.SelectedFileManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
+    /// <seealso cref="ISelectedFileService"> MdFilesMerger.App.Abstract.ISelectedFileService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -22,8 +22,8 @@ namespace MdFilesMerger.Controller.Abstract
     ///     MdFilesMerger.Controller.Abstract.IRelativeFileManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="Concrete.SelectedFileManager"> MdFilesMerger.Controller.Concrete.SelectedFileManager </seealso>
-    /// <seealso cref="SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-    public interface ISelectedFileManager : IRelativeFileManager<SelectedFile, SelectedFileService>
+    /// <seealso cref="ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
+    public interface ISelectedFileManager : IRelativeFileManager<ISelectedFile, ISelectedFileService>
     {
         /// <summary>
         ///     Updates the title (table of contents entry) of selected item.
@@ -31,6 +31,6 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if title was successfully updated; otherwise <see langword="false"/>.
         /// </returns>
-        public bool UpdateTitle();
+        bool UpdateTitle();
     }
 }

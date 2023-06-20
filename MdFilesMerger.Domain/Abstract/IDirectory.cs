@@ -5,8 +5,9 @@ namespace MdFilesMerger.Domain.Abstract
     /// <summary>
     ///     Base interface for all directory or file related models.
     ///     <para>
-    ///         <b> Inheritance: </b><see cref="IItem"/> -&gt; IDirectory <br/><b> Implementations:
-    ///         </b><see cref="Common.BaseDirectory"/>, <see cref="Common.MdFile"/>, <see
+    ///         <b> Inheritance: </b><see cref="IItem"/> -&gt; IDirectory <br/><see
+    ///         cref="IComparable{T}"/> -&gt; IDirectory <br/><b> Implementations: </b><see
+    ///         cref="Common.BaseDirectory"/>, <see cref="Common.MdFile"/>, <see
     ///         cref="Common.RelativeFile"/>, <see cref="Entity.IgnoredFile"/>, <see
     ///         cref="Entity.MainDirectory"/>, <see cref="Entity.MergedFile"/>, <see cref="Entity.SelectedFile"/>
     ///     </para>
@@ -19,7 +20,7 @@ namespace MdFilesMerger.Domain.Abstract
     /// <seealso cref="Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
     /// <seealso cref="Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
     /// <seealso cref="Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-    public interface IDirectory : IItem
+    public interface IDirectory : IItem, IComparable<IDirectory>
     {
         /// <summary>
         ///     Date and time of last update or creation if entry wasn't modified.
@@ -30,11 +31,11 @@ namespace MdFilesMerger.Domain.Abstract
         ///     Gets directory/file path held in <see cref="IItem.Name"/> property.
         /// </summary>
         [return: NotNullIfNotNull(nameof(Name))]
-        public string? GetPath();
+        string? GetPath();
 
         /// <summary>
         ///     Sets <see cref="IItem.Name"/> as <paramref name="path"/>.
         /// </summary>
-        public bool SetPath([NotNullWhen(true)] string? path);
+        bool SetPath([NotNullWhen(true)] string? path);
     }
 }

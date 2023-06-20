@@ -1,6 +1,8 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.Controller.Concrete
@@ -13,7 +15,7 @@ namespace MdFilesMerger.Controller.Concrete
     ///                     TService}"/>, <see cref="IUserManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
+    /// <seealso cref="IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -24,8 +26,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
-    public class UserManager : BaseManager<User, UserService>, IUserManager
+    /// <seealso cref="IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
+    public class UserManager : BaseManager<IUser, IUserService>, IUserManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="UserManager"/> class and all it's properties.
@@ -43,7 +45,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        public MergedFileManager MergedFileManager { get; }
+        public IMergedFileManager MergedFileManager { get; }
 
         /// <summary>
         ///     Asks user for login and password and creates new user based on the input.
@@ -175,7 +177,7 @@ namespace MdFilesMerger.Controller.Concrete
         /// <inheritdoc/>
         public bool UpdatePassword()
         {
-            User? user;
+            IUser? user;
             if (SelectedItem != -1 && (user = Service.ReadById(SelectedItem)) != null)
             {
                 Console.Write("Login: ");
@@ -253,7 +255,7 @@ namespace MdFilesMerger.Controller.Concrete
         ///     default value, so it can be omitted all together.
         /// </param>
         /// <returns> List of all users. </returns>
-        protected override List<User> GetFilteredList(int connectedItemId = 0) => Service.ReadAll();
+        protected override List<IUser> GetFilteredList(int connectedItemId = 0) => Service.ReadAll();
 
         private string GetNotEmptyLogin((int Left, int Top) cursor)
         {

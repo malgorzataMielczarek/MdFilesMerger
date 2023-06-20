@@ -23,19 +23,19 @@ namespace MdFilesMerger.Domain.Abstract
         ///     Identification number of the <see cref="Entity.MainDirectory"> MainDirectory </see>
         ///     object associated with the current instance.
         /// </summary>
-        public int MainDirId { get; set; }
+        int MainDirId { get; set; }
 
         /// <summary>
         ///     Gets absolute path of file associated with the current instance.
         /// </summary>
         [return: NotNullIfNotNull(nameof(Name))]
-        public string? GetPath(string? mainDirPath);
+        string? GetPath(string? mainDirPath);
 
         /// <summary>
         ///     Sets <see cref="IItem.Name"/> as path relative to <paramref name="mainDirPath"/> or
         ///     to <see langword="null"/>, if <paramref name="path"/> doesn't point to existing .md file.
         /// </summary>
-        public bool SetPath([NotNullWhen(true)] string? path, string? mainDirPath);
+        bool SetPath([NotNullWhen(true)] string? path, string? mainDirPath);
 
         /// <summary>
         ///     Converts to <see cref="SelectedFile"/>.
@@ -45,6 +45,6 @@ namespace MdFilesMerger.Domain.Abstract
         ///     New <see cref="SelectedFile"/> object associated with the same file and connected
         ///     with the same <see cref="MainDirectory"/> object as this instance.
         /// </returns>
-        public SelectedFile ToSelectedFile(string? mainDirPath);
+        SelectedFile ToSelectedFile(string? mainDirPath);
     }
 }

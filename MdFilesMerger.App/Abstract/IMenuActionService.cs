@@ -1,5 +1,5 @@
 ﻿using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Abstract
 {
@@ -12,7 +12,8 @@ namespace MdFilesMerger.App.Abstract
     /// </summary>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
-    public interface IMenuActionService : IService<MenuAction>
+    /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
+    public interface IMenuActionService : IService<IMenuAction>
     {
         /// <summary>
         ///     Gets elements from <see cref="Concrete.MenuActionService._actions"/> with <see
@@ -20,6 +21,6 @@ namespace MdFilesMerger.App.Abstract
         /// </summary>
         /// <param name="menuType"> Type of the menu. </param>
         /// <returns> List with object of menu <paramref name="menuType"/>. </returns>
-        public List<MenuAction> ReadByMenuType(MenuType menuType);
+        List<IMenuAction> ReadByMenuType(MenuType menuType);
     }
 }

@@ -1,9 +1,10 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
 using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 using System.Text;
+using MdFilesMerger.App.Concrete;
 
 namespace MdFilesMerger.Controller.Concrete
 {
@@ -15,7 +16,7 @@ namespace MdFilesMerger.Controller.Concrete
     ///         cref="IManager{T, TService}"/>, <see cref="IMergedFileManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
+    /// <seealso cref="IMergedFileService"> MdFilesMerger.App.Abstract.IMergedFileService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -26,8 +27,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
-    public sealed class MergedFileManager : BaseManager<MergedFile, MergedFileService>, IMergedFileManager
+    /// <seealso cref="IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
+    public sealed class MergedFileManager : BaseManager<IMergedFile, IMergedFileService>, IMergedFileManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MergedFileManager"/> class and all it's properties.
@@ -54,7 +55,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        public MainDirectoryManager MainDirectoryManager { get; }
+        public IMainDirectoryManager MainDirectoryManager { get; }
 
         /// <inheritdoc/>
         /// <param name="userId">
@@ -105,7 +106,7 @@ namespace MdFilesMerger.Controller.Concrete
                 string mergingMsg = "Scalanie plików";
                 Console.WriteLine(mergingMsg);
 
-                List<SelectedFile> selectedFiles = new List<SelectedFile>();
+                List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
 
                 foreach (var dir in MainDirectoryManager.Service.ReadByMergedFileId(SelectedItem))
                 {
@@ -205,7 +206,7 @@ namespace MdFilesMerger.Controller.Concrete
 
             Service.UpdateTableOfContents(SelectedItem, newTableOfContents);
 
-            MergedFile? file = Service.ReadById(SelectedItem);
+            IMergedFile? file = Service.ReadById(SelectedItem);
             if (file != null)
             {
                 DisplayTitle("Podgląd wybranego spisu treści");
@@ -215,7 +216,7 @@ namespace MdFilesMerger.Controller.Concrete
                 }
                 else
                 {
-                    List<SelectedFile> selectedFiles = new List<SelectedFile>();
+                    List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
                     foreach (var mainDir in MainDirectoryManager.Service.ReadByMergedFileId(file.Id))
                     {
                         selectedFiles.AddRange(MainDirectoryManager.SelectedFileManager.Service.ReadByMainDirId(mainDir.Id));
@@ -238,7 +239,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        protected override void DisplayItem(MergedFile? item)
+        protected override void DisplayItem(IMergedFile? item)
         {
             if (item != null)
             {
@@ -252,9 +253,9 @@ namespace MdFilesMerger.Controller.Concrete
         /// <param name="userId">
         ///     The identifier of user, that retrieved elements are connected with.
         /// </param>
-        protected override List<MergedFile> GetFilteredList(int userId) => Service.ReadByUserId(userId);
+        protected override List<IMergedFile> GetFilteredList(int userId) => Service.ReadByUserId(userId);
 
-        private bool Delete(MergedFile? file)
+        private bool Delete(IMergedFile? file)
         {
             if (file == null)
             {

@@ -57,7 +57,7 @@ namespace MdFilesMerger.Domain.Common
         ///     The file information of file, that will be associated with this instance.
         /// </param>
         /// <param name="mainDirectory"> The main directory object connected with this instance. </param>
-        public RelativeFile(FileInfo fileInfo, MainDirectory mainDirectory) : base()
+        public RelativeFile(FileInfo fileInfo, IMainDirectory mainDirectory) : base()
         {
             MainDirId = mainDirectory.Id;
             SetPath(fileInfo.FullName, mainDirectory.GetPath());

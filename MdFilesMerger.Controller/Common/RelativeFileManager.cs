@@ -1,6 +1,6 @@
-﻿using MdFilesMerger.App.Common;
+﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Controller.Abstract;
-using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Common
 {
@@ -17,7 +17,7 @@ namespace MdFilesMerger.Controller.Common
     /// <typeparam name="TService">
     ///     Service handling collection of object of specified model.
     /// </typeparam>
-    /// <seealso cref="RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+    /// <seealso cref="IRelativeFileService{T}"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -27,8 +27,8 @@ namespace MdFilesMerger.Controller.Common
     /// <seealso cref="BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
-    public abstract class RelativeFileManager<T, TService> : BaseManager<T, TService>, IRelativeFileManager<T, TService> where T : RelativeFile where TService : RelativeFileService<T>
+    /// <seealso cref="IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+    public abstract class RelativeFileManager<T, TService> : BaseManager<T, TService>, IRelativeFileManager<T, TService> where T : IRelativeFile where TService : IRelativeFileService<T>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="RelativeFileManager{T, TService}"/>

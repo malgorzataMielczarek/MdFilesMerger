@@ -1,8 +1,9 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
 using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.App.Concrete;
 
 namespace MdFilesMerger.Controller.Concrete
 {
@@ -13,7 +14,7 @@ namespace MdFilesMerger.Controller.Concrete
     ///         <br/><b> Implements: </b><see cref="IManager{T, TService}"/>, <see cref="IMenuActionManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
+    /// <seealso cref="IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
     /// <seealso cref="IManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
@@ -21,8 +22,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="BaseManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
-    public sealed class MenuActionManager : BaseManager<MenuAction, MenuActionService>, IMenuActionManager
+    /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
+    public sealed class MenuActionManager : BaseManager<IMenuAction, IMenuActionService>, IMenuActionManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MenuActionManager"/> class and all it's properties.
@@ -39,7 +40,7 @@ namespace MdFilesMerger.Controller.Concrete
 
         /// <summary>
         ///     Displays appropriate manager title, based on displayed menu (selected items <see
-        ///     cref="MenuAction.NextMenu"/> vale).
+        ///     cref="IMenuAction.NextMenu"/> vale).
         /// </summary>
         public override void DisplayTitle()
         {
@@ -79,7 +80,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        public MenuAction? Select()
+        public IMenuAction? Select()
         {
             Select(0);
 
@@ -94,11 +95,11 @@ namespace MdFilesMerger.Controller.Concrete
         ///     default value, so it can be omitted all together.
         /// </param>
         /// <returns>
-        ///     List of menu action objects with <see cref="MenuAction.Menu"/> value equal <see
-        ///     cref="MenuAction.NextMenu"/> value of currently selected item or <see
+        ///     List of menu action objects with <see cref="IMenuAction.Menu"/> value equal <see
+        ///     cref="IMenuAction.NextMenu"/> value of currently selected item or <see
         ///     cref="MenuType.Main"/> if no object is currently selected.
         /// </returns>
-        protected override List<MenuAction> GetFilteredList(int connectedItemId = 0)
+        protected override List<IMenuAction> GetFilteredList(int connectedItemId = 0)
         {
             MenuType menuType = Service.ReadById(SelectedItem)?.NextMenu ?? MenuType.Main;
 
@@ -106,7 +107,7 @@ namespace MdFilesMerger.Controller.Concrete
         }
 
         /// <inheritdoc/>
-        protected override void SelectItem(IReadOnlyList<MenuAction> list)
+        protected override void SelectItem(IReadOnlyList<IMenuAction> list)
         {
             if (list.Count > 0)
             {

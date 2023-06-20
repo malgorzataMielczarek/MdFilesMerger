@@ -1,6 +1,5 @@
-﻿using MdFilesMerger.App.Concrete;
-using MdFilesMerger.Controller.Concrete;
-using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Abstract
 {
@@ -9,29 +8,29 @@ namespace MdFilesMerger.Controller.Abstract
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IManager{T, TService}"/> -&gt; <see
     ///         cref="ICRUDManager{T, TService}"/> -&gt; IMainDirectoryManager <br/><b>
-    ///         Implementations: </b><see cref="MainDirectoryManager"/>
+    ///         Implementations: </b><see cref="Concrete.MainDirectoryManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
+    /// <seealso cref="IMainDirectoryService"> MdFilesMerger.App.Abstract.IMainDirectoryService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="IManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="MainDirectoryManager"> MdFilesMerger.Controller.Concrete.MainDirectoryManager </seealso>
-    /// <seealso cref="MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
-    public interface IMainDirectoryManager : ICRUDManager<MainDirectory, MainDirectoryService>
+    /// <seealso cref="Concrete.MainDirectoryManager"> MdFilesMerger.Controller.Concrete.MainDirectoryManager </seealso>
+    /// <seealso cref="IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
+    public interface IMainDirectoryManager : ICRUDManager<IMainDirectory, IMainDirectoryService>
     {
         /// <summary>
         ///     The ignored file manager instance whose service is connected with service of this manager.
         /// </summary>
-        public IgnoredFileManager IgnoredFileManager { get; }
+        IIgnoredFileManager IgnoredFileManager { get; }
 
         /// <summary>
         ///     The selected file manager instance whose service is connected with service of this manager.
         /// </summary>
-        public SelectedFileManager SelectedFileManager { get; }
+        ISelectedFileManager SelectedFileManager { get; }
 
         /// <summary>
         ///     Moves file from selected to ignored collection.
@@ -43,7 +42,7 @@ namespace MdFilesMerger.Controller.Abstract
         ///     object in selected file service collection, nothing happens.
         /// </remarks>
         /// <param name="file"> The file to ignore. </param>
-        public void IgnoreFile(FileInfo file);
+        void IgnoreFile(FileInfo file);
 
         /// <summary>
         ///     Moves file from selected to ignored collection.
@@ -56,7 +55,7 @@ namespace MdFilesMerger.Controller.Abstract
         /// </remarks>
         /// <param name="file"> The file to ignore. </param>
         /// <param name="mainDirectory"> The main directory that file is connected with. </param>
-        public void IgnoreFile(FileInfo file, MainDirectory? mainDirectory);
+        void IgnoreFile(FileInfo file, IMainDirectory? mainDirectory);
 
         /// <summary>
         ///     Updates the path of selected item.
@@ -64,6 +63,6 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if path was successfully updated; otherwise <see langword="false"/>.
         /// </returns>
-        public bool UpdatePath();
+        bool UpdatePath();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Controller.Abstract;
-using MdFilesMerger.Domain.Common;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Common
 {
@@ -12,13 +12,15 @@ namespace MdFilesMerger.Controller.Common
     ///     </para>
     /// </summary>
     /// <typeparam name="T"> Type of managed model. </typeparam>
-    /// <typeparam name="TService"> Type of service handling collection of specified models. </typeparam>
+    /// <typeparam name="TService">
+    ///     Type of service handling collection of specified models.
+    /// </typeparam>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="IManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
-    public abstract class BaseManager<T, TService> : IManager<T, TService> where T : BaseItem where TService : IService<T>
+    /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+    public abstract class BaseManager<T, TService> : IManager<T, TService> where T : IItem where TService : IService<T>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="BaseManager{T, TService}"/> class and

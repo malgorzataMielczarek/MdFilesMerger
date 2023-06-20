@@ -1,5 +1,5 @@
-﻿using MdFilesMerger.App.Concrete;
-using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Abstract
 {
@@ -10,13 +10,13 @@ namespace MdFilesMerger.Controller.Abstract
     ///         Implementations: </b><see cref="Concrete.MenuActionManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
+    /// <seealso cref="IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
     /// <seealso cref="IManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="Concrete.MenuActionManager"> MdFilesMerger.Controller.Concrete.MenuActionManager </seealso>
-    /// <seealso cref="MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
-    public interface IMenuActionManager : IManager<MenuAction, MenuActionService>
+    /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
+    public interface IMenuActionManager : IManager<IMenuAction, IMenuActionService>
     {
         /// <summary>
         ///     Asks user whether he/she wants to go back to main menu or exit the program
@@ -24,12 +24,12 @@ namespace MdFilesMerger.Controller.Abstract
         ///     presses <c> Enter </c> (or anything else, other that <c> Esc </c>),
         ///     "DisplayMainMenu" menu action is selected.
         /// </summary>
-        public void EnterOrEsc();
+        void EnterOrEsc();
 
         /// <summary>
         ///     Selects "DisplayMainMenu" menu action.
         /// </summary>
-        public void GoToMainMenu();
+        void GoToMainMenu();
 
         /// <summary>
         ///     Selects menu action.
@@ -42,6 +42,6 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     Selected menu action or <see langword="null"/> if user failed to select existing action.
         /// </returns>
-        public MenuAction? Select();
+        IMenuAction? Select();
     }
 }

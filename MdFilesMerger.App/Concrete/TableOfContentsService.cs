@@ -1,5 +1,5 @@
 ﻿using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 using System.Text;
 
 namespace MdFilesMerger.App.Concrete
@@ -12,25 +12,27 @@ namespace MdFilesMerger.App.Concrete
         /// <summary>
         ///     Creates the table of contents of specified type.
         /// </summary>
-        /// <param name="mergedFile"> The merged file for which table of content will be created. </param>
+        /// <param name="mergedFile">
+        ///     The merged file for which table of content will be created.
+        /// </param>
         /// <param name="selectedFiles">
         ///     The list of all files, whose content will be placed in the merged file.
         /// </param>
         /// <returns> Text of whole table of contents. </returns>
-        public static string? CreateTOC(MergedFile mergedFile, List<SelectedFile> selectedFiles) => mergedFile.TableOfContents switch
+        public static string? CreateTOC(IMergedFile mergedFile, List<ISelectedFile> selectedFiles) => mergedFile.TableOfContents switch
         {
             TableOfContents.Text => CreateTextTOC(selectedFiles, mergedFile.NewLineStyle),
             TableOfContents.Hyperlink => CreateHyperlinksTOC(selectedFiles, mergedFile.NewLineStyle),
             _ => null
         };
 
-        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<SelectedFile> listOfFiles, int currentIndex, string newLine)
+        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<ISelectedFile> listOfFiles, int currentIndex, string newLine)
         {
-            SelectedFile currentFile = listOfFiles[currentIndex];
+            ISelectedFile currentFile = listOfFiles[currentIndex];
             return AppendDirectoriesEntries(appendedDirectories, stringBuilder, listOfFiles, currentFile, newLine);
         }
 
-        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<SelectedFile> listOfFiles, SelectedFile currentFile, string newLine)
+        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<ISelectedFile> listOfFiles, ISelectedFile currentFile, string newLine)
         {
             string directories = "";
             string[] subDirectories = currentFile?.Name?.Split('/', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
@@ -71,7 +73,7 @@ namespace MdFilesMerger.App.Concrete
             return dirNumber;
         }
 
-        private static string CreateHyperlinksTOC(List<SelectedFile> listOfFiles, string newLine)
+        private static string CreateHyperlinksTOC(List<ISelectedFile> listOfFiles, string newLine)
         {
             // Count files with the same title
             List<string> titlesOfFiles = new List<string>();
@@ -120,13 +122,13 @@ namespace MdFilesMerger.App.Concrete
             return stringBuilder.ToString();
         }
 
-        private static string CreateTextTOC(List<SelectedFile> listOfFiles, string newLine)
+        private static string CreateTextTOC(List<ISelectedFile> listOfFiles, string newLine)
         {
             List<string> appendedDirectories = new List<string>();
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (SelectedFile file in listOfFiles)
+            foreach (ISelectedFile file in listOfFiles)
             {
                 if (file.Title == null)
                 {

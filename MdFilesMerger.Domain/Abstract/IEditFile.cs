@@ -17,6 +17,6 @@
         /// <summary>
         ///     Title (header) of the file.
         /// </summary>
-        public string? Title { get; set; }
+        string? Title { get; set; }
     }
 }

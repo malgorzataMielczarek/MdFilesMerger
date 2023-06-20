@@ -1,5 +1,4 @@
 ﻿using MdFilesMerger.Domain.Abstract;
-using MdFilesMerger.Domain.Entity;
 
 namespace MdFilesMerger.App.Abstract
 {
@@ -30,21 +29,21 @@ namespace MdFilesMerger.App.Abstract
         /// <param name="list"> The list of files. </param>
         /// <param name="mainDirectory"> The main directory for files on the list. </param>
         /// <returns> List of files not associated with any element in the stored collection. </returns>
-        public List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, MainDirectory mainDirectory);
+        List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, IMainDirectory mainDirectory);
 
         /// <summary>
         ///     Gets the full path of file associated with specified object.
         /// </summary>
         /// <param name="id"> The identifier of object. </param>
         /// <returns> Absolute path of file associated with specified object. </returns>
-        public string? GetFullPath(int id);
+        string? GetFullPath(int id);
 
         /// <summary>
         ///     Gets the full path of file associated with specified object.
         /// </summary>
         /// <param name="relativeFile"> The specified object. </param>
         /// <returns> Absolute path of file associated with specified object. </returns>
-        public string? GetFullPath(T? relativeFile);
+        string? GetFullPath(T? relativeFile);
 
         /// <summary>
         ///     Gets, from the stored collection of <typeparamref name="T"/> objects, elements with
@@ -56,6 +55,6 @@ namespace MdFilesMerger.App.Abstract
         ///     identifier. If there is no objects with <see cref="IRelativeFile.MainDirId"/> equal
         ///     <paramref name="mainDirId"/>, returned list is empty.
         /// </returns>
-        public List<T> ReadByMainDirId(int mainDirId);
+        List<T> ReadByMainDirId(int mainDirId);
     }
 }

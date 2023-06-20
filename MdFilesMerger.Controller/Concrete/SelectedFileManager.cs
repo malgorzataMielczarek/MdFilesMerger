@@ -1,7 +1,8 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Controller.Abstract;
 using MdFilesMerger.Controller.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Concrete
 {
@@ -11,10 +12,10 @@ namespace MdFilesMerger.Controller.Concrete
     ///         <b> Inheritance: </b><see cref="BaseManager{T, TService}"/> -&gt; <see
     ///         cref="RelativeFileManager{T, TService}"/> -&gt; SelectedFileManager <br/><b>
     ///         Implements: </b><see cref="ICRUDManager{T, TService}"/>, <see cref="IManager{T,
-    ///         TService}"/>, <see cref="IRelativeFileManager{T, TService}"/>, <see cref="ISelectedFileManager"/>
+    ///                     TService}"/>, <see cref="IRelativeFileManager{T, TService}"/>, <see cref="ISelectedFileManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
+    /// <seealso cref="ISelectedFileService"> MdFilesMerger.App.Abstract.ISelectedFileService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -22,7 +23,7 @@ namespace MdFilesMerger.Controller.Concrete
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="IRelativeFileManager{T, TService}">
-    ///     MdFilesMerger.Controller.Abstract.IReleativeFileManager&lt;T, TService&gt;
+    ///     MdFilesMerger.Controller.Abstract.IRelativeFileManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="ISelectedFileManager"> MdFilesMerger.Controller.Abstract.ISelectedFileManager </seealso>
     /// <seealso cref="BaseManager{T, TService}">
@@ -31,8 +32,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="RelativeFileManager{T, TService}">
     ///     MdFilesMerger.Controller.Common.RelativeFileManager&lt;T, TService&gt;
     /// </seealso>
-    /// <seealso cref="SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-    public class SelectedFileManager : RelativeFileManager<SelectedFile, SelectedFileService>, ISelectedFileManager
+    /// <seealso cref="ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
+    public class SelectedFileManager : RelativeFileManager<ISelectedFile, ISelectedFileService>, ISelectedFileManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SelectedFileManager"/> class and all
@@ -42,13 +43,13 @@ namespace MdFilesMerger.Controller.Concrete
         ///     Sets <see cref="BaseManager{T, TService}.SelectedItem"/> to <see langword="-1"/> and
         ///     <see cref="BaseManager{T, TService}.Service"/> to newly created <see
         ///     cref="SelectedFileService"/> object connected with specified <see
-        ///     cref="MainDirectoryService"/> instance.
+        ///     cref="IMainDirectoryService"/> instance.
         /// </remarks>
         /// <param name="mainDirectoryService">
         ///     The main directory service that the newly created <see cref="SelectedFileService"/>
         ///     object will by connected with.
         /// </param>
-        public SelectedFileManager(MainDirectoryService mainDirectoryService) : base(new SelectedFileService(mainDirectoryService))
+        public SelectedFileManager(IMainDirectoryService mainDirectoryService) : base(new SelectedFileService(mainDirectoryService))
         {
         }
 

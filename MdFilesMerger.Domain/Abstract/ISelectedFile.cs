@@ -21,7 +21,7 @@
         ///     If read line is a header (starts with '#') return it. Else return filename, without
         ///     extension. If file header is a link return only text part.
         /// </returns>
-        public string GetFileHeader(string? mainDirPath);
+        string GetFileHeader(string? mainDirPath);
 
         /// <summary>
         ///     Converts to <see cref="Entity.IgnoredFile"/>.
@@ -30,6 +30,6 @@
         ///     New <see cref="Entity.IgnoredFile"/> object associated with the same file and
         ///     connected with the same <see cref="Entity.MainDirectory"/> object as this instance.
         /// </returns>
-        public Entity.IgnoredFile ToIgnoredFile();
+        Entity.IgnoredFile ToIgnoredFile();
     }
 }

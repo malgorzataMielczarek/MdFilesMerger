@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 using System.Reflection;
 
@@ -22,8 +23,9 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
     /// <seealso cref="MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
-    public sealed class MainDirectoryService : BaseDirectoryService<MainDirectory>, IMainDirectoryService
+    public sealed class MainDirectoryService : BaseDirectoryService<IMainDirectory>, IMainDirectoryService
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainDirectoryService"/> class.
@@ -41,7 +43,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public IEnumerable<FileInfo> FindAllFiles(int id)
         {
-            MainDirectory? mainDirectory = ReadById(id);
+            IMainDirectory? mainDirectory = ReadById(id);
             if (mainDirectory != null)
             {
                 return FindAllFiles(mainDirectory);
@@ -51,7 +53,7 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public IEnumerable<FileInfo> FindAllFiles(MainDirectory mainDirectory)
+        public IEnumerable<FileInfo> FindAllFiles(IMainDirectory mainDirectory)
         {
             string? mainDirPath = mainDirectory?.GetPath();
 
@@ -64,9 +66,9 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public List<MainDirectory> ReadByMergedFileId(int mergedFileId)
+        public List<IMainDirectory> ReadByMergedFileId(int mergedFileId)
         {
-            List<MainDirectory> result = new List<MainDirectory>();
+            List<IMainDirectory> result = new List<IMainDirectory>();
 
             foreach (var directory in _items)
             {

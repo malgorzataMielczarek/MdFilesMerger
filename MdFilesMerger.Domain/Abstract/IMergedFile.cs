@@ -17,27 +17,27 @@
         ///     Last date and time of creating the merged file. If merged file wasn't created yet,
         ///     it is set to <see langword="null"/>.
         /// </summary>
-        public DateTime? MergeDate { get; set; }
+        DateTime? MergeDate { get; set; }
 
         /// <summary>
         ///     String that will be put at the end of each line of text in created merged file.
         /// </summary>
-        public string NewLineStyle { get; set; }
+        string NewLineStyle { get; set; }
 
         /// <summary>
         ///     Type of the table of contents that will by placed at the beginning of created merged file.
         /// </summary>
-        public Common.TableOfContents TableOfContents { get; set; }
+        Common.TableOfContents TableOfContents { get; set; }
 
         /// <summary>
         ///     Header placed in the merged file before the table of contents content.
         /// </summary>
-        public string? TOCHeader { get; set; }
+        string? TOCHeader { get; set; }
 
         /// <summary>
         ///     Identification number of <see cref="Entity.User"/> associated with this item.
         /// </summary>
-        public int UserId { get; set; }
+        int UserId { get; set; }
 
         /// <summary>
         ///     Extract filename from path stored in <see cref="IItem.Name"/>.
@@ -51,7 +51,7 @@
         /// <returns>
         ///     Path of parent directory of the file whose path is stored in <see cref="IItem.Name"/>.
         /// </returns>
-        public string? GetParentDirectory();
+        string? GetParentDirectory();
 
         /// <summary>
         ///     Changes filename in path saved in <see cref="IItem.Name"/>, without changing parent
@@ -61,7 +61,7 @@
         /// <returns>
         ///     <see langword="true"/> if filename was successfully changed; otherwise <see langword="false"/>.
         /// </returns>
-        public bool SetFileName(string fileName);
+        bool SetFileName(string fileName);
 
         /// <summary>
         ///     Changes parent directory of associated merged file.
@@ -74,6 +74,6 @@
         ///     <see langword="true"/> if parent directory path was successfully changed; otherwise
         ///     <see langword="false"/>
         /// </returns>
-        public bool SetParentDirectory(string directoryPath);
+        bool SetParentDirectory(string directoryPath);
     }
 }

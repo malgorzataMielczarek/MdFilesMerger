@@ -1,6 +1,6 @@
-﻿using MdFilesMerger.App.Concrete;
+﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.Controller.Concrete;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.Controller.Abstract
 {
@@ -12,7 +12,7 @@ namespace MdFilesMerger.Controller.Abstract
     ///         </b><see cref="UserManager"/>
     ///     </para>
     /// </summary>
-    /// <seealso cref="UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
+    /// <seealso cref="IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
     /// <seealso cref="ICRUDManager{T, TService}">
     ///     MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
     /// </seealso>
@@ -20,13 +20,13 @@ namespace MdFilesMerger.Controller.Abstract
     ///     MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
     /// </seealso>
     /// <seealso cref="UserManager"> MdFilesMerger.Controller.Concrete.UserManager </seealso>
-    /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
-    public interface IUserManager : ICRUDManager<User, UserService>
+    /// <seealso cref="IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
+    public interface IUserManager : ICRUDManager<IUser, IUserService>
     {
         /// <summary>
         ///     The merged file manager.
         /// </summary>
-        public MergedFileManager MergedFileManager { get; }
+        IMergedFileManager MergedFileManager { get; }
 
         /// <summary>
         ///     Updates the password of selected item.
@@ -34,6 +34,6 @@ namespace MdFilesMerger.Controller.Abstract
         /// <returns>
         ///     <see langword="true"/> if password updated successfully; otherwise <see langword="false"/>.
         /// </returns>
-        public bool UpdatePassword();
+        bool UpdatePassword();
     }
 }

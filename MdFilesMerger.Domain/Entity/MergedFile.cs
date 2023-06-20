@@ -132,7 +132,7 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is MergedFile other)
+            if (obj != null && obj is IMergedFile other)
             {
                 return this.Name == other.Name && this.UserId == other.UserId;
             }

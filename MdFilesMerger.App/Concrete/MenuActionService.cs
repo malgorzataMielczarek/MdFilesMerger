@@ -1,4 +1,5 @@
 ﻿using MdFilesMerger.App.Abstract;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 
@@ -13,9 +14,11 @@ namespace MdFilesMerger.App.Concrete
     /// </summary>
     /// <seealso cref="IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
+    /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
+    /// <seealso cref="MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
     public sealed class MenuActionService : IMenuActionService
     {
-        private readonly List<MenuAction> _actions;
+        private readonly List<IMenuAction> _actions;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MenuActionService"/> class and fills
@@ -23,7 +26,7 @@ namespace MdFilesMerger.App.Concrete
         /// </summary>
         public MenuActionService()
         {
-            _actions = new List<MenuAction>();
+            _actions = new List<IMenuAction>();
             Initialization();
         }
 
@@ -36,7 +39,7 @@ namespace MdFilesMerger.App.Concrete
         ///     <see cref="MenuAction"/> object with <see cref="BaseItem.Id"/> equal <paramref
         ///     name="id"/>, if there is one, otherwise <see langword="null"/>.
         /// </returns>
-        public MenuAction? ReadById(int id)
+        public IMenuAction? ReadById(int id)
         {
             if (_actions.Count >= id && _actions[id - 1].Id == id)
             {
@@ -47,9 +50,9 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public List<MenuAction> ReadByMenuType(MenuType menuType)
+        public List<IMenuAction> ReadByMenuType(MenuType menuType)
         {
-            List<MenuAction> result = new List<MenuAction>();
+            List<IMenuAction> result = new List<IMenuAction>();
 
             foreach (var item in _actions)
             {

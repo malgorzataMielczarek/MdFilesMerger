@@ -222,9 +222,25 @@
                 (for example there are no item with specified id in the collection).
             </returns>
         </member>
+        <member name="T:MdFilesMerger.App.Abstract.IIgnoredFileService">
+            <summary>
+                Interface for handling collection of ignored files objects.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.App.Abstract.IService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>
+                    -&gt; <see cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"/>
+                    -&gt; IIgnoredFileService <br/><b> Implementations: </b><see cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"/>
+                </para>
+            </summary>
+            <seealso cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"> MdFilesMerger.App.Concrete.IgnoredFileService </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"> MdFilesMerger.Domain.Abstract.IIgnoredFile </seealso>
+        </member>
         <member name="T:MdFilesMerger.App.Abstract.IMainDirectoryService">
             <summary>
-                Interface to service collection of <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> objects.
+                Interface to service collection of <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> objects.
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.App.Abstract.IService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>
                     -&gt; <see cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"/> -&gt; IMainDirectoryService <br/><b>
@@ -235,36 +251,36 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(System.Int32)">
             <summary>
                 Finds all .md files in specified main directory and it's subdirectories.
             </summary>
             <param name="id">
-                The identifier of <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> object associated with directory
+                The identifier of <see cref="!:MainDirectory"/> object associated with directory
                 searched for .md files.
             </param>
             <returns> Collection of found .md files. </returns>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <summary>
                 Finds all .md files in specified main directory and it's subdirectories.
             </summary>
             <param name="mainDirectory">
-                The <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> object associated with directory searched for .md files.
+                The <see cref="!:MainDirectory"/> object associated with directory searched for .md files.
             </param>
             <returns> Collection of found .md files. </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMainDirectoryService.ReadByMergedFileId(System.Int32)">
             <summary>
-                Gets, from the stored collection of <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> objects, elements
+                Gets, from the stored collection of <see cref="!:MainDirectory"/> objects, elements
                 with the specified merged file identifier.
             </summary>
             <param name="mergedFileId"> The searched merged file identifier. </param>
             <returns>
-                The list of <see cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/> objects with the specified merged file
-                identifier. If there is no objects with <see cref="P:MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId"/>
+                The list of <see cref="!:MainDirectory"/> objects with the specified merged file
+                identifier. If there is no objects with <see cref="!:MainDirectory.MergedFileId"/>
                 equal <paramref name="mergedFileId"/>, returned list is empty.
             </returns>
         </member>
@@ -278,18 +294,19 @@
             </summary>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMenuActionService.ReadByMenuType(MdFilesMerger.Domain.Common.MenuType)">
             <summary>
                 Gets elements from <see cref="F:MdFilesMerger.App.Concrete.MenuActionService._actions"/> with <see
-                cref="P:MdFilesMerger.Domain.Entity.MenuAction.Menu"/><paramref name="menuType"/>.
+                cref="!:MenuAction.Menu"/><paramref name="menuType"/>.
             </summary>
             <param name="menuType"> Type of the menu. </param>
             <returns> List with object of menu <paramref name="menuType"/>. </returns>
         </member>
         <member name="T:MdFilesMerger.App.Abstract.IMergedFileService">
             <summary>
-                Interface with methods for handling collection of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> objects.
+                Interface with methods for handling collection of <see cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> objects.
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.App.Abstract.IService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>
                     -&gt; <see cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.IEditFileService`1"/>
@@ -302,9 +319,9 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IEditFileService`1"> MdFilesMerger.App.Abstract.IEditFileService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Concrete.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+        <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})">
             <summary>
                 Appends the table of contents at the end of the file.
             </summary>
@@ -321,7 +338,7 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(System.Int32)">
             <summary>
-                Creates the file associated with specified <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> object.
+                Creates the file associated with specified <see cref="!:MergedFile"/> object.
             </summary>
             <remarks>
                 If the file already exists, it is deleted. New file is created and fill with
@@ -337,13 +354,13 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.ReadByUserId(System.Int32)">
             <summary>
-                Gets, from the stored collection of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> objects, elements with
+                Gets, from the stored collection of <see cref="!:MergedFile"/> objects, elements with
                 the specified user identifier.
             </summary>
             <param name="userId"> The searched user identifier. </param>
             <returns>
-                The list of <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> objects with the specified user identifier. If
-                there is no objects with <see cref="P:MdFilesMerger.Domain.Entity.MergedFile.UserId"/> equal <paramref
+                The list of <see cref="!:MergedFile"/> objects with the specified user identifier. If
+                there is no objects with <see cref="!:MergedFile.UserId"/> equal <paramref
                 name="userId"/>, returned list is empty.
             </returns>
         </member>
@@ -357,7 +374,7 @@
             </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> with specified id in the stored collection or <paramref
+                cref="!:MergedFile"/> with specified id in the stored collection or <paramref
                 name="fileName"/> is not a valid file name.
             </returns>
         </member>
@@ -369,7 +386,7 @@
             <param name="newLineStyle"> The new new line style. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> with specified id in the stored collection.
+                cref="!:MergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.UpdateParentDirectory(System.Int32,System.String)">
@@ -380,7 +397,7 @@
             <param name="directoryPath"> The new directory path. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> with specified id in the stored collection or <paramref
+                cref="!:MergedFile"/> with specified id in the stored collection or <paramref
                 name="directoryPath"/> is not a valid path.
             </returns>
         </member>
@@ -392,7 +409,7 @@
             <param name="tableOfContents"> The new type of table of contents. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> with specified id in the stored collection.
+                cref="!:MergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.UpdateTOCHeader(System.Int32,System.String)">
@@ -403,7 +420,7 @@
             <param name="header"> The new header. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="T:MdFilesMerger.Domain.Entity.MergedFile"/> with specified id in the stored collection.
+                cref="!:MergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="T:MdFilesMerger.App.Abstract.IRelativeFileService`1">
@@ -426,7 +443,7 @@
             <seealso cref="T:MdFilesMerger.App.Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRaletiveFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <summary>
                 In the list of files connected with specified main directory, finds files, that
                 aren't associated with any element in the stored collection.
@@ -478,7 +495,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(System.Int32,System.IO.FileInfo,System.String)">
             <summary>
@@ -490,7 +507,7 @@
             </param>
             <param name="newLine"> The new line style, used in destination file. </param>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)">
+        <member name="M:MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)">
             <summary>
                 Appends the content of the specified file to the destination file.
             </summary>
@@ -500,7 +517,7 @@
             </param>
             <param name="newLine"> The new line style, used in destination file. </param>
         </member>
-        <member name="M:MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <summary>
                 Creates new objects associated with specified files and main directory and adds them
                 to the stored collection.
@@ -572,7 +589,7 @@
         </member>
         <member name="T:MdFilesMerger.App.Abstract.IUserService">
             <summary>
-                Defines methods to service <see cref="T:MdFilesMerger.Domain.Entity.User"/> objects collection.
+                Defines methods to service <see cref="T:MdFilesMerger.Domain.Abstract.IUser"/> objects collection.
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.App.Abstract.IService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>
                     -&gt; IUserService <br/><b> Implementations: </b><see cref="T:MdFilesMerger.App.Concrete.UserService"/>
@@ -581,7 +598,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IUserService.CheckCredentials(System.String,System.String)">
             <summary>
@@ -596,11 +613,11 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IUserService.ReadByName(System.String)">
             <summary>
-                From stored collection of <see cref="T:MdFilesMerger.Domain.Entity.User"/> objects, gets user with specified name.
+                From stored collection of <see cref="!:User"/> objects, gets user with specified name.
             </summary>
             <param name="name"> The name of user that you are looking for. </param>
             <returns>
-                <see cref="T:MdFilesMerger.Domain.Entity.User"/> object with <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> equal
+                <see cref="!:User"/> object with <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> equal
                 <paramref name="name"/>. If there is no element with specified name in stored
                 collection, method returns <see langword="null"/>.
             </returns>
@@ -736,6 +753,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
         </member>
         <member name="F:MdFilesMerger.App.Common.RelativeFileService`1._mainDirService">
@@ -743,13 +761,13 @@
                 The main directory service.
             </summary>
         </member>
-        <member name="M:MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.App.Common.RelativeFileService`1"/> class.
             </summary>
             <param name="mainDirService"> The main directory service. </param>
         </member>
-        <member name="M:MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Common.RelativeFileService`1.GetFullPath(System.Int32)">
@@ -777,36 +795,38 @@
         </member>
         <member name="T:MdFilesMerger.App.Concrete.IgnoredFileService">
             <summary>
-                Class handling collection of <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/> objects associated with the .md
+                Class handling collection of <see cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"/> objects associated with the .md
                 files ignored during merge, whose paths are stored as relative to connected main
                 directory path.
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.App.Common.BaseService`1"/> -&gt; <see cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"/>
                     -&gt; <see cref="T:MdFilesMerger.App.Common.RelativeFileService`1"/> -&gt; IgnoredFileService <br/><b>
-                    Implements: </b><see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>, <see
-                                cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"/>, <see
+                    Implements: </b><see cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"/>, <see cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"/>,
+                                <see cref="T:MdFilesMerger.App.Abstract.IIgnoredFileService"/>, <see
                                 cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"/>, <see cref="T:MdFilesMerger.App.Abstract.IService`1"/>
                 </para>
             </summary>
             <seealso cref="T:MdFilesMerger.App.Abstract.ICRUDService`1"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IDirectoryService`1"> MdFilesMerger.App.Abstract.IDirectoryService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IIgnoredFileService"> MdFilesMerger.App.Abstract.IIgnoredFileService </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.RelativeFileService`1"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"> MdFilesMerger.Domain.Abstract.IIgnoredFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"/> class.
             </summary>
             <param name="mainDirService"> The main directory service. </param>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Entity.IgnoredFile},MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.IIgnoredFile},MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
-                Converts <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/> objects to <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/> objects.
+                Converts <see cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"/> objects to <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/> objects.
             </summary>
-            <param name="list"> The list of <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/> objects to convert. </param>
+            <param name="list"> The list of <see cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"/> objects to convert. </param>
             <param name="mainDirectoryService"> The main directory service. </param>
             <returns> List of objects after conversion. </returns>
         </member>
@@ -828,6 +848,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MainDirectoryService.#ctor">
@@ -843,7 +864,7 @@
         <member name="M:MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MainDirectoryService.ReadByMergedFileId(System.Int32)">
@@ -859,6 +880,8 @@
             </summary>
             <seealso cref="T:MdFilesMerger.App.Abstract.IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MenuActionService.#ctor">
             <summary>
@@ -899,6 +922,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Concrete.MergedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.#ctor">
@@ -911,7 +935,7 @@
                 [MyDocuments]/MergedFiles/README.md file.
             </remarks>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+        <member name="M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.MergedFileService.CreateFile(System.Int32)">
@@ -960,9 +984,10 @@
             <seealso cref="T:MdFilesMerger.App.Common.BaseDirectoryService`1"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.RelativeFileService`1"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.App.Concrete.SelectedFileService"/> class.
             </summary>
@@ -971,10 +996,10 @@
         <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(System.Int32,System.IO.FileInfo,System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)">
+        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.SelectedFileService.UpdateTitle(System.Int32,System.String)">
@@ -985,11 +1010,13 @@
                 Static class with method to create table of contents for specified merged file.
             </summary>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
+        <member name="M:MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})">
             <summary>
                 Creates the table of contents of specified type.
             </summary>
-            <param name="mergedFile"> The merged file for which table of content will be created. </param>
+            <param name="mergedFile">
+                The merged file for which table of content will be created.
+            </param>
             <param name="selectedFiles">
                 The list of all files, whose content will be placed in the merged file.
             </param>
@@ -1007,6 +1034,7 @@
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.App.Abstract.IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
             <seealso cref="T:MdFilesMerger.App.Common.BaseService`1"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.UserService.#ctor">

@@ -33,6 +33,6 @@ namespace MdFilesMerger.App.Abstract
         /// <returns>
         ///     Found <typeparamref name="T"/> object, or <see langword="null"/>, if no object was found.
         /// </returns>
-        public T? ReadById(int id);
+        T? ReadById(int id);
     }
 }

@@ -1,4 +1,4 @@
-﻿using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Abstract
 {
@@ -18,8 +18,8 @@ namespace MdFilesMerger.App.Abstract
     /// <seealso cref="IRelativeFileService{T}"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
-    /// <seealso cref="SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-    public interface ISelectedFileService : IRelativeFileService<SelectedFile>, IEditFileService<SelectedFile>
+    /// <seealso cref="ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
+    public interface ISelectedFileService : IRelativeFileService<ISelectedFile>, IEditFileService<ISelectedFile>
     {
         /// <summary>
         ///     Appends the content of the specified file to the destination file.
@@ -29,7 +29,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The destination file, to which the content of the file will be appended.
         /// </param>
         /// <param name="newLine"> The new line style, used in destination file. </param>
-        public void AppendFile(int id, FileInfo? destinationFile, string newLine);
+        void AppendFile(int id, FileInfo? destinationFile, string newLine);
 
         /// <summary>
         ///     Appends the content of the specified file to the destination file.
@@ -39,7 +39,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The destination file, to which the content of the file will be appended.
         /// </param>
         /// <param name="newLine"> The new line style, used in destination file. </param>
-        public void AppendFile(SelectedFile? appendedFile, FileInfo? destinationFile, string newLine);
+        void AppendFile(ISelectedFile? appendedFile, FileInfo? destinationFile, string newLine);
 
         /// <summary>
         ///     Creates new objects associated with specified files and main directory and adds them
@@ -76,6 +76,6 @@ namespace MdFilesMerger.App.Abstract
         ///         </item>
         ///     </list>
         /// </returns>
-        public int CreateRange(IEnumerable<FileInfo> list, MainDirectory mainDirectory);
+        int CreateRange(IEnumerable<FileInfo> list, IMainDirectory mainDirectory);
     }
 }

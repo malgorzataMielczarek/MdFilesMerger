@@ -8,8 +8,9 @@
             <summary>
                 Base interface for all directory or file related models.
                 <para>
-                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; IDirectory <br/><b> Implementations:
-                    </b><see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/>, <see cref="T:MdFilesMerger.Domain.Common.MdFile"/>, <see
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; IDirectory <br/><see
+                    cref="T:System.IComparable`1"/> -&gt; IDirectory <br/><b> Implementations: </b><see
+                    cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/>, <see cref="T:MdFilesMerger.Domain.Common.MdFile"/>, <see
                     cref="T:MdFilesMerger.Domain.Common.RelativeFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>, <see
                     cref="T:MdFilesMerger.Domain.Entity.MainDirectory"/>, <see cref="T:MdFilesMerger.Domain.Entity.MergedFile"/>, <see cref="T:MdFilesMerger.Domain.Entity.SelectedFile"/>
                 </para>
@@ -56,6 +57,19 @@
             <summary>
                 Title (header) of the file.
             </summary>
+        </member>
+        <member name="T:MdFilesMerger.Domain.Abstract.IIgnoredFile">
+            <summary>
+                Interface for ignored file model.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Abstract.IItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/> -&gt; <see
+                    cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/> -&gt; IIgnoredFile <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"/>
+                </para>
+            </summary>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
         </member>
         <member name="T:MdFilesMerger.Domain.Abstract.IItem">
             <summary>
@@ -301,6 +315,36 @@
                 Value used for password encryption/decryption.
             </summary>
         </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.IUser.PasswordEquals(System.String)">
+            <summary>
+                Checks if decrypted <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> is equal to <paramref name="password"/>
+            </summary>
+            <param name="password">
+                Value compared with decrypted <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> value.
+            </param>
+            <returns>
+                <see langword="true"/> if <paramref name="password"/> and decrypted <see
+                cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> have the same value; otherwise, <see langword="false"/>
+            </returns>
+        </member>
+        <member name="M:MdFilesMerger.Domain.Abstract.IUser.SetPassword(System.String)">
+            <summary>
+                Sets <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> to encrypted <paramref name="password"/> value or <see
+                langword="null"/> value.
+            </summary>
+            <remarks>
+                <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> is set to <see langword="null"/> if <paramref
+                name="password"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/> or consists
+                exclusively of white-space characters. Otherwise <paramref name="password"/> is
+                encrypted with th use of <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Salt"/> value. <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> is set to
+                returned value.
+            </remarks>
+            <param name="password"> User's decrypted password </param>
+            <returns>
+                <see langword="false"/> if <see cref="P:MdFilesMerger.Domain.Abstract.IUser.Password"/> set to <see langword="null"/>;
+                otherwise <see langword="true"/>
+            </returns>
+        </member>
         <member name="T:MdFilesMerger.Domain.Common.BaseDirectory">
             <summary>
                 Base implementation for all directory and file related models.
@@ -372,7 +416,7 @@
             </summary>
             <value> By default it is set to <see cref="P:System.DateTime.Now"/>. </value>
         </member>
-        <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)">
+        <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory)">
             <summary>
                 Compares paths ( <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>) of the current instance and another
                 <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> object and returns integer indicating whether current
@@ -442,11 +486,6 @@
                     <item> <b> 1 </b> - if <paramref name="name2"/> is before <paramref name="name1"/> </item>
                 </list>
             </returns>
-        </member>
-        <member name="M:MdFilesMerger.Domain.Common.BaseDirectory.GetDirectoryName">
-            <summary>
-                Gets this directory (file) name from path in <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/>
-            </summary>
         </member>
         <member name="T:MdFilesMerger.Domain.Common.BaseItem">
             <summary>
@@ -688,7 +727,7 @@
             <param name="id"> The identifier. </param>
             <param name="mainDirId"> The main directory identifier. </param>
         </member>
-        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <summary>
                 Sets <see cref="P:MdFilesMerger.Domain.Common.RelativeFile.MainDirId"/> to <paramref name="mainDirectory"/>.Id, <see
                 cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> to <paramref name="fileInfo"/> path, relative to path of
@@ -799,8 +838,8 @@
                 <para>
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.Domain.Common.BaseItem"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.BaseDirectory"/> -&gt;
                     <see cref="T:MdFilesMerger.Domain.Common.MdFile"/> -&gt; <see cref="T:MdFilesMerger.Domain.Common.RelativeFile"/> -&gt; IgnoredFile <br/><b>
-                    Implements: </b><see cref="T:System.IComparable`1"/>, <see
-                                cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
+                    Implements: </b><see cref="T:System.IComparable`1"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IDirectory"/>,
+                                <see cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IItem"/>, <see cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"/>
                 </para>
             </summary>
             <seealso cref="T:MdFilesMerger.Domain.Common.BaseDirectory"> MdFilesMerger.Domain.Common.BaseDirectory </seealso>
@@ -809,6 +848,7 @@
             <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
             <seealso cref="T:System.IComparable`1"> System.IComparable&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"> MdFilesMerger.Domain.Abstract.IIgnoredFile </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
@@ -824,7 +864,7 @@
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.IgnoredFile.Equals(System.Object)">
@@ -1148,7 +1188,7 @@
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.Int32,System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.Int32,System.String,System.Int32,System.DateTime,System.String)">
@@ -1309,32 +1349,10 @@
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.User.PasswordEquals(System.String)">
-            <summary>
-                Checks if decrypted <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> is equal to <paramref name="password"/>
-            </summary>
-            <param name="password"> Value compared with decrypted <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> value. </param>
-            <returns>
-                <see langword="true"/> if <paramref name="password"/> and decrypted <see
-                cref="P:MdFilesMerger.Domain.Entity.User.Password"/> have the same value; otherwise, <see langword="false"/>
-            </returns>
+            <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Domain.Entity.User.SetPassword(System.String)">
-            <summary>
-                Sets <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> to encrypted <paramref name="password"/> value or <see
-                langword="null"/> value.
-            </summary>
-            <remarks>
-                <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> is set to <see langword="null"/> if <paramref
-                name="password"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/> or consists
-                exclusively of white-space characters. Otherwise <paramref name="password"/> is
-                encrypted using <see cref="M:MdFilesMerger.Domain.Entity.User.EncryptePassword(System.String)"/> method and <see cref="P:MdFilesMerger.Domain.Entity.User.Salt"/>
-                value. <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> is set to returned value.
-            </remarks>
-            <param name="password"> User's decrypted password </param>
-            <returns>
-                <see langword="false"/> if <see cref="P:MdFilesMerger.Domain.Entity.User.Password"/> set to <see langword="null"/>;
-                otherwise <see langword="true"/>
-            </returns>
+            <inheritdoc/>
         </member>
     </members>
 </doc>

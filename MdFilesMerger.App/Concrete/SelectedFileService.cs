@@ -1,5 +1,6 @@
 ﻿using MdFilesMerger.App.Abstract;
 using MdFilesMerger.App.Common;
+using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using System.Text;
@@ -27,14 +28,15 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
     /// <seealso cref="RelativeFileService{T}"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+    /// <seealso cref="ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
     /// <seealso cref="SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
-    public sealed class SelectedFileService : RelativeFileService<SelectedFile>, ISelectedFileService
+    public sealed class SelectedFileService : RelativeFileService<ISelectedFile>, ISelectedFileService
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SelectedFileService"/> class.
         /// </summary>
         /// <param name="mainDirectoryService"> </param>
-        public SelectedFileService(MainDirectoryService mainDirectoryService) : base(mainDirectoryService)
+        public SelectedFileService(IMainDirectoryService mainDirectoryService) : base(mainDirectoryService)
         {
             Initialize();
         }
@@ -46,7 +48,7 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public void AppendFile(SelectedFile? appendedFile, FileInfo? destinationFile, string newLine)
+        public void AppendFile(ISelectedFile? appendedFile, FileInfo? destinationFile, string newLine)
         {
             string? filePath = GetFullPath(appendedFile);
             if (string.IsNullOrWhiteSpace(filePath) || destinationFile == null)
@@ -176,9 +178,9 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public int CreateRange(IEnumerable<FileInfo> list, MainDirectory mainDirectory)
+        public int CreateRange(IEnumerable<FileInfo> list, IMainDirectory mainDirectory)
         {
-            List<SelectedFile> selectedFiles = new List<SelectedFile>();
+            List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
             foreach (FileInfo file in list)
             {
                 if (!string.IsNullOrWhiteSpace(file?.FullName) && !string.IsNullOrWhiteSpace(mainDirectory?.Name))
@@ -198,7 +200,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateTitle(int id, string? title)
         {
-            SelectedFile? file = ReadById(id);
+            ISelectedFile? file = ReadById(id);
 
             if (file != null)
             {

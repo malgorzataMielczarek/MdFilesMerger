@@ -44,7 +44,7 @@ namespace MdFilesMerger.Domain.Entity
         public SelectedFile(int id, int mainDirId) : base(id, mainDirId) { }
 
         /// <inheritdoc/>
-        public SelectedFile(FileInfo fileInfo, MainDirectory mainDirectory) : base(fileInfo, mainDirectory)
+        public SelectedFile(FileInfo fileInfo, IMainDirectory mainDirectory) : base(fileInfo, mainDirectory)
         {
         }
 
@@ -142,7 +142,7 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is SelectedFile other)
+            if (obj != null && obj is ISelectedFile other)
             {
                 return this.Name == other.Name && this.MainDirId == other.MainDirId;
             }

@@ -68,6 +68,27 @@
                 <see langword="true"/> if all elements was successfully deleted; otherwise <see langword="false"/>.
             </returns>
         </member>
+        <member name="T:MdFilesMerger.Controller.Abstract.IIgnoredFileManager">
+            <summary>
+                Interface for ignored file model manager.
+                <para>
+                    <b> Inheritance: </b><see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/> -&gt; <see
+                    cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/> -&gt; <see cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2"/> -&gt; IIgnoredFileManager <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Controller.Concrete.IgnoredFileManager"/>
+                </para>
+            </summary>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IIgnoredFileService"> MdFilesMerger.App.Abstract.IIgnoredFileService </seealso>
+            <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
+                MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
+            </seealso>
+            <seealso cref="T:MdFilesMerger.Controller.Abstract.IManager`2">
+                MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
+            </seealso>
+            <seealso cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2">
+                MdFilesMerger.Controller.Abstract.IRelativeFileManager&lt;T, TService&gt;
+            </seealso>
+            <seealso cref="T:MdFilesMerger.Controller.Concrete.IgnoredFileManager"> MdFilesMerger.Controller.Concrete.IgnoredFileManager </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"> MdFilesMerger.Domain.Abstract.IIgnoredFile </seealso>
+        </member>
         <member name="T:MdFilesMerger.Controller.Abstract.IMainDirectoryManager">
             <summary>
                 Interface of manager for main directory model.
@@ -77,7 +98,7 @@
                     Implementations: </b><see cref="T:MdFilesMerger.Controller.Concrete.MainDirectoryManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMainDirectoryService"> MdFilesMerger.App.Abstract.IMainDirectoryService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -85,7 +106,7 @@
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.MainDirectoryManager"> MdFilesMerger.Controller.Concrete.MainDirectoryManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
         </member>
         <member name="P:MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoredFileManager">
             <summary>
@@ -109,7 +130,7 @@
             </remarks>
             <param name="file"> The file to ignore. </param>
         </member>
-        <member name="M:MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <summary>
                 Moves file from selected to ignored collection.
             </summary>
@@ -142,7 +163,9 @@
                 </para>
             </summary>
             <typeparam name="T"> Type of model. </typeparam>
-            <typeparam name="TService"> Type of service handling collection of specified models. </typeparam>
+            <typeparam name="TService">
+                Type of service handling collection of specified models.
+            </typeparam>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt;} </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
@@ -202,12 +225,12 @@
                     Implementations: </b><see cref="T:MdFilesMerger.Controller.Concrete.MenuActionManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.IManager`2">
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.MenuActionManager"> MdFilesMerger.Controller.Concrete.MenuActionManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Abstract.IMenuActionManager.EnterOrEsc">
             <summary>
@@ -227,8 +250,8 @@
                 Selects menu action.
             </summary>
             <remarks>
-                Displays appropriate menu (elements of collection with <see cref="P:MdFilesMerger.Domain.Entity.MenuAction.Menu"/>
-                value equal selected item's <see cref="P:MdFilesMerger.Domain.Entity.MenuAction.NextMenu"/> value. Asks user to
+                Displays appropriate menu (elements of collection with <see cref="!:MenuAction.Menu"/>
+                value equal selected item's <see cref="!:MenuAction.NextMenu"/> value. Asks user to
                 select one element and sets it as selected item.
             </remarks>
             <returns>
@@ -244,7 +267,7 @@
                     Implementations: </b><see cref="T:MdFilesMerger.Controller.Concrete.MergedFileManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMergedFileService"> MdFilesMerger.App.Abstract.IMergedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -252,7 +275,7 @@
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.MergedFileManager"> MdFilesMerger.Controller.Concrete.MergedFileManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
         </member>
         <member name="P:MdFilesMerger.Controller.Abstract.IMergedFileManager.MainDirectoryManager">
             <summary>
@@ -309,7 +332,7 @@
             <typeparam name="TService">
                 Service handling collection of object of specified model.
             </typeparam>
-            <seealso cref="T:MdFilesMerger.App.Common.RelativeFileService`1"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -321,7 +344,7 @@
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.IgnoredFileManager"> MdFilesMerger.Controller.Concrete.IgnoredFileManager </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.SelectedFileManager"> MdFilesMerger.Controller.Concrete.SelectedFileManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2.SelectItem(System.Int32)">
             <summary>
@@ -337,7 +360,7 @@
                     cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/> -&gt; <see cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2"/> -&gt; ISelectedFileManager <br/><b> Implementations: </b><see cref="T:MdFilesMerger.Controller.Concrete.SelectedFileManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.ISelectedFileService"> MdFilesMerger.App.Abstract.ISelectedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -348,7 +371,7 @@
                 MdFilesMerger.Controller.Abstract.IRelativeFileManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.SelectedFileManager"> MdFilesMerger.Controller.Concrete.SelectedFileManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Abstract.ISelectedFileManager.UpdateTitle">
             <summary>
@@ -367,7 +390,7 @@
                     </b><see cref="T:MdFilesMerger.Controller.Concrete.UserManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -375,7 +398,7 @@
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Concrete.UserManager"> MdFilesMerger.Controller.Concrete.UserManager </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
         </member>
         <member name="P:MdFilesMerger.Controller.Abstract.IUserManager.MergedFileManager">
             <summary>
@@ -399,12 +422,14 @@
                 </para>
             </summary>
             <typeparam name="T"> Type of managed model. </typeparam>
-            <typeparam name="TService"> Type of service handling collection of specified models. </typeparam>
+            <typeparam name="TService">
+                Type of service handling collection of specified models.
+            </typeparam>
             <seealso cref="T:MdFilesMerger.App.Abstract.IService`1"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.IManager`2">
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Common.BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Common.BaseManager`2.#ctor(`1)">
             <summary>
@@ -485,7 +510,7 @@
             <typeparam name="TService">
                 Service handling collection of object of specified model.
             </typeparam>
-            <seealso cref="T:MdFilesMerger.App.Common.RelativeFileService`1"> MdFilesMerger.App.Common.RelativeFileService&lt;T&gt; </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IRelativeFileService`1"> MdFilesMerger.App.Abstract.IRelativeFileService&lt;T&gt; </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -495,7 +520,7 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Common.RelativeFile"> MdFilesMerger.Domain.Common.RelativeFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IRelativeFile"> MdFilesMerger.Domain.Abstract.IRelativeFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Common.RelativeFileManager`2.#ctor(`1)">
             <summary>
@@ -554,14 +579,15 @@
                     <b> Inheritance: </b><see cref="T:MdFilesMerger.Controller.Common.BaseManager`2"/> -&gt; <see
                     cref="T:MdFilesMerger.Controller.Common.RelativeFileManager`2"/> -&gt; IgnoredFileManager <br/><b>
                     Implements: </b><see cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/>, <see
-                                cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see
+                                cref="T:MdFilesMerger.Controller.Abstract.IIgnoredFileManager"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see
                                 cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"> MdFilesMerger.App.Concrete.IgnoredFileService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IIgnoredFileService"> MdFilesMerger.App.Abstract.IIgnoredFileService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
+            <seealso cref="T:MdFilesMerger.Controller.Abstract.IIgnoredFileManager"> MdFilesMerger.Controller.Abstract.IIgnoredFileManager </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.IManager`2">
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
@@ -574,9 +600,9 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.RelativeFileManager`2">
                 MdFilesMerger.Controller.Common.RelativeFileManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.IgnoredFile"> MdFilesMerger.Domain.Entity.IgnoredFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IIgnoredFile"> MdFilesMerger.Domain.Abstract.IIgnoredFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.Controller.Concrete.IgnoredFileManager"/> class and all
                 it's properties.
@@ -585,7 +611,7 @@
                 Sets <see cref="P:MdFilesMerger.Controller.Common.BaseManager`2.SelectedItem"/> to <see langword="-1"/> and
                 <see cref="P:MdFilesMerger.Controller.Common.BaseManager`2.Service"/> to newly created <see
                 cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"/> object connected with specified <see
-                cref="T:MdFilesMerger.App.Concrete.MainDirectoryService"/> instance.
+                cref="T:MdFilesMerger.App.Abstract.IMainDirectoryService"/> instance.
             </remarks>
             <param name="mainDirectoryService">
                 The main directory service that newly created <see cref="T:MdFilesMerger.App.Concrete.IgnoredFileService"/>
@@ -603,7 +629,7 @@
                     MainDirectoryManager <br/><b> Implements: </b><see cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IMainDirectoryManager"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MainDirectoryService"> MdFilesMerger.App.Concrete.MainDirectoryService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMainDirectoryService"> MdFilesMerger.App.Abstract.IMainDirectoryService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -614,7 +640,7 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MainDirectory"> MdFilesMerger.Domain.Entity.MainDirectory </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"> MdFilesMerger.Domain.Abstract.IMainDirectory </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.#ctor">
             <summary>
@@ -655,7 +681,7 @@
         <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayTitle">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo)">
@@ -664,7 +690,7 @@
         <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.UpdatePath">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory)">
+        <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.GetFilteredList(System.Int32)">
@@ -681,7 +707,7 @@
                     <br/><b> Implements: </b><see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IMenuActionManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MenuActionService"> MdFilesMerger.App.Concrete.MenuActionService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMenuActionService"> MdFilesMerger.App.Abstract.IMenuActionService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.IManager`2">
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
@@ -689,7 +715,7 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.#ctor">
             <summary>
@@ -703,7 +729,7 @@
         <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.DisplayTitle">
             <summary>
                 Displays appropriate manager title, based on displayed menu (selected items <see
-                cref="P:MdFilesMerger.Domain.Entity.MenuAction.NextMenu"/> vale).
+                cref="P:MdFilesMerger.Domain.Abstract.IMenuAction.NextMenu"/> vale).
             </summary>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.EnterOrEsc">
@@ -724,12 +750,12 @@
                 default value, so it can be omitted all together.
             </param>
             <returns>
-                List of menu action objects with <see cref="P:MdFilesMerger.Domain.Entity.MenuAction.Menu"/> value equal <see
-                cref="P:MdFilesMerger.Domain.Entity.MenuAction.NextMenu"/> value of currently selected item or <see
+                List of menu action objects with <see cref="P:MdFilesMerger.Domain.Abstract.IMenuAction.Menu"/> value equal <see
+                cref="P:MdFilesMerger.Domain.Abstract.IMenuAction.NextMenu"/> value of currently selected item or <see
                 cref="F:MdFilesMerger.Domain.Common.MenuType.Main"/> if no object is currently selected.
             </returns>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Entity.MenuAction})">
+        <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Abstract.IMenuAction})">
             <inheritdoc/>
         </member>
         <member name="T:MdFilesMerger.Controller.Concrete.MergedFileManager">
@@ -741,7 +767,7 @@
                     cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IMergedFileManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IMergedFileService"> MdFilesMerger.App.Abstract.IMergedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -752,7 +778,7 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.MergedFile"> MdFilesMerger.Domain.Entity.MergedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MergedFileManager.#ctor">
             <summary>
@@ -802,7 +828,7 @@
         <member name="M:MdFilesMerger.Controller.Concrete.MergedFileManager.UpdateTitle">
             <inheritdoc/>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile)">
+        <member name="M:MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMergedFile)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.MergedFileManager.GetFilteredList(System.Int32)">
@@ -820,7 +846,7 @@
                     Implements: </b><see cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.ISelectedFileManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.SelectedFileService"> MdFilesMerger.App.Concrete.SelectedFileService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.ISelectedFileService"> MdFilesMerger.App.Abstract.ISelectedFileService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -828,7 +854,7 @@
                 MdFilesMerger.Controller.Abstract.IManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.IRelativeFileManager`2">
-                MdFilesMerger.Controller.Abstract.IReleativeFileManager&lt;T, TService&gt;
+                MdFilesMerger.Controller.Abstract.IRelativeFileManager&lt;T, TService&gt;
             </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ISelectedFileManager"> MdFilesMerger.Controller.Abstract.ISelectedFileManager </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
@@ -837,9 +863,9 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.RelativeFileManager`2">
                 MdFilesMerger.Controller.Common.RelativeFileManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.SelectedFile"> MdFilesMerger.Domain.Entity.SelectedFile </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.ISelectedFile"> MdFilesMerger.Domain.Abstract.ISelectedFile </seealso>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
+        <member name="M:MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.Controller.Concrete.SelectedFileManager"/> class and all
                 it's properties.
@@ -848,7 +874,7 @@
                 Sets <see cref="P:MdFilesMerger.Controller.Common.BaseManager`2.SelectedItem"/> to <see langword="-1"/> and
                 <see cref="P:MdFilesMerger.Controller.Common.BaseManager`2.Service"/> to newly created <see
                 cref="T:MdFilesMerger.App.Concrete.SelectedFileService"/> object connected with specified <see
-                cref="T:MdFilesMerger.App.Concrete.MainDirectoryService"/> instance.
+                cref="T:MdFilesMerger.App.Abstract.IMainDirectoryService"/> instance.
             </remarks>
             <param name="mainDirectoryService">
                 The main directory service that the newly created <see cref="T:MdFilesMerger.App.Concrete.SelectedFileService"/>
@@ -869,7 +895,7 @@
                     Implements: </b><see cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IManager`2"/>, <see cref="T:MdFilesMerger.Controller.Abstract.IUserManager"/>
                 </para>
             </summary>
-            <seealso cref="T:MdFilesMerger.App.Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
+            <seealso cref="T:MdFilesMerger.App.Abstract.IUserService"> MdFilesMerger.App.Abstract.IUserService </seealso>
             <seealso cref="T:MdFilesMerger.Controller.Abstract.ICRUDManager`2">
                 MdFilesMerger.Controller.Abstract.ICRUDManager&lt;T, TService&gt;
             </seealso>
@@ -880,7 +906,7 @@
             <seealso cref="T:MdFilesMerger.Controller.Common.BaseManager`2">
                 MdFilesMerger.Controller.Common.BaseManager&lt;T, TService&gt;
             </seealso>
-            <seealso cref="T:MdFilesMerger.Domain.Entity.User"> MdFilesMerger.Domain.Entity.User </seealso>
+            <seealso cref="T:MdFilesMerger.Domain.Abstract.IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
         </member>
         <member name="M:MdFilesMerger.Controller.Concrete.UserManager.#ctor">
             <summary>

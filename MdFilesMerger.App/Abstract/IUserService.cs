@@ -1,9 +1,9 @@
-﻿using MdFilesMerger.Domain.Entity;
+﻿using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Abstract
 {
     /// <summary>
-    ///     Defines methods to service <see cref="User"/> objects collection.
+    ///     Defines methods to service <see cref="IUser"/> objects collection.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
     ///         -&gt; IUserService <br/><b> Implementations: </b><see cref="Concrete.UserService"/>
@@ -12,8 +12,8 @@ namespace MdFilesMerger.App.Abstract
     /// <seealso cref="ICRUDService{T}"> MdFilesMerger.App.Abstract.ICRUDService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.UserService"> MdFilesMerger.App.Concrete.UserService </seealso>
-    /// <seealso cref="User"> MdFilesMerger.Domain.Entity.User </seealso>
-    public interface IUserService : ICRUDService<User>
+    /// <seealso cref="IUser"> MdFilesMerger.Domain.Abstract.IUser </seealso>
+    public interface IUserService : ICRUDService<IUser>
     {
         /// <summary>
         ///     Check the credentials.
@@ -35,7 +35,7 @@ namespace MdFilesMerger.App.Abstract
         ///     <paramref name="name"/>. If there is no element with specified name in stored
         ///     collection, method returns <see langword="null"/>.
         /// </returns>
-        public User? ReadByName(string name);
+        IUser? ReadByName(string name);
 
         /// <summary>
         ///     Updates the name of user with specified identification number.
@@ -56,7 +56,7 @@ namespace MdFilesMerger.App.Abstract
         ///     </list>
         ///     then <see langword="-1"/>.
         /// </returns>
-        public int UpdateName(int id, string name);
+        int UpdateName(int id, string name);
 
         /// <summary>
         ///     Updates the password of user with specified identification number.
@@ -68,6 +68,6 @@ namespace MdFilesMerger.App.Abstract
         ///     or specified password is <see langword="null"/>, <see cref="string.Empty"/> or
         ///     consists only from white-spaces characters.
         /// </returns>
-        public int UpdatePassword(int id, string password);
+        int UpdatePassword(int id, string password);
     }
 }

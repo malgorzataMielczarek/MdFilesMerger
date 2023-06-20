@@ -15,6 +15,6 @@
         /// <summary>
         ///     Identification number of merged file associated with this main directory instance
         /// </summary>
-        public int MergedFileId { get; set; }
+        int MergedFileId { get; set; }
     }
 }

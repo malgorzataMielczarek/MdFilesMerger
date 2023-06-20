@@ -7,14 +7,14 @@ namespace MdFilesMerger.Domain.Common
     ///     Base implementation for all directory and file related models.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="BaseItem"/> -&gt; BaseDirectory <br/><b> Implements:
-    ///         </b><see cref="IComparable{BaseDirectory}"/>, <see cref="IDirectory"/>, <see cref="IItem"/>
+    ///         </b><see cref="IComparable{IDirectory}"/>, <see cref="IDirectory"/>, <see cref="IItem"/>
     ///     </para>
     /// </summary>
     /// <seealso cref="BaseItem"> MdFilesMerger.Domain.Common.BaseItem </seealso>
     /// <seealso cref="IComparable{T}"> System.IComparable&lt;T&gt; </seealso>
     /// <seealso cref="IDirectory"> MdFilesMerger.Domain.Abstract.IDirectory </seealso>
     /// <seealso cref="IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
-    public class BaseDirectory : BaseItem, IDirectory, IComparable<BaseDirectory>
+    public class BaseDirectory : BaseItem, IDirectory
     {
         /// <inheritdoc/>
         public BaseDirectory() : base()
@@ -107,7 +107,7 @@ namespace MdFilesMerger.Domain.Common
         /// </remarks>
         /// <param name="other"> <inheritdoc/> </param>
         /// <returns> <inheritdoc/> </returns>
-        public int CompareTo(BaseDirectory? other)
+        public int CompareTo(IDirectory? other)
         {
             if (other?.Name == null)
             {
@@ -139,7 +139,10 @@ namespace MdFilesMerger.Domain.Common
                 // If no subdirectories order by name
                 else
                 {
-                    return CompareDirectoriesNames(GetDirectoryName(), other.GetDirectoryName());
+                    string? thisDirName = Path.GetFileNameWithoutExtension(this.Name);
+                    string? otherDirName = Path.GetFileNameWithoutExtension(other.Name);
+
+                    return CompareDirectoriesNames(thisDirName, otherDirName);
                 }
             }
             else
@@ -177,7 +180,10 @@ namespace MdFilesMerger.Domain.Common
                 // order by name
                 else if (thisSubdirCount == otherSubdirCount)
                 {
-                    return CompareDirectoriesNames(GetDirectoryName(), other.GetDirectoryName());
+                    string? thisDirName = Path.GetFileNameWithoutExtension(this.Name);
+                    string? otherDirName = Path.GetFileNameWithoutExtension(other.Name);
+
+                    return CompareDirectoriesNames(thisDirName, otherDirName);
                 }
 
                 // if the other has more subdirectories then this one, order is correct
@@ -321,14 +327,6 @@ namespace MdFilesMerger.Domain.Common
 
                 return -1;
             }
-        }
-
-        /// <summary>
-        ///     Gets this directory (file) name from path in <see cref="BaseItem.Name"/>
-        /// </summary>
-        private string? GetDirectoryName()
-        {
-            return Path.GetFileNameWithoutExtension(Name);
         }
     }
 }

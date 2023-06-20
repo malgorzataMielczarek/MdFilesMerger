@@ -34,6 +34,6 @@ namespace MdFilesMerger.App.Abstract
         /// <returns>
         ///     Identification number of updated element or <see langword="-1"/>, if update failed.
         /// </returns>
-        public int UpdatePath(int id, string path);
+        int UpdatePath(int id, string path);
     }
 }

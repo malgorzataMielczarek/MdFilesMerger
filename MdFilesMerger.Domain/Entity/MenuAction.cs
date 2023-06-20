@@ -59,7 +59,7 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is MenuAction other)
+            if (obj != null && obj is IMenuAction other)
             {
                 return this.Name == other.Name && this.Menu == other.Menu;
             }

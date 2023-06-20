@@ -1,10 +1,10 @@
 ﻿using MdFilesMerger.Domain.Common;
-using MdFilesMerger.Domain.Entity;
+using MdFilesMerger.Domain.Abstract;
 
 namespace MdFilesMerger.App.Abstract
 {
     /// <summary>
-    ///     Interface with methods for handling collection of <see cref="MergedFile"/> objects.
+    ///     Interface with methods for handling collection of <see cref="IMergedFile"/> objects.
     ///     <para>
     ///         <b> Inheritance: </b><see cref="IService{T}"/> -&gt; <see cref="ICRUDService{T}"/>
     ///         -&gt; <see cref="IDirectoryService{T}"/> -&gt; <see cref="IEditFileService{T}"/>
@@ -17,8 +17,8 @@ namespace MdFilesMerger.App.Abstract
     /// <seealso cref="IEditFileService{T}"> MdFilesMerger.App.Abstract.IEditFileService&lt;T&gt; </seealso>
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="Concrete.MergedFileService"> MdFilesMerger.App.Concrete.MergedFileService </seealso>
-    /// <seealso cref="MergedFile"> MdFilesMerger.Domain.Concrete.MergedFile </seealso>
-    public interface IMergedFileService : IEditFileService<MergedFile>
+    /// <seealso cref="IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
+    public interface IMergedFileService : IEditFileService<IMergedFile>
     {
         /// <summary>
         ///     Appends the table of contents at the end of the file.
@@ -33,7 +33,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The list of all selected files that will be merged into the merged file. It is used
         ///     to create table of contents.
         /// </param>
-        void AppendTableOfContents(FileInfo destinationFile, int mergedFileId, List<SelectedFile> selectedFiles);
+        void AppendTableOfContents(FileInfo destinationFile, int mergedFileId, List<ISelectedFile> selectedFiles);
 
         /// <summary>
         ///     Creates the file associated with specified <see cref="MergedFile"/> object.
@@ -49,7 +49,7 @@ namespace MdFilesMerger.App.Abstract
         ///     <see cref="FileInfo"/> of created file or <see langword="null"/> if no file was
         ///     specified, or specified file couldn't be created.
         /// </returns>
-        public FileInfo? CreateFile(int id);
+        FileInfo? CreateFile(int id);
 
         /// <summary>
         ///     Gets, from the stored collection of <see cref="MergedFile"/> objects, elements with
@@ -61,7 +61,7 @@ namespace MdFilesMerger.App.Abstract
         ///     there is no objects with <see cref="MergedFile.UserId"/> equal <paramref
         ///     name="userId"/>, returned list is empty.
         /// </returns>
-        public List<MergedFile> ReadByUserId(int userId);
+        List<IMergedFile> ReadByUserId(int userId);
 
         /// <summary>
         ///     Updates the name of the file associated with specified object.
@@ -75,7 +75,7 @@ namespace MdFilesMerger.App.Abstract
         ///     cref="MergedFile"/> with specified id in the stored collection or <paramref
         ///     name="fileName"/> is not a valid file name.
         /// </returns>
-        public int UpdateFileName(int id, string fileName);
+        int UpdateFileName(int id, string fileName);
 
         /// <summary>
         ///     Updates the new line style that will be used in specified merged file.
@@ -86,7 +86,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
         ///     cref="MergedFile"/> with specified id in the stored collection.
         /// </returns>
-        public int UpdateNewLineStyle(int id, string newLineStyle);
+        int UpdateNewLineStyle(int id, string newLineStyle);
 
         /// <summary>
         ///     Updates the parent directory of the file associated with specified object.
@@ -98,7 +98,7 @@ namespace MdFilesMerger.App.Abstract
         ///     cref="MergedFile"/> with specified id in the stored collection or <paramref
         ///     name="directoryPath"/> is not a valid path.
         /// </returns>
-        public int UpdateParentDirectory(int id, string directoryPath);
+        int UpdateParentDirectory(int id, string directoryPath);
 
         /// <summary>
         ///     Updates the type of table of contents for specified merged file.
@@ -109,7 +109,7 @@ namespace MdFilesMerger.App.Abstract
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
         ///     cref="MergedFile"/> with specified id in the stored collection.
         /// </returns>
-        public int UpdateTableOfContents(int id, TableOfContents tableOfContents);
+        int UpdateTableOfContents(int id, TableOfContents tableOfContents);
 
         /// <summary>
         ///     Updates the header of table of contents for specified merged file.
@@ -120,6 +120,6 @@ namespace MdFilesMerger.App.Abstract
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
         ///     cref="MergedFile"/> with specified id in the stored collection.
         /// </returns>
-        public int UpdateTOCHeader(int id, string? header);
+        int UpdateTOCHeader(int id, string? header);
     }
 }

@@ -95,7 +95,7 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is User other)
+            if (obj != null && obj is IUser other)
             {
                 return this.Name == other.Name;
             }
@@ -106,35 +106,13 @@ namespace MdFilesMerger.Domain.Entity
         /// <inheritdoc/>
         public override int GetHashCode() => base.GetHashCode();
 
-        /// <summary>
-        ///     Checks if decrypted <see cref="Password"/> is equal to <paramref name="password"/>
-        /// </summary>
-        /// <param name="password"> Value compared with decrypted <see cref="Password"/> value. </param>
-        /// <returns>
-        ///     <see langword="true"/> if <paramref name="password"/> and decrypted <see
-        ///     cref="Password"/> have the same value; otherwise, <see langword="false"/>
-        /// </returns>
+        /// <inheritdoc/>
         public bool PasswordEquals(string? password)
         {
             return password?.Equals(DecryptePassword()) ?? Password == null;
         }
 
-        /// <summary>
-        ///     Sets <see cref="Password"/> to encrypted <paramref name="password"/> value or <see
-        ///     langword="null"/> value.
-        /// </summary>
-        /// <remarks>
-        ///     <see cref="Password"/> is set to <see langword="null"/> if <paramref
-        ///     name="password"/> is <see langword="null"/>, <see cref="string.Empty"/> or consists
-        ///     exclusively of white-space characters. Otherwise <paramref name="password"/> is
-        ///     encrypted using <see cref="EncryptePassword(string)"/> method and <see cref="Salt"/>
-        ///     value. <see cref="Password"/> is set to returned value.
-        /// </remarks>
-        /// <param name="password"> User's decrypted password </param>
-        /// <returns>
-        ///     <see langword="false"/> if <see cref="Password"/> set to <see langword="null"/>;
-        ///     otherwise <see langword="true"/>
-        /// </returns>
+        /// <inheritdoc/>
         [MemberNotNullWhen(true, nameof(Password))]
         public bool SetPassword(string? password)
         {

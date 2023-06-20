@@ -25,8 +25,9 @@ namespace MdFilesMerger.App.Concrete
     /// <seealso cref="IService{T}"> MdFilesMerger.App.Abstract.IService&lt;T&gt; </seealso>
     /// <seealso cref="BaseDirectoryService{T}"> MdFilesMerger.App.Common.BaseDirectoryService&lt;T&gt; </seealso>
     /// <seealso cref="BaseService{T}"> MdFilesMerger.App.Common.BaseService&lt;T&gt; </seealso>
+    /// <seealso cref="IMergedFile"> MdFilesMerger.Domain.Abstract.IMergedFile </seealso>
     /// <seealso cref="MergedFile"> MdFilesMerger.Domain.Concrete.MergedFile </seealso>
-    public sealed class MergedFileService : BaseDirectoryService<MergedFile>, IMergedFileService
+    public sealed class MergedFileService : BaseDirectoryService<IMergedFile>, IMergedFileService
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MergedFileService"/> class and fills
@@ -42,14 +43,14 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public void AppendTableOfContents(FileInfo? destinationFile, int mergedFileId, List<SelectedFile> selectedFiles)
+        public void AppendTableOfContents(FileInfo? destinationFile, int mergedFileId, List<ISelectedFile> selectedFiles)
         {
             if (destinationFile == null || mergedFileId == -1)
             {
                 return;
             }
 
-            MergedFile? mergedFile = ReadById(mergedFileId);
+            IMergedFile? mergedFile = ReadById(mergedFileId);
             if (mergedFile == null || mergedFile.TableOfContents == TableOfContents.None)
             {
                 return;
@@ -71,7 +72,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public FileInfo? CreateFile(int id)
         {
-            MergedFile? mergedFile = ReadById(id);
+            IMergedFile? mergedFile = ReadById(id);
             string? mergedFilePath = mergedFile?.GetPath();
             if (string.IsNullOrWhiteSpace(mergedFilePath))
             {
@@ -112,9 +113,9 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public List<MergedFile> ReadByUserId(int userId)
+        public List<IMergedFile> ReadByUserId(int userId)
         {
-            List<MergedFile> mergedFiles = new List<MergedFile>();
+            List<IMergedFile> mergedFiles = new List<IMergedFile>();
             foreach (var file in _items)
             {
                 if (file.UserId == userId)
@@ -129,7 +130,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateFileName(int id, string fileName)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
@@ -152,7 +153,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateNewLineStyle(int id, string newLineStyle)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
@@ -168,7 +169,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateParentDirectory(int id, string directoryPath)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
@@ -191,7 +192,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateTableOfContents(int id, TableOfContents tableOfContents)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
@@ -207,7 +208,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateTitle(int id, string? title)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
@@ -223,7 +224,7 @@ namespace MdFilesMerger.App.Concrete
         /// <inheritdoc/>
         public int UpdateTOCHeader(int id, string? header)
         {
-            MergedFile? file = ReadById(id);
+            IMergedFile? file = ReadById(id);
 
             if (file != null)
             {
