@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdFilesMerger.App", "MdFile
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdFilesMerger.Domain", "MdFilesMerger.Domain\MdFilesMerger.Domain.csproj", "{E84B323D-A3C1-490F-BDB0-DF016C345403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdFilesMerger.Controller", "MdFilesMerger.Controller\MdFilesMerger.Controller.csproj", "{289079C9-7137-40BA-8E9C-98FC0BDC5B84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdFilesMerger.Controller", "MdFilesMerger.Controller\MdFilesMerger.Controller.csproj", "{289079C9-7137-40BA-8E9C-98FC0BDC5B84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdFilesMerger.Tests", "MdFilesMerger.Tests\MdFilesMerger.Tests.csproj", "{672ABF32-7D73-4F1E-9385-459A2EAB70D1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD6FB07C-520E-4365-A379-8D96DBEDD59B} = {BD6FB07C-520E-4365-A379-8D96DBEDD59B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{289079C9-7137-40BA-8E9C-98FC0BDC5B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{289079C9-7137-40BA-8E9C-98FC0BDC5B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{289079C9-7137-40BA-8E9C-98FC0BDC5B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672ABF32-7D73-4F1E-9385-459A2EAB70D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672ABF32-7D73-4F1E-9385-459A2EAB70D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672ABF32-7D73-4F1E-9385-459A2EAB70D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672ABF32-7D73-4F1E-9385-459A2EAB70D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
