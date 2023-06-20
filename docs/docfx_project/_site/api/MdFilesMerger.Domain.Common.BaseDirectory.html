@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Domain_Common_BaseDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Common.BaseDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Domain_Common_BaseDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Common.BaseDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Domain_Common_BaseDirectory" data-uid="MdFilesMerger.Domain.Common.BaseDirectory" class="text-break">
     Class BaseDirectory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -96,7 +96,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BaseDirectory : BaseItem, IDirectory, IItem, IComparable&lt;BaseDirectory&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class BaseDirectory : BaseItem, IDirectory, IItem, IComparable&lt;IDirectory&gt;</code></pre>
   </div>
 
 
@@ -116,7 +116,7 @@
     <dd>
       <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a>&gt;</div>
     </dd>
   </dl>
 
@@ -173,7 +173,7 @@
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory__ctor" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.#ctor">
   BaseDirectory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets all properties to its default values.</p>
@@ -209,7 +209,7 @@
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory__ctor_System_Int32_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.Int32)">
   BaseDirectory(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id"> Id </a> to <code class="paramref">id</code> and rest properties to its
@@ -252,7 +252,7 @@ default value.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory__ctor_System_Int32_System_String_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.Int32,System.String)">
   BaseDirectory(int, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>
@@ -301,7 +301,7 @@ to adjusted <code class="paramref">path</code> and <a class="xref" href="MdFiles
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory__ctor_System_Int32_System_String_System_DateTime_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.Int32,System.String,System.DateTime)">
   BaseDirectory(int, string?, DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets all properties to values of appropriate arguments.</p>
@@ -353,7 +353,7 @@ evaluated and prepared data, for example from database.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory__ctor_System_String_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.#ctor(System.String)">
   BaseDirectory(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> to adjusted <code class="paramref">path</code> and rest
@@ -403,7 +403,7 @@ properties to its default values.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory_ModifiedDate" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.ModifiedDate">
   ModifiedDate
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Date and time of last update or creation if entry wasn't modified.</p>
@@ -447,9 +447,9 @@ properties to its default values.</p>
 
   <a id="MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.CompareTo*"></a>
 
-  <h3 id="MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)">
-  CompareTo(BaseDirectory?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Abstract_IDirectory_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory)">
+  CompareTo(IDirectory?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Compares paths ( <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>) of the current instance and another
@@ -459,12 +459,12 @@ instance precedes, follows or occurs in the same position in sort order as <code
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CompareTo(BaseDirectory? other)</code></pre>
+    <pre><code class="lang-csharp hljs">public int CompareTo(IDirectory? other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>other</code> <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a></dt>
+    <dt><code>other</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></dt>
     <dd><p>An object to compare with this instance.</p>
 </dd>
   </dl>
@@ -483,7 +483,7 @@ instance precedes, follows or occurs in the same position in sort order as <code
 
 
 
-  <h4 class="section" id="MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory__remarks">Remarks</h4>
+  <h4 class="section" id="MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Abstract_IDirectory__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>After cutting off common part of both paths (common base directory), in sort order
 first occurs object without subdirectories. If both shortened paths (don't)have
 subdirectories they are sorted by names of the leased nested, not common, directory
@@ -508,7 +508,7 @@ by values of this postfixes.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory_GetPath" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.GetPath">
   GetPath()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L201"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets directory/file path held in <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> property.</p>
@@ -550,7 +550,7 @@ by values of this postfixes.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_BaseDirectory_SetPath_System_String_" data-uid="MdFilesMerger.Domain.Common.BaseDirectory.SetPath(System.String)">
   SetPath(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L229"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> as adjusted <code class="paramref">path</code>.</p>
@@ -614,7 +614,7 @@ Otherwise it sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.htm
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/BaseDirectory.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
         

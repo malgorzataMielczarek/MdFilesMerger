@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Controller_Abstract_ISelectedFileManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Abstract.ISelectedFileManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Controller_Abstract_ISelectedFileManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Abstract.ISelectedFileManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Controller_Abstract_ISelectedFileManager" data-uid="MdFilesMerger.Controller.Abstract.ISelectedFileManager" class="text-break">
     Interface ISelectedFileManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -95,7 +95,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ISelectedFileManager : IRelativeFileManager&lt;SelectedFile, SelectedFileService&gt;, ICRUDManager&lt;SelectedFile, SelectedFileService&gt;, IManager&lt;SelectedFile, SelectedFileService&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ISelectedFileManager : IRelativeFileManager&lt;ISelectedFile, ISelectedFileService&gt;, ICRUDManager&lt;ISelectedFile, ISelectedFileService&gt;, IManager&lt;ISelectedFile, ISelectedFileService&gt;</code></pre>
   </div>
 
 
@@ -108,31 +108,31 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html#MdFilesMerger_Controller_Abstract_IRelativeFileManager_2_SelectItem_System_Int32_">IRelativeFileManager&lt;SelectedFile, SelectedFileService&gt;.SelectItem(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html#MdFilesMerger_Controller_Abstract_IRelativeFileManager_2_SelectItem_System_Int32_">IRelativeFileManager&lt;ISelectedFile, ISelectedFileService&gt;.SelectItem(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Create_System_Int32_">ICRUDManager&lt;SelectedFile, SelectedFileService&gt;.Create(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Create_System_Int32_">ICRUDManager&lt;ISelectedFile, ISelectedFileService&gt;.Create(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Delete">ICRUDManager&lt;SelectedFile, SelectedFileService&gt;.Delete()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Delete">ICRUDManager&lt;ISelectedFile, ISelectedFileService&gt;.Delete()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Delete_System_Int32_">ICRUDManager&lt;SelectedFile, SelectedFileService&gt;.Delete(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html#MdFilesMerger_Controller_Abstract_ICRUDManager_2_Delete_System_Int32_">ICRUDManager&lt;ISelectedFile, ISelectedFileService&gt;.Delete(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_SelectedItem">IManager&lt;SelectedFile, SelectedFileService&gt;.SelectedItem</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_SelectedItem">IManager&lt;ISelectedFile, ISelectedFileService&gt;.SelectedItem</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Service">IManager&lt;SelectedFile, SelectedFileService&gt;.Service</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Service">IManager&lt;ISelectedFile, ISelectedFileService&gt;.Service</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Display">IManager&lt;SelectedFile, SelectedFileService&gt;.Display()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Display">IManager&lt;ISelectedFile, ISelectedFileService&gt;.Display()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_DisplayTitle">IManager&lt;SelectedFile, SelectedFileService&gt;.DisplayTitle()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_DisplayTitle">IManager&lt;ISelectedFile, ISelectedFileService&gt;.DisplayTitle()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Select_System_Int32_">IManager&lt;SelectedFile, SelectedFileService&gt;.Select(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html#MdFilesMerger_Controller_Abstract_IManager_2_Select_System_Int32_">IManager&lt;ISelectedFile, ISelectedFileService&gt;.Select(int)</a>
     </div>
   </dd></dl>
 
@@ -149,7 +149,7 @@
 
   <h3 id="MdFilesMerger_Controller_Abstract_ISelectedFileManager_UpdateTitle" data-uid="MdFilesMerger.Controller.Abstract.ISelectedFileManager.UpdateTitle">
   UpdateTitle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the title (table of contents entry) of selected item.</p>
@@ -179,30 +179,30 @@
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.ISelectedFileService.html">ISelectedFileService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Concrete.SelectedFileManager.html">SelectedFileManager</a></div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
     </dd>
   </dl>
 
 
   <h2 id="seealso">See Also</h2>
   <div class="seealso">
-      <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.ISelectedFileService.html">ISelectedFileService</a></div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Concrete.SelectedFileManager.html">SelectedFileManager</a></div>
-      <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L26" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Abstract/ISelectedFileManager.cs/#L26" class="edit-link">Edit this page</a>
         </div>
 
         

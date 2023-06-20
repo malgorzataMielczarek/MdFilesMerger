@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Common_RelativeFileService_1.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Common.RelativeFileService%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Common_RelativeFileService_1.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Common.RelativeFileService%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Common_RelativeFileService_1" data-uid="MdFilesMerger.App.Common.RelativeFileService`1" class="text-break">
     Class RelativeFileService&lt;T&gt;
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RelativeFileService&lt;T&gt; : BaseDirectoryService&lt;T&gt;, IRelativeFileService&lt;T&gt;, IDirectoryService&lt;T&gt;, ICRUDService&lt;T&gt;, IService&lt;T&gt; where T : RelativeFile</code></pre>
+    <pre><code class="lang-csharp hljs">public class RelativeFileService&lt;T&gt; : BaseDirectoryService&lt;T&gt;, IRelativeFileService&lt;T&gt;, IDirectoryService&lt;T&gt;, ICRUDService&lt;T&gt;, IService&lt;T&gt; where T : class, IRelativeFile</code></pre>
   </div>
 
 
@@ -207,9 +207,9 @@
 
   <a id="MdFilesMerger_App_Common_RelativeFileService_1__ctor_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.#ctor*"></a>
 
-  <h3 id="MdFilesMerger_App_Common_RelativeFileService_1__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
-  RelativeFileService(MainDirectoryService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Common_RelativeFileService_1__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
+  RelativeFileService(IMainDirectoryService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService&lt;T&gt;</a> class.</p>
@@ -217,12 +217,12 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelativeFileService(MainDirectoryService mainDirService)</code></pre>
+    <pre><code class="lang-csharp hljs">public RelativeFileService(IMainDirectoryService mainDirService)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>mainDirService</code> <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></dt>
+    <dt><code>mainDirService</code> <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></dt>
     <dd><p>The main directory service.</p>
 </dd>
   </dl>
@@ -245,6 +245,7 @@
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -257,7 +258,7 @@
 
   <h3 id="MdFilesMerger_App_Common_RelativeFileService_1__mainDirService" data-uid="MdFilesMerger.App.Common.RelativeFileService`1._mainDirService">
   _mainDirService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The main directory service.</p>
@@ -265,7 +266,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected readonly MainDirectoryService _mainDirService</code></pre>
+    <pre><code class="lang-csharp hljs">protected readonly IMainDirectoryService _mainDirService</code></pre>
   </div>
 
 
@@ -273,7 +274,7 @@
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></dt>
+    <dt><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></dt>
     <dd></dd>
   </dl>
 
@@ -292,6 +293,7 @@
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -303,9 +305,9 @@
 
   <a id="MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles*"></a>
 
-  <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
-  FindNewFiles(IEnumerable&lt;FileInfo&gt;, MainDirectory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
+  FindNewFiles(IEnumerable&lt;FileInfo&gt;, IMainDirectory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>In the list of files connected with specified main directory, finds files, that
@@ -314,7 +316,7 @@ aren't associated with any element in the stored collection.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;FileInfo&gt; FindNewFiles(IEnumerable&lt;FileInfo&gt; list, MainDirectory mainDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;FileInfo&gt; FindNewFiles(IEnumerable&lt;FileInfo&gt; list, IMainDirectory mainDirectory)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -322,7 +324,7 @@ aren't associated with any element in the stored collection.</p>
     <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a>&gt;</dt>
     <dd><p>The list of files.</p>
 </dd>
-    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></dt>
+    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
     <dd><p>The main directory for files on the list.</p>
 </dd>
   </dl>
@@ -351,6 +353,7 @@ aren't associated with any element in the stored collection.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -360,7 +363,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_GetFullPath_System_Int32_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.GetFullPath(System.Int32)">
   GetFullPath(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the full path of file associated with specified object.</p>
@@ -402,6 +405,7 @@ aren't associated with any element in the stored collection.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -411,7 +415,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_GetFullPath__0_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.GetFullPath(`0)">
   GetFullPath(T?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the full path of file associated with specified object.</p>
@@ -453,6 +457,7 @@ aren't associated with any element in the stored collection.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -462,7 +467,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_ReadByMainDirId_System_Int32_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.ReadByMainDirId(System.Int32)">
   ReadByMainDirId(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets, from the stored collection of <see cref="!:T"></see> objects, elements with
@@ -507,6 +512,7 @@ identifier. If there is no objects with <a class="xref" href="MdFilesMerger.Doma
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -516,7 +522,7 @@ identifier. If there is no objects with <a class="xref" href="MdFilesMerger.Doma
 
   <h3 id="MdFilesMerger_App_Common_RelativeFileService_1_UpdatePath_System_Int32_System_String_" data-uid="MdFilesMerger.App.Common.RelativeFileService`1.UpdatePath(System.Int32,System.String)">
   UpdatePath(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the relative path of .md file associated with the element with specified
@@ -563,6 +569,7 @@ to associate with the element being updated.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
     </dd>
   </dl>
@@ -576,13 +583,14 @@ to associate with the element being updated.</p>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Common/RelativeFileService.cs/#L26" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Common/RelativeFileService.cs/#L28" class="edit-link">Edit this page</a>
         </div>
 
         

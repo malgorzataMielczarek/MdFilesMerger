@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Domain_Abstract_IMainDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Abstract.IMainDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Domain_Abstract_IMainDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Abstract.IMainDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Domain_Abstract_IMainDirectory" data-uid="MdFilesMerger.Domain.Abstract.IMainDirectory" class="text-break">
     Interface IMainDirectory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -96,7 +96,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IMainDirectory : IDirectory, IItem</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IMainDirectory : IDirectory, IItem, IComparable&lt;IDirectory&gt;</code></pre>
   </div>
 
 
@@ -123,6 +123,9 @@
     <div>
       <a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html#MdFilesMerger_Domain_Abstract_IItem_Name">IItem.Name</a>
     </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto">IComparable&lt;IDirectory&gt;.CompareTo(IDirectory)</a>
+    </div>
   </dd></dl>
 
 
@@ -138,7 +141,7 @@
 
   <h3 id="MdFilesMerger_Domain_Abstract_IMainDirectory_MergedFileId" data-uid="MdFilesMerger.Domain.Abstract.IMainDirectory.MergedFileId">
   MergedFileId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Identification number of merged file associated with this main directory instance</p>
@@ -184,7 +187,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Abstract/IMainDirectory.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
         

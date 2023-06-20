@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Controller_Common_RelativeFileManager_2.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Common.RelativeFileManager%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Controller_Common_RelativeFileManager_2.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Common.RelativeFileManager%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Controller_Common_RelativeFileManager_2" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2" class="text-break">
     Class RelativeFileManager&lt;T, TService&gt;
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class RelativeFileManager&lt;T, TService&gt; : BaseManager&lt;T, TService&gt;, IRelativeFileManager&lt;T, TService&gt;, ICRUDManager&lt;T, TService&gt;, IManager&lt;T, TService&gt; where T : RelativeFile where TService : RelativeFileService&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class RelativeFileManager&lt;T, TService&gt; : BaseManager&lt;T, TService&gt;, IRelativeFileManager&lt;T, TService&gt;, ICRUDManager&lt;T, TService&gt;, IManager&lt;T, TService&gt; where T : IRelativeFile where TService : IRelativeFileService&lt;T&gt;</code></pre>
   </div>
 
 
@@ -210,7 +210,7 @@
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2__ctor__1_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.#ctor(`1)">
   RelativeFileManager(TService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager&lt;T, TService&gt;</a>
@@ -245,11 +245,11 @@ and <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdF
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -262,7 +262,7 @@ and <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdF
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_Create_System_Int32_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.Create(System.Int32)">
   Create(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates new entity of the appropriate model, adds it to service collection and sets
@@ -299,11 +299,11 @@ as selected item.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -312,7 +312,7 @@ as selected item.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.Delete">
   Delete()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes from the service's collection selected item and all elements of other
@@ -343,11 +343,11 @@ models, that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -356,7 +356,7 @@ models, that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete_System_Int32_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.Delete(System.Int32)">
   Delete(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes from the service's collection all elements connected with the item with
@@ -394,11 +394,11 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -407,7 +407,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_DisplayItem__0_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.DisplayItem(`0)">
   DisplayItem(T?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L150"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays the information about specified item.</p>
@@ -437,11 +437,11 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -450,7 +450,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_GetFilteredList_System_Int32_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.GetFilteredList(System.Int32)">
   GetFilteredList(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets elements from the collection that are connected with element with specified identifier.</p>
@@ -486,11 +486,11 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -499,7 +499,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_Select_System_Int32_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.Select(System.Int32)">
   Select(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Selects the item from service's collection.</p>
@@ -535,11 +535,11 @@ connected with the specified main directory.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
@@ -548,7 +548,7 @@ connected with the specified main directory.</p>
 
   <h3 id="MdFilesMerger_Controller_Common_RelativeFileManager_2_SelectItem_System_Int32_" data-uid="MdFilesMerger.Controller.Common.RelativeFileManager`2.SelectItem(System.Int32)">
   SelectItem(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets selected item to specified identifier.</p>
@@ -578,28 +578,28 @@ connected with the specified main directory.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
     </dd>
   </dl>
 
 
   <h2 id="seealso">See Also</h2>
   <div class="seealso">
-      <div><a class="xref" href="MdFilesMerger.App.Common.RelativeFileService-1.html">RelativeFileService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L31" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Common/RelativeFileManager.cs/#L31" class="edit-link">Edit this page</a>
         </div>
 
         

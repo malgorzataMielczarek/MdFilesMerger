@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Domain_Entity_MainDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Entity.MainDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Domain_Entity_MainDirectory.md&amp;value=---%0Auid%3A%20MdFilesMerger.Domain.Entity.MainDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Domain_Entity_MainDirectory" data-uid="MdFilesMerger.Domain.Entity.MainDirectory" class="text-break">
     Class MainDirectory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class MainDirectory : BaseDirectory, IComparable&lt;BaseDirectory&gt;, IMainDirectory, IDirectory, IItem</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class MainDirectory : BaseDirectory, IMainDirectory, IDirectory, IItem, IComparable&lt;IDirectory&gt;</code></pre>
   </div>
 
 
@@ -116,10 +116,10 @@
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a>&gt;</div>
     </dd>
   </dl>
 
@@ -131,7 +131,7 @@
       <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_ModifiedDate">BaseDirectory.ModifiedDate</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory_">BaseDirectory.CompareTo(BaseDirectory)</a>
+      <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Abstract_IDirectory_">BaseDirectory.CompareTo(IDirectory)</a>
     </div>
     <div>
       <a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_GetPath">BaseDirectory.GetPath()</a>
@@ -173,7 +173,7 @@ files, associated with this instance, will be relative to this instance path ( <
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor">
   MainDirectory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets all properties to its default values.</p>
@@ -211,7 +211,7 @@ files, associated with this instance, will be relative to this instance path ( <
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32)">
   MainDirectory(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id"> Id </a> to <code class="paramref">id</code> and rest properties to its
@@ -256,7 +256,7 @@ default value.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32,System.String,System.Int32)">
   MainDirectory(int, string?, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>
@@ -311,7 +311,7 @@ be absolute or relative to the current directory.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_Int32_System_String_System_Int32_System_DateTime_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
   MainDirectory(int, string?, int, DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Id">Id</a> to <code class="paramref">id</code>, <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a>
@@ -370,7 +370,7 @@ evaluated and prepared data, for example from database.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory__ctor_System_String_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.#ctor(System.String)">
   MainDirectory(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> to adjusted <code class="paramref">path</code> and rest
@@ -423,7 +423,7 @@ be absolute or relative to the current directory.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_MergedFileId" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.MergedFileId">
   MergedFileId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Identification number of merged file associated with this main directory instance</p>
@@ -471,7 +471,7 @@ be absolute or relative to the current directory.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_Equals_System_Object_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
@@ -521,7 +521,7 @@ be absolute or relative to the current directory.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_GetHashCode" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
@@ -565,7 +565,7 @@ be absolute or relative to the current directory.</p>
 
   <h3 id="MdFilesMerger_Domain_Entity_MainDirectory_SetPath_System_String_" data-uid="MdFilesMerger.Domain.Entity.MainDirectory.SetPath(System.String)">
   SetPath(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> as absolute path of existing directory or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if <code class="paramref">path</code> is invalid.</p>
@@ -626,7 +626,7 @@ given <code class="paramref">path</code> is invalid or points to a non-existent 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Entity/MainDirectory.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
         

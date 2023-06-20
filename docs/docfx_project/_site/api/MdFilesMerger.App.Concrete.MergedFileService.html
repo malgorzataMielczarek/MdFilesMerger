@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Concrete_MergedFileService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.MergedFileService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Concrete_MergedFileService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.MergedFileService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Concrete_MergedFileService" data-uid="MdFilesMerger.App.Concrete.MergedFileService" class="text-break">
     Class MergedFileService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -100,7 +100,7 @@ that will be created as a result of merge, whose absolute paths are stored.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class MergedFileService : BaseDirectoryService&lt;MergedFile&gt;, IMergedFileService, IEditFileService&lt;MergedFile&gt;, IDirectoryService&lt;MergedFile&gt;, ICRUDService&lt;MergedFile&gt;, IService&lt;MergedFile&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class MergedFileService : BaseDirectoryService&lt;IMergedFile&gt;, IMergedFileService, IEditFileService&lt;IMergedFile&gt;, IDirectoryService&lt;IMergedFile&gt;, ICRUDService&lt;IMergedFile&gt;, IService&lt;IMergedFile&gt;</code></pre>
   </div>
 
 
@@ -110,8 +110,8 @@ that will be created as a result of merge, whose absolute paths are stored.</p>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
       <div><span class="xref">MergedFileService</span></div>
     </dd>
   </dl>
@@ -120,10 +120,10 @@ that will be created as a result of merge, whose absolute paths are stored.</p>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IMergedFileService.html">IMergedFileService</a></div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.IEditFileService-1.html">IEditFileService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html">IDirectoryService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IEditFileService-1.html">IEditFileService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html">IDirectoryService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</div>
     </dd>
   </dl>
 
@@ -132,37 +132,37 @@ that will be created as a result of merge, whose absolute paths are stored.</p>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html#MdFilesMerger_App_Common_BaseDirectoryService_1_UpdatePath_System_Int32_System_String_">BaseDirectoryService&lt;MergedFile&gt;.UpdatePath(int, string)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html#MdFilesMerger_App_Common_BaseDirectoryService_1_UpdatePath_System_Int32_System_String_">BaseDirectoryService&lt;IMergedFile&gt;.UpdatePath(int, string)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Create__0_">BaseService&lt;MergedFile&gt;.Create(MergedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Create__0_">BaseService&lt;IMergedFile&gt;.Create(IMergedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_CreateRange_System_Collections_Generic_List__0__">BaseService&lt;MergedFile&gt;.CreateRange(List&lt;MergedFile&gt;)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_CreateRange_System_Collections_Generic_List__0__">BaseService&lt;IMergedFile&gt;.CreateRange(List&lt;IMergedFile&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete__0_">BaseService&lt;MergedFile&gt;.Delete(MergedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete__0_">BaseService&lt;IMergedFile&gt;.Delete(IMergedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete_System_Int32_">BaseService&lt;MergedFile&gt;.Delete(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete_System_Int32_">BaseService&lt;IMergedFile&gt;.Delete(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetEqual__0_">BaseService&lt;MergedFile&gt;.GetEqual(MergedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetEqual__0_">BaseService&lt;IMergedFile&gt;.GetEqual(IMergedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetNewId">BaseService&lt;MergedFile&gt;.GetNewId()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetNewId">BaseService&lt;IMergedFile&gt;.GetNewId()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_IsEmpty">BaseService&lt;MergedFile&gt;.IsEmpty()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_IsEmpty">BaseService&lt;IMergedFile&gt;.IsEmpty()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadAll">BaseService&lt;MergedFile&gt;.ReadAll()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadAll">BaseService&lt;IMergedFile&gt;.ReadAll()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadById_System_Int32_">BaseService&lt;MergedFile&gt;.ReadById(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadById_System_Int32_">BaseService&lt;IMergedFile&gt;.ReadById(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Update__0_">BaseService&lt;MergedFile&gt;.Update(MergedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Update__0_">BaseService&lt;IMergedFile&gt;.Update(IMergedFile)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -197,7 +197,7 @@ that will be created as a result of merge, whose absolute paths are stored.</p>
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService__ctor" data-uid="MdFilesMerger.App.Concrete.MergedFileService.#ctor">
   MergedFileService()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.App.Concrete.MergedFileService.html">MergedFileService</a> class and fills
@@ -233,6 +233,7 @@ list with example data.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -244,9 +245,9 @@ list with example data.</p>
 
   <a id="MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents*"></a>
 
-  <h3 id="MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_SelectedFile__" data-uid="MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
-  AppendTableOfContents(FileInfo?, int, List&lt;SelectedFile&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_ISelectedFile__" data-uid="MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})">
+  AppendTableOfContents(FileInfo?, int, List&lt;ISelectedFile&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Appends the table of contents at the end of the file.</p>
@@ -254,7 +255,7 @@ list with example data.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AppendTableOfContents(FileInfo? destinationFile, int mergedFileId, List&lt;SelectedFile&gt; selectedFiles)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AppendTableOfContents(FileInfo? destinationFile, int mergedFileId, List&lt;ISelectedFile&gt; selectedFiles)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -265,7 +266,7 @@ list with example data.</p>
     <dt><code>mergedFileId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The identifier of the merged file associated with <code class="paramref">destinationFile</code>.</p>
 </dd>
-    <dt><code>selectedFiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>&gt;</dt>
+    <dt><code>selectedFiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a>&gt;</dt>
     <dd><p>The list of all selected files that will be merged into the merged file. It is used
 to create table of contents.</p>
 </dd>
@@ -290,6 +291,7 @@ to create table of contents.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -299,10 +301,10 @@ to create table of contents.</p>
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_CreateFile_System_Int32_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.CreateFile(System.Int32)">
   CreateFile(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Creates the file associated with specified <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> object.</p>
+  <div class="markdown level1 summary"><p>Creates the file associated with specified <see cref="!:MergedFile"></see> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -347,6 +349,7 @@ specified header.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -356,16 +359,16 @@ specified header.</p>
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_ReadByUserId_System_Int32_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.ReadByUserId(System.Int32)">
   ReadByUserId(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets, from the stored collection of <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> objects, elements with
+  <div class="markdown level1 summary"><p>Gets, from the stored collection of <see cref="!:MergedFile"></see> objects, elements with
 the specified user identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;MergedFile&gt; ReadByUserId(int userId)</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;IMergedFile&gt; ReadByUserId(int userId)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -377,9 +380,9 @@ the specified user identifier.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>&gt;</dt>
-    <dd><p>The list of <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> objects with the specified user identifier. If
-there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html#MdFilesMerger_Domain_Entity_MergedFile_UserId">UserId</a> equal <code class="paramref">userId</code>, returned list is empty.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a>&gt;</dt>
+    <dd><p>The list of <see cref="!:MergedFile"></see> objects with the specified user identifier. If
+there is no objects with <see cref="!:MergedFile.UserId"></see> equal <code class="paramref">userId</code>, returned list is empty.</p>
 </dd>
   </dl>
 
@@ -401,6 +404,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -410,7 +414,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateFileName_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateFileName(System.Int32,System.String)">
   UpdateFileName(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the name of the file associated with specified object.</p>
@@ -434,7 +438,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> with specified id in the stored collection or <code class="paramref">fileName</code> is not a valid file name.</p>
+    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <see cref="!:MergedFile"></see> with specified id in the stored collection or <code class="paramref">fileName</code> is not a valid file name.</p>
 </dd>
   </dl>
 
@@ -456,6 +460,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -465,7 +470,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateNewLineStyle_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateNewLineStyle(System.Int32,System.String)">
   UpdateNewLineStyle(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L154"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the new line style that will be used in specified merged file.</p>
@@ -489,7 +494,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> with specified id in the stored collection.</p>
+    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <see cref="!:MergedFile"></see> with specified id in the stored collection.</p>
 </dd>
   </dl>
 
@@ -511,6 +516,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -520,7 +526,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateParentDirectory_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateParentDirectory(System.Int32,System.String)">
   UpdateParentDirectory(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the parent directory of the file associated with specified object.</p>
@@ -544,7 +550,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> with specified id in the stored collection or <code class="paramref">directoryPath</code> is not a valid path.</p>
+    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <see cref="!:MergedFile"></see> with specified id in the stored collection or <code class="paramref">directoryPath</code> is not a valid path.</p>
 </dd>
   </dl>
 
@@ -566,6 +572,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -575,7 +582,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateTOCHeader_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateTOCHeader(System.Int32,System.String)">
   UpdateTOCHeader(int, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the header of table of contents for specified merged file.</p>
@@ -599,7 +606,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> with specified id in the stored collection.</p>
+    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <see cref="!:MergedFile"></see> with specified id in the stored collection.</p>
 </dd>
   </dl>
 
@@ -621,6 +628,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -630,7 +638,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateTableOfContents_System_Int32_MdFilesMerger_Domain_Common_TableOfContents_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateTableOfContents(System.Int32,MdFilesMerger.Domain.Common.TableOfContents)">
   UpdateTableOfContents(int, TableOfContents)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the type of table of contents for specified merged file.</p>
@@ -654,7 +662,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a> with specified id in the stored collection.</p>
+    <dd><p>The identifier of updated object or <code>-1</code>, if there is no <see cref="!:MergedFile"></see> with specified id in the stored collection.</p>
 </dd>
   </dl>
 
@@ -676,6 +684,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -685,7 +694,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
 
   <h3 id="MdFilesMerger_App_Concrete_MergedFileService_UpdateTitle_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.MergedFileService.UpdateTitle(System.Int32,System.String)">
   UpdateTitle(int, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L209"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the title.</p>
@@ -732,6 +741,7 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
     </dd>
   </dl>
@@ -746,13 +756,14 @@ there is no objects with <a class="xref" href="MdFilesMerger.Domain.Entity.Merge
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Common.BaseDirectoryService-1.html">BaseDirectoryService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/MergedFileService.cs/#L29" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/MergedFileService.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
         

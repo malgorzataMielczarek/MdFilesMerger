@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Abstract_IRelativeFileService_1.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.IRelativeFileService%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Abstract_IRelativeFileService_1.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.IRelativeFileService%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Abstract_IRelativeFileService_1" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1" class="text-break">
     Interface IRelativeFileService&lt;T&gt;
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -162,9 +162,9 @@ files, whose paths are stored as relative to connected main directory path.</p>
 
   <a id="MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles*"></a>
 
-  <h3 id="MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
-  FindNewFiles(IEnumerable&lt;FileInfo&gt;, MainDirectory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
+  FindNewFiles(IEnumerable&lt;FileInfo&gt;, IMainDirectory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>In the list of files connected with specified main directory, finds files, that
@@ -173,7 +173,7 @@ aren't associated with any element in the stored collection.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">List&lt;FileInfo&gt; FindNewFiles(IEnumerable&lt;FileInfo&gt; list, MainDirectory mainDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">List&lt;FileInfo&gt; FindNewFiles(IEnumerable&lt;FileInfo&gt; list, IMainDirectory mainDirectory)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -181,7 +181,7 @@ aren't associated with any element in the stored collection.</p>
     <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a>&gt;</dt>
     <dd><p>The list of files.</p>
 </dd>
-    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></dt>
+    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
     <dd><p>The main directory for files on the list.</p>
 </dd>
   </dl>
@@ -219,7 +219,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath_System_Int32_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.GetFullPath(System.Int32)">
   GetFullPath(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the full path of file associated with specified object.</p>
@@ -270,7 +270,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath__0_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.GetFullPath(`0)">
   GetFullPath(T?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the full path of file associated with specified object.</p>
@@ -321,7 +321,7 @@ aren't associated with any element in the stored collection.</p>
 
   <h3 id="MdFilesMerger_App_Abstract_IRelativeFileService_1_ReadByMainDirId_System_Int32_" data-uid="MdFilesMerger.App.Abstract.IRelativeFileService`1.ReadByMainDirId(System.Int32)">
   ReadByMainDirId(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets, from the stored collection of <code class="typeparamref">T</code> objects, elements with
@@ -385,7 +385,7 @@ identifier. If there is no objects with <a class="xref" href="MdFilesMerger.Doma
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IRelativeFileService.cs/#L23" class="edit-link">Edit this page</a>
         </div>
 
         

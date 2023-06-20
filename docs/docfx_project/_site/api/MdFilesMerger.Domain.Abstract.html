@@ -88,8 +88,7 @@ Interfaces
       <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a></dt>
       <dd><p>Base interface for all directory or file related models.</p>
 <p>
-    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; IDirectory <br><b> Implementations:
-    </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a>, <a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; IDirectory <br><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable&lt;T&gt;</a> -&gt; IDirectory <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Common.BaseDirectory.html">BaseDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Common.MdFile.html">MdFile</a>, <a class="xref" href="MdFilesMerger.Domain.Common.RelativeFile.html">RelativeFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>
 </p>
 </dd>
     </dl>
@@ -100,6 +99,14 @@ selected file models).</p>
 <p>
     <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt;
     IEditFile <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>, <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a>
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a></dt>
+      <dd><p>Interface for ignored file model.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Domain.Abstract.IItem.html">IItem</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IDirectory.html">IDirectory</a> -&gt; <a class="xref" href="MdFilesMerger.Domain.Abstract.IRelativeFile.html">IRelativeFile</a> -&gt; IIgnoredFile <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>
 </p>
 </dd>
     </dl>

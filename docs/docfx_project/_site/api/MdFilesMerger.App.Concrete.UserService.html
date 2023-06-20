@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Concrete_UserService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.UserService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Concrete_UserService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.UserService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Concrete_UserService" data-uid="MdFilesMerger.App.Concrete.UserService" class="text-break">
     Class UserService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -96,7 +96,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class UserService : BaseService&lt;User&gt;, IUserService, ICRUDService&lt;User&gt;, IService&lt;User&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class UserService : BaseService&lt;IUser&gt;, IUserService, ICRUDService&lt;IUser&gt;, IService&lt;IUser&gt;</code></pre>
   </div>
 
 
@@ -106,7 +106,7 @@
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a>&gt;</div>
       <div><span class="xref">UserService</span></div>
     </dd>
   </dl>
@@ -115,8 +115,8 @@
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a>&gt;</div>
     </dd>
   </dl>
 
@@ -125,34 +125,34 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Create__0_">BaseService&lt;User&gt;.Create(User)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Create__0_">BaseService&lt;IUser&gt;.Create(IUser)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_CreateRange_System_Collections_Generic_List__0__">BaseService&lt;User&gt;.CreateRange(List&lt;User&gt;)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_CreateRange_System_Collections_Generic_List__0__">BaseService&lt;IUser&gt;.CreateRange(List&lt;IUser&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete__0_">BaseService&lt;User&gt;.Delete(User)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete__0_">BaseService&lt;IUser&gt;.Delete(IUser)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete_System_Int32_">BaseService&lt;User&gt;.Delete(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Delete_System_Int32_">BaseService&lt;IUser&gt;.Delete(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetEqual__0_">BaseService&lt;User&gt;.GetEqual(User)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetEqual__0_">BaseService&lt;IUser&gt;.GetEqual(IUser)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetNewId">BaseService&lt;User&gt;.GetNewId()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_GetNewId">BaseService&lt;IUser&gt;.GetNewId()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_IsEmpty">BaseService&lt;User&gt;.IsEmpty()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_IsEmpty">BaseService&lt;IUser&gt;.IsEmpty()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadAll">BaseService&lt;User&gt;.ReadAll()</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadAll">BaseService&lt;IUser&gt;.ReadAll()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadById_System_Int32_">BaseService&lt;User&gt;.ReadById(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_ReadById_System_Int32_">BaseService&lt;IUser&gt;.ReadById(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Update__0_">BaseService&lt;User&gt;.Update(User)</a>
+      <a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html#MdFilesMerger_App_Common_BaseService_1_Update__0_">BaseService&lt;IUser&gt;.Update(IUser)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -187,7 +187,7 @@
 
   <h3 id="MdFilesMerger_App_Concrete_UserService__ctor" data-uid="MdFilesMerger.App.Concrete.UserService.#ctor">
   UserService()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.App.Concrete.UserService.html">UserService</a> class.</p>
@@ -215,6 +215,7 @@
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
     </dd>
   </dl>
@@ -228,7 +229,7 @@
 
   <h3 id="MdFilesMerger_App_Concrete_UserService_CheckCredentials_System_String_System_String_" data-uid="MdFilesMerger.App.Concrete.UserService.CheckCredentials(System.String,System.String)">
   CheckCredentials(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check the credentials.</p>
@@ -272,6 +273,7 @@ specified password is correct; otherwise <code>-1</code>.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
     </dd>
   </dl>
@@ -281,15 +283,15 @@ specified password is correct; otherwise <code>-1</code>.</p>
 
   <h3 id="MdFilesMerger_App_Concrete_UserService_ReadByName_System_String_" data-uid="MdFilesMerger.App.Concrete.UserService.ReadByName(System.String)">
   ReadByName(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>From stored collection of <a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a> objects, gets user with specified name.</p>
+  <div class="markdown level1 summary"><p>From stored collection of <see cref="!:User"></see> objects, gets user with specified name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public User? ReadByName(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public IUser? ReadByName(string name)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -301,8 +303,8 @@ specified password is correct; otherwise <code>-1</code>.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></dt>
-    <dd><p><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a> object with <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> equal
+    <dt><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></dt>
+    <dd><p><see cref="!:User"></see> object with <a class="xref" href="MdFilesMerger.Domain.Common.BaseItem.html#MdFilesMerger_Domain_Common_BaseItem_Name">Name</a> equal
 <code class="paramref">name</code>. If there is no element with specified name in stored
 collection, method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
 </dd>
@@ -323,6 +325,7 @@ collection, method returns <a href="https://learn.microsoft.com/dotnet/csharp/la
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
     </dd>
   </dl>
@@ -332,7 +335,7 @@ collection, method returns <a href="https://learn.microsoft.com/dotnet/csharp/la
 
   <h3 id="MdFilesMerger_App_Concrete_UserService_UpdateName_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.UserService.UpdateName(System.Int32,System.String)">
   UpdateName(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the name of user with specified identification number.</p>
@@ -383,6 +386,7 @@ then <code>-1</code>.
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
     </dd>
   </dl>
@@ -392,7 +396,7 @@ then <code>-1</code>.
 
   <h3 id="MdFilesMerger_App_Concrete_UserService_UpdatePassword_System_Int32_System_String_" data-uid="MdFilesMerger.App.Concrete.UserService.UpdatePassword(System.Int32,System.String)">
   UpdatePassword(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the password of user with specified identification number.</p>
@@ -437,6 +441,7 @@ consists only from white-spaces characters.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
     <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
     <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
     </dd>
   </dl>
@@ -448,13 +453,14 @@ consists only from white-spaces characters.</p>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IUserService.html">IUserService</a></div>
       <div><a class="xref" href="MdFilesMerger.App.Common.BaseService-1.html">BaseService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IUser.html">IUser</a></div>
       <div><a class="xref" href="MdFilesMerger.Domain.Entity.User.html">User</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/UserService.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/UserService.cs/#L21" class="edit-link">Edit this page</a>
         </div>
 
         

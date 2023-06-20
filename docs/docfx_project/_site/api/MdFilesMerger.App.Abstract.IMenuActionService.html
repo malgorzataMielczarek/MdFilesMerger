@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Abstract_IMenuActionService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.IMenuActionService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Abstract_IMenuActionService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.IMenuActionService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Abstract_IMenuActionService" data-uid="MdFilesMerger.App.Abstract.IMenuActionService" class="text-break">
     Interface IMenuActionService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -96,7 +96,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IMenuActionService : IService&lt;MenuAction&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IMenuActionService : IService&lt;IMenuAction&gt;</code></pre>
   </div>
 
 
@@ -109,7 +109,7 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;MenuAction&gt;.ReadById(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;IMenuAction&gt;.ReadById(int)</a>
     </div>
   </dd></dl>
 
@@ -126,15 +126,15 @@
 
   <h3 id="MdFilesMerger_App_Abstract_IMenuActionService_ReadByMenuType_MdFilesMerger_Domain_Common_MenuType_" data-uid="MdFilesMerger.App.Abstract.IMenuActionService.ReadByMenuType(MdFilesMerger.Domain.Common.MenuType)">
   ReadByMenuType(MenuType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets elements from <a class="xref" href="MdFilesMerger.App.Concrete.MenuActionService.html#MdFilesMerger.App.Concrete.MenuActionService._actions">_actions</a> with <a class="xref" href="MdFilesMerger.Domain.Entity.MenuAction.html#MdFilesMerger_Domain_Entity_MenuAction_Menu">Menu</a><code class="paramref">menuType</code>.</p>
+  <div class="markdown level1 summary"><p>Gets elements from <a class="xref" href="MdFilesMerger.App.Concrete.MenuActionService.html#MdFilesMerger.App.Concrete.MenuActionService._actions">_actions</a> with <see cref="!:MenuAction.Menu"></see><code class="paramref">menuType</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">List&lt;MenuAction&gt; ReadByMenuType(MenuType menuType)</code></pre>
+    <pre><code class="lang-csharp hljs">List&lt;IMenuAction&gt; ReadByMenuType(MenuType menuType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -146,7 +146,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MenuAction.html">MenuAction</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMenuAction.html">IMenuAction</a>&gt;</dt>
     <dd><p>List with object of menu <code class="paramref">menuType</code>.</p>
 </dd>
   </dl>
@@ -164,6 +164,7 @@
     <dd>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Concrete.MenuActionService.html">MenuActionService</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMenuAction.html">IMenuAction</a></div>
     </dd>
   </dl>
 
@@ -172,12 +173,13 @@
   <div class="seealso">
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Concrete.MenuActionService.html">MenuActionService</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMenuAction.html">IMenuAction</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IMenuActionService.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
         

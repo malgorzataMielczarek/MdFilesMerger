@@ -35,6 +35,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/MdFilesMerger.App.Abstract.IIgnoredFileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MdFilesMerger.App.Abstract.IIgnoredFileService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/MdFilesMerger.App.Abstract.IMainDirectoryService.yml",
       "output": {
         ".html": {
@@ -245,6 +255,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/MdFilesMerger.Controller.Abstract.IIgnoredFileManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/MdFilesMerger.Controller.Abstract.IMainDirectoryManager.yml",
       "output": {
         ".html": {
@@ -439,6 +459,16 @@
       "output": {
         ".html": {
           "relative_path": "api/MdFilesMerger.Domain.Abstract.IEditFile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MdFilesMerger.Domain.Abstract.IIgnoredFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MdFilesMerger.Domain.Abstract.IIgnoredFile.html"
         }
       },
       "version": ""

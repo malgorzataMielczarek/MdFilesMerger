@@ -218,18 +218,24 @@ references:
   fullName.vb: MdFilesMerger.App.Abstract.IEditFileService(Of T).UpdateTitle
   nameWithType: IEditFileService<T>.UpdateTitle
   nameWithType.vb: IEditFileService(Of T).UpdateTitle
+- uid: MdFilesMerger.App.Abstract.IIgnoredFileService
+  name: IIgnoredFileService
+  href: api/MdFilesMerger.App.Abstract.IIgnoredFileService.html
+  commentId: T:MdFilesMerger.App.Abstract.IIgnoredFileService
+  fullName: MdFilesMerger.App.Abstract.IIgnoredFileService
+  nameWithType: IIgnoredFileService
 - uid: MdFilesMerger.App.Abstract.IMainDirectoryService
   name: IMainDirectoryService
   href: api/MdFilesMerger.App.Abstract.IMainDirectoryService.html
   commentId: T:MdFilesMerger.App.Abstract.IMainDirectoryService
   fullName: MdFilesMerger.App.Abstract.IMainDirectoryService
   nameWithType: IMainDirectoryService
-- uid: MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  name: FindAllFiles(MainDirectory)
-  href: api/MdFilesMerger.App.Abstract.IMainDirectoryService.html#MdFilesMerger_App_Abstract_IMainDirectoryService_FindAllFiles_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName: MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: IMainDirectoryService.FindAllFiles(MainDirectory)
+- uid: MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: FindAllFiles(IMainDirectory)
+  href: api/MdFilesMerger.App.Abstract.IMainDirectoryService.html#MdFilesMerger_App_Abstract_IMainDirectoryService_FindAllFiles_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName: MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: IMainDirectoryService.FindAllFiles(IMainDirectory)
 - uid: MdFilesMerger.App.Abstract.IMainDirectoryService.FindAllFiles(System.Int32)
   name: FindAllFiles(int)
   href: api/MdFilesMerger.App.Abstract.IMainDirectoryService.html#MdFilesMerger_App_Abstract_IMainDirectoryService_FindAllFiles_System_Int32_
@@ -287,15 +293,15 @@ references:
   commentId: T:MdFilesMerger.App.Abstract.IMergedFileService
   fullName: MdFilesMerger.App.Abstract.IMergedFileService
   nameWithType: IMergedFileService
-- uid: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name: AppendTableOfContents(FileInfo, int, List<SelectedFile>)
-  href: api/MdFilesMerger.App.Abstract.IMergedFileService.html#MdFilesMerger_App_Abstract_IMergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_SelectedFile__
-  commentId: M:MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name.vb: AppendTableOfContents(FileInfo, Integer, List(Of SelectedFile))
-  fullName: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo, int, System.Collections.Generic.List<MdFilesMerger.Domain.Entity.SelectedFile>)
-  fullName.vb: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo, Integer, System.Collections.Generic.List(Of MdFilesMerger.Domain.Entity.SelectedFile))
-  nameWithType: IMergedFileService.AppendTableOfContents(FileInfo, int, List<SelectedFile>)
-  nameWithType.vb: IMergedFileService.AppendTableOfContents(FileInfo, Integer, List(Of SelectedFile))
+- uid: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name: AppendTableOfContents(FileInfo, int, List<ISelectedFile>)
+  href: api/MdFilesMerger.App.Abstract.IMergedFileService.html#MdFilesMerger_App_Abstract_IMergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_ISelectedFile__
+  commentId: M:MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name.vb: AppendTableOfContents(FileInfo, Integer, List(Of ISelectedFile))
+  fullName: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo, int, System.Collections.Generic.List<MdFilesMerger.Domain.Abstract.ISelectedFile>)
+  fullName.vb: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents(System.IO.FileInfo, Integer, System.Collections.Generic.List(Of MdFilesMerger.Domain.Abstract.ISelectedFile))
+  nameWithType: IMergedFileService.AppendTableOfContents(FileInfo, int, List<ISelectedFile>)
+  nameWithType.vb: IMergedFileService.AppendTableOfContents(FileInfo, Integer, List(Of ISelectedFile))
 - uid: MdFilesMerger.App.Abstract.IMergedFileService.AppendTableOfContents*
   name: AppendTableOfContents
   href: api/MdFilesMerger.App.Abstract.IMergedFileService.html#MdFilesMerger_App_Abstract_IMergedFileService_AppendTableOfContents_
@@ -424,15 +430,15 @@ references:
   fullName.vb: MdFilesMerger.App.Abstract.IRelativeFileService(Of T)
   nameWithType: IRelativeFileService<T>
   nameWithType.vb: IRelativeFileService(Of T)
-- uid: MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name: FindNewFiles(IEnumerable<FileInfo>, MainDirectory)
-  href: api/MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: FindNewFiles(IEnumerable(Of FileInfo), MainDirectory)
-  fullName: MdFilesMerger.App.Abstract.IRelativeFileService<T>.FindNewFiles(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.App.Abstract.IRelativeFileService(Of T).FindNewFiles(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: IRelativeFileService<T>.FindNewFiles(IEnumerable<FileInfo>, MainDirectory)
-  nameWithType.vb: IRelativeFileService(Of T).FindNewFiles(IEnumerable(Of FileInfo), MainDirectory)
+- uid: MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: FindNewFiles(IEnumerable<FileInfo>, IMainDirectory)
+  href: api/MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: FindNewFiles(IEnumerable(Of FileInfo), IMainDirectory)
+  fullName: MdFilesMerger.App.Abstract.IRelativeFileService<T>.FindNewFiles(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.App.Abstract.IRelativeFileService(Of T).FindNewFiles(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: IRelativeFileService<T>.FindNewFiles(IEnumerable<FileInfo>, IMainDirectory)
+  nameWithType.vb: IRelativeFileService(Of T).FindNewFiles(IEnumerable(Of FileInfo), IMainDirectory)
 - uid: MdFilesMerger.App.Abstract.IRelativeFileService`1.FindNewFiles*
   name: FindNewFiles
   href: api/MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_
@@ -493,15 +499,15 @@ references:
   commentId: T:MdFilesMerger.App.Abstract.ISelectedFileService
   fullName: MdFilesMerger.App.Abstract.ISelectedFileService
   nameWithType: ISelectedFileService
-- uid: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)
-  name: AppendFile(SelectedFile?, FileInfo?, string)
-  href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_MdFilesMerger_Domain_Entity_SelectedFile_System_IO_FileInfo_System_String_
-  commentId: M:MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)
-  name.vb: AppendFile(SelectedFile, FileInfo, String)
-  fullName: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile?, System.IO.FileInfo?, string)
-  fullName.vb: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile, System.IO.FileInfo, String)
-  nameWithType: ISelectedFileService.AppendFile(SelectedFile?, FileInfo?, string)
-  nameWithType.vb: ISelectedFileService.AppendFile(SelectedFile, FileInfo, String)
+- uid: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)
+  name: AppendFile(ISelectedFile?, FileInfo?, string)
+  href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_MdFilesMerger_Domain_Abstract_ISelectedFile_System_IO_FileInfo_System_String_
+  commentId: M:MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)
+  name.vb: AppendFile(ISelectedFile, FileInfo, String)
+  fullName: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile?, System.IO.FileInfo?, string)
+  fullName.vb: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile, System.IO.FileInfo, String)
+  nameWithType: ISelectedFileService.AppendFile(ISelectedFile?, FileInfo?, string)
+  nameWithType.vb: ISelectedFileService.AppendFile(ISelectedFile, FileInfo, String)
 - uid: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(System.Int32,System.IO.FileInfo,System.String)
   name: AppendFile(int, FileInfo?, string)
   href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_System_Int32_System_IO_FileInfo_System_String_
@@ -518,15 +524,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile
   nameWithType: ISelectedFileService.AppendFile
-- uid: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name: CreateRange(IEnumerable<FileInfo>, MainDirectory)
-  href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: CreateRange(IEnumerable(Of FileInfo), MainDirectory)
-  fullName: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: ISelectedFileService.CreateRange(IEnumerable<FileInfo>, MainDirectory)
-  nameWithType.vb: ISelectedFileService.CreateRange(IEnumerable(Of FileInfo), MainDirectory)
+- uid: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: CreateRange(IEnumerable<FileInfo>, IMainDirectory)
+  href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: CreateRange(IEnumerable(Of FileInfo), IMainDirectory)
+  fullName: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: ISelectedFileService.CreateRange(IEnumerable<FileInfo>, IMainDirectory)
+  nameWithType.vb: ISelectedFileService.CreateRange(IEnumerable(Of FileInfo), IMainDirectory)
 - uid: MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange*
   name: CreateRange
   href: api/MdFilesMerger.App.Abstract.ISelectedFileService.html#MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_
@@ -883,15 +889,15 @@ references:
   fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T)._mainDirService
   nameWithType: RelativeFileService<T>._mainDirService
   nameWithType.vb: RelativeFileService(Of T)._mainDirService
-- uid: MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: RelativeFileService(MainDirectoryService)
-  href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: New(MainDirectoryService)
-  fullName: MdFilesMerger.App.Common.RelativeFileService<T>.RelativeFileService(MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T).New(MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: RelativeFileService<T>.RelativeFileService(MainDirectoryService)
-  nameWithType.vb: RelativeFileService(Of T).New(MainDirectoryService)
+- uid: MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: RelativeFileService(IMainDirectoryService)
+  href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.App.Common.RelativeFileService`1.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: New(IMainDirectoryService)
+  fullName: MdFilesMerger.App.Common.RelativeFileService<T>.RelativeFileService(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T).New(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: RelativeFileService<T>.RelativeFileService(IMainDirectoryService)
+  nameWithType.vb: RelativeFileService(Of T).New(IMainDirectoryService)
 - uid: MdFilesMerger.App.Common.RelativeFileService`1.#ctor*
   name: RelativeFileService
   href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1__ctor_
@@ -902,15 +908,15 @@ references:
   fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T).New
   nameWithType: RelativeFileService<T>.RelativeFileService
   nameWithType.vb: RelativeFileService(Of T).New
-- uid: MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name: FindNewFiles(IEnumerable<FileInfo>, MainDirectory)
-  href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: FindNewFiles(IEnumerable(Of FileInfo), MainDirectory)
-  fullName: MdFilesMerger.App.Common.RelativeFileService<T>.FindNewFiles(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T).FindNewFiles(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: RelativeFileService<T>.FindNewFiles(IEnumerable<FileInfo>, MainDirectory)
-  nameWithType.vb: RelativeFileService(Of T).FindNewFiles(IEnumerable(Of FileInfo), MainDirectory)
+- uid: MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: FindNewFiles(IEnumerable<FileInfo>, IMainDirectory)
+  href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: FindNewFiles(IEnumerable(Of FileInfo), IMainDirectory)
+  fullName: MdFilesMerger.App.Common.RelativeFileService<T>.FindNewFiles(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.App.Common.RelativeFileService(Of T).FindNewFiles(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: RelativeFileService<T>.FindNewFiles(IEnumerable<FileInfo>, IMainDirectory)
+  nameWithType.vb: RelativeFileService(Of T).FindNewFiles(IEnumerable(Of FileInfo), IMainDirectory)
 - uid: MdFilesMerger.App.Common.RelativeFileService`1.FindNewFiles*
   name: FindNewFiles
   href: api/MdFilesMerger.App.Common.RelativeFileService-1.html#MdFilesMerger_App_Common_RelativeFileService_1_FindNewFiles_
@@ -995,15 +1001,15 @@ references:
   commentId: T:MdFilesMerger.App.Concrete.IgnoredFileService
   fullName: MdFilesMerger.App.Concrete.IgnoredFileService
   nameWithType: IgnoredFileService
-- uid: MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: IgnoredFileService(MainDirectoryService)
-  href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: New(MainDirectoryService)
-  fullName: MdFilesMerger.App.Concrete.IgnoredFileService.IgnoredFileService(MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.App.Concrete.IgnoredFileService.New(MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: IgnoredFileService.IgnoredFileService(MainDirectoryService)
-  nameWithType.vb: IgnoredFileService.New(MainDirectoryService)
+- uid: MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: IgnoredFileService(IMainDirectoryService)
+  href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.App.Concrete.IgnoredFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: New(IMainDirectoryService)
+  fullName: MdFilesMerger.App.Concrete.IgnoredFileService.IgnoredFileService(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.App.Concrete.IgnoredFileService.New(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: IgnoredFileService.IgnoredFileService(IMainDirectoryService)
+  nameWithType.vb: IgnoredFileService.New(IMainDirectoryService)
 - uid: MdFilesMerger.App.Concrete.IgnoredFileService.#ctor*
   name: IgnoredFileService
   href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService__ctor_
@@ -1014,15 +1020,15 @@ references:
   fullName.vb: MdFilesMerger.App.Concrete.IgnoredFileService.New
   nameWithType: IgnoredFileService.IgnoredFileService
   nameWithType.vb: IgnoredFileService.New
-- uid: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Entity.IgnoredFile},MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: ToSelectedFile(List<IgnoredFile>, MainDirectoryService)
-  href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService_ToSelectedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_IgnoredFile__MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Entity.IgnoredFile},MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: ToSelectedFile(List(Of IgnoredFile), MainDirectoryService)
-  fullName: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List<MdFilesMerger.Domain.Entity.IgnoredFile>, MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List(Of MdFilesMerger.Domain.Entity.IgnoredFile), MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: IgnoredFileService.ToSelectedFile(List<IgnoredFile>, MainDirectoryService)
-  nameWithType.vb: IgnoredFileService.ToSelectedFile(List(Of IgnoredFile), MainDirectoryService)
+- uid: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.IIgnoredFile},MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: ToSelectedFile(List<IIgnoredFile>, IMainDirectoryService)
+  href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService_ToSelectedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_IIgnoredFile__MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.IIgnoredFile},MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: ToSelectedFile(List(Of IIgnoredFile), IMainDirectoryService)
+  fullName: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List<MdFilesMerger.Domain.Abstract.IIgnoredFile>, MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile(System.Collections.Generic.List(Of MdFilesMerger.Domain.Abstract.IIgnoredFile), MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: IgnoredFileService.ToSelectedFile(List<IIgnoredFile>, IMainDirectoryService)
+  nameWithType.vb: IgnoredFileService.ToSelectedFile(List(Of IIgnoredFile), IMainDirectoryService)
 - uid: MdFilesMerger.App.Concrete.IgnoredFileService.ToSelectedFile*
   name: ToSelectedFile
   href: api/MdFilesMerger.App.Concrete.IgnoredFileService.html#MdFilesMerger_App_Concrete_IgnoredFileService_ToSelectedFile_
@@ -1055,12 +1061,12 @@ references:
   fullName.vb: MdFilesMerger.App.Concrete.MainDirectoryService.New
   nameWithType: MainDirectoryService.MainDirectoryService
   nameWithType.vb: MainDirectoryService.New
-- uid: MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  name: FindAllFiles(MainDirectory)
-  href: api/MdFilesMerger.App.Concrete.MainDirectoryService.html#MdFilesMerger_App_Concrete_MainDirectoryService_FindAllFiles_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName: MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: MainDirectoryService.FindAllFiles(MainDirectory)
+- uid: MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: FindAllFiles(IMainDirectory)
+  href: api/MdFilesMerger.App.Concrete.MainDirectoryService.html#MdFilesMerger_App_Concrete_MainDirectoryService_FindAllFiles_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName: MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: MainDirectoryService.FindAllFiles(IMainDirectory)
 - uid: MdFilesMerger.App.Concrete.MainDirectoryService.FindAllFiles(System.Int32)
   name: FindAllFiles(int)
   href: api/MdFilesMerger.App.Concrete.MainDirectoryService.html#MdFilesMerger_App_Concrete_MainDirectoryService_FindAllFiles_System_Int32_
@@ -1172,15 +1178,15 @@ references:
   fullName.vb: MdFilesMerger.App.Concrete.MergedFileService.New
   nameWithType: MergedFileService.MergedFileService
   nameWithType.vb: MergedFileService.New
-- uid: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name: AppendTableOfContents(FileInfo?, int, List<SelectedFile>)
-  href: api/MdFilesMerger.App.Concrete.MergedFileService.html#MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_SelectedFile__
-  commentId: M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name.vb: AppendTableOfContents(FileInfo, Integer, List(Of SelectedFile))
-  fullName: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo?, int, System.Collections.Generic.List<MdFilesMerger.Domain.Entity.SelectedFile>)
-  fullName.vb: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo, Integer, System.Collections.Generic.List(Of MdFilesMerger.Domain.Entity.SelectedFile))
-  nameWithType: MergedFileService.AppendTableOfContents(FileInfo?, int, List<SelectedFile>)
-  nameWithType.vb: MergedFileService.AppendTableOfContents(FileInfo, Integer, List(Of SelectedFile))
+- uid: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name: AppendTableOfContents(FileInfo?, int, List<ISelectedFile>)
+  href: api/MdFilesMerger.App.Concrete.MergedFileService.html#MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_System_IO_FileInfo_System_Int32_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_ISelectedFile__
+  commentId: M:MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo,System.Int32,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name.vb: AppendTableOfContents(FileInfo, Integer, List(Of ISelectedFile))
+  fullName: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo?, int, System.Collections.Generic.List<MdFilesMerger.Domain.Abstract.ISelectedFile>)
+  fullName.vb: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents(System.IO.FileInfo, Integer, System.Collections.Generic.List(Of MdFilesMerger.Domain.Abstract.ISelectedFile))
+  nameWithType: MergedFileService.AppendTableOfContents(FileInfo?, int, List<ISelectedFile>)
+  nameWithType.vb: MergedFileService.AppendTableOfContents(FileInfo, Integer, List(Of ISelectedFile))
 - uid: MdFilesMerger.App.Concrete.MergedFileService.AppendTableOfContents*
   name: AppendTableOfContents
   href: api/MdFilesMerger.App.Concrete.MergedFileService.html#MdFilesMerger_App_Concrete_MergedFileService_AppendTableOfContents_
@@ -1322,15 +1328,15 @@ references:
   commentId: T:MdFilesMerger.App.Concrete.SelectedFileService
   fullName: MdFilesMerger.App.Concrete.SelectedFileService
   nameWithType: SelectedFileService
-- uid: MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: SelectedFileService(MainDirectoryService)
-  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: New(MainDirectoryService)
-  fullName: MdFilesMerger.App.Concrete.SelectedFileService.SelectedFileService(MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.New(MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: SelectedFileService.SelectedFileService(MainDirectoryService)
-  nameWithType.vb: SelectedFileService.New(MainDirectoryService)
+- uid: MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: SelectedFileService(IMainDirectoryService)
+  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: New(IMainDirectoryService)
+  fullName: MdFilesMerger.App.Concrete.SelectedFileService.SelectedFileService(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.New(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: SelectedFileService.SelectedFileService(IMainDirectoryService)
+  nameWithType.vb: SelectedFileService.New(IMainDirectoryService)
 - uid: MdFilesMerger.App.Concrete.SelectedFileService.#ctor*
   name: SelectedFileService
   href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService__ctor_
@@ -1341,15 +1347,15 @@ references:
   fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.New
   nameWithType: SelectedFileService.SelectedFileService
   nameWithType.vb: SelectedFileService.New
-- uid: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)
-  name: AppendFile(SelectedFile?, FileInfo?, string)
-  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_AppendFile_MdFilesMerger_Domain_Entity_SelectedFile_System_IO_FileInfo_System_String_
-  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)
-  name.vb: AppendFile(SelectedFile, FileInfo, String)
-  fullName: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile?, System.IO.FileInfo?, string)
-  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile, System.IO.FileInfo, String)
-  nameWithType: SelectedFileService.AppendFile(SelectedFile?, FileInfo?, string)
-  nameWithType.vb: SelectedFileService.AppendFile(SelectedFile, FileInfo, String)
+- uid: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)
+  name: AppendFile(ISelectedFile?, FileInfo?, string)
+  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_AppendFile_MdFilesMerger_Domain_Abstract_ISelectedFile_System_IO_FileInfo_System_String_
+  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)
+  name.vb: AppendFile(ISelectedFile, FileInfo, String)
+  fullName: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile?, System.IO.FileInfo?, string)
+  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile, System.IO.FileInfo, String)
+  nameWithType: SelectedFileService.AppendFile(ISelectedFile?, FileInfo?, string)
+  nameWithType.vb: SelectedFileService.AppendFile(ISelectedFile, FileInfo, String)
 - uid: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile(System.Int32,System.IO.FileInfo,System.String)
   name: AppendFile(int, FileInfo?, string)
   href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_AppendFile_System_Int32_System_IO_FileInfo_System_String_
@@ -1366,15 +1372,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.App.Concrete.SelectedFileService.AppendFile
   nameWithType: SelectedFileService.AppendFile
-- uid: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name: CreateRange(IEnumerable<FileInfo>, MainDirectory)
-  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: CreateRange(IEnumerable(Of FileInfo), MainDirectory)
-  fullName: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: SelectedFileService.CreateRange(IEnumerable<FileInfo>, MainDirectory)
-  nameWithType.vb: SelectedFileService.CreateRange(IEnumerable(Of FileInfo), MainDirectory)
+- uid: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: CreateRange(IEnumerable<FileInfo>, IMainDirectory)
+  href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: CreateRange(IEnumerable(Of FileInfo), IMainDirectory)
+  fullName: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable<System.IO.FileInfo>, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange(System.Collections.Generic.IEnumerable(Of System.IO.FileInfo), MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: SelectedFileService.CreateRange(IEnumerable<FileInfo>, IMainDirectory)
+  nameWithType.vb: SelectedFileService.CreateRange(IEnumerable(Of FileInfo), IMainDirectory)
 - uid: MdFilesMerger.App.Concrete.SelectedFileService.CreateRange*
   name: CreateRange
   href: api/MdFilesMerger.App.Concrete.SelectedFileService.html#MdFilesMerger_App_Concrete_SelectedFileService_CreateRange_
@@ -1404,15 +1410,15 @@ references:
   commentId: T:MdFilesMerger.App.Concrete.TableOfContentsService
   fullName: MdFilesMerger.App.Concrete.TableOfContentsService
   nameWithType: TableOfContentsService
-- uid: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name: CreateTOC(MergedFile, List<SelectedFile>)
-  href: api/MdFilesMerger.App.Concrete.TableOfContentsService.html#MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_MdFilesMerger_Domain_Entity_MergedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_SelectedFile__
-  commentId: M:MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})
-  name.vb: CreateTOC(MergedFile, List(Of SelectedFile))
-  fullName: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile, System.Collections.Generic.List<MdFilesMerger.Domain.Entity.SelectedFile>)
-  fullName.vb: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile, System.Collections.Generic.List(Of MdFilesMerger.Domain.Entity.SelectedFile))
-  nameWithType: TableOfContentsService.CreateTOC(MergedFile, List<SelectedFile>)
-  nameWithType.vb: TableOfContentsService.CreateTOC(MergedFile, List(Of SelectedFile))
+- uid: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name: CreateTOC(IMergedFile, List<ISelectedFile>)
+  href: api/MdFilesMerger.App.Concrete.TableOfContentsService.html#MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_MdFilesMerger_Domain_Abstract_IMergedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_ISelectedFile__
+  commentId: M:MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})
+  name.vb: CreateTOC(IMergedFile, List(Of ISelectedFile))
+  fullName: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile, System.Collections.Generic.List<MdFilesMerger.Domain.Abstract.ISelectedFile>)
+  fullName.vb: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile, System.Collections.Generic.List(Of MdFilesMerger.Domain.Abstract.ISelectedFile))
+  nameWithType: TableOfContentsService.CreateTOC(IMergedFile, List<ISelectedFile>)
+  nameWithType.vb: TableOfContentsService.CreateTOC(IMergedFile, List(Of ISelectedFile))
 - uid: MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC*
   name: CreateTOC
   href: api/MdFilesMerger.App.Concrete.TableOfContentsService.html#MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_
@@ -1568,6 +1574,12 @@ references:
   fullName.vb: MdFilesMerger.Controller.Abstract.ICRUDManager(Of T, TService).Delete
   nameWithType: ICRUDManager<T, TService>.Delete
   nameWithType.vb: ICRUDManager(Of T, TService).Delete
+- uid: MdFilesMerger.Controller.Abstract.IIgnoredFileManager
+  name: IIgnoredFileManager
+  href: api/MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html
+  commentId: T:MdFilesMerger.Controller.Abstract.IIgnoredFileManager
+  fullName: MdFilesMerger.Controller.Abstract.IIgnoredFileManager
+  nameWithType: IIgnoredFileManager
 - uid: MdFilesMerger.Controller.Abstract.IMainDirectoryManager
   name: IMainDirectoryManager
   href: api/MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html
@@ -1587,15 +1599,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoredFileManager
   nameWithType: IMainDirectoryManager.IgnoredFileManager
-- uid: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name: IgnoreFile(FileInfo, MainDirectory?)
-  href: api/MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html#MdFilesMerger_Controller_Abstract_IMainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: IgnoreFile(FileInfo, MainDirectory)
-  fullName: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory?)
-  fullName.vb: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: IMainDirectoryManager.IgnoreFile(FileInfo, MainDirectory?)
-  nameWithType.vb: IMainDirectoryManager.IgnoreFile(FileInfo, MainDirectory)
+- uid: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: IgnoreFile(FileInfo, IMainDirectory?)
+  href: api/MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html#MdFilesMerger_Controller_Abstract_IMainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: IgnoreFile(FileInfo, IMainDirectory)
+  fullName: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory?)
+  fullName.vb: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: IMainDirectoryManager.IgnoreFile(FileInfo, IMainDirectory?)
+  nameWithType.vb: IMainDirectoryManager.IgnoreFile(FileInfo, IMainDirectory)
 - uid: MdFilesMerger.Controller.Abstract.IMainDirectoryManager.IgnoreFile(System.IO.FileInfo)
   name: IgnoreFile(FileInfo)
   href: api/MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html#MdFilesMerger_Controller_Abstract_IMainDirectoryManager_IgnoreFile_System_IO_FileInfo_
@@ -2312,15 +2324,15 @@ references:
   commentId: T:MdFilesMerger.Controller.Concrete.IgnoredFileManager
   fullName: MdFilesMerger.Controller.Concrete.IgnoredFileManager
   nameWithType: IgnoredFileManager
-- uid: MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: IgnoredFileManager(MainDirectoryService)
-  href: api/MdFilesMerger.Controller.Concrete.IgnoredFileManager.html#MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: New(MainDirectoryService)
-  fullName: MdFilesMerger.Controller.Concrete.IgnoredFileManager.IgnoredFileManager(MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.Controller.Concrete.IgnoredFileManager.New(MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: IgnoredFileManager.IgnoredFileManager(MainDirectoryService)
-  nameWithType.vb: IgnoredFileManager.New(MainDirectoryService)
+- uid: MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: IgnoredFileManager(IMainDirectoryService)
+  href: api/MdFilesMerger.Controller.Concrete.IgnoredFileManager.html#MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: New(IMainDirectoryService)
+  fullName: MdFilesMerger.Controller.Concrete.IgnoredFileManager.IgnoredFileManager(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.Controller.Concrete.IgnoredFileManager.New(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: IgnoredFileManager.IgnoredFileManager(IMainDirectoryService)
+  nameWithType.vb: IgnoredFileManager.New(IMainDirectoryService)
 - uid: MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor*
   name: IgnoredFileManager
   href: api/MdFilesMerger.Controller.Concrete.IgnoredFileManager.html#MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_
@@ -2407,15 +2419,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.Delete
   nameWithType: MainDirectoryManager.Delete
-- uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory)
-  name: DisplayItem(MainDirectory?)
-  href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: DisplayItem(MainDirectory)
-  fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory?)
-  fullName.vb: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: MainDirectoryManager.DisplayItem(MainDirectory?)
-  nameWithType.vb: MainDirectoryManager.DisplayItem(MainDirectory)
+- uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: DisplayItem(IMainDirectory?)
+  href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: DisplayItem(IMainDirectory)
+  fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory?)
+  fullName.vb: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: MainDirectoryManager.DisplayItem(IMainDirectory?)
+  nameWithType.vb: MainDirectoryManager.DisplayItem(IMainDirectory)
 - uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem*
   name: DisplayItem
   href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_
@@ -2465,15 +2477,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoredFileManager
   nameWithType: MainDirectoryManager.IgnoredFileManager
-- uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name: IgnoreFile(FileInfo, MainDirectory?)
-  href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: IgnoreFile(FileInfo, MainDirectory)
-  fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory?)
-  fullName.vb: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: MainDirectoryManager.IgnoreFile(FileInfo, MainDirectory?)
-  nameWithType.vb: MainDirectoryManager.IgnoreFile(FileInfo, MainDirectory)
+- uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: IgnoreFile(FileInfo, IMainDirectory?)
+  href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: IgnoreFile(FileInfo, IMainDirectory)
+  fullName: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory?)
+  fullName.vb: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: MainDirectoryManager.IgnoreFile(FileInfo, IMainDirectory?)
+  nameWithType.vb: MainDirectoryManager.IgnoreFile(FileInfo, IMainDirectory)
 - uid: MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo)
   name: IgnoreFile(FileInfo)
   href: api/MdFilesMerger.Controller.Concrete.MainDirectoryManager.html#MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_
@@ -2606,15 +2618,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Controller.Concrete.MenuActionManager.Select
   nameWithType: MenuActionManager.Select
-- uid: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Entity.MenuAction})
-  name: SelectItem(IReadOnlyList<MenuAction>)
-  href: api/MdFilesMerger.Controller.Concrete.MenuActionManager.html#MdFilesMerger_Controller_Concrete_MenuActionManager_SelectItem_System_Collections_Generic_IReadOnlyList_MdFilesMerger_Domain_Entity_MenuAction__
-  commentId: M:MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Entity.MenuAction})
-  name.vb: SelectItem(IReadOnlyList(Of MenuAction))
-  fullName: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList<MdFilesMerger.Domain.Entity.MenuAction>)
-  fullName.vb: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList(Of MdFilesMerger.Domain.Entity.MenuAction))
-  nameWithType: MenuActionManager.SelectItem(IReadOnlyList<MenuAction>)
-  nameWithType.vb: MenuActionManager.SelectItem(IReadOnlyList(Of MenuAction))
+- uid: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Abstract.IMenuAction})
+  name: SelectItem(IReadOnlyList<IMenuAction>)
+  href: api/MdFilesMerger.Controller.Concrete.MenuActionManager.html#MdFilesMerger_Controller_Concrete_MenuActionManager_SelectItem_System_Collections_Generic_IReadOnlyList_MdFilesMerger_Domain_Abstract_IMenuAction__
+  commentId: M:MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList{MdFilesMerger.Domain.Abstract.IMenuAction})
+  name.vb: SelectItem(IReadOnlyList(Of IMenuAction))
+  fullName: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList<MdFilesMerger.Domain.Abstract.IMenuAction>)
+  fullName.vb: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem(System.Collections.Generic.IReadOnlyList(Of MdFilesMerger.Domain.Abstract.IMenuAction))
+  nameWithType: MenuActionManager.SelectItem(IReadOnlyList<IMenuAction>)
+  nameWithType.vb: MenuActionManager.SelectItem(IReadOnlyList(Of IMenuAction))
 - uid: MdFilesMerger.Controller.Concrete.MenuActionManager.SelectItem*
   name: SelectItem
   href: api/MdFilesMerger.Controller.Concrete.MenuActionManager.html#MdFilesMerger_Controller_Concrete_MenuActionManager_SelectItem_
@@ -2685,15 +2697,15 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Controller.Concrete.MergedFileManager.Delete
   nameWithType: MergedFileManager.Delete
-- uid: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile)
-  name: DisplayItem(MergedFile?)
-  href: api/MdFilesMerger.Controller.Concrete.MergedFileManager.html#MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayItem_MdFilesMerger_Domain_Entity_MergedFile_
-  commentId: M:MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile)
-  name.vb: DisplayItem(MergedFile)
-  fullName: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile?)
-  fullName.vb: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Entity.MergedFile)
-  nameWithType: MergedFileManager.DisplayItem(MergedFile?)
-  nameWithType.vb: MergedFileManager.DisplayItem(MergedFile)
+- uid: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMergedFile)
+  name: DisplayItem(IMergedFile?)
+  href: api/MdFilesMerger.Controller.Concrete.MergedFileManager.html#MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayItem_MdFilesMerger_Domain_Abstract_IMergedFile_
+  commentId: M:MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMergedFile)
+  name.vb: DisplayItem(IMergedFile)
+  fullName: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMergedFile?)
+  fullName.vb: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMergedFile)
+  nameWithType: MergedFileManager.DisplayItem(IMergedFile?)
+  nameWithType.vb: MergedFileManager.DisplayItem(IMergedFile)
 - uid: MdFilesMerger.Controller.Concrete.MergedFileManager.DisplayItem*
   name: DisplayItem
   href: api/MdFilesMerger.Controller.Concrete.MergedFileManager.html#MdFilesMerger_Controller_Concrete_MergedFileManager_DisplayItem_
@@ -2814,15 +2826,15 @@ references:
   commentId: T:MdFilesMerger.Controller.Concrete.SelectedFileManager
   fullName: MdFilesMerger.Controller.Concrete.SelectedFileManager
   nameWithType: SelectedFileManager
-- uid: MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name: SelectedFileManager(MainDirectoryService)
-  href: api/MdFilesMerger.Controller.Concrete.SelectedFileManager.html#MdFilesMerger_Controller_Concrete_SelectedFileManager__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_
-  commentId: M:MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)
-  name.vb: New(MainDirectoryService)
-  fullName: MdFilesMerger.Controller.Concrete.SelectedFileManager.SelectedFileManager(MdFilesMerger.App.Concrete.MainDirectoryService)
-  fullName.vb: MdFilesMerger.Controller.Concrete.SelectedFileManager.New(MdFilesMerger.App.Concrete.MainDirectoryService)
-  nameWithType: SelectedFileManager.SelectedFileManager(MainDirectoryService)
-  nameWithType.vb: SelectedFileManager.New(MainDirectoryService)
+- uid: MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name: SelectedFileManager(IMainDirectoryService)
+  href: api/MdFilesMerger.Controller.Concrete.SelectedFileManager.html#MdFilesMerger_Controller_Concrete_SelectedFileManager__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_
+  commentId: M:MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  name.vb: New(IMainDirectoryService)
+  fullName: MdFilesMerger.Controller.Concrete.SelectedFileManager.SelectedFileManager(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  fullName.vb: MdFilesMerger.Controller.Concrete.SelectedFileManager.New(MdFilesMerger.App.Abstract.IMainDirectoryService)
+  nameWithType: SelectedFileManager.SelectedFileManager(IMainDirectoryService)
+  nameWithType.vb: SelectedFileManager.New(IMainDirectoryService)
 - uid: MdFilesMerger.Controller.Concrete.SelectedFileManager.#ctor*
   name: SelectedFileManager
   href: api/MdFilesMerger.Controller.Concrete.SelectedFileManager.html#MdFilesMerger_Controller_Concrete_SelectedFileManager__ctor_
@@ -3066,6 +3078,12 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Domain.Abstract.IEditFile.Title
   nameWithType: IEditFile.Title
+- uid: MdFilesMerger.Domain.Abstract.IIgnoredFile
+  name: IIgnoredFile
+  href: api/MdFilesMerger.Domain.Abstract.IIgnoredFile.html
+  commentId: T:MdFilesMerger.Domain.Abstract.IIgnoredFile
+  fullName: MdFilesMerger.Domain.Abstract.IIgnoredFile
+  nameWithType: IIgnoredFile
 - uid: MdFilesMerger.Domain.Abstract.IItem
   name: IItem
   href: api/MdFilesMerger.Domain.Abstract.IItem.html
@@ -3399,6 +3417,22 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Domain.Abstract.IUser.Password
   nameWithType: IUser.Password
+- uid: MdFilesMerger.Domain.Abstract.IUser.PasswordEquals(System.String)
+  name: PasswordEquals(string?)
+  href: api/MdFilesMerger.Domain.Abstract.IUser.html#MdFilesMerger_Domain_Abstract_IUser_PasswordEquals_System_String_
+  commentId: M:MdFilesMerger.Domain.Abstract.IUser.PasswordEquals(System.String)
+  name.vb: PasswordEquals(String)
+  fullName: MdFilesMerger.Domain.Abstract.IUser.PasswordEquals(string?)
+  fullName.vb: MdFilesMerger.Domain.Abstract.IUser.PasswordEquals(String)
+  nameWithType: IUser.PasswordEquals(string?)
+  nameWithType.vb: IUser.PasswordEquals(String)
+- uid: MdFilesMerger.Domain.Abstract.IUser.PasswordEquals*
+  name: PasswordEquals
+  href: api/MdFilesMerger.Domain.Abstract.IUser.html#MdFilesMerger_Domain_Abstract_IUser_PasswordEquals_
+  commentId: Overload:MdFilesMerger.Domain.Abstract.IUser.PasswordEquals
+  isSpec: "True"
+  fullName: MdFilesMerger.Domain.Abstract.IUser.PasswordEquals
+  nameWithType: IUser.PasswordEquals
 - uid: MdFilesMerger.Domain.Abstract.IUser.Salt
   name: Salt
   href: api/MdFilesMerger.Domain.Abstract.IUser.html#MdFilesMerger_Domain_Abstract_IUser_Salt
@@ -3412,6 +3446,22 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.Domain.Abstract.IUser.Salt
   nameWithType: IUser.Salt
+- uid: MdFilesMerger.Domain.Abstract.IUser.SetPassword(System.String)
+  name: SetPassword(string?)
+  href: api/MdFilesMerger.Domain.Abstract.IUser.html#MdFilesMerger_Domain_Abstract_IUser_SetPassword_System_String_
+  commentId: M:MdFilesMerger.Domain.Abstract.IUser.SetPassword(System.String)
+  name.vb: SetPassword(String)
+  fullName: MdFilesMerger.Domain.Abstract.IUser.SetPassword(string?)
+  fullName.vb: MdFilesMerger.Domain.Abstract.IUser.SetPassword(String)
+  nameWithType: IUser.SetPassword(string?)
+  nameWithType.vb: IUser.SetPassword(String)
+- uid: MdFilesMerger.Domain.Abstract.IUser.SetPassword*
+  name: SetPassword
+  href: api/MdFilesMerger.Domain.Abstract.IUser.html#MdFilesMerger_Domain_Abstract_IUser_SetPassword_
+  commentId: Overload:MdFilesMerger.Domain.Abstract.IUser.SetPassword
+  isSpec: "True"
+  fullName: MdFilesMerger.Domain.Abstract.IUser.SetPassword
+  nameWithType: IUser.SetPassword
 - uid: MdFilesMerger.Domain.Common
   name: MdFilesMerger.Domain.Common
   href: api/MdFilesMerger.Domain.Common.html
@@ -3479,15 +3529,15 @@ references:
   fullName.vb: MdFilesMerger.Domain.Common.BaseDirectory.New
   nameWithType: BaseDirectory.BaseDirectory
   nameWithType.vb: BaseDirectory.New
-- uid: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)
-  name: CompareTo(BaseDirectory?)
-  href: api/MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Common_BaseDirectory_
-  commentId: M:MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)
-  name.vb: CompareTo(BaseDirectory)
-  fullName: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory?)
-  fullName.vb: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Common.BaseDirectory)
-  nameWithType: BaseDirectory.CompareTo(BaseDirectory?)
-  nameWithType.vb: BaseDirectory.CompareTo(BaseDirectory)
+- uid: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory)
+  name: CompareTo(IDirectory?)
+  href: api/MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_MdFilesMerger_Domain_Abstract_IDirectory_
+  commentId: M:MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory)
+  name.vb: CompareTo(IDirectory)
+  fullName: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory?)
+  fullName.vb: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo(MdFilesMerger.Domain.Abstract.IDirectory)
+  nameWithType: BaseDirectory.CompareTo(IDirectory?)
+  nameWithType.vb: BaseDirectory.CompareTo(IDirectory)
 - uid: MdFilesMerger.Domain.Common.BaseDirectory.CompareTo*
   name: CompareTo
   href: api/MdFilesMerger.Domain.Common.BaseDirectory.html#MdFilesMerger_Domain_Common_BaseDirectory_CompareTo_
@@ -3857,15 +3907,15 @@ references:
   fullName.vb: MdFilesMerger.Domain.Common.RelativeFile.New(Integer)
   nameWithType: RelativeFile.RelativeFile(int)
   nameWithType.vb: RelativeFile.New(Integer)
-- uid: MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name: RelativeFile(FileInfo, MainDirectory)
-  href: api/MdFilesMerger.Domain.Common.RelativeFile.html#MdFilesMerger_Domain_Common_RelativeFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: New(FileInfo, MainDirectory)
-  fullName: MdFilesMerger.Domain.Common.RelativeFile.RelativeFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.Domain.Common.RelativeFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: RelativeFile.RelativeFile(FileInfo, MainDirectory)
-  nameWithType.vb: RelativeFile.New(FileInfo, MainDirectory)
+- uid: MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: RelativeFile(FileInfo, IMainDirectory)
+  href: api/MdFilesMerger.Domain.Common.RelativeFile.html#MdFilesMerger_Domain_Common_RelativeFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Domain.Common.RelativeFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: New(FileInfo, IMainDirectory)
+  fullName: MdFilesMerger.Domain.Common.RelativeFile.RelativeFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.Domain.Common.RelativeFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: RelativeFile.RelativeFile(FileInfo, IMainDirectory)
+  nameWithType.vb: RelativeFile.New(FileInfo, IMainDirectory)
 - uid: MdFilesMerger.Domain.Common.RelativeFile.#ctor*
   name: RelativeFile
   href: api/MdFilesMerger.Domain.Common.RelativeFile.html#MdFilesMerger_Domain_Common_RelativeFile__ctor_
@@ -4038,15 +4088,15 @@ references:
   fullName.vb: MdFilesMerger.Domain.Entity.IgnoredFile.New(Integer)
   nameWithType: IgnoredFile.IgnoredFile(int)
   nameWithType.vb: IgnoredFile.New(Integer)
-- uid: MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name: IgnoredFile(FileInfo, MainDirectory)
-  href: api/MdFilesMerger.Domain.Entity.IgnoredFile.html#MdFilesMerger_Domain_Entity_IgnoredFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: New(FileInfo, MainDirectory)
-  fullName: MdFilesMerger.Domain.Entity.IgnoredFile.IgnoredFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.Domain.Entity.IgnoredFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: IgnoredFile.IgnoredFile(FileInfo, MainDirectory)
-  nameWithType.vb: IgnoredFile.New(FileInfo, MainDirectory)
+- uid: MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: IgnoredFile(FileInfo, IMainDirectory)
+  href: api/MdFilesMerger.Domain.Entity.IgnoredFile.html#MdFilesMerger_Domain_Entity_IgnoredFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Domain.Entity.IgnoredFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: New(FileInfo, IMainDirectory)
+  fullName: MdFilesMerger.Domain.Entity.IgnoredFile.IgnoredFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.Domain.Entity.IgnoredFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: IgnoredFile.IgnoredFile(FileInfo, IMainDirectory)
+  nameWithType.vb: IgnoredFile.New(FileInfo, IMainDirectory)
 - uid: MdFilesMerger.Domain.Entity.IgnoredFile.#ctor*
   name: IgnoredFile
   href: api/MdFilesMerger.Domain.Entity.IgnoredFile.html#MdFilesMerger_Domain_Entity_IgnoredFile__ctor_
@@ -4544,15 +4594,15 @@ references:
   fullName.vb: MdFilesMerger.Domain.Entity.SelectedFile.New(Integer)
   nameWithType: SelectedFile.SelectedFile(int)
   nameWithType.vb: SelectedFile.New(Integer)
-- uid: MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name: SelectedFile(FileInfo, MainDirectory)
-  href: api/MdFilesMerger.Domain.Entity.SelectedFile.html#MdFilesMerger_Domain_Entity_SelectedFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_
-  commentId: M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)
-  name.vb: New(FileInfo, MainDirectory)
-  fullName: MdFilesMerger.Domain.Entity.SelectedFile.SelectedFile(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  fullName.vb: MdFilesMerger.Domain.Entity.SelectedFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Entity.MainDirectory)
-  nameWithType: SelectedFile.SelectedFile(FileInfo, MainDirectory)
-  nameWithType.vb: SelectedFile.New(FileInfo, MainDirectory)
+- uid: MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name: SelectedFile(FileInfo, IMainDirectory)
+  href: api/MdFilesMerger.Domain.Entity.SelectedFile.html#MdFilesMerger_Domain_Entity_SelectedFile__ctor_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_
+  commentId: M:MdFilesMerger.Domain.Entity.SelectedFile.#ctor(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)
+  name.vb: New(FileInfo, IMainDirectory)
+  fullName: MdFilesMerger.Domain.Entity.SelectedFile.SelectedFile(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  fullName.vb: MdFilesMerger.Domain.Entity.SelectedFile.New(System.IO.FileInfo, MdFilesMerger.Domain.Abstract.IMainDirectory)
+  nameWithType: SelectedFile.SelectedFile(FileInfo, IMainDirectory)
+  nameWithType.vb: SelectedFile.New(FileInfo, IMainDirectory)
 - uid: MdFilesMerger.Domain.Entity.SelectedFile.#ctor*
   name: SelectedFile
   href: api/MdFilesMerger.Domain.Entity.SelectedFile.html#MdFilesMerger_Domain_Entity_SelectedFile__ctor_

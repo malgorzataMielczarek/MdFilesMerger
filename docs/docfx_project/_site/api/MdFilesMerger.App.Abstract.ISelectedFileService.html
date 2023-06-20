@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Abstract_ISelectedFileService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.ISelectedFileService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Abstract_ISelectedFileService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.ISelectedFileService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Abstract_ISelectedFileService" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService" class="text-break">
     Interface ISelectedFileService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -99,7 +99,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ISelectedFileService : IRelativeFileService&lt;SelectedFile&gt;, IEditFileService&lt;SelectedFile&gt;, IDirectoryService&lt;SelectedFile&gt;, ICRUDService&lt;SelectedFile&gt;, IService&lt;SelectedFile&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ISelectedFileService : IRelativeFileService&lt;ISelectedFile&gt;, IEditFileService&lt;ISelectedFile&gt;, IDirectoryService&lt;ISelectedFile&gt;, ICRUDService&lt;ISelectedFile&gt;, IService&lt;ISelectedFile&gt;</code></pre>
   </div>
 
 
@@ -112,52 +112,52 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_">IRelativeFileService&lt;SelectedFile&gt;.FindNewFiles(IEnumerable&lt;FileInfo&gt;, MainDirectory)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_">IRelativeFileService&lt;ISelectedFile&gt;.FindNewFiles(IEnumerable&lt;FileInfo&gt;, IMainDirectory)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath_System_Int32_">IRelativeFileService&lt;SelectedFile&gt;.GetFullPath(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath_System_Int32_">IRelativeFileService&lt;ISelectedFile&gt;.GetFullPath(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath__0_">IRelativeFileService&lt;SelectedFile&gt;.GetFullPath(SelectedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath__0_">IRelativeFileService&lt;ISelectedFile&gt;.GetFullPath(ISelectedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_ReadByMainDirId_System_Int32_">IRelativeFileService&lt;SelectedFile&gt;.ReadByMainDirId(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_ReadByMainDirId_System_Int32_">IRelativeFileService&lt;ISelectedFile&gt;.ReadByMainDirId(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IEditFileService-1.html#MdFilesMerger_App_Abstract_IEditFileService_1_UpdateTitle_System_Int32_System_String_">IEditFileService&lt;SelectedFile&gt;.UpdateTitle(int, string)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IEditFileService-1.html#MdFilesMerger_App_Abstract_IEditFileService_1_UpdateTitle_System_Int32_System_String_">IEditFileService&lt;ISelectedFile&gt;.UpdateTitle(int, string)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html#MdFilesMerger_App_Abstract_IDirectoryService_1_UpdatePath_System_Int32_System_String_">IDirectoryService&lt;SelectedFile&gt;.UpdatePath(int, string)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html#MdFilesMerger_App_Abstract_IDirectoryService_1_UpdatePath_System_Int32_System_String_">IDirectoryService&lt;ISelectedFile&gt;.UpdatePath(int, string)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Create__0_">ICRUDService&lt;SelectedFile&gt;.Create(SelectedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Create__0_">ICRUDService&lt;ISelectedFile&gt;.Create(ISelectedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_CreateRange_System_Collections_Generic_List__0__">ICRUDService&lt;SelectedFile&gt;.CreateRange(List&lt;SelectedFile&gt;)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_CreateRange_System_Collections_Generic_List__0__">ICRUDService&lt;ISelectedFile&gt;.CreateRange(List&lt;ISelectedFile&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete__0_">ICRUDService&lt;SelectedFile&gt;.Delete(SelectedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete__0_">ICRUDService&lt;ISelectedFile&gt;.Delete(ISelectedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete_System_Int32_">ICRUDService&lt;SelectedFile&gt;.Delete(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete_System_Int32_">ICRUDService&lt;ISelectedFile&gt;.Delete(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetEqual__0_">ICRUDService&lt;SelectedFile&gt;.GetEqual(SelectedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetEqual__0_">ICRUDService&lt;ISelectedFile&gt;.GetEqual(ISelectedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetNewId">ICRUDService&lt;SelectedFile&gt;.GetNewId()</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetNewId">ICRUDService&lt;ISelectedFile&gt;.GetNewId()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_IsEmpty">ICRUDService&lt;SelectedFile&gt;.IsEmpty()</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_IsEmpty">ICRUDService&lt;ISelectedFile&gt;.IsEmpty()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_ReadAll">ICRUDService&lt;SelectedFile&gt;.ReadAll()</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_ReadAll">ICRUDService&lt;ISelectedFile&gt;.ReadAll()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Update__0_">ICRUDService&lt;SelectedFile&gt;.Update(SelectedFile)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Update__0_">ICRUDService&lt;ISelectedFile&gt;.Update(ISelectedFile)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;SelectedFile&gt;.ReadById(int)</a>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;ISelectedFile&gt;.ReadById(int)</a>
     </div>
   </dd></dl>
 
@@ -172,9 +172,9 @@
 
   <a id="MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile*"></a>
 
-  <h3 id="MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_MdFilesMerger_Domain_Entity_SelectedFile_System_IO_FileInfo_System_String_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Entity.SelectedFile,System.IO.FileInfo,System.String)">
-  AppendFile(SelectedFile?, FileInfo?, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_MdFilesMerger_Domain_Abstract_ISelectedFile_System_IO_FileInfo_System_String_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(MdFilesMerger.Domain.Abstract.ISelectedFile,System.IO.FileInfo,System.String)">
+  AppendFile(ISelectedFile?, FileInfo?, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Appends the content of the specified file to the destination file.</p>
@@ -182,12 +182,12 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void AppendFile(SelectedFile? appendedFile, FileInfo? destinationFile, string newLine)</code></pre>
+    <pre><code class="lang-csharp hljs">void AppendFile(ISelectedFile? appendedFile, FileInfo? destinationFile, string newLine)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>appendedFile</code> <a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></dt>
+    <dt><code>appendedFile</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></dt>
     <dd><p>The object associated with the file to append.</p>
 </dd>
     <dt><code>destinationFile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a></dt>
@@ -216,7 +216,7 @@
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
     </dd>
   </dl>
 
@@ -225,7 +225,7 @@
 
   <h3 id="MdFilesMerger_App_Abstract_ISelectedFileService_AppendFile_System_Int32_System_IO_FileInfo_System_String_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.AppendFile(System.Int32,System.IO.FileInfo,System.String)">
   AppendFile(int, FileInfo?, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Appends the content of the specified file to the destination file.</p>
@@ -267,16 +267,16 @@
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
     </dd>
   </dl>
 
 
   <a id="MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange*"></a>
 
-  <h3 id="MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Entity_MainDirectory_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Entity.MainDirectory)">
-  CreateRange(IEnumerable&lt;FileInfo&gt;, MainDirectory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Abstract_ISelectedFileService_CreateRange_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_" data-uid="MdFilesMerger.App.Abstract.ISelectedFileService.CreateRange(System.Collections.Generic.IEnumerable{System.IO.FileInfo},MdFilesMerger.Domain.Abstract.IMainDirectory)">
+  CreateRange(IEnumerable&lt;FileInfo&gt;, IMainDirectory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates new objects associated with specified files and main directory and adds them
@@ -285,7 +285,7 @@ to the stored collection.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CreateRange(IEnumerable&lt;FileInfo&gt; list, MainDirectory mainDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">int CreateRange(IEnumerable&lt;FileInfo&gt; list, IMainDirectory mainDirectory)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -293,7 +293,7 @@ to the stored collection.</p>
     <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a>&gt;</dt>
     <dd><p>The collection of files that will be associated with added objects.</p>
 </dd>
-    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></dt>
+    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
     <dd><p>The main directory that all created objects will be connected with.</p>
 </dd>
   </dl>
@@ -322,7 +322,7 @@ to the stored collection.</p>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
     <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
     </dd>
   </dl>
 
@@ -335,13 +335,13 @@ to the stored collection.</p>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
       <div><a class="xref" href="MdFilesMerger.App.Concrete.SelectedFileService.html">SelectedFileService</a></div>
-      <div><a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L22" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/ISelectedFileService.cs/#L22" class="edit-link">Edit this page</a>
         </div>
 
         

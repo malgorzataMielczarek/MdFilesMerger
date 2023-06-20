@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IIgnoredFileService
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IIgnoredFileService
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Abstract_IIgnoredFileService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Abstract.IIgnoredFileService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MdFilesMerger.App.Abstract.IIgnoredFileService">
+
+
+
+  <h1 id="MdFilesMerger_App_Abstract_IIgnoredFileService" data-uid="MdFilesMerger.App.Abstract.IIgnoredFileService" class="text-break">
+    Interface IIgnoredFileService
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IIgnoredFileService.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MdFilesMerger.html">MdFilesMerger</a>.<a class="xref" href="MdFilesMerger.App.html">App</a>.<a class="xref" href="MdFilesMerger.App.Abstract.html">Abstract</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MdFilesMerger.App.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface for handling collection of ignored files objects.</p>
+<p>
+    <b> Inheritance: </b><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService&lt;T&gt;</a> -&gt; <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService&lt;T&gt;</a>
+    -&gt; <a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html">IDirectoryService&lt;T&gt;</a> -&gt; <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService&lt;T&gt;</a>
+    -&gt; IIgnoredFileService <br><b> Implementations: </b><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IIgnoredFileService : IRelativeFileService&lt;IIgnoredFile&gt;, IDirectoryService&lt;IIgnoredFile&gt;, ICRUDService&lt;IIgnoredFile&gt;, IService&lt;IIgnoredFile&gt;</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_FindNewFiles_System_Collections_Generic_IEnumerable_System_IO_FileInfo__MdFilesMerger_Domain_Abstract_IMainDirectory_">IRelativeFileService&lt;IIgnoredFile&gt;.FindNewFiles(IEnumerable&lt;FileInfo&gt;, IMainDirectory)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath_System_Int32_">IRelativeFileService&lt;IIgnoredFile&gt;.GetFullPath(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_GetFullPath__0_">IRelativeFileService&lt;IIgnoredFile&gt;.GetFullPath(IIgnoredFile)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html#MdFilesMerger_App_Abstract_IRelativeFileService_1_ReadByMainDirId_System_Int32_">IRelativeFileService&lt;IIgnoredFile&gt;.ReadByMainDirId(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html#MdFilesMerger_App_Abstract_IDirectoryService_1_UpdatePath_System_Int32_System_String_">IDirectoryService&lt;IIgnoredFile&gt;.UpdatePath(int, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Create__0_">ICRUDService&lt;IIgnoredFile&gt;.Create(IIgnoredFile)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_CreateRange_System_Collections_Generic_List__0__">ICRUDService&lt;IIgnoredFile&gt;.CreateRange(List&lt;IIgnoredFile&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete__0_">ICRUDService&lt;IIgnoredFile&gt;.Delete(IIgnoredFile)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Delete_System_Int32_">ICRUDService&lt;IIgnoredFile&gt;.Delete(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetEqual__0_">ICRUDService&lt;IIgnoredFile&gt;.GetEqual(IIgnoredFile)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_GetNewId">ICRUDService&lt;IIgnoredFile&gt;.GetNewId()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_IsEmpty">ICRUDService&lt;IIgnoredFile&gt;.IsEmpty()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_ReadAll">ICRUDService&lt;IIgnoredFile&gt;.ReadAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html#MdFilesMerger_App_Abstract_ICRUDService_1_Update__0_">ICRUDService&lt;IIgnoredFile&gt;.Update(IIgnoredFile)</a>
+    </div>
+    <div>
+      <a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html#MdFilesMerger_App_Abstract_IService_1_ReadById_System_Int32_">IService&lt;IIgnoredFile&gt;.ReadById(int)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.ICRUDService-1.html">ICRUDService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IDirectoryService-1.html">IDirectoryService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IRelativeFileService-1.html">IRelativeFileService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IService-1.html">IService</a>&lt;T&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Abstract/IIgnoredFileService.cs/#L19" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

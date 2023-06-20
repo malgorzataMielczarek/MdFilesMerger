@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_App_Concrete_TableOfContentsService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.TableOfContentsService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_App_Concrete_TableOfContentsService.md&amp;value=---%0Auid%3A%20MdFilesMerger.App.Concrete.TableOfContentsService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_App_Concrete_TableOfContentsService" data-uid="MdFilesMerger.App.Concrete.TableOfContentsService" class="text-break">
     Class TableOfContentsService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -145,9 +145,9 @@
 
   <a id="MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_" data-uid="MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC*"></a>
 
-  <h3 id="MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_MdFilesMerger_Domain_Entity_MergedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Entity_SelectedFile__" data-uid="MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Entity.MergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Entity.SelectedFile})">
-  CreateTOC(MergedFile, List&lt;SelectedFile&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_App_Concrete_TableOfContentsService_CreateTOC_MdFilesMerger_Domain_Abstract_IMergedFile_System_Collections_Generic_List_MdFilesMerger_Domain_Abstract_ISelectedFile__" data-uid="MdFilesMerger.App.Concrete.TableOfContentsService.CreateTOC(MdFilesMerger.Domain.Abstract.IMergedFile,System.Collections.Generic.List{MdFilesMerger.Domain.Abstract.ISelectedFile})">
+  CreateTOC(IMergedFile, List&lt;ISelectedFile&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates the table of contents of specified type.</p>
@@ -155,15 +155,15 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string? CreateTOC(MergedFile mergedFile, List&lt;SelectedFile&gt; selectedFiles)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string? CreateTOC(IMergedFile mergedFile, List&lt;ISelectedFile&gt; selectedFiles)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>mergedFile</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MergedFile.html">MergedFile</a></dt>
+    <dt><code>mergedFile</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMergedFile.html">IMergedFile</a></dt>
     <dd><p>The merged file for which table of content will be created.</p>
 </dd>
-    <dt><code>selectedFiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.SelectedFile.html">SelectedFile</a>&gt;</dt>
+    <dt><code>selectedFiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.ISelectedFile.html">ISelectedFile</a>&gt;</dt>
     <dd><p>The list of all files, whose content will be placed in the merged file.</p>
 </dd>
   </dl>
@@ -189,7 +189,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.App/Concrete/TableOfContentsService.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
         

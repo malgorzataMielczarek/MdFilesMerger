@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Controller_Concrete_IgnoredFileManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Concrete.IgnoredFileManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Controller_Concrete_IgnoredFileManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Concrete.IgnoredFileManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Controller_Concrete_IgnoredFileManager" data-uid="MdFilesMerger.Controller.Concrete.IgnoredFileManager" class="text-break">
     Class IgnoredFileManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -90,13 +90,13 @@
   <div class="markdown summary"><p>Manager for ignored file model.</p>
 <p>
     <b> Inheritance: </b><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager&lt;T, TService&gt;</a> -&gt; <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager&lt;T, TService&gt;</a> -&gt; IgnoredFileManager <br><b>
-    Implements: </b><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager&lt;T, TService&gt;</a>
+    Implements: </b><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager&lt;T, TService&gt;</a>, <a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager&lt;T, TService&gt;</a>
 </p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class IgnoredFileManager : RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;, IRelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;, ICRUDManager&lt;IgnoredFile, IgnoredFileService&gt;, IManager&lt;IgnoredFile, IgnoredFileService&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class IgnoredFileManager : RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;, IIgnoredFileManager, IRelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;, ICRUDManager&lt;IIgnoredFile, IIgnoredFileService&gt;, IManager&lt;IIgnoredFile, IIgnoredFileService&gt;</code></pre>
   </div>
 
 
@@ -106,8 +106,8 @@
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a>&gt;</div>
       <div><span class="xref">IgnoredFileManager</span></div>
     </dd>
   </dl>
@@ -115,9 +115,10 @@
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a></div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a>&gt;</div>
     </dd>
   </dl>
 
@@ -126,31 +127,31 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Create_System_Int32_">RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;.Create(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Create_System_Int32_">RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Create(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete">RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;.Delete()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete">RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Delete()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete_System_Int32_">RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;.Delete(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Delete_System_Int32_">RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Delete(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Select_System_Int32_">RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;.Select(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_Select_System_Int32_">RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Select(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_SelectItem_System_Int32_">RelativeFileManager&lt;IgnoredFile, IgnoredFileService&gt;.SelectItem(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html#MdFilesMerger_Controller_Common_RelativeFileManager_2_SelectItem_System_Int32_">RelativeFileManager&lt;IIgnoredFile, IIgnoredFileService&gt;.SelectItem(int)</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">BaseManager&lt;IgnoredFile, IgnoredFileService&gt;.SelectedItem</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">BaseManager&lt;IIgnoredFile, IIgnoredFileService&gt;.SelectedItem</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">BaseManager&lt;IgnoredFile, IgnoredFileService&gt;.Service</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">BaseManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Service</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Display">BaseManager&lt;IgnoredFile, IgnoredFileService&gt;.Display()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Display">BaseManager&lt;IIgnoredFile, IIgnoredFileService&gt;.Display()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_DisplayTitle">BaseManager&lt;IgnoredFile, IgnoredFileService&gt;.DisplayTitle()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_DisplayTitle">BaseManager&lt;IIgnoredFile, IIgnoredFileService&gt;.DisplayTitle()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -183,9 +184,9 @@
 
   <a id="MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_" data-uid="MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor*"></a>
 
-  <h3 id="MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Concrete_MainDirectoryService_" data-uid="MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Concrete.MainDirectoryService)">
-  IgnoredFileManager(MainDirectoryService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService_" data-uid="MdFilesMerger.Controller.Concrete.IgnoredFileManager.#ctor(MdFilesMerger.App.Abstract.IMainDirectoryService)">
+  IgnoredFileManager(IMainDirectoryService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.Controller.Concrete.IgnoredFileManager.html">IgnoredFileManager</a> class and all
@@ -194,12 +195,12 @@ it's properties.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IgnoredFileManager(MainDirectoryService mainDirectoryService)</code></pre>
+    <pre><code class="lang-csharp hljs">public IgnoredFileManager(IMainDirectoryService mainDirectoryService)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>mainDirectoryService</code> <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></dt>
+    <dt><code>mainDirectoryService</code> <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></dt>
     <dd><p>The main directory service that newly created <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a>
 object will by connected with.</p>
 </dd>
@@ -212,22 +213,23 @@ object will by connected with.</p>
 
 
 
-  <h4 class="section" id="MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Concrete_MainDirectoryService__remarks">Remarks</h4>
+  <h4 class="section" id="MdFilesMerger_Controller_Concrete_IgnoredFileManager__ctor_MdFilesMerger_App_Abstract_IMainDirectoryService__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Sets <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">SelectedItem</a> to <code>-1</code> and
-<a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">Service</a> to newly created <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a> object connected with specified <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a> instance.</p>
+<a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">Service</a> to newly created <a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a> object connected with specified <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a> instance.</p>
 </div>
 
 
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a></div>
     </dd>
   </dl>
 
@@ -240,7 +242,7 @@ object will by connected with.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_IgnoredFileManager_DisplayTitle" data-uid="MdFilesMerger.Controller.Concrete.IgnoredFileManager.DisplayTitle">
   DisplayTitle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays the title of the manager.</p>
@@ -264,32 +266,34 @@ object will by connected with.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+    <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a></div>
     </dd>
   </dl>
 
 
   <h2 id="seealso">See Also</h2>
   <div class="seealso">
-      <div><a class="xref" href="MdFilesMerger.App.Concrete.IgnoredFileService.html">IgnoredFileService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IIgnoredFileService.html">IIgnoredFileService</a></div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a></div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IRelativeFileManager-2.html">IRelativeFileManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Common.RelativeFileManager-2.html">RelativeFileManager</a>&lt;T, TService&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Domain.Entity.IgnoredFile.html">IgnoredFile</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IIgnoredFile.html">IIgnoredFile</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L34" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/IgnoredFileManager.cs/#L37" class="edit-link">Edit this page</a>
         </div>
 
         

@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/week3/apiSpec/new?filename=MdFilesMerger_Controller_Concrete_MainDirectoryManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Concrete.MainDirectoryManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/malgorzataMielczarek/MdFilesMerger/new/master/apiSpec/new?filename=MdFilesMerger_Controller_Concrete_MainDirectoryManager.md&amp;value=---%0Auid%3A%20MdFilesMerger.Controller.Concrete.MainDirectoryManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager" class="text-break">
     Class MainDirectoryManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -96,7 +96,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class MainDirectoryManager : BaseManager&lt;MainDirectory, MainDirectoryService&gt;, IMainDirectoryManager, ICRUDManager&lt;MainDirectory, MainDirectoryService&gt;, IManager&lt;MainDirectory, MainDirectoryService&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class MainDirectoryManager : BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;, IMainDirectoryManager, ICRUDManager&lt;IMainDirectory, IMainDirectoryService&gt;, IManager&lt;IMainDirectory, IMainDirectoryService&gt;</code></pre>
   </div>
 
 
@@ -106,7 +106,7 @@
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a>&gt;</div>
       <div><span class="xref">MainDirectoryManager</span></div>
     </dd>
   </dl>
@@ -115,8 +115,8 @@
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a>&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a>&gt;</div>
+      <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a>, <a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a>&gt;</div>
     </dd>
   </dl>
 
@@ -125,19 +125,19 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">BaseManager&lt;MainDirectory, MainDirectoryService&gt;.SelectedItem</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_SelectedItem">BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;.SelectedItem</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">BaseManager&lt;MainDirectory, MainDirectoryService&gt;.Service</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Service">BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;.Service</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Display">BaseManager&lt;MainDirectory, MainDirectoryService&gt;.Display()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Display">BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;.Display()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_DisplayTitle">BaseManager&lt;MainDirectory, MainDirectoryService&gt;.DisplayTitle()</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_DisplayTitle">BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;.DisplayTitle()</a>
     </div>
     <div>
-      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Select_System_Int32_">BaseManager&lt;MainDirectory, MainDirectoryService&gt;.Select(int)</a>
+      <a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html#MdFilesMerger_Controller_Common_BaseManager_2_Select_System_Int32_">BaseManager&lt;IMainDirectory, IMainDirectoryService&gt;.Select(int)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -172,7 +172,7 @@
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager__ctor" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.#ctor">
   MainDirectoryManager()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MdFilesMerger.Controller.Concrete.MainDirectoryManager.html">MainDirectoryManager</a> class and all
@@ -203,12 +203,12 @@ with this managers service.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -221,7 +221,7 @@ with this managers service.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoredFileManager" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoredFileManager">
   IgnoredFileManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The ignored file manager instance whose service is connected with service of this manager.</p>
@@ -229,7 +229,7 @@ with this managers service.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IgnoredFileManager IgnoredFileManager { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IIgnoredFileManager IgnoredFileManager { get; }</code></pre>
   </div>
 
 
@@ -238,7 +238,7 @@ with this managers service.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="MdFilesMerger.Controller.Concrete.IgnoredFileManager.html">IgnoredFileManager</a></dt>
+    <dt><a class="xref" href="MdFilesMerger.Controller.Abstract.IIgnoredFileManager.html">IIgnoredFileManager</a></dt>
     <dd></dd>
   </dl>
 
@@ -250,12 +250,12 @@ with this managers service.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -264,7 +264,7 @@ with this managers service.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_SelectedFileManager" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.SelectedFileManager">
   SelectedFileManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The selected file manager instance whose service is connected with service of this manager.</p>
@@ -272,7 +272,7 @@ with this managers service.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SelectedFileManager SelectedFileManager { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ISelectedFileManager SelectedFileManager { get; }</code></pre>
   </div>
 
 
@@ -281,7 +281,7 @@ with this managers service.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="MdFilesMerger.Controller.Concrete.SelectedFileManager.html">SelectedFileManager</a></dt>
+    <dt><a class="xref" href="MdFilesMerger.Controller.Abstract.ISelectedFileManager.html">ISelectedFileManager</a></dt>
     <dd></dd>
   </dl>
 
@@ -293,12 +293,12 @@ with this managers service.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -311,7 +311,7 @@ with this managers service.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_Create_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.Create(System.Int32)">
   Create(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates new entity of the appropriate model, adds it to service collection and sets
@@ -348,12 +348,12 @@ as selected item.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -362,7 +362,7 @@ as selected item.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_Delete" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.Delete">
   Delete()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes from the service's collection selected item and all elements of other
@@ -393,12 +393,12 @@ models, that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -407,7 +407,7 @@ models, that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_Delete_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.Delete(System.Int32)">
   Delete(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes from the service's collection all elements connected with the item with
@@ -445,21 +445,21 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
 
   <a id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem*"></a>
 
-  <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_MdFilesMerger_Domain_Entity_MainDirectory_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Entity.MainDirectory)">
-  DisplayItem(MainDirectory?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayItem_MdFilesMerger_Domain_Abstract_IMainDirectory_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayItem(MdFilesMerger.Domain.Abstract.IMainDirectory)">
+  DisplayItem(IMainDirectory?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L187"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays the information about specified item.</p>
@@ -467,12 +467,12 @@ other models that are connected with it.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void DisplayItem(MainDirectory? item)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void DisplayItem(IMainDirectory? item)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>item</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></dt>
+    <dt><code>item</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
     <dd><p>The item to display.</p>
 </dd>
   </dl>
@@ -489,12 +489,12 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -503,7 +503,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_DisplayTitle" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.DisplayTitle">
   DisplayTitle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Displays the title of the manager.</p>
@@ -527,12 +527,12 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -541,7 +541,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_GetFilteredList_System_Int32_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.GetFilteredList(System.Int32)">
   GetFilteredList(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets elements from the collection that are connected with element with specified identifier.</p>
@@ -549,7 +549,7 @@ other models that are connected with it.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override List&lt;MainDirectory&gt; GetFilteredList(int mergedFileId)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override List&lt;IMainDirectory&gt; GetFilteredList(int mergedFileId)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -561,7 +561,7 @@ other models that are connected with it.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a>&gt;</dt>
     <dd><p>List of received elements.</p>
 </dd>
   </dl>
@@ -577,12 +577,12 @@ other models that are connected with it.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -591,7 +591,7 @@ other models that are connected with it.</p>
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo)">
   IgnoreFile(FileInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L155"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves file from selected to ignored collection.</p>
@@ -627,21 +627,21 @@ object in selected file service collection, nothing happens.</p>
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
 
   <a id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile*"></a>
 
-  <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Entity.MainDirectory)">
-  IgnoreFile(FileInfo, MainDirectory?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory_" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.IgnoreFile(System.IO.FileInfo,MdFilesMerger.Domain.Abstract.IMainDirectory)">
+  IgnoreFile(FileInfo, IMainDirectory?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves file from selected to ignored collection.</p>
@@ -649,7 +649,7 @@ object in selected file service collection, nothing happens.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void IgnoreFile(FileInfo file, MainDirectory? mainDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">public void IgnoreFile(FileInfo file, IMainDirectory? mainDirectory)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -657,7 +657,7 @@ object in selected file service collection, nothing happens.</p>
     <dt><code>file</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a></dt>
     <dd><p>The file to ignore.</p>
 </dd>
-    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></dt>
+    <dt><code>mainDirectory</code> <a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></dt>
     <dd><p>The main directory that file is connected with.</p>
 </dd>
   </dl>
@@ -669,7 +669,7 @@ object in selected file service collection, nothing happens.</p>
 
 
 
-  <h4 class="section" id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Entity_MainDirectory__remarks">Remarks</h4>
+  <h4 class="section" id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_IgnoreFile_System_IO_FileInfo_MdFilesMerger_Domain_Abstract_IMainDirectory__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>If specified file is associated with selected file object connected with <code class="paramref">mainDirectory</code> it is deleted from selected file service collection,
 converted to ignored file object and added to ignored file service collection. If
 there is no appropriate object in selected file service collection, nothing happens.</p>
@@ -679,12 +679,12 @@ there is no appropriate object in selected file service collection, nothing happ
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
@@ -693,7 +693,7 @@ there is no appropriate object in selected file service collection, nothing happ
 
   <h3 id="MdFilesMerger_Controller_Concrete_MainDirectoryManager_UpdatePath" data-uid="MdFilesMerger.Controller.Concrete.MainDirectoryManager.UpdatePath">
   UpdatePath()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the path of selected item.</p>
@@ -723,30 +723,30 @@ there is no appropriate object in selected file service collection, nothing happ
   <dl class="typelist seealso">
     <dt>See Also</dt>
     <dd>
-    <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+    <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
     <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
     <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-    <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+    <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
     </dd>
   </dl>
 
 
   <h2 id="seealso">See Also</h2>
   <div class="seealso">
-      <div><a class="xref" href="MdFilesMerger.App.Concrete.MainDirectoryService.html">MainDirectoryService</a></div>
+      <div><a class="xref" href="MdFilesMerger.App.Abstract.IMainDirectoryService.html">IMainDirectoryService</a></div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.ICRUDManager-2.html">ICRUDManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IMainDirectoryManager.html">IMainDirectoryManager</a></div>
       <div><a class="xref" href="MdFilesMerger.Controller.Abstract.IManager-2.html">IManager</a>&lt;T, TService&gt;</div>
       <div><a class="xref" href="MdFilesMerger.Controller.Common.BaseManager-2.html">BaseManager</a>&lt;T, TService&gt;</div>
-      <div><a class="xref" href="MdFilesMerger.Domain.Entity.MainDirectory.html">MainDirectory</a></div>
+      <div><a class="xref" href="MdFilesMerger.Domain.Abstract.IMainDirectory.html">IMainDirectory</a></div>
   </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/week3/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Controller/Concrete/MainDirectoryManager.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
         
