@@ -14,7 +14,7 @@ namespace MdFilesMerger.Tests
         public void CanConverseWholeList()
         {
             // Arrange
-            string mainDirPath = "C:\\Users\\mielczarek\\source\\repos\\MdFilesMerger"; // "ExampleDir";
+            string mainDirPath = "ExampleDir";
             MainDirectory mainDirectory = new MainDirectory(1, mainDirPath, 1, DateTime.Now);
             SelectedFile selectedFile = new SelectedFile(1, "Example.md", 1, DateTime.Now, "Title");
 

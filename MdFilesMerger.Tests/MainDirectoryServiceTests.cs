@@ -1,45 +1,13 @@
 ﻿using FluentAssertions;
-using MdFilesMerger.App.Common;
 using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
-using Moq;
 using Xunit;
 
 namespace MdFilesMerger.Tests
 {
     public class MainDirectoryServiceTests
     {
-        [Fact]
-        public void ReturningEmptyListForNull()
-        {
-            // Arrange
-            MainDirectoryService mainDirectoryService = new MainDirectoryService();
-
-            // Act
-            var result = mainDirectoryService.FindAllFiles(null);
-
-            // Assert
-            result.Should().BeAssignableTo<IEnumerable<FileInfo>>();
-            result.Should().NotBeNull();
-            result.Should().BeEmpty();
-        }
-
-        [Fact]
-        public void ReturningEmptyListForInvalidId()
-        {
-            // Arrange
-            MainDirectoryService mainDirectoryService = new MainDirectoryService();
-
-            // Act
-            var result = mainDirectoryService.FindAllFiles(-1);
-
-            // Assert
-            result.Should().BeAssignableTo<IEnumerable<FileInfo>>();
-            result.Should().NotBeNull();
-            result.Should().BeEmpty();
-        }
-
         [Fact]
         public void IsReturningItemsOnlyWithGivenMergedFileId()
         {
@@ -110,6 +78,36 @@ namespace MdFilesMerger.Tests
             items[4].Should().Be(dir5);
             items[5].Should().Be(dir6);
             items.Should().BeInAscendingOrder();
+        }
+
+        [Fact]
+        public void ReturningEmptyListForInvalidId()
+        {
+            // Arrange
+            MainDirectoryService mainDirectoryService = new MainDirectoryService();
+
+            // Act
+            var result = mainDirectoryService.FindAllFiles(-1);
+
+            // Assert
+            result.Should().BeAssignableTo<IEnumerable<FileInfo>>();
+            result.Should().NotBeNull();
+            result.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void ReturningEmptyListForNull()
+        {
+            // Arrange
+            MainDirectoryService mainDirectoryService = new MainDirectoryService();
+
+            // Act
+            var result = mainDirectoryService.FindAllFiles(null);
+
+            // Assert
+            result.Should().BeAssignableTo<IEnumerable<FileInfo>>();
+            result.Should().NotBeNull();
+            result.Should().BeEmpty();
         }
     }
 }
