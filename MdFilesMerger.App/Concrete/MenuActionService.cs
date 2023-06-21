@@ -41,7 +41,7 @@ namespace MdFilesMerger.App.Concrete
         /// </returns>
         public IMenuAction? ReadById(int id)
         {
-            if (_actions.Count >= id && _actions[id - 1].Id == id)
+            if (id > 0 && _actions.Count >= id && _actions[id - 1].Id == id)
             {
                 return _actions[id - 1];
             }
