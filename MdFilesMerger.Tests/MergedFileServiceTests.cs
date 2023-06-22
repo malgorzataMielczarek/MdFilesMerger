@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using Moq;
 using Xunit;
@@ -92,6 +93,199 @@ namespace MdFilesMerger.Tests
             // Assert
             result.Should().NotBeNull();
             result.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void NameNotChangedForInvalidValue()
+        {
+            // Arrange
+            int id = 100000;
+            string oldName = "OldName.md", invalidName = "InvalidName.md";
+            var file = new Mock<IMergedFile>();
+            file.SetupGet(f => f.Id).Returns(id);
+            file.SetupGet(f => f.Name).Returns(oldName);
+            file.SetupSet(f => f.Name = It.IsAny<string>());
+            file.SetupSet(f => f.ModifiedDate = It.IsAny<DateTime>());
+            file.Setup(f => f.SetFileName(invalidName)).Returns(false);
+
+            var mergedFileService = new MergedFileService();
+            mergedFileService.Create(file.Object);
+
+            // Act
+            var result = mergedFileService.UpdateFileName(id, invalidName);
+
+            // Assert
+            result.Should().Be(-1);
+            file.Verify(f => f.SetFileName(invalidName), Times.Once());
+            file.VerifySet(f => f.ModifiedDate = It.IsAny<DateTime>(), Times.Never());
+            file.VerifySet(f => f.Name = It.IsAny<string>(), Times.Once());
+        }
+
+        [Fact]
+        public void CanUpdateName()
+        {
+            // Arrange
+            int id = 100000;
+            string oldName = "OldName.md", validName = "ValidName.md";
+            var file = new Mock<IMergedFile>();
+            file.SetupGet(f => f.Id).Returns(id);
+            file.SetupGet(f => f.Name).Returns(oldName);
+            file.SetupSet(f => f.Name = It.IsAny<string>());
+            file.SetupSet(f => f.ModifiedDate = It.IsAny<DateTime>());
+            file.Setup(f => f.SetFileName(validName)).Returns(true);
+
+            var mergedFileService = new MergedFileService();
+            mergedFileService.Create(file.Object);
+
+            // Act
+            var result = mergedFileService.UpdateFileName(id, validName);
+
+            // Assert
+            result.Should().Be(id);
+            file.Verify(f => f.SetFileName(validName), Times.Once());
+            file.VerifySet(f => f.ModifiedDate = It.IsAny<DateTime>(), Times.Once());
+            file.VerifySet(f => f.Name = It.IsAny<string>(), Times.Never());
+        }
+
+        [Fact]
+        public void CanUpdateNewLineStyle()
+        {
+            // Arrange
+            int id = 100000;
+            var date = DateTime.Now.AddDays(-7);
+            string oldNewLineStyle = "\n", newNewLineStyle = "\r\n";
+            MergedFile mergedFile = new MergedFile() { Id = id, ModifiedDate = date, NewLineStyle = oldNewLineStyle };
+
+            MergedFileService mergedFileService = new MergedFileService();
+            mergedFileService.Create(mergedFile);
+
+            // Act
+            var result = mergedFileService.UpdateNewLineStyle(mergedFile.Id, newNewLineStyle);
+
+            // Assert
+            result.Should().Be(mergedFile.Id);
+            mergedFile.ModifiedDate.Should().BeAfter(date).And.BeBefore(DateTime.Now);
+            mergedFile.NewLineStyle.Should().Be(newNewLineStyle);
+        }
+
+        [Fact]
+        public void ParentDirectoryNotChangedForInvalidValue()
+        {
+            // Arrange
+            int id = 100000;
+            string oldPath = "OldPath", invalidPath = "InvalidPath";
+            var file = new Mock<IMergedFile>();
+            file.SetupGet(f => f.Id).Returns(id);
+            file.SetupGet(f => f.Name).Returns(oldPath);
+            file.SetupSet(f => f.Name = It.IsAny<string>());
+            file.SetupSet(f => f.ModifiedDate = It.IsAny<DateTime>());
+            file.Setup(f => f.SetParentDirectory(invalidPath)).Returns(false);
+
+            var mergedFileService = new MergedFileService();
+            mergedFileService.Create(file.Object);
+
+            // Act
+            var result = mergedFileService.UpdateParentDirectory(id, invalidPath);
+
+            // Assert
+            result.Should().Be(-1);
+            file.Verify(f => f.SetParentDirectory(invalidPath), Times.Once());
+            file.VerifySet(f => f.ModifiedDate = It.IsAny<DateTime>(), Times.Never());
+            file.VerifySet(f => f.Name = It.IsAny<string>(), Times.Once());
+        }
+
+        [Fact]
+        public void CanUpdateParentDirectory()
+        {
+            // Arrange
+            int id = 100000;
+            string oldPath = "OldPath", validPath = "ValidPath";
+            var file = new Mock<IMergedFile>();
+            file.SetupGet(f => f.Id).Returns(id);
+            file.SetupGet(f => f.Name).Returns(oldPath);
+            file.SetupSet(f => f.Name = It.IsAny<string>());
+            file.SetupSet(f => f.ModifiedDate = It.IsAny<DateTime>());
+            file.Setup(f => f.SetParentDirectory(validPath)).Returns(true);
+
+            var mergedFileService = new MergedFileService();
+            mergedFileService.Create(file.Object);
+
+            // Act
+            var result = mergedFileService.UpdateParentDirectory(id, validPath);
+
+            // Assert
+            result.Should().Be(id);
+            file.Verify(f => f.SetParentDirectory(validPath), Times.Once());
+            file.VerifySet(f => f.ModifiedDate = It.IsAny<DateTime>(), Times.Once());
+            file.VerifySet(f => f.Name = It.IsAny<string>(), Times.Never());
+        }
+
+        [Fact]
+        public void CanUpdateTableOfContents()
+        {
+            // Arrange
+            int id = 100000;
+            var date = DateTime.Now.AddDays(-7);
+            TableOfContents oldTOC = TableOfContents.None, newTOC = TableOfContents.Hyperlink;
+            MergedFile mergedFile = new MergedFile() { Id = id, ModifiedDate = date, TableOfContents = oldTOC };
+
+            MergedFileService mergedFileService = new MergedFileService();
+            mergedFileService.Create(mergedFile);
+
+            // Act
+            var result = mergedFileService.UpdateTableOfContents(mergedFile.Id, newTOC);
+
+            // Assert
+            result.Should().Be(mergedFile.Id);
+            mergedFile.ModifiedDate.Should().BeAfter(date).And.BeBefore(DateTime.Now);
+            mergedFile.TableOfContents.Should().Be(newTOC);
+        }
+
+        [Fact]
+        public void CanUpdateTitle()
+        {
+            // Arrange
+            int id = 100000;
+            var date = DateTime.Now.AddDays(-7);
+            string oldTitle = "Old title", newTitle = "New title";
+            MergedFile mergedFile = new MergedFile() { Id = id, ModifiedDate = date, Title = oldTitle };
+
+            MergedFileService mergedFileService = new MergedFileService();
+            mergedFileService.Create(mergedFile);
+
+            // Act
+            var result = mergedFileService.UpdateTitle(mergedFile.Id, newTitle);
+
+            // Assert
+            result.Should().Be(mergedFile.Id);
+            mergedFile.ModifiedDate.Should().BeAfter(date).And.BeBefore(DateTime.Now);
+            mergedFile.Title.Should().Be(newTitle);
+        }
+
+        [Fact]
+        public void CanUpdateTOCHeader()
+        {
+            // Arrange
+            int id = 100000;
+            var date = DateTime.Now.AddDays(-7);
+            string oldHeader = "## Old Header";
+            string?[] newHeaders = { "New Header", "# New Header", null, string.Empty };
+            string[] results = { "## New Header", "# New Header", string.Empty, string.Empty };
+            MergedFile mergedFile = new MergedFile() { Id = id, ModifiedDate = date, TOCHeader = oldHeader };
+
+            MergedFileService mergedFileService = new MergedFileService();
+            mergedFileService.Create(mergedFile);
+
+            for (int i = 0; i < newHeaders.Length; i++)
+            {
+                // Act
+                var result = mergedFileService.UpdateTOCHeader(mergedFile.Id, newHeaders[i]);
+
+                // Assert
+                result.Should().Be(mergedFile.Id);
+                mergedFile.ModifiedDate.Should().BeAfter(date).And.BeBefore(DateTime.Now);
+                mergedFile.TOCHeader.Should().Be(results[i]);
+            }
         }
     }
 }
