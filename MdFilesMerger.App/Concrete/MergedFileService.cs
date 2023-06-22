@@ -242,7 +242,7 @@ namespace MdFilesMerger.App.Concrete
                 }
                 else
                 {
-                    file.TOCHeader = header;
+                    file.TOCHeader = "## " + header;
                 }
 
                 file.ModifiedDate = DateTime.Now;
