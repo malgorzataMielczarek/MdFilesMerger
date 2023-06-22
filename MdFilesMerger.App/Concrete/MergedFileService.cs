@@ -63,6 +63,7 @@ namespace MdFilesMerger.App.Concrete
                 {
                     streamWriter.WriteLine(mergedFile.TOCHeader);
                 }
+
                 streamWriter.WriteLine(TableOfContentsService.CreateTOC(mergedFile, selectedFiles));
 
                 streamWriter.Close();
@@ -103,6 +104,7 @@ namespace MdFilesMerger.App.Concrete
 
                         streamWriter.Close();
                     }
+
                     return mergedFileInfo;
                 }
                 catch (Exception ex) when (ex is UnauthorizedAccessException || ex is IOException || ex is SecurityException)
@@ -123,6 +125,8 @@ namespace MdFilesMerger.App.Concrete
                     mergedFiles.Add(file);
                 }
             }
+
+            mergedFiles.Sort();
 
             return mergedFiles;
         }
