@@ -42,20 +42,6 @@ namespace MdFilesMerger.App.Concrete
         }
 
         /// <inheritdoc/>
-        public IUser? ReadByName(string name)
-        {
-            foreach (var item in _items)
-            {
-                if (item.Name == name)
-                {
-                    return item;
-                }
-            }
-
-            return null;
-        }
-
-        /// <inheritdoc/>
         public int UpdateName(int id, string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -113,6 +99,19 @@ namespace MdFilesMerger.App.Concrete
         private void Initialize()
         {
             Create(new User(1, "user", null));
+        }
+
+        private IUser? ReadByName(string name)
+        {
+            foreach (var item in _items)
+            {
+                if (item.Name == name)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
     }
 }

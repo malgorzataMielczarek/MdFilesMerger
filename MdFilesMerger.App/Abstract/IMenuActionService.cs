@@ -16,8 +16,7 @@ namespace MdFilesMerger.App.Abstract
     public interface IMenuActionService : IService<IMenuAction>
     {
         /// <summary>
-        ///     Gets elements from <see cref="Concrete.MenuActionService._actions"/> with <see
-        ///     cref="MenuAction.Menu"/><paramref name="menuType"/>.
+        ///     Gets elements from collection with <see cref="IMenuAction.Menu"/> equal <paramref name="menuType"/>.
         /// </summary>
         /// <param name="menuType"> Type of the menu. </param>
         /// <returns> List with object of menu <paramref name="menuType"/>. </returns>

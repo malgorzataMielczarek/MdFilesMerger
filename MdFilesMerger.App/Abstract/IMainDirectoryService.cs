@@ -21,7 +21,7 @@ namespace MdFilesMerger.App.Abstract
         ///     Finds all .md files in specified main directory and it's subdirectories.
         /// </summary>
         /// <param name="id">
-        ///     The identifier of <see cref="MainDirectory"/> object associated with directory
+        ///     The identifier of <see cref="IMainDirectory"/> object associated with directory
         ///     searched for .md files.
         /// </param>
         /// <returns> Collection of found .md files. </returns>
@@ -31,19 +31,19 @@ namespace MdFilesMerger.App.Abstract
         ///     Finds all .md files in specified main directory and it's subdirectories.
         /// </summary>
         /// <param name="mainDirectory">
-        ///     The <see cref="MainDirectory"/> object associated with directory searched for .md files.
+        ///     The <see cref="IMainDirectory"/> object associated with directory searched for .md files.
         /// </param>
         /// <returns> Collection of found .md files. </returns>
         IEnumerable<FileInfo> FindAllFiles(IMainDirectory mainDirectory);
 
         /// <summary>
-        ///     Gets, from the stored collection of <see cref="MainDirectory"/> objects, elements
+        ///     Gets, from the stored collection of <see cref="IMainDirectory"/> objects, elements
         ///     with the specified merged file identifier.
         /// </summary>
         /// <param name="mergedFileId"> The searched merged file identifier. </param>
         /// <returns>
-        ///     The list of <see cref="MainDirectory"/> objects with the specified merged file
-        ///     identifier. If there is no objects with <see cref="MainDirectory.MergedFileId"/>
+        ///     The list of <see cref="IMainDirectory"/> objects with the specified merged file
+        ///     identifier. If there is no objects with <see cref="IMainDirectory.MergedFileId"/>
         ///     equal <paramref name="mergedFileId"/>, returned list is empty.
         /// </returns>
         List<IMainDirectory> ReadByMergedFileId(int mergedFileId);

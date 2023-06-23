@@ -35,9 +35,10 @@ namespace MdFilesMerger.Controller.Abstract
         ///     Selects menu action.
         /// </summary>
         /// <remarks>
-        ///     Displays appropriate menu (elements of collection with <see cref="MenuAction.Menu"/>
-        ///     value equal selected item's <see cref="MenuAction.NextMenu"/> value. Asks user to
-        ///     select one element and sets it as selected item.
+        ///     Displays appropriate menu (elements of collection with <see
+        ///     cref="IMenuAction.Menu"/> value equal selected item's <see
+        ///     cref="IMenuAction.NextMenu"/> value. Asks user to select one element and sets it as
+        ///     selected item.
         /// </remarks>
         /// <returns>
         ///     Selected menu action or <see langword="null"/> if user failed to select existing action.

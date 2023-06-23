@@ -258,7 +258,7 @@
                 Finds all .md files in specified main directory and it's subdirectories.
             </summary>
             <param name="id">
-                The identifier of <see cref="!:MainDirectory"/> object associated with directory
+                The identifier of <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> object associated with directory
                 searched for .md files.
             </param>
             <returns> Collection of found .md files. </returns>
@@ -268,19 +268,19 @@
                 Finds all .md files in specified main directory and it's subdirectories.
             </summary>
             <param name="mainDirectory">
-                The <see cref="!:MainDirectory"/> object associated with directory searched for .md files.
+                The <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> object associated with directory searched for .md files.
             </param>
             <returns> Collection of found .md files. </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMainDirectoryService.ReadByMergedFileId(System.Int32)">
             <summary>
-                Gets, from the stored collection of <see cref="!:MainDirectory"/> objects, elements
+                Gets, from the stored collection of <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> objects, elements
                 with the specified merged file identifier.
             </summary>
             <param name="mergedFileId"> The searched merged file identifier. </param>
             <returns>
-                The list of <see cref="!:MainDirectory"/> objects with the specified merged file
-                identifier. If there is no objects with <see cref="!:MainDirectory.MergedFileId"/>
+                The list of <see cref="T:MdFilesMerger.Domain.Abstract.IMainDirectory"/> objects with the specified merged file
+                identifier. If there is no objects with <see cref="P:MdFilesMerger.Domain.Abstract.IMainDirectory.MergedFileId"/>
                 equal <paramref name="mergedFileId"/>, returned list is empty.
             </returns>
         </member>
@@ -298,8 +298,7 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMenuActionService.ReadByMenuType(MdFilesMerger.Domain.Common.MenuType)">
             <summary>
-                Gets elements from <see cref="F:MdFilesMerger.App.Concrete.MenuActionService._actions"/> with <see
-                cref="!:MenuAction.Menu"/><paramref name="menuType"/>.
+                Gets elements from collection with <see cref="P:MdFilesMerger.Domain.Abstract.IMenuAction.Menu"/> equal <paramref name="menuType"/>.
             </summary>
             <param name="menuType"> Type of the menu. </param>
             <returns> List with object of menu <paramref name="menuType"/>. </returns>
@@ -338,7 +337,7 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.CreateFile(System.Int32)">
             <summary>
-                Creates the file associated with specified <see cref="!:MergedFile"/> object.
+                Creates the file associated with specified <see cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> object.
             </summary>
             <remarks>
                 If the file already exists, it is deleted. New file is created and fill with
@@ -354,13 +353,13 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.ReadByUserId(System.Int32)">
             <summary>
-                Gets, from the stored collection of <see cref="!:MergedFile"/> objects, elements with
+                Gets, from the stored collection of <see cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> objects, elements with
                 the specified user identifier.
             </summary>
             <param name="userId"> The searched user identifier. </param>
             <returns>
-                The list of <see cref="!:MergedFile"/> objects with the specified user identifier. If
-                there is no objects with <see cref="!:MergedFile.UserId"/> equal <paramref
+                The list of <see cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> objects with the specified user identifier. If
+                there is no objects with <see cref="P:MdFilesMerger.Domain.Abstract.IMergedFile.UserId"/> equal <paramref
                 name="userId"/>, returned list is empty.
             </returns>
         </member>
@@ -374,7 +373,7 @@
             </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="!:MergedFile"/> with specified id in the stored collection or <paramref
+                cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> with specified id in the stored collection or <paramref
                 name="fileName"/> is not a valid file name.
             </returns>
         </member>
@@ -386,7 +385,7 @@
             <param name="newLineStyle"> The new new line style. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="!:MergedFile"/> with specified id in the stored collection.
+                cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.UpdateParentDirectory(System.Int32,System.String)">
@@ -397,7 +396,7 @@
             <param name="directoryPath"> The new directory path. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="!:MergedFile"/> with specified id in the stored collection or <paramref
+                cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> with specified id in the stored collection or <paramref
                 name="directoryPath"/> is not a valid path.
             </returns>
         </member>
@@ -409,7 +408,7 @@
             <param name="tableOfContents"> The new type of table of contents. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="!:MergedFile"/> with specified id in the stored collection.
+                cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IMergedFileService.UpdateTOCHeader(System.Int32,System.String)">
@@ -420,7 +419,7 @@
             <param name="header"> The new header. </param>
             <returns>
                 The identifier of updated object or <see langword="-1"/>, if there is no <see
-                cref="!:MergedFile"/> with specified id in the stored collection.
+                cref="T:MdFilesMerger.Domain.Abstract.IMergedFile"/> with specified id in the stored collection.
             </returns>
         </member>
         <member name="T:MdFilesMerger.App.Abstract.IRelativeFileService`1">
@@ -468,14 +467,13 @@
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IRelativeFileService`1.ReadByMainDirId(System.Int32)">
             <summary>
-                Gets, from the stored collection of <typeparamref name="T"/> objects, elements with
-                the specified main directory identifier.
+                Gets, from the stored collection, elements with the specified main directory identifier.
             </summary>
             <param name="mainDirId"> The searched main directory identifier. </param>
             <returns>
-                The list of <typeparamref name="T"/> objects with the specified main directory
-                identifier. If there is no objects with <see cref="P:MdFilesMerger.Domain.Abstract.IRelativeFile.MainDirId"/> equal
-                <paramref name="mainDirId"/>, returned list is empty.
+                The list of objects with the specified main directory identifier. If there is no
+                objects with <see cref="P:MdFilesMerger.Domain.Abstract.IRelativeFile.MainDirId"/> equal <paramref
+                name="mainDirId"/>, returned list is empty.
             </returns>
         </member>
         <member name="T:MdFilesMerger.App.Abstract.ISelectedFileService">
@@ -609,17 +607,6 @@
             <returns>
                 Identification number of user with specified name if it is in the collection and
                 specified password is correct; otherwise <see langword="-1"/>.
-            </returns>
-        </member>
-        <member name="M:MdFilesMerger.App.Abstract.IUserService.ReadByName(System.String)">
-            <summary>
-                From stored collection of <see cref="!:User"/> objects, gets user with specified name.
-            </summary>
-            <param name="name"> The name of user that you are looking for. </param>
-            <returns>
-                <see cref="!:User"/> object with <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Name"/> equal
-                <paramref name="name"/>. If there is no element with specified name in stored
-                collection, method returns <see langword="null"/>.
             </returns>
         </member>
         <member name="M:MdFilesMerger.App.Abstract.IUserService.UpdateName(System.Int32,System.String)">
@@ -1043,9 +1030,6 @@
             </summary>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.UserService.CheckCredentials(System.String,System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MdFilesMerger.App.Concrete.UserService.ReadByName(System.String)">
             <inheritdoc/>
         </member>
         <member name="M:MdFilesMerger.App.Concrete.UserService.UpdateName(System.Int32,System.String)">

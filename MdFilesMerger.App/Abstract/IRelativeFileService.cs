@@ -46,14 +46,13 @@ namespace MdFilesMerger.App.Abstract
         string? GetFullPath(T? relativeFile);
 
         /// <summary>
-        ///     Gets, from the stored collection of <typeparamref name="T"/> objects, elements with
-        ///     the specified main directory identifier.
+        ///     Gets, from the stored collection, elements with the specified main directory identifier.
         /// </summary>
         /// <param name="mainDirId"> The searched main directory identifier. </param>
         /// <returns>
-        ///     The list of <typeparamref name="T"/> objects with the specified main directory
-        ///     identifier. If there is no objects with <see cref="IRelativeFile.MainDirId"/> equal
-        ///     <paramref name="mainDirId"/>, returned list is empty.
+        ///     The list of objects with the specified main directory identifier. If there is no
+        ///     objects with <see cref="IRelativeFile.MainDirId"/> equal <paramref
+        ///     name="mainDirId"/>, returned list is empty.
         /// </returns>
         List<T> ReadByMainDirId(int mainDirId);
     }

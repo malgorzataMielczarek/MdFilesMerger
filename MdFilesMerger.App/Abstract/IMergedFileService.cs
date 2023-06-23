@@ -36,7 +36,7 @@ namespace MdFilesMerger.App.Abstract
         void AppendTableOfContents(FileInfo destinationFile, int mergedFileId, List<ISelectedFile> selectedFiles);
 
         /// <summary>
-        ///     Creates the file associated with specified <see cref="MergedFile"/> object.
+        ///     Creates the file associated with specified <see cref="IMergedFile"/> object.
         /// </summary>
         /// <remarks>
         ///     If the file already exists, it is deleted. New file is created and fill with
@@ -52,13 +52,13 @@ namespace MdFilesMerger.App.Abstract
         FileInfo? CreateFile(int id);
 
         /// <summary>
-        ///     Gets, from the stored collection of <see cref="MergedFile"/> objects, elements with
+        ///     Gets, from the stored collection of <see cref="IMergedFile"/> objects, elements with
         ///     the specified user identifier.
         /// </summary>
         /// <param name="userId"> The searched user identifier. </param>
         /// <returns>
-        ///     The list of <see cref="MergedFile"/> objects with the specified user identifier. If
-        ///     there is no objects with <see cref="MergedFile.UserId"/> equal <paramref
+        ///     The list of <see cref="IMergedFile"/> objects with the specified user identifier. If
+        ///     there is no objects with <see cref="IMergedFile.UserId"/> equal <paramref
         ///     name="userId"/>, returned list is empty.
         /// </returns>
         List<IMergedFile> ReadByUserId(int userId);
@@ -72,7 +72,7 @@ namespace MdFilesMerger.App.Abstract
         /// </param>
         /// <returns>
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
-        ///     cref="MergedFile"/> with specified id in the stored collection or <paramref
+        ///     cref="IMergedFile"/> with specified id in the stored collection or <paramref
         ///     name="fileName"/> is not a valid file name.
         /// </returns>
         int UpdateFileName(int id, string fileName);
@@ -84,7 +84,7 @@ namespace MdFilesMerger.App.Abstract
         /// <param name="newLineStyle"> The new new line style. </param>
         /// <returns>
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
-        ///     cref="MergedFile"/> with specified id in the stored collection.
+        ///     cref="IMergedFile"/> with specified id in the stored collection.
         /// </returns>
         int UpdateNewLineStyle(int id, string newLineStyle);
 
@@ -95,7 +95,7 @@ namespace MdFilesMerger.App.Abstract
         /// <param name="directoryPath"> The new directory path. </param>
         /// <returns>
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
-        ///     cref="MergedFile"/> with specified id in the stored collection or <paramref
+        ///     cref="IMergedFile"/> with specified id in the stored collection or <paramref
         ///     name="directoryPath"/> is not a valid path.
         /// </returns>
         int UpdateParentDirectory(int id, string directoryPath);
@@ -107,7 +107,7 @@ namespace MdFilesMerger.App.Abstract
         /// <param name="tableOfContents"> The new type of table of contents. </param>
         /// <returns>
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
-        ///     cref="MergedFile"/> with specified id in the stored collection.
+        ///     cref="IMergedFile"/> with specified id in the stored collection.
         /// </returns>
         int UpdateTableOfContents(int id, TableOfContents tableOfContents);
 
@@ -118,7 +118,7 @@ namespace MdFilesMerger.App.Abstract
         /// <param name="header"> The new header. </param>
         /// <returns>
         ///     The identifier of updated object or <see langword="-1"/>, if there is no <see
-        ///     cref="MergedFile"/> with specified id in the stored collection.
+        ///     cref="IMergedFile"/> with specified id in the stored collection.
         /// </returns>
         int UpdateTOCHeader(int id, string? header);
     }

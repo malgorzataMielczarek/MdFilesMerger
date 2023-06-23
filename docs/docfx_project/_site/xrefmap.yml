@@ -589,22 +589,6 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.App.Abstract.IUserService.CheckCredentials
   nameWithType: IUserService.CheckCredentials
-- uid: MdFilesMerger.App.Abstract.IUserService.ReadByName(System.String)
-  name: ReadByName(string)
-  href: api/MdFilesMerger.App.Abstract.IUserService.html#MdFilesMerger_App_Abstract_IUserService_ReadByName_System_String_
-  commentId: M:MdFilesMerger.App.Abstract.IUserService.ReadByName(System.String)
-  name.vb: ReadByName(String)
-  fullName: MdFilesMerger.App.Abstract.IUserService.ReadByName(string)
-  fullName.vb: MdFilesMerger.App.Abstract.IUserService.ReadByName(String)
-  nameWithType: IUserService.ReadByName(string)
-  nameWithType.vb: IUserService.ReadByName(String)
-- uid: MdFilesMerger.App.Abstract.IUserService.ReadByName*
-  name: ReadByName
-  href: api/MdFilesMerger.App.Abstract.IUserService.html#MdFilesMerger_App_Abstract_IUserService_ReadByName_
-  commentId: Overload:MdFilesMerger.App.Abstract.IUserService.ReadByName
-  isSpec: "True"
-  fullName: MdFilesMerger.App.Abstract.IUserService.ReadByName
-  nameWithType: IUserService.ReadByName
 - uid: MdFilesMerger.App.Abstract.IUserService.UpdateName(System.Int32,System.String)
   name: UpdateName(int, string)
   href: api/MdFilesMerger.App.Abstract.IUserService.html#MdFilesMerger_App_Abstract_IUserService_UpdateName_System_Int32_System_String_
@@ -1467,22 +1451,6 @@ references:
   isSpec: "True"
   fullName: MdFilesMerger.App.Concrete.UserService.CheckCredentials
   nameWithType: UserService.CheckCredentials
-- uid: MdFilesMerger.App.Concrete.UserService.ReadByName(System.String)
-  name: ReadByName(string)
-  href: api/MdFilesMerger.App.Concrete.UserService.html#MdFilesMerger_App_Concrete_UserService_ReadByName_System_String_
-  commentId: M:MdFilesMerger.App.Concrete.UserService.ReadByName(System.String)
-  name.vb: ReadByName(String)
-  fullName: MdFilesMerger.App.Concrete.UserService.ReadByName(string)
-  fullName.vb: MdFilesMerger.App.Concrete.UserService.ReadByName(String)
-  nameWithType: UserService.ReadByName(string)
-  nameWithType.vb: UserService.ReadByName(String)
-- uid: MdFilesMerger.App.Concrete.UserService.ReadByName*
-  name: ReadByName
-  href: api/MdFilesMerger.App.Concrete.UserService.html#MdFilesMerger_App_Concrete_UserService_ReadByName_
-  commentId: Overload:MdFilesMerger.App.Concrete.UserService.ReadByName
-  isSpec: "True"
-  fullName: MdFilesMerger.App.Concrete.UserService.ReadByName
-  nameWithType: UserService.ReadByName
 - uid: MdFilesMerger.App.Concrete.UserService.UpdateName(System.Int32,System.String)
   name: UpdateName(int, string)
   href: api/MdFilesMerger.App.Concrete.UserService.html#MdFilesMerger_App_Concrete_UserService_UpdateName_System_Int32_System_String_

@@ -27,17 +27,6 @@ namespace MdFilesMerger.App.Abstract
         int CheckCredentials(string userName, string password);
 
         /// <summary>
-        ///     From stored collection of <see cref="User"/> objects, gets user with specified name.
-        /// </summary>
-        /// <param name="name"> The name of user that you are looking for. </param>
-        /// <returns>
-        ///     <see cref="User"/> object with <see cref="Domain.Common.BaseItem.Name"/> equal
-        ///     <paramref name="name"/>. If there is no element with specified name in stored
-        ///     collection, method returns <see langword="null"/>.
-        /// </returns>
-        IUser? ReadByName(string name);
-
-        /// <summary>
         ///     Updates the name of user with specified identification number.
         /// </summary>
         /// <param name="id"> The identification number of updated user. </param>
