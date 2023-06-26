@@ -10,7 +10,24 @@ namespace MdFilesMerger.Tests.App.Common
     public class BaseServiceTests
     {
         [Fact]
-        public void CanAddItem()
+        public void Create_ContainedItem_DoesNotAddItemToCollection()
+        {
+            // Arrange
+            BaseItem baseItem = new BaseItem(100000);
+            var service = new BaseService<IItem>();
+            service.Create(baseItem);
+
+            // Act
+
+            var result = service.Create(baseItem);
+
+            // Assert
+            result.Should().Be(-1);
+            service.ReadAll().Should().HaveCount(1).And.Contain(baseItem);
+        }
+
+        [Fact]
+        public void Create_NewValidItem_AddsItemToCollection()
         {
             // Arrange
             BaseItem baseItem = new BaseItem(100000);
@@ -25,146 +42,103 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void CanNotReaddItem()
-        {
-            // Arrange
-            BaseItem baseItem = new BaseItem(100000);
-            var service = new BaseService<IItem>();
-            int count = service.ReadAll().Count;
-            int result = 0;
-
-            // Act
-            for (int i = 0; i < 10; i++)
-            {
-                result = service.Create(baseItem);
-            }
-
-            // Assert
-            result.Should().Be(-1);
-            service.ReadAll().Should().HaveCountLessThanOrEqualTo(count + 1).And.Contain(baseItem);
-        }
-
-        [Fact]
-        public void CanAddRange()
+        public void CreateRange_SetOfNewAndValidItems_AddsAllItemsToCollection()
         {
             // Arrange
             List<IItem> items = new List<IItem>();
-            for (int i = 100000; i < 100010; i++)
-            {
-                items.Add(new BaseItem(i));
-            }
+            items.Add(new BaseItem(1));
+            items.Add(new BaseItem(2));
 
             var service = new BaseService<IItem>();
-            int count = service.ReadAll().Count;
 
             // Act
             var result = service.CreateRange(items);
 
             // Assert
             result.Should().Be(items.First().Id);
-            service.ReadAll().Should().HaveCount(count + 10).And.Contain(items);
+            service.ReadAll().Should().HaveCount(2).And.Contain(items);
         }
 
         [Fact]
-        public void CanRemoveItem()
+        public void Delete_ContainedItem_RemovesItemFromCollectionAndDecreaseGreaterIds()
         {
             // Arrange
-            List<IItem> items = new List<IItem>();
-            for (int i = 100000; i < 100010; i++)
-            {
-                items.Add(new BaseItem(i));
-            }
-
             var service = new BaseService<IItem>();
-            service.CreateRange(items);
-            int count = service.ReadAll().Count;
+
+            IItem itemToDelete = new BaseItem(1);
+            service.Create(itemToDelete);
+
+            IItem nextItem = new BaseItem(2);
+            service.Create(nextItem);
 
             // Act
-            var result = service.Delete(items[5]);
+            var result = service.Delete(itemToDelete);
 
             // Assert
-            result.Should().Be(items[5].Id);
-            service.ReadAll().Should().HaveCount(count - 1).And.NotContain(items[5]);
-            service.ReadById(items[5].Id).Should().NotBeNull().And.Be(items[6]);
+            result.Should().Be(itemToDelete.Id);
+            service.ReadAll().Should().HaveCount(1).And.NotContain(itemToDelete);
+            service.ReadById(itemToDelete.Id).Should().NotBeNull().And.Be(nextItem);
         }
 
         [Fact]
-        public void CanRemoveItemById()
+        public void Delete_InvalidId_DoesNotRemoveItemFromCollection()
         {
             // Arrange
-            List<IItem> items = new List<IItem>();
-            for (int i = 100000; i < 100010; i++)
-            {
-                items.Add(new BaseItem(i));
-            }
+            IItem item = new BaseItem();
 
             var service = new BaseService<IItem>();
-            service.CreateRange(items);
-            int count = service.ReadAll().Count;
+            service.Create(item);
 
             // Act
-            var result = service.Delete(items[5].Id);
-
-            // Assert
-            result.Should().Be(items[5].Id);
-            service.ReadAll().Should().HaveCount(count - 1).And.NotContain(items[5]);
-            service.ReadById(items[5].Id).Should().NotBeNull().And.Be(items[6]);
-        }
-
-        [Fact]
-        public void IsNotRemovingIfItemNotContained()
-        {
-            // Arrange
-            List<IItem> items = new List<IItem>();
-            for (int i = 100000; i < 100010; i++)
-            {
-                items.Add(new BaseItem(i));
-            }
-
-            var service = new BaseService<IItem>();
-            service.CreateRange(items);
-            int count = service.ReadAll().Count;
-
-            // Act
-            var result = service.Delete(new BaseItem(items.Last().Id + 1));
+            var result = service.Delete(item.Id + 1);
 
             // Assert
             result.Should().Be(-1);
-            service.ReadAll().Should().HaveCount(count);
+            service.ReadAll().Should().HaveCount(1);
         }
 
         [Fact]
-        public void IsNotRemovingIfInvalidId()
+        public void Delete_NotContainedItem_DoesNotRemoveItemFromCollection()
         {
             // Arrange
-            List<IItem> items = new List<IItem>();
-            for (int i = 100000; i < 100010; i++)
-            {
-                items.Add(new BaseItem(i));
-            }
-
+            IItem item = new BaseItem();
             var service = new BaseService<IItem>();
-            service.CreateRange(items);
-            int count = service.ReadAll().Count;
+            service.Create(item);
 
             // Act
-            var result = service.Delete(-500);
+            var result = service.Delete(new BaseItem(item.Id + 1));
 
             // Assert
             result.Should().Be(-1);
-            service.ReadAll().Should().HaveCount(count);
+            service.ReadAll().Should().HaveCount(1);
         }
 
         [Fact]
-        public void CanGetNewIdFromEmpty()
+        public void Delete_ValidId_RemovesItemFromCollectionAndDecreaseGreaterIds()
         {
             // Arrange
             var service = new BaseService<IItem>();
-            var items = service.ReadAll();
-            foreach (var item in items)
-            {
-                service.Delete(item);
-            }
+
+            IItem itemToDelete = new BaseItem(1);
+            service.Create(itemToDelete);
+
+            IItem nextItem = new BaseItem(2);
+            service.Create(nextItem);
+
+            // Act
+            var result = service.Delete(itemToDelete.Id);
+
+            // Assert
+            result.Should().Be(itemToDelete.Id);
+            service.ReadAll().Should().HaveCount(1).And.NotContain(itemToDelete);
+            service.ReadById(itemToDelete.Id).Should().NotBeNull().And.Be(nextItem);
+        }
+
+        [Fact]
+        public void GetNewId_CollectionIsEmpty_ReturnsOne()
+        {
+            // Arrange
+            var service = new BaseService<IItem>();
 
             // Act
             var result = service.GetNewId();
@@ -174,38 +148,25 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void CanGetNewId()
+        public void GetNewId_CollectionIsNotEmpty_ReturnsNumberOneGreaterThenMaxId()
         {
             // Arrange
             var service = new BaseService<IItem>();
-            var items = service.ReadAll();
-            foreach (var item in items)
-            {
-                service.Delete(item);
-            }
-
-            for (int i = 1; i <= 10; i++)
-            {
-                service.Create(new BaseItem(i));
-            }
+            var item = new BaseItem();
+            service.Create(item);
 
             // Act
             var result = service.GetNewId();
 
             // Assert
-            result.Should().Be(11);
+            result.Should().Be(item.Id + 1);
         }
 
         [Fact]
-        public void IsEmpty()
+        public void IsEmpty_CollectionIsEmpty_ReturnsTrue()
         {
             // Arrange
             var service = new BaseService<IItem>();
-            var items = service.ReadAll();
-            foreach (var item in items)
-            {
-                service.Delete(item);
-            }
 
             // Act
             var result = service.IsEmpty();
@@ -215,14 +176,11 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void IsNotEmpty()
+        public void IsEmpty_CollectionIsNotEmpty_ReturnsFalse()
         {
             // Arrange
             var service = new BaseService<IItem>();
-            for (int i = 1; i <= 10; i++)
-            {
-                service.Create(new BaseItem(i));
-            }
+            service.Create(new BaseItem());
 
             // Act
             var result = service.IsEmpty();
@@ -232,24 +190,7 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void CanReadById()
-        {
-            // Arrange
-            BaseItem item = new BaseItem();
-            var service = new BaseService<IItem>();
-            service.Create(item);
-
-            // Act
-            var result = service.ReadById(item.Id);
-
-            // Assert
-            result.Should().BeOfType<BaseItem>();
-            result.Should().NotBeNull();
-            result.Should().Be(item);
-        }
-
-        [Fact]
-        public void IsNullForInvalidId()
+        public void ReadById_InvalidId_ReturnsNull()
         {
             // Arrange
             var item = new BaseItem();
@@ -272,25 +213,24 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void CanUpdate()
+        public void ReadById_ValidId_ReturnsItem()
         {
             // Arrange
-            BaseItem itemToUpdate = new BaseItem();
+            BaseItem item = new BaseItem();
             var service = new BaseService<IItem>();
-            service.Create(itemToUpdate);
-
-            BaseItem updatedItem = new BaseItem { Id = itemToUpdate.Id };
+            service.Create(item);
 
             // Act
-            var result = service.Update(updatedItem);
+            var result = service.ReadById(item.Id);
 
             // Assert
-            result.Should().Be(itemToUpdate.Id);
-            service.ReadById(itemToUpdate.Id).Should().NotBe(itemToUpdate).And.Be(updatedItem);
+            result.Should().BeOfType<BaseItem>();
+            result.Should().NotBeNull();
+            result.Should().Be(item);
         }
 
         [Fact]
-        public void CanNotUpdateToContainedItem()
+        public void Update_ContainedItem_DoesNotExchangeItem()
         {
             // Arrange
             User itemToUpdate = new User() { Name = "Item to update" };
@@ -310,19 +250,31 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void CanNotUpdateToNull()
+        public void Update_ItemWithContainedId_ExchangesItemToNew()
+        {
+            // Arrange
+            BaseItem itemToUpdate = new BaseItem();
+            var service = new BaseService<IItem>();
+            service.Create(itemToUpdate);
+
+            BaseItem updatedItem = new BaseItem { Id = itemToUpdate.Id };
+
+            // Act
+            var result = service.Update(updatedItem);
+
+            // Assert
+            result.Should().Be(itemToUpdate.Id);
+            service.ReadById(itemToUpdate.Id).Should().NotBe(itemToUpdate).And.Be(updatedItem);
+        }
+
+        [Fact]
+        public void Update_Null_DoesNotExchangeItem()
         {
             // Arrange
             var service = new BaseService<IItem>();
-            foreach (var item in service.ReadAll())
-            {
-                service.Delete(item);
-            }
 
             BaseItem itemToUpdate = new BaseItem(1) { Name = "Item 1" };
-            BaseItem containedItem = new BaseItem(2) { Name = "Item 2" };
             service.Create(itemToUpdate);
-            service.Create(containedItem);
 
             // Act
             var result = service.Update(null);
@@ -330,7 +282,6 @@ namespace MdFilesMerger.Tests.App.Common
             // Assert
             result.Should().Be(-1);
             service.ReadById(itemToUpdate.Id).Should().Be(itemToUpdate);
-            service.ReadById(containedItem.Id).Should().Be(containedItem);
         }
     }
 }
