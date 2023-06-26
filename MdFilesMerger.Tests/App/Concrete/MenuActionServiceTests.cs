@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.Domain.Common;
 using Xunit;
 
 namespace MdFilesMerger.Tests.App.Concrete
@@ -42,9 +43,9 @@ namespace MdFilesMerger.Tests.App.Concrete
             MenuActionService menuActionService = new MenuActionService();
 
             // Act
-            var result = menuActionService.ReadByMenuType(Domain.Common.MenuType.Main);
-            var result1 = menuActionService.ReadByMenuType(Domain.Common.MenuType.MergedFile);
-            var result2 = menuActionService.ReadByMenuType(Domain.Common.MenuType.TableOfContents);
+            var result = menuActionService.ReadByMenuType(MenuType.Main);
+            var result1 = menuActionService.ReadByMenuType(MenuType.MergedFile);
+            var result2 = menuActionService.ReadByMenuType(MenuType.TableOfContents);
 
             // Assert
             result.Should().BeOfType<List<IMenuAction>>();
@@ -59,9 +60,9 @@ namespace MdFilesMerger.Tests.App.Concrete
             result1.Should().NotBeNull();
             result2.Should().NotBeNull();
 
-            result.Should().OnlyContain(action => action.Menu == Domain.Common.MenuType.Main);
-            result1.Should().OnlyContain(action => action.Menu == Domain.Common.MenuType.MergedFile);
-            result2.Should().OnlyContain(action => action.Menu == Domain.Common.MenuType.TableOfContents);
+            result.Should().OnlyContain(action => action.Menu == MenuType.Main);
+            result1.Should().OnlyContain(action => action.Menu == MenuType.MergedFile);
+            result2.Should().OnlyContain(action => action.Menu == MenuType.TableOfContents);
         }
     }
 }

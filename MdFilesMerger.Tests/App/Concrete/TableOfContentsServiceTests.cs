@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
+using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace MdFilesMerger.Tests.App.Concrete
         public void CanCreateHyperlinkTOC()
         {
             // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = Domain.Common.TableOfContents.Hyperlink, NewLineStyle = "\n" };
+            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.Hyperlink, NewLineStyle = "\n" };
             string[] directories = new string[10] { "", "directory1/", "directory1/directory1a/", "directory1/directory1a/", "directory1/directory1a/", "directory2/", "directory2/directory2a/", "directory2/directory2b/", "directory2/directory2b/", "directory3/" };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
             for (int i = 1; i <= 10; i++)
@@ -35,7 +36,7 @@ namespace MdFilesMerger.Tests.App.Concrete
         public void CanCreateTextTOC()
         {
             // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = Domain.Common.TableOfContents.Text, NewLineStyle = "\n" };
+            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.Text, NewLineStyle = "\n" };
             string[] directories = new string[10] { "", "directory1/", "directory1/directory1a/", "directory1/directory1a/", "directory1/directory1a/", "directory2/", "directory2/directory2a/", "directory2/directory2b/", "directory2/directory2b/", "directory3/" };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
             for (int i = 1; i <= 10; i++)
@@ -58,7 +59,7 @@ namespace MdFilesMerger.Tests.App.Concrete
         public void IsNullForNoneTOC()
         {
             // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = Domain.Common.TableOfContents.None };
+            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.None };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
             for (int i = 1; i <= 10; i++)
             {
