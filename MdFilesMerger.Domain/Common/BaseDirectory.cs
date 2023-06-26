@@ -237,7 +237,23 @@ namespace MdFilesMerger.Domain.Common
             }
             else
             {
-                Name = path.Replace('\\', '/');
+                path = path.Replace('\\', '/');
+                var names = path.Split('/');
+                if (Path.IsPathRooted(path))
+                {
+                    names = names[1..];
+                }
+
+                foreach (var name in names)
+                {
+                    if (name.Any(c => Path.GetInvalidFileNameChars().Contains(c)))
+                    {
+                        Name = null;
+                        return false;
+                    }
+                }
+
+                Name = path;
                 ModifiedDate = DateTime.Now;
                 return true;
             }
