@@ -4,7 +4,7 @@ using MdFilesMerger.Domain.Abstract;
 using Moq;
 using Xunit;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Common
 {
     public class BaseDirectoryServiceTests
     {

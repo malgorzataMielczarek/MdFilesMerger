@@ -4,7 +4,7 @@ using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Entity;
 using Xunit;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Concrete
 {
     public class TableOfContentsServiceTests
     {

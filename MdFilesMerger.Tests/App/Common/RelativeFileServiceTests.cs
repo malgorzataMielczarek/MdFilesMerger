@@ -8,7 +8,7 @@ using MdFilesMerger.Domain.Entity;
 using Moq;
 using Xunit;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Concrete
 {
     public class RelativeFileServiceTests
     {

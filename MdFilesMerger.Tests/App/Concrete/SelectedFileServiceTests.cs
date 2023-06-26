@@ -3,7 +3,7 @@ using MdFilesMerger.Domain.Entity;
 using Xunit;
 using FluentAssertions;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Concrete
 {
     public class SelectedFileServiceTests
     {

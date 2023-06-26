@@ -5,7 +5,7 @@ using Xunit;
 using Moq;
 using MdFilesMerger.Domain.Abstract;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Concrete
 {
     public class UserServiceTests
     {

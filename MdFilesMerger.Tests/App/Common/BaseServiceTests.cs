@@ -5,7 +5,7 @@ using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
 using Xunit;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Common
 {
     public class BaseServiceTests
     {

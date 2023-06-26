@@ -3,7 +3,7 @@ using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
 using Xunit;
 
-namespace MdFilesMerger.Tests
+namespace MdFilesMerger.Tests.App.Concrete
 {
     public class MenuActionServiceTests
     {
