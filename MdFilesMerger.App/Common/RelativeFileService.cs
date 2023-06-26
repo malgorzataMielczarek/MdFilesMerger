@@ -45,7 +45,7 @@ namespace MdFilesMerger.App.Common
         public List<FileInfo> FindNewFiles(IEnumerable<FileInfo> list, IMainDirectory mainDirectory)
         {
             var files = new List<FileInfo>();
-            if (!string.IsNullOrWhiteSpace(mainDirectory?.Name))
+            if (!string.IsNullOrWhiteSpace(mainDirectory?.Name) && list != null)
             {
                 foreach (var file in list)
                 {
@@ -112,6 +112,7 @@ namespace MdFilesMerger.App.Common
         /// <returns>
         ///     Identification number of updated element or <see langword="-1"/>, if update failed.
         /// </returns>
+        // TODO: check if there is not already file with the same main dir and given path
         public override int UpdatePath(int id, string path)
         {
             T? file = ReadById(id);
