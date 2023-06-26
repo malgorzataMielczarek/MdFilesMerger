@@ -9,7 +9,7 @@ namespace MdFilesMerger.Tests.App.Common
     public class BaseDirectoryServiceTests
     {
         [Fact]
-        public void UpdatePath_InvalidId_NotTryToSetPath()
+        public void UpdatePath_InvalidId_DoesNotTryToSetPath()
         {
             // Arrange
             int id = 100000;
@@ -33,7 +33,7 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void UpdatePath_SetInvalidPath_RestoreName()
+        public void UpdatePath_SetInvalidPath_RestoresName()
         {
             // Arrange
             int id = 100000;
@@ -57,7 +57,7 @@ namespace MdFilesMerger.Tests.App.Common
         }
 
         [Fact]
-        public void UpdatePath_ValidPath_NotRestoreName()
+        public void UpdatePath_ValidPath_DoesNotRestoreName()
         {
             // Arrange
             int id = 100000;
