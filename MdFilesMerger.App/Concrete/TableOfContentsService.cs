@@ -124,26 +124,92 @@ namespace MdFilesMerger.App.Concrete
 
         private static string CreateTextTOC(List<ISelectedFile> listOfFiles, string newLine)
         {
+            StringBuilder tocContent = new StringBuilder();
             List<string> appendedDirectories = new List<string>();
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            foreach (ISelectedFile file in listOfFiles)
+            Queue<ISelectedFile> files = new Queue<ISelectedFile>(listOfFiles);
+            // Return if no files on the list
+            if (files.Count == 0)
             {
-                if (file.Title == null)
+                return newLine;
+            }
+
+            ISelectedFile? file = files.Dequeue();
+            do
+            {
+                // Get next file with not null Title
+                ISelectedFile? nextFile = null;
+                while (files.Count > 0 && nextFile == null)
                 {
+                    nextFile = files.Dequeue();
+                    if (nextFile?.Title == null)
+                    {
+                        nextFile = null;
+                    }
+                }
+
+                if (file == null)
+                {
+                    file = nextFile;
                     continue;
                 }
 
-                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, listOfFiles, file, newLine);
+                if (file.Title != null)
+                {
+                    int headerLvl = 3;
 
-                stringBuilder.Append('#', dirNumber + 3);
-                stringBuilder.Append(" ");
-                stringBuilder.Append(file.Title);
-                stringBuilder.Append(newLine);
+                    // Append subdirectories
+                    string[] subdirectories = file.Name?.Split('/', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+                    if (subdirectories.Length > 0 && Path.HasExtension(file.Name))
+                    {
+                        subdirectories = subdirectories[..^1];
+                    }
+
+                    if (nextFile != null && nextFile.MainDirId == file.MainDirId && nextFile.Name != null)
+                    {
+                        string dirPath = "";
+                        foreach (string subdir in subdirectories)
+                        {
+                            dirPath += "/" + subdir;
+                            if (nextFile.Name.Contains(subdir))
+                            {
+                                if (!appendedDirectories.Contains(dirPath))
+                                {
+                                    appendedDirectories.Add(dirPath);
+                                    tocContent.Append('#', headerLvl);
+                                    tocContent.Append(' ');
+                                    tocContent.Append(subdir);
+                                    tocContent.Append(newLine);
+                                }
+                                headerLvl++;
+                            }
+                            else if (appendedDirectories.Contains(dirPath))
+            {
+                                headerLvl++;
+                            }
+                            else
+                {
+                                break;
+                            }
+                        }
+                    }
+
+                    // Append title
+                    tocContent.Append('#', headerLvl);
+                    tocContent.Append(' ');
+                    tocContent.Append(file.Title);
+                    tocContent.Append(newLine);
+                }
+
+                if (nextFile != null && file.MainDirId != nextFile.MainDirId)
+                {
+                    appendedDirectories.Clear();
+                }
+
+                file = nextFile;
             }
+            while (files.Count > 0 || file != null);
 
-            return stringBuilder.ToString();
+            return tocContent.ToString();
         }
     }
 }
