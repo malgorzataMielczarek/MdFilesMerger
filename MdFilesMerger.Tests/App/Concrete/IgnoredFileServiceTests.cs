@@ -11,7 +11,7 @@ namespace MdFilesMerger.Tests.App.Concrete
     public class IgnoredFileServiceTests
     {
         [Fact]
-        public void CanConverseWholeList()
+        public void ToSelectedFile_ListOfIIgnoredFiles_ReturnsEqualSizedListOfCompatibleSelectedFiles()
         {
             // Arrange
             string mainDirPath = "ExampleDir";
