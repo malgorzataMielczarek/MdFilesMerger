@@ -9,7 +9,20 @@ namespace MdFilesMerger.Tests.App.Concrete
     public class MenuActionServiceTests
     {
         [Fact]
-        public void CanReadById()
+        public void ReadById_InvalidId_ReturnsNull()
+        {
+            // Arrange
+            MenuActionService menuActionService = new MenuActionService();
+
+            // Act
+            var result = menuActionService.ReadById(-1);
+
+            // Assert
+            result.Should().BeNull();
+        }
+
+        [Fact]
+        public void ReadById_ValidId_ReturnsItemWithGivenId()
         {
             // Arrange
             MenuActionService menuActionService = new MenuActionService();
@@ -20,49 +33,26 @@ namespace MdFilesMerger.Tests.App.Concrete
             // Assert
             result.Should().BeAssignableTo<IMenuAction>();
             result.Should().NotBeNull();
-            result.Id.Should().Be(1);
+            result!.Id.Should().Be(1);
         }
 
-        [Fact]
-        public void ReturnsNullForInvalidId()
+        [Theory]
+        [InlineData(MenuType.Main)]
+        [InlineData(MenuType.MergedFile)]
+        [InlineData(MenuType.TableOfContents)]
+        public void ReadByMenuType_MenuType_ReturnsOnlyItemsWithGivenMenuType(MenuType menuType)
         {
             // Arrange
             MenuActionService menuActionService = new MenuActionService();
 
             // Act
-            var result = menuActionService.ReadById(-15);
-
-            // Assert
-            result.Should().BeNull();
-        }
-
-        [Fact]
-        public void ReturnsOnlyWithSpecifiedMenuType()
-        {
-            // Arrange
-            MenuActionService menuActionService = new MenuActionService();
-
-            // Act
-            var result = menuActionService.ReadByMenuType(MenuType.Main);
-            var result1 = menuActionService.ReadByMenuType(MenuType.MergedFile);
-            var result2 = menuActionService.ReadByMenuType(MenuType.TableOfContents);
+            var result = menuActionService.ReadByMenuType(menuType);
 
             // Assert
             result.Should().BeOfType<List<IMenuAction>>();
-            result1.Should().BeOfType<List<IMenuAction>>();
-            result2.Should().BeOfType<List<IMenuAction>>();
-
             result.Should().AllBeAssignableTo<IMenuAction>();
-            result1.Should().AllBeAssignableTo<IMenuAction>();
-            result2.Should().AllBeAssignableTo<IMenuAction>();
-
             result.Should().NotBeNull();
-            result1.Should().NotBeNull();
-            result2.Should().NotBeNull();
-
-            result.Should().OnlyContain(action => action.Menu == MenuType.Main);
-            result1.Should().OnlyContain(action => action.Menu == MenuType.MergedFile);
-            result2.Should().OnlyContain(action => action.Menu == MenuType.TableOfContents);
+            result.Should().OnlyContain(action => action.Menu == menuType);
         }
     }
 }
