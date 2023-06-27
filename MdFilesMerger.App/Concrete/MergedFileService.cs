@@ -141,8 +141,6 @@ namespace MdFilesMerger.App.Concrete
                 string? oldPath = file.Name;
                 if (file.SetFileName(fileName))
                 {
-                    file.ModifiedDate = DateTime.Now;
-
                     return file.Id;
                 }
                 else
@@ -180,8 +178,6 @@ namespace MdFilesMerger.App.Concrete
                 string? oldPath = file.Name;
                 if (file.SetParentDirectory(directoryPath))
                 {
-                    file.ModifiedDate = DateTime.Now;
-
                     return file.Id;
                 }
                 else
