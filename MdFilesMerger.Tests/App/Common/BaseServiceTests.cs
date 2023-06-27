@@ -30,7 +30,7 @@ namespace MdFilesMerger.Tests.App.Common
         public void Create_NewValidItem_AddsItemToCollection()
         {
             // Arrange
-            BaseItem baseItem = new BaseItem(100000);
+            BaseItem baseItem = new BaseItem(1);
             var service = new BaseService<IItem>();
 
             // Act

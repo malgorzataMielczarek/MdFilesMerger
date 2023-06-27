@@ -12,16 +12,15 @@ namespace MdFilesMerger.Tests.App.Common
         public void UpdatePath_InvalidId_DoesNotTryToSetPath()
         {
             // Arrange
-            int id = 100000;
             string oldPath = "OldPath", validPath = "ValidPath";
             var dir = new Mock<IDirectory>();
-            dir.SetupGet(f => f.Id).Returns(id);
+            dir.SetupProperty(f => f.Id);
             dir.SetupGet(f => f.Name).Returns(oldPath);
             dir.SetupSet(f => f.Name = It.IsAny<string>());
             dir.Setup(f => f.SetPath(validPath)).Returns(true);
 
             var baseDirectoryService = new BaseDirectoryService<IDirectory>();
-            baseDirectoryService.Create(dir.Object);
+            int id = baseDirectoryService.Create(dir.Object);
 
             // Act
             var result = baseDirectoryService.UpdatePath(id + 1, validPath);
@@ -36,16 +35,15 @@ namespace MdFilesMerger.Tests.App.Common
         public void UpdatePath_SetInvalidPath_RestoresName()
         {
             // Arrange
-            int id = 100000;
             string oldPath = "OldPath", invalidPath = "InvalidPath";
             var dir = new Mock<IDirectory>();
-            dir.SetupGet(f => f.Id).Returns(id);
+            dir.SetupProperty(f => f.Id);
             dir.SetupGet(f => f.Name).Returns(oldPath);
             dir.SetupSet(f => f.Name = It.IsAny<string>());
             dir.Setup(f => f.SetPath(invalidPath)).Returns(false);
 
             var baseDirectoryService = new BaseDirectoryService<IDirectory>();
-            baseDirectoryService.Create(dir.Object);
+            int id = baseDirectoryService.Create(dir.Object);
 
             // Act
             var result = baseDirectoryService.UpdatePath(id, invalidPath);
@@ -60,16 +58,15 @@ namespace MdFilesMerger.Tests.App.Common
         public void UpdatePath_ValidPath_DoesNotRestoreName()
         {
             // Arrange
-            int id = 100000;
             string oldPath = "OldPath", validPath = "ValidPath";
             var dir = new Mock<IDirectory>();
-            dir.SetupGet(f => f.Id).Returns(id);
+            dir.SetupProperty(f => f.Id);
             dir.SetupGet(f => f.Name).Returns(oldPath);
             dir.SetupSet(f => f.Name = It.IsAny<string>());
             dir.Setup(f => f.SetPath(validPath)).Returns(true);
 
             var baseDirectoryService = new BaseDirectoryService<IDirectory>();
-            baseDirectoryService.Create(dir.Object);
+            int id = baseDirectoryService.Create(dir.Object);
 
             // Act
             var result = baseDirectoryService.UpdatePath(id, validPath);
