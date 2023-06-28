@@ -36,7 +36,7 @@ namespace MdFilesMerger.Tests.Domain.Common
             // Arrange
             string oldPath = "this/is/old/path", newPath = "C:/this/is/new/path";
             var newPathsFormats = new string[] { newPath, "C:\\this\\is\\new\\path" };
-            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now.AddDays(-5));
+            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now);
 
             foreach (var format in newPathsFormats)
             {
@@ -58,7 +58,7 @@ namespace MdFilesMerger.Tests.Domain.Common
             // Arrange
             string oldPath = "this/is/old/path", newPath = "this/is/new/path";
             var newPathsFormats = new string[] { newPath, "this\\is\\new\\path" };
-            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now.AddDays(-5));
+            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now);
 
             foreach (var format in newPathsFormats)
             {
@@ -79,7 +79,7 @@ namespace MdFilesMerger.Tests.Domain.Common
         {
             // Arrange
             string oldPath = "this/is/old/path";
-            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now.AddDays(-5));
+            BaseDirectory baseDirectory = new BaseDirectory(1, oldPath, DateTime.Now);
 
             foreach (var newPath in new string[] { "        ", "th*s/*s/inval*d/path", "another>path", "file?", "other|file", "one\tmore\\path", "not\\in:\\root", null })
             {

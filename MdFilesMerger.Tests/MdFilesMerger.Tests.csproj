@@ -29,4 +29,8 @@
     <ProjectReference Include="..\MdFilesMerger.Domain\MdFilesMerger.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Entity\" />
+  </ItemGroup>
+
 </Project>
