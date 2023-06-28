@@ -19,118 +19,47 @@ namespace MdFilesMerger.App.Concrete
         ///     The list of all files, whose content will be placed in the merged file.
         /// </param>
         /// <returns> Text of whole table of contents. </returns>
-        public static string? CreateTOC(IMergedFile mergedFile, List<ISelectedFile> selectedFiles) => mergedFile.TableOfContents switch
+        public static string? CreateTOC(IMergedFile mergedFile, List<ISelectedFile> selectedFiles) => mergedFile?.TableOfContents switch
         {
-            TableOfContents.Text => CreateTextTOC(selectedFiles, mergedFile.NewLineStyle),
-            TableOfContents.Hyperlink => CreateHyperlinksTOC(selectedFiles, mergedFile.NewLineStyle),
+            TableOfContents.Text => CreateTocContent(selectedFiles, mergedFile.NewLineStyle, TableOfContents.Text),
+            TableOfContents.Hyperlink => CreateTocContent(selectedFiles, mergedFile.NewLineStyle, TableOfContents.Hyperlink),
             _ => null
         };
 
-        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<ISelectedFile> listOfFiles, int currentIndex, string newLine)
+        private static string? CreateTocContent(List<ISelectedFile> listOfFiles, string newLine, TableOfContents tableOfContents)
         {
-            ISelectedFile currentFile = listOfFiles[currentIndex];
-            return AppendDirectoriesEntries(appendedDirectories, stringBuilder, listOfFiles, currentFile, newLine);
-        }
-
-        private static int AppendDirectoriesEntries(List<string> appendedDirectories, StringBuilder stringBuilder, List<ISelectedFile> listOfFiles, ISelectedFile currentFile, string newLine)
-        {
-            string directories = "";
-            string[] subDirectories = currentFile?.Name?.Split('/', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
-            int dirNumber = subDirectories.Length - 1;
-
-            if (dirNumber > 0)
-            { // Don't add the name of the most nested directory if it is the only .md file in that directory
-                string? directory = currentFile?.Name?.SkipLast(subDirectories[^1].Length + 1).ToString();
-                if (!string.IsNullOrWhiteSpace(directory))
-                {
-                    foreach (var file in listOfFiles)
-                    {
-                        if (file != currentFile && file.Name!.Contains(directory))
-                        {
-                            dirNumber++;
-                            break;
-                        }
-                    }
-                    dirNumber--;
-                }
-
-                for (int i = 0; i < dirNumber; i++)
-                {
-                    string dir = subDirectories[i];
-                    directories += "\\" + dir;
-
-                    if (!appendedDirectories.Contains(directories))
-                    {
-                        appendedDirectories.Add(directories);
-
-                        stringBuilder.Append('#', i + 3);
-                        stringBuilder.Append(" ");
-                        stringBuilder.Append(dir);
-                        stringBuilder.Append(newLine);
-                    }
-                }
-            }
-            return dirNumber;
-        }
-
-        private static string CreateHyperlinksTOC(List<ISelectedFile> listOfFiles, string newLine)
-        {
-            // Count files with the same title
-            List<string> titlesOfFiles = new List<string>();
-            Dictionary<string, int> titles = new Dictionary<string, int>();
-
-            foreach (var file in listOfFiles)
+            if (listOfFiles == null)
             {
-                if (file.Title == null)
-                {
-                    continue;
-                }
-
-                titlesOfFiles.Add(file.Title);
-
-                if (titles.ContainsKey(file.Title))
-                {
-                    titles[file.Title]++;
-                }
-                else
-                {
-                    titles.Add(file.Title, 1);
-                }
+                return null;
             }
 
-            List<string> appendedDirectories = new List<string>();
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            for (int i = 0; i < listOfFiles.Count; i++)
-            {
-                string title = titlesOfFiles[i];
-
-                int dirNumber = AppendDirectoriesEntries(appendedDirectories, stringBuilder, listOfFiles, i, newLine);
-
-                string hyperlink = Hyperlinks.TextToHyperlink(title);
-
-                int qtt = titles[title]++;
-                hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + qtt.ToString());
-
-                stringBuilder.Append('#', dirNumber + 3);
-                stringBuilder.Append(" ");
-                stringBuilder.Append(hyperlink);
-                stringBuilder.Append(newLine);
-            }
-
-            return stringBuilder.ToString();
-        }
-
-        private static string CreateTextTOC(List<ISelectedFile> listOfFiles, string newLine)
-        {
-            StringBuilder tocContent = new StringBuilder();
-            List<string> appendedDirectories = new List<string>();
             Queue<ISelectedFile> files = new Queue<ISelectedFile>(listOfFiles);
             // Return if no files on the list
             if (files.Count == 0)
             {
                 return newLine;
+            }
+
+            StringBuilder tocContent = new StringBuilder();
+            List<string> appendedDirectories = new List<string>();
+            // For hyperlinks TOC
+            Dictionary<string, int> includedTitles = new Dictionary<string, int>();
+            if (tableOfContents == TableOfContents.Hyperlink)
+            {
+                foreach (var f in listOfFiles)
+                {
+                    if (f?.Title != null)
+                    {
+                        if (includedTitles.ContainsKey(f.Title))
+                        {
+                            includedTitles[f.Title]++;
+                        }
+                        else
+                        {
+                            includedTitles.Add(f.Title, 1);
+                        }
+                    }
+                }
             }
 
             ISelectedFile? file = files.Dequeue();
@@ -183,11 +112,11 @@ namespace MdFilesMerger.App.Concrete
                                 headerLvl++;
                             }
                             else if (appendedDirectories.Contains(dirPath))
-            {
+                            {
                                 headerLvl++;
                             }
                             else
-                {
+                            {
                                 break;
                             }
                         }
@@ -196,7 +125,18 @@ namespace MdFilesMerger.App.Concrete
                     // Append title
                     tocContent.Append('#', headerLvl);
                     tocContent.Append(' ');
-                    tocContent.Append(file.Title);
+                    if (tableOfContents == TableOfContents.Text)
+                    {
+                        tocContent.Append(file.Title);
+                    }
+                    else if (tableOfContents == TableOfContents.Hyperlink)
+                    {
+                        string hyperlink = Hyperlinks.TextToHyperlink(file.Title);
+
+                        hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + includedTitles[file.Title]++.ToString());
+
+                        tocContent.Append(hyperlink);
+                    }
                     tocContent.Append(newLine);
                 }
 

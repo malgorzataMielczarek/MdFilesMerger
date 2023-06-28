@@ -3,74 +3,163 @@ using MdFilesMerger.App.Concrete;
 using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
+using System.Text;
 using Xunit;
 
 namespace MdFilesMerger.Tests.App.Concrete
 {
     public class TableOfContentsServiceTests
     {
-        [Fact]
-        public void CanCreateHyperlinkTOC()
+        [Theory]
+        [InlineData(TableOfContents.Hyperlink)]
+        [InlineData(TableOfContents.None)]
+        [InlineData(TableOfContents.Text)]
+        public void CreateTOC_ListOfFiles_ReturnsTableOfContentsContent(TableOfContents tableOfContents)
         {
             // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.Hyperlink, NewLineStyle = "\n" };
-            string[] directories = new string[10] { "", "directory1/", "directory1/directory1a/", "directory1/directory1a/", "directory1/directory1a/", "directory2/", "directory2/directory2a/", "directory2/directory2b/", "directory2/directory2b/", "directory3/" };
+            MergedFile mergedFile = new MergedFile() { TableOfContents = tableOfContents, NewLineStyle = "\n" };
+            List<ISelectedFile> selectedFiles = CreateExampleList();
+            string? correctToc = CreateCorrectTableOfContents(tableOfContents, mergedFile.NewLineStyle);
+
+            // Act
+            var result = TableOfContentsService.CreateTOC(mergedFile, selectedFiles);
+
+            // Assert
+            result.Should().Be(correctToc);
+        }
+
+        [Theory]
+        [InlineData(TableOfContents.Hyperlink)]
+        [InlineData(TableOfContents.Text)]
+        public void CreateTOC_Empty_ReturnsNewLineString(TableOfContents tableOfContents)
+        {
+            // Arrange
+            MergedFile mergedFile = new MergedFile() { TableOfContents = tableOfContents, NewLineStyle = "\n" };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
-            for (int i = 1; i <= 10; i++)
-            {
-                selectedFiles.Add(new SelectedFile() { Id = i, Name = directories[i - 1] + "File" + i + ".md", Title = "Title of file " + i });
-            }
-            selectedFiles.First().Title = null;
-            selectedFiles.ElementAt(6).Title = "Title of file 3";
 
             // Act
             var result = TableOfContentsService.CreateTOC(mergedFile, selectedFiles);
 
             // Assert
             result.Should().NotBeNull();
-            string toc = "### directory1\n#### [Title of file 2]{#title-of-file-2-1}\n#### directory1a\n##### [Title of file 3]{#title-of-file-3-2}\n##### [Title of file 4]{#title-of-file-4-1}\n##### [Title of file 5]{#title-of-file-5-1}\n### directory2\n#### [Title of file 6]{#title-of-file-6-1}\n#### [Title of file 3]{#title-of-file-3-3}\n#### directory2b\n##### [Title of file 8]{#title-of-file-8-1}\n##### [Title of file 9]{title-of-file-9-1}\n### [Title of file 10]{title-of-file-10}\n";
-            result.Should().Be(toc);
+            result.Should().Be(mergedFile.NewLineStyle);
+        }
+
+        [Theory]
+        [InlineData(TableOfContents.Hyperlink)]
+        [InlineData(TableOfContents.None)]
+        [InlineData(TableOfContents.Text)]
+        public void CreateTOC_Null_ReturnsNull(TableOfContents tableOfContents)
+        {
+            // Arrange
+            MergedFile mergedFile = new MergedFile() { TableOfContents = tableOfContents, NewLineStyle = "\n" };
+
+            // Act
+            var result = TableOfContentsService.CreateTOC(mergedFile, null);
+
+            // Assert
+            result.Should().BeNull();
         }
 
         [Fact]
-        public void CanCreateTextTOC()
+        public void CreateTOC_NullMergedFile_ReturnsNull()
         {
             // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.Text, NewLineStyle = "\n" };
-            string[] directories = new string[10] { "", "directory1/", "directory1/directory1a/", "directory1/directory1a/", "directory1/directory1a/", "directory2/", "directory2/directory2a/", "directory2/directory2b/", "directory2/directory2b/", "directory3/" };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
-            for (int i = 1; i <= 10; i++)
-            {
-                selectedFiles.Add(new SelectedFile() { Id = i, Name = directories[i - 1] + "File" + i + ".md", Title = "Title of file " + i });
-            }
-            selectedFiles.First().Title = null;
-            selectedFiles.ElementAt(6).Title = "Title of file 3";
 
             // Act
-            var result = TableOfContentsService.CreateTOC(mergedFile, selectedFiles);
+            var result = TableOfContentsService.CreateTOC(null, selectedFiles);
 
             // Assert
-            result.Should().NotBeNull();
-            string toc = "### directory1\n#### Title of file 2\n#### directory1a\n##### Title of file 3\n##### Title of file 4\n##### Title of file 5\n### directory2\n#### Title of file 6\n#### Title of file 3\n#### directory2b\n##### Title of file 8\n##### Title of file 9\n### Title of file 10\n";
-            result.Should().Be(toc);
+            result.Should().BeNull();
         }
 
-        [Fact]
-        public void IsNullForNoneTOC()
+        private List<ISelectedFile> CreateExampleList()
         {
-            // Arrange
-            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.None };
             List<ISelectedFile> selectedFiles = new List<ISelectedFile>();
-            for (int i = 1; i <= 10; i++)
-            {
-                selectedFiles.Add(new SelectedFile() { Id = i, Name = "File" + i + ".md", Title = "Title of file " + i });
-            }
+            selectedFiles.Add(new SelectedFile() { Id = 1, Name = "File.md", Title = null });
+            selectedFiles.Add(new SelectedFile() { Id = 2, Name = "d/File2.md", Title = "Title of file 2" });
+            selectedFiles.Add(new SelectedFile() { Id = 3, Name = "d/sd/File3.md", Title = "Repeated title" });
+            selectedFiles.Add(new SelectedFile() { Id = 4, Name = "d/sd/File4.md", Title = "Title of file 4" });
+            selectedFiles.Add(new SelectedFile() { Id = 5, Name = "d/sd/File5.md", Title = "Title of file 5" });
+            selectedFiles.Add(new SelectedFile() { Id = 6, Name = "d2/File6.md", Title = "Title of file 6" });
+            selectedFiles.Add(new SelectedFile() { Id = 7, Name = "d2/d2a/File7.md", Title = "Repeated title" });
+            selectedFiles.Add(new SelectedFile() { Id = 8, Name = "d2/d2b/File8.md", Title = "Title of file 8" });
+            selectedFiles.Add(new SelectedFile() { Id = 9, Name = "d2/d2b/File9.md", Title = "Title of file 9" });
+            selectedFiles.Add(new SelectedFile() { Id = 10, Name = "d3/File10.md", Title = "Title of file 10" });
 
-            // Act
-            var toc = TableOfContentsService.CreateTOC(mergedFile, selectedFiles);
+            return selectedFiles;
+        }
 
-            // Assert
-            toc.Should().BeNull();
+        private string? CreateCorrectTableOfContents(TableOfContents tableOfContents, string newLineStyle) => tableOfContents switch
+        {
+            TableOfContents.None => null,
+            TableOfContents.Text => CreateCorrectTextToc(newLineStyle),
+            TableOfContents.Hyperlink => CreateCorrectHyperlinksToc(newLineStyle)
+        };
+
+        private string CreateCorrectTextToc(string newLine)
+        {
+            StringBuilder builder = new StringBuilder("### d");
+            builder.Append(newLine);
+            builder.Append("#### Title of file 2");
+            builder.Append(newLine);
+            builder.Append("#### sd");
+            builder.Append(newLine);
+            builder.Append("##### Repeated title");
+            builder.Append(newLine);
+            builder.Append("##### Title of file 4");
+            builder.Append(newLine);
+            builder.Append("##### Title of file 5");
+            builder.Append(newLine);
+            builder.Append("### d2");
+            builder.Append(newLine);
+            builder.Append("#### Title of file 6");
+            builder.Append(newLine);
+            builder.Append("#### Repeated title");
+            builder.Append(newLine);
+            builder.Append("#### d2b");
+            builder.Append(newLine);
+            builder.Append("##### Title of file 8");
+            builder.Append(newLine);
+            builder.Append("##### Title of file 9");
+            builder.Append(newLine);
+            builder.Append("### Title of file 10");
+            builder.Append(newLine);
+
+            return builder.ToString();
+        }
+
+        private string CreateCorrectHyperlinksToc(string newLine)
+        {
+            StringBuilder builder = new StringBuilder("### d");
+            builder.Append(newLine);
+            builder.Append("#### [Title of file 2](#title-of-file-2-1)");
+            builder.Append(newLine);
+            builder.Append("#### sd");
+            builder.Append(newLine);
+            builder.Append("##### [Repeated title](#repeated-title-2)");
+            builder.Append(newLine);
+            builder.Append("##### [Title of file 4](#title-of-file-4-1)");
+            builder.Append(newLine);
+            builder.Append("##### [Title of file 5](#title-of-file-5-1)");
+            builder.Append(newLine);
+            builder.Append("### d2");
+            builder.Append(newLine);
+            builder.Append("#### [Title of file 6](#title-of-file-6-1)");
+            builder.Append(newLine);
+            builder.Append("#### [Repeated title](#repeated-title-3)");
+            builder.Append(newLine);
+            builder.Append("#### d2b");
+            builder.Append(newLine);
+            builder.Append("##### [Title of file 8](#title-of-file-8-1)");
+            builder.Append(newLine);
+            builder.Append("##### [Title of file 9](#title-of-file-9-1)");
+            builder.Append(newLine);
+            builder.Append("### [Title of file 10](#title-of-file-10-1)");
+            builder.Append(newLine);
+
+            return builder.ToString();
         }
     }
 }
