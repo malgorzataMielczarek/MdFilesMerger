@@ -34,6 +34,11 @@ namespace MdFilesMerger.Domain.Common
         /// </returns>
         public static string GetLink(string hyperlink)
         {
+            if (string.IsNullOrWhiteSpace(hyperlink))
+            {
+                return string.Empty;
+            }
+
             if (ContainsMarkdownHyperlink(hyperlink))
             {
                 int linkStart = hyperlink.IndexOf("](", StringComparison.Ordinal);
@@ -72,6 +77,11 @@ namespace MdFilesMerger.Domain.Common
         /// </returns>
         public static string GetText(string hyperlink)
         {
+            if (string.IsNullOrWhiteSpace(hyperlink))
+            {
+                return string.Empty;
+            }
+
             string text;
             int hyperlinkTextSectionStart = -1, hyperlinkTextSectionEnd = -1;
 

@@ -7,21 +7,6 @@ namespace MdFilesMerger.Tests.Domain.Common
     public class HyperlinksTests
     {
         [Theory]
-        [InlineData("[text](link)")]
-        [InlineData("pretext [text](link)")]
-        [InlineData("pretext [text](link) post-text")]
-        [InlineData("[text](link) post-text")]
-        [InlineData("[text](link)between[text](link)")]
-        public void ContainsHyperlink_StringWithMarkdownHyperlink_ReturnsTrue(string text)
-        {
-            // Arrange Act
-            var result = Hyperlinks.ContainsHyperlink(text);
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Theory]
         [InlineData("<a href='link'>text</a>")]
         [InlineData("pretext <a href=\"link\">text</a>")]
         [InlineData("pretext<a href='link'>text</a>post-text")]
@@ -43,6 +28,21 @@ namespace MdFilesMerger.Tests.Domain.Common
         [InlineData("<img alt='text' src='link' />post-text")]
         [InlineData("<img alt=\"text\" src=\"link\" width=\"150\"/>between<img alt=\"\" src=\"link\" />")]
         public void ContainsHyperlink_StringWithHtmlImg_ReturnsTrue(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.ContainsHyperlink(text);
+
+            // Assert
+            result.Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData("[text](link)")]
+        [InlineData("pretext [text](link)")]
+        [InlineData("pretext [text](link) post-text")]
+        [InlineData("[text](link) post-text")]
+        [InlineData("[text](link)between[text](link)")]
+        public void ContainsHyperlink_StringWithMarkdownHyperlink_ReturnsTrue(string text)
         {
             // Arrange Act
             var result = Hyperlinks.ContainsHyperlink(text);
@@ -81,6 +81,160 @@ namespace MdFilesMerger.Tests.Domain.Common
 
             // Assert
             result.Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData("<a href='link'>text</a>")]
+        [InlineData("pretext <a href=\"link\">text</a>")]
+        [InlineData("pretext<a href='link'>text</a>post-text")]
+        [InlineData("<a href='link' target=\"_blank\">text</a> post-text")]
+        [InlineData("<a href='link'>text</a>between<a href='link2'>text</a>")]
+        public void GetLink_StringWithHtmlHyperlink_ReturnsHref(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetLink(text);
+
+            // Assert
+            result.Should().Be("link");
+        }
+
+        [Theory]
+        [InlineData("<img alt=\"text\" src=\"link\" />")]
+        [InlineData("pretext <img src=\"link\" alt=\"text\" />")]
+        [InlineData("pretext <img alt=\"text\" height=\"100\" src=\"link\"/> post-text")]
+        [InlineData("<img alt='text' src='link' />post-text")]
+        [InlineData("<img alt=\"text\" src=\"link\" width=\"150\"/>between<img alt=\"\" src=\"link2\" />")]
+        public void GetLink_StringWithHtmlImg_ReturnsSrc(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetLink(text);
+
+            // Assert
+            result.Should().Be("link");
+        }
+
+        [Theory]
+        [InlineData("[text](link)")]
+        [InlineData("pretext [text](link)")]
+        [InlineData("pretext [text](link) post-text")]
+        [InlineData("[text](link) post-text")]
+        [InlineData("[text](link)between[text](link2)")]
+        public void GetLink_StringWithMarkdownHyperlink_ReturnsLink(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetLink(text);
+
+            // Assert
+            result.Should().Be("link");
+        }
+
+        [Theory]
+        [InlineData("![text](link)")]
+        [InlineData("pretext ![text](link)")]
+        [InlineData("pretext ![text](link) post-text")]
+        [InlineData("![text](link) post-text")]
+        [InlineData("![text](link)between![text](link2)")]
+        public void GetLink_StringWithMarkdownImg_ReturnsSrc(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetLink(text);
+
+            // Assert
+            result.Should().Be("link");
+        }
+
+        [Theory]
+        [InlineData("b<a")]
+        [InlineData("When I write [text] I really mean dupa")]
+        [InlineData("(link) is not a link")]
+        [InlineData("Not writing tests is src of many problems.")]
+        [InlineData("[text]i(link)")]
+        [InlineData("<a href\"almost\">link<a>)")]
+        [InlineData(null)]
+        public void GetLink_StringWithoutHyperlinks_ReturnsEmptyString(string? text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetLink(text);
+
+            // Assert
+            result.Should().Be(string.Empty);
+        }
+
+        [Theory]
+        [InlineData("<a href='link'>text</a>")]
+        [InlineData("pretext <a href=\"link\">text</a>")]
+        [InlineData("pretext<a href='link'>text</a>post-text")]
+        [InlineData("<a href='link' target=\"_blank\">text</a> post-text")]
+        [InlineData("<a href='link'>text</a>between<a href='link2'>text2</a>")]
+        public void GetText_StringWithHtmlHyperlink_ReturnsVisibleText(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetText(text);
+
+            // Assert
+            result.Should().Be("text");
+        }
+
+        [Theory]
+        [InlineData("<img alt=\"text\" src=\"link\" />")]
+        [InlineData("pretext <img src=\"link\" alt=\"text\" />")]
+        [InlineData("pretext <img alt=\"text\" height=\"100\" src=\"link\"/> post-text")]
+        [InlineData("<img alt='text' src='link' />post-text")]
+        [InlineData("<img alt=\"text\" src=\"link\" width=\"150\"/>between<img alt=\"\" src=\"link2\" />")]
+        public void GetText_StringWithHtmlImg_ReturnsAlt(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetText(text);
+
+            // Assert
+            result.Should().Be("text");
+        }
+
+        [Theory]
+        [InlineData("[text](link)")]
+        [InlineData("pretext [text](link)")]
+        [InlineData("pretext [text](link) post-text")]
+        [InlineData("[text](link) post-text")]
+        [InlineData("[text](link)between[text2](link2)")]
+        public void GetText_StringWithMarkdownHyperlink_ReturnsVisibleText(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetText(text);
+
+            // Assert
+            result.Should().Be("text");
+        }
+
+        [Theory]
+        [InlineData("![text](link)")]
+        [InlineData("pretext ![text](link)")]
+        [InlineData("pretext ![text](link) post-text")]
+        [InlineData("![text](link) post-text")]
+        [InlineData("![text](link)between![text2](link2)")]
+        public void GetText_StringWithMarkdownImg_ReturnsAlt(string text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetText(text);
+
+            // Assert
+            result.Should().Be("text");
+        }
+
+        [Theory]
+        [InlineData("b<a")]
+        [InlineData("When I write [text] I really mean dupa")]
+        [InlineData("(link) is not a link")]
+        [InlineData("Not writing tests is src of many problems.")]
+        [InlineData("[text]i(link)")]
+        [InlineData("<a href\"almost\">link<a>)")]
+        [InlineData(null)]
+        public void GetText_StringWithoutHyperlinks_ReturnsEmptyString(string? text)
+        {
+            // Arrange Act
+            var result = Hyperlinks.GetText(text);
+
+            // Assert
+            result.Should().Be(string.Empty);
         }
     }
 }
