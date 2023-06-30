@@ -593,7 +593,9 @@
                 in). Name of the section is the same as the text.
             </remarks>
             <param name="text"> The text to convert. </param>
-            <returns> Prepared hyperlink. </returns>
+            <returns>
+                Prepared hyperlink. If given text is unlinkable, given text (without any changes) is returned
+            </returns>
         </member>
         <member name="T:MdFilesMerger.Domain.Common.MdFile">
             <summary>

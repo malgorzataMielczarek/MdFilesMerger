@@ -122,9 +122,13 @@ namespace MdFilesMerger.Domain.Common
         /// </remarks>
         /// <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
         /// <returns> The passed text with it's first hyperlink converted. </returns>
+        // TODO: Implement searching for whole hyperlink pattern and getting text part from it
+        // TODO: Check if it is not markdown image
+        // TODO: Implement version for html hyperlinks
+        // TODO: Add text before AND AFTER hyperlink
         public static string HyperlinkToText(string hyperlinkHeader)
         {
-            if (!ContainsMarkdownHyperlink(hyperlinkHeader))
+            if (string.IsNullOrWhiteSpace(hyperlinkHeader) || !ContainsMarkdownHyperlink(hyperlinkHeader))
             {
                 return hyperlinkHeader;
             }
@@ -151,56 +155,54 @@ namespace MdFilesMerger.Domain.Common
         ///     in). Name of the section is the same as the text.
         /// </remarks>
         /// <param name="text"> The text to convert. </param>
-        /// <returns> Prepared hyperlink. </returns>
+        /// <returns>
+        ///     Prepared hyperlink. If given text is unlinkable, given text (without any changes) is returned
+        /// </returns>
         public static string TextToHyperlink(string text)
         {
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrWhiteSpace(text))
             {
-                return text;
+                return string.Empty;
             }
 
             // link: [text](link)
 
             // prepare text part
-
-            // create StringBuilder for hyperlink
-            StringBuilder hyperlink = new StringBuilder("[");
-
-            // right trim text and add to hyperlink
-            hyperlink.Append(text.TrimEnd());
-
-            // remove leading '#' if text is a header and left trim text part (hyperlink[0] is '[')
-            while (char.IsWhiteSpace(hyperlink[1]) || hyperlink[1] == '#')
+            StringBuilder textPart = new StringBuilder(text.Trim());
+            // remove leading '#' if text is a header and left trim text part
+            while (textPart.Length > 0 && (char.IsWhiteSpace(textPart[0]) || textPart[0] == '#'))
             {
-                hyperlink.Remove(1, 1);
+                textPart.Remove(0, 1);
             }
 
-            hyperlink.Append(']');
-
-            // prepare link: append letters (converted to lower), numbers and spaces replace with '-'
-            int textLength = hyperlink.Length - 2;  // minus '[' and ']'
-            hyperlink.Append("(#");
-
-            for (int i = 1; i <= textLength; i++)
+            // prepare link: append letters (converted to lower), numbers, dashes ('-') and spaces
+            // replace with dashes
+            StringBuilder linkPart = new StringBuilder();
+            int textLength = textPart.Length;
+            foreach (var c in textPart.ToString())
             {
-                char c = hyperlink[i];
                 if (char.IsLetter(c))
                 {
-                    hyperlink.Append(char.ToLower(c));
+                    linkPart.Append(char.ToLower(c));
                 }
-                else if (char.IsNumber(c))
+                else if (char.IsNumber(c) || c == '-')
                 {
-                    hyperlink.Append(c);
+                    linkPart.Append(c);
                 }
                 else if (c == ' ')
                 {
-                    hyperlink.Append('-');
+                    linkPart.Append('-');
                 }
             }
 
-            hyperlink.Append(')');
-
-            return hyperlink.ToString();
+            if (linkPart.Length > 0)
+            {
+                return "[" + textPart.ToString() + "](#" + linkPart + ")";
+            }
+            else
+            {
+                return text;
+            }
         }
 
         private static bool ContainsHtmlHyperlink(string text)
