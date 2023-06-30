@@ -45,6 +45,21 @@ namespace MdFilesMerger.Tests.App.Concrete
             result.Should().Be(correctToc);
         }
 
+        [Fact]
+        public void CreateToc_ListOfFilesWithUnlinkableTitlesAndHyperlinksToc_ReturnsPlainTextHeadersForThisEntries()
+        {
+            // Arrange
+            MergedFile mergedFile = new MergedFile() { TableOfContents = TableOfContents.Hyperlink, NewLineStyle = "\n" };
+            List<ISelectedFile> selectedFiles = new List<ISelectedFile>() { new SelectedFile() { Id = 1, Name = "a.md", Title = "???" }, new SelectedFile() { Id = 2, Name = "b.md", Title = "###" }, new SelectedFile() { Id = 3, Name = "c.md", Title = "A" } };
+            string? correctToc = "### ???\n### ###\n### [A](#a-1)\n";
+
+            // Act
+            var result = TableOfContentsService.CreateTOC(mergedFile, selectedFiles);
+
+            // Assert
+            result.Should().Be(correctToc);
+        }
+
         [Theory]
         [InlineData(TableOfContents.Hyperlink)]
         [InlineData(TableOfContents.None)]
