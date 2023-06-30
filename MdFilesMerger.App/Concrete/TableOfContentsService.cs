@@ -12,9 +12,7 @@ namespace MdFilesMerger.App.Concrete
         /// <summary>
         ///     Creates the table of contents of specified type.
         /// </summary>
-        /// <param name="mergedFile">
-        ///     The merged file for which table of content will be created.
-        /// </param>
+        /// <param name="mergedFile"> The merged file for which table of content will be created. </param>
         /// <param name="selectedFiles">
         ///     The list of all files, whose content will be placed in the merged file.
         /// </param>
@@ -43,20 +41,22 @@ namespace MdFilesMerger.App.Concrete
             StringBuilder tocContent = new StringBuilder();
             List<string> appendedDirectories = new List<string>();
             // For hyperlinks TOC
-            Dictionary<string, int> includedTitles = new Dictionary<string, int>();
+            Dictionary<string, int> includedLinks = new Dictionary<string, int>();
             if (tableOfContents == TableOfContents.Hyperlink)
             {
                 foreach (var f in listOfFiles)
                 {
                     if (f?.Title != null)
                     {
-                        if (includedTitles.ContainsKey(f.Title))
+                        string hyperlink = Hyperlinks.TextToHyperlink(f.Title);
+                        string link = Hyperlinks.GetLink(hyperlink);
+                        if (includedLinks.ContainsKey(link))
                         {
-                            includedTitles[f.Title]++;
+                            includedLinks[link]++;
                         }
                         else
                         {
-                            includedTitles.Add(f.Title, 1);
+                            includedLinks.Add(link, 1);
                         }
                     }
                 }
@@ -132,8 +132,12 @@ namespace MdFilesMerger.App.Concrete
                     else if (tableOfContents == TableOfContents.Hyperlink)
                     {
                         string hyperlink = Hyperlinks.TextToHyperlink(file.Title);
+                        string link = Hyperlinks.GetLink(hyperlink);
 
-                        hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + includedTitles[file.Title]++.ToString());
+                        if (!string.IsNullOrEmpty(link))
+                        {
+                            hyperlink = hyperlink.Insert(hyperlink.Length - 1, "-" + includedLinks[link]++.ToString());
+                        }
 
                         tocContent.Append(hyperlink);
                     }
