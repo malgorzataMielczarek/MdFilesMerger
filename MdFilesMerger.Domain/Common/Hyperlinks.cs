@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MdFilesMerger.Domain.Common
 {
@@ -7,6 +8,13 @@ namespace MdFilesMerger.Domain.Common
     /// </summary>
     public static class Hyperlinks
     {
+        // TODO: Fix hyperlinks regex to work correctly when there are few hyperlinks in the string
+        private static readonly Regex _mdHyperlinkRegex = new Regex(@"(?<!\!)\[.*\]\(.*\)", RegexOptions.Compiled); // [text](link)
+
+        private static readonly Regex _mdImgRegex = new Regex(@"\!\[.*\]\(.*\)", RegexOptions.Compiled);   // ![text](link)
+        private static readonly Regex _htmlHyperlinkRegex = new Regex(@"<a\b(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\bhref\b\s*=\s*(("".*"")|('.*'))\s*(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*>.*</\s*\ba>", RegexOptions.Compiled);   // <a href="link">text</a>
+        private static readonly Regex _htmlImgRegex = new Regex(@"<img\b(?=(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\bsrc\b\s*=\s*(("".*"")|('.*')))(?=(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\balt\b\s*=\s*(("".*"")|('.*')))(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*((/\s*>)|(><\s*/\s*\bimg>))", RegexOptions.Compiled); // <img src="link" alt="text"/>
+
         /// <summary>
         ///     Determines whether the specified text contains hyperlink.
         /// </summary>
@@ -21,7 +29,7 @@ namespace MdFilesMerger.Domain.Common
                 return false;
             }
 
-            return ContainsMarkdownHyperlink(text) || ContainsHtmlHyperlink(text) || ContainsHtmlImg(text);
+            return ContainsMarkdownHyperlink(text) || ContainsMarkdownImg(text) || ContainsHtmlHyperlink(text) || ContainsHtmlImg(text);
         }
 
         /// <summary>
@@ -39,29 +47,28 @@ namespace MdFilesMerger.Domain.Common
                 return string.Empty;
             }
 
-            if (ContainsMarkdownHyperlink(hyperlink))
+            Match match = _mdHyperlinkRegex.Match(hyperlink);
+            if (match.Success || (match = _mdImgRegex.Match(hyperlink)).Success)
             {
-                int linkStart = hyperlink.IndexOf("](", StringComparison.Ordinal);
-                int linkEnd = hyperlink.IndexOf(')', linkStart + 2);
+                int linkStart = match.Value.IndexOf("](", StringComparison.Ordinal);
+                int linkEnd = match.Value.LastIndexOf(')');
 
                 if (linkStart != -1 && linkEnd != -1)
                 {
-                    return hyperlink.Substring(linkStart + 2, linkEnd - linkStart - 2).Trim();
+                    return match.Value[(linkStart + 2)..linkEnd];
                 }
             }
-            else if (ContainsHtmlHyperlink(hyperlink))
+            else if ((match = _htmlHyperlinkRegex.Match(hyperlink)).Success)
             {
-                int startTagIndax = hyperlink.IndexOf("<a ", StringComparison.Ordinal);
-                int hrefIndex = hyperlink.IndexOf("href", startTagIndax + 3, StringComparison.Ordinal);
+                int hrefIndex = match.Value.IndexOf("href", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, hrefIndex + 5);
+                return GetQuoteText(match.Value, hrefIndex + 5);
             }
-            else if (ContainsHtmlImg(hyperlink))
+            else if ((match = _htmlImgRegex.Match(hyperlink)).Success)
             {
-                int startTagIndex = hyperlink.IndexOf("<img ", StringComparison.Ordinal);
-                int srcIndex = hyperlink.IndexOf("src", startTagIndex + 5, StringComparison.Ordinal);
+                int srcIndex = match.Value.IndexOf("src", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, srcIndex + 4);
+                return GetQuoteText(match.Value, srcIndex + 4);
             }
 
             return string.Empty;
@@ -85,22 +92,27 @@ namespace MdFilesMerger.Domain.Common
             string text;
             int hyperlinkTextSectionStart = -1, hyperlinkTextSectionEnd = -1;
 
-            if (ContainsMarkdownHyperlink(hyperlink))
+            Match match = _mdHyperlinkRegex.Match(hyperlink);
+            if (match.Success)
             {
-                hyperlinkTextSectionStart = hyperlink.IndexOf('[');
-                hyperlinkTextSectionEnd = hyperlink.IndexOf("](", StringComparison.Ordinal);
+                hyperlinkTextSectionStart = 0;
+                hyperlinkTextSectionEnd = match.Value.IndexOf("](", StringComparison.Ordinal);
             }
-            else if (ContainsHtmlHyperlink(hyperlink))
+            else if ((match = _mdImgRegex.Match(hyperlink)).Success)
             {
-                hyperlinkTextSectionEnd = hyperlink.IndexOf("</a>", StringComparison.Ordinal);
-                hyperlinkTextSectionStart = hyperlink.LastIndexOf('>', hyperlinkTextSectionEnd);
+                hyperlinkTextSectionStart = 1;
+                hyperlinkTextSectionEnd = match.Value.IndexOf("](", StringComparison.Ordinal);
             }
-            else if (ContainsHtmlImg(hyperlink))
+            else if ((match = _htmlHyperlinkRegex.Match(hyperlink)).Success)
             {
-                int hyperlinkStart = hyperlink.IndexOf("<img ", StringComparison.Ordinal);
-                int altStart = hyperlink.IndexOf("alt", hyperlinkStart + 5, StringComparison.Ordinal);
+                hyperlinkTextSectionEnd = match.Value.IndexOf("</a>", StringComparison.Ordinal);
+                hyperlinkTextSectionStart = match.Value.LastIndexOf('>', hyperlinkTextSectionEnd);
+            }
+            else if ((match = _htmlImgRegex.Match(hyperlink)).Success)
+            {
+                int altStart = match.Value.IndexOf("alt", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, altStart + 4);
+                return GetQuoteText(match.Value, altStart + 4);
             }
 
             if (hyperlinkTextSectionStart == -1 || hyperlinkTextSectionEnd == -1)
@@ -108,7 +120,7 @@ namespace MdFilesMerger.Domain.Common
                 return string.Empty;
             }
 
-            text = hyperlink.Substring(hyperlinkTextSectionStart + 1, hyperlinkTextSectionEnd - hyperlinkTextSectionStart - 1);
+            text = match.Value.Substring(hyperlinkTextSectionStart + 1, hyperlinkTextSectionEnd - hyperlinkTextSectionStart - 1);
 
             return text.Trim();
         }
@@ -122,26 +134,28 @@ namespace MdFilesMerger.Domain.Common
         /// </remarks>
         /// <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
         /// <returns> The passed text with it's first hyperlink converted. </returns>
-        // TODO: Implement searching for whole hyperlink pattern and getting text part from it
-        // TODO: Check if it is not markdown image
-        // TODO: Implement version for html hyperlinks
-        // TODO: Add text before AND AFTER hyperlink
         public static string HyperlinkToText(string hyperlinkHeader)
         {
-            if (string.IsNullOrWhiteSpace(hyperlinkHeader) || !ContainsMarkdownHyperlink(hyperlinkHeader))
+            if (string.IsNullOrWhiteSpace(hyperlinkHeader))
             {
                 return hyperlinkHeader;
             }
 
-            // add leading characters of hyperlinkHeader (characters before hyperlink, for example
-            // header specifiers)
-            int hyperlinkStart = hyperlinkHeader.IndexOf('[');
-            StringBuilder textHeader = new StringBuilder(hyperlinkHeader, 0, hyperlinkStart, hyperlinkHeader.Length);
+            Match match = _mdHyperlinkRegex.Match(hyperlinkHeader);
 
-            // add text part of hyperlink
-            textHeader.Append(GetText(hyperlinkHeader));
+            if (!match.Success)
+            {
+                match = _htmlHyperlinkRegex.Match(hyperlinkHeader);
+            }
 
-            return textHeader.ToString().Trim();
+            if (match.Success)
+            {
+                return hyperlinkHeader.Replace(match.Value, GetText(match.Value));
+            }
+            else
+            {
+                return hyperlinkHeader;
+            }
         }
 
         /// <summary>
@@ -207,17 +221,26 @@ namespace MdFilesMerger.Domain.Common
 
         private static bool ContainsHtmlHyperlink(string text)
         {
-            return text.Contains("<a") && text.Contains("href") && text.Contains("</a>");
+            return _htmlHyperlinkRegex.Match(text).Success;
+            //return text.Contains("<a") && text.Contains("href") && text.Contains("</a>");
         }
 
         private static bool ContainsHtmlImg(string text)
         {
-            return text.Contains("<img") && text.Contains("src") && text.Contains("alt") && text.Contains('>');
+            return _htmlImgRegex.Match(text).Success;
+            //return text.Contains("<img") && text.Contains("src") && text.Contains("alt") && text.Contains('>');
         }
 
         private static bool ContainsMarkdownHyperlink(string text)
         {
-            return text.Contains('[') && text.Contains("](") && text.Contains(')');
+            return _mdHyperlinkRegex.Match(text).Success;
+            //return text.Contains('[') && text.Contains("](") && text.Contains(')');
+        }
+
+        private static bool ContainsMarkdownImg(string text)
+        {
+            return _mdImgRegex.Match(text).Success;
+            //return text.Contains("![) && text.Contains("](") && text.Contains(')');
         }
 
         private static string GetQuoteText(string text, int startIndex)
