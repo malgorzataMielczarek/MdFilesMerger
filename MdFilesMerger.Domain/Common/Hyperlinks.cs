@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MdFilesMerger.Domain.Common
 {
@@ -7,12 +8,18 @@ namespace MdFilesMerger.Domain.Common
     /// </summary>
     public static class Hyperlinks
     {
+        private const string PROPERTY_PATERN = @"(\s*\b[a-zA-Z]+\b" + PROPERTY_VALUE_PATERN + ")";
+        private const string PROPERTY_VALUE_PATERN = @"\s*=\s*((""[\w\s]*"")|('[\w\s]*'))\s*";
+        private static readonly Regex _htmlHyperlinkRegex = new Regex(@"<a\b" + PROPERTY_PATERN + @"*\s*\bhref\b" + PROPERTY_VALUE_PATERN + PROPERTY_PATERN + @"*>.*?<\s*/\s*\ba>", RegexOptions.Compiled);   // <a href="link">text</a>
+        private static readonly Regex _htmlImgRegex = new Regex(@"<img\b(?=" + PROPERTY_PATERN + @"*\s*\bsrc\b" + PROPERTY_VALUE_PATERN + @")(?=" + PROPERTY_PATERN + @"*\s*\balt\b" + PROPERTY_VALUE_PATERN + ")" + PROPERTY_PATERN + @"*\s*((/\s*>)|(><\s*/\s*\bimg>))", RegexOptions.Compiled); // <img src="link" alt="text"/>
+
         /// <summary>
-        ///     Determines whether the specified text contains hyperlink.
+        ///     Determines whether the specified text contains hyperlink or image.
         /// </summary>
         /// <param name="text"> The text. </param>
         /// <returns>
-        ///     <see langword="true"/> if the specified text contains hyperlink; otherwise, <see langword="false"/>.
+        ///     <see langword="true"/> if the specified text contains hyperlink or image; otherwise,
+        ///     <see langword="false"/>.
         /// </returns>
         public static bool ContainsHyperlink(string? text)
         {
@@ -21,86 +28,104 @@ namespace MdFilesMerger.Domain.Common
                 return false;
             }
 
-            return ContainsMarkdownHyperlink(text) || ContainsHtmlHyperlink(text) || ContainsHtmlImg(text);
+            return ExtractMarkdownHyperlink(text) != string.Empty || ExtractMarkdownImg(text) != string.Empty || ContainsHtmlHyperlink(text) || ContainsHtmlImg(text);
         }
 
         /// <summary>
-        ///     Gets the link part of the first hyperlink (underlying destination, where link points
-        ///     and directs to after clicking).
+        ///     Gets the link part of the first found hyperlink/image (underlying destination, where
+        ///     link points and directs to after clicking or from which image is taken).
         /// </summary>
-        /// <param name="hyperlink"> The text containing hyperlink. </param>
+        /// <remarks>
+        ///     Method looks for the markdown hiperlinks in the first place. If non was found it
+        ///     searches in sequance for markdown image, html hyperlink and html image. Returned
+        ///     link belongs to the first found hyperlink/image.
+        /// </remarks>
+        /// <param name="text"> The text containing hyperlink/image. </param>
         /// <returns>
-        ///     String with the link, if passed value contained hyperlink; otherwise <see cref="string.Empty"/>.
+        ///     String with the link, if passed value contained hyperlink or image; otherwise <see cref="string.Empty"/>.
         /// </returns>
-        public static string GetLink(string hyperlink)
+        public static string GetLink(string text)
         {
-            if (string.IsNullOrWhiteSpace(hyperlink))
+            if (string.IsNullOrWhiteSpace(text))
             {
                 return string.Empty;
             }
 
-            if (ContainsMarkdownHyperlink(hyperlink))
+            Match match;
+            string hyperlink = ExtractMarkdownHyperlink(text);
+            if (hyperlink != string.Empty || (hyperlink = ExtractMarkdownImg(text)) != string.Empty)
             {
                 int linkStart = hyperlink.IndexOf("](", StringComparison.Ordinal);
-                int linkEnd = hyperlink.IndexOf(')', linkStart + 2);
+                int linkEnd = hyperlink.LastIndexOf(')');
 
                 if (linkStart != -1 && linkEnd != -1)
                 {
-                    return hyperlink.Substring(linkStart + 2, linkEnd - linkStart - 2).Trim();
+                    return hyperlink[(linkStart + 2)..linkEnd];
                 }
             }
-            else if (ContainsHtmlHyperlink(hyperlink))
+            else if ((match = _htmlHyperlinkRegex.Match(text)).Success)
             {
-                int startTagIndax = hyperlink.IndexOf("<a ", StringComparison.Ordinal);
-                int hrefIndex = hyperlink.IndexOf("href", startTagIndax + 3, StringComparison.Ordinal);
+                int hrefIndex = match.Value.IndexOf("href", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, hrefIndex + 5);
+                return GetQuoteText(match.Value, hrefIndex + 5);
             }
-            else if (ContainsHtmlImg(hyperlink))
+            else if ((match = _htmlImgRegex.Match(text)).Success)
             {
-                int startTagIndex = hyperlink.IndexOf("<img ", StringComparison.Ordinal);
-                int srcIndex = hyperlink.IndexOf("src", startTagIndex + 5, StringComparison.Ordinal);
+                int srcIndex = match.Value.IndexOf("src", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, srcIndex + 4);
+                return GetQuoteText(match.Value, srcIndex + 4);
             }
 
             return string.Empty;
         }
 
         /// <summary>
-        ///     Gets the text part of the first hyperlink (text that will be displayed as link).
+        ///     Gets the text part of the first found hyperlink/image (text that will be displayed
+        ///     as link or is image's alternative text).
         /// </summary>
-        /// <param name="hyperlink"> The text containing hyperlink. </param>
+        /// <remarks>
+        ///     Method looks for the markdown hiperlinks in the first place. If none was found it
+        ///     searches in sequance for markdown image, html hyperlink and html image. Returned
+        ///     text belongs to the first found hyperlink/image.
+        /// </remarks>
+        /// <param name="text"> The text containing hyperlink/image. </param>
         /// <returns>
-        ///     String with the link description (visible text), if passed value contained
-        ///     hyperlink; otherwise <see cref="string.Empty"/>.
+        ///     If hyperlink was found, returns its visible text; if image was found, returns its
+        ///     alternative text; otherwise returns <see cref="string.Empty"/>.
         /// </returns>
-        public static string GetText(string hyperlink)
+        public static string GetText(string text)
         {
-            if (string.IsNullOrWhiteSpace(hyperlink))
+            if (string.IsNullOrWhiteSpace(text))
             {
                 return string.Empty;
             }
 
-            string text;
+            string textPart;
             int hyperlinkTextSectionStart = -1, hyperlinkTextSectionEnd = -1;
 
-            if (ContainsMarkdownHyperlink(hyperlink))
+            Match match;
+            string hyperlink = ExtractMarkdownHyperlink(text);
+            if (hyperlink != string.Empty)
             {
-                hyperlinkTextSectionStart = hyperlink.IndexOf('[');
+                hyperlinkTextSectionStart = 0;
                 hyperlinkTextSectionEnd = hyperlink.IndexOf("](", StringComparison.Ordinal);
             }
-            else if (ContainsHtmlHyperlink(hyperlink))
+            else if ((hyperlink = ExtractMarkdownImg(text)) != string.Empty)
             {
+                hyperlinkTextSectionStart = 1;
+                hyperlinkTextSectionEnd = hyperlink.IndexOf("](", StringComparison.Ordinal);
+            }
+            else if ((match = _htmlHyperlinkRegex.Match(text)).Success)
+            {
+                hyperlink = match.Value;
                 hyperlinkTextSectionEnd = hyperlink.IndexOf("</a>", StringComparison.Ordinal);
                 hyperlinkTextSectionStart = hyperlink.LastIndexOf('>', hyperlinkTextSectionEnd);
             }
-            else if (ContainsHtmlImg(hyperlink))
+            else if ((match = _htmlImgRegex.Match(text)).Success)
             {
-                int hyperlinkStart = hyperlink.IndexOf("<img ", StringComparison.Ordinal);
-                int altStart = hyperlink.IndexOf("alt", hyperlinkStart + 5, StringComparison.Ordinal);
+                int altStart = match.Value.IndexOf("alt", StringComparison.Ordinal);
 
-                return GetQuoteText(hyperlink, altStart + 4);
+                return GetQuoteText(match.Value, altStart + 4);
             }
 
             if (hyperlinkTextSectionStart == -1 || hyperlinkTextSectionEnd == -1)
@@ -108,40 +133,53 @@ namespace MdFilesMerger.Domain.Common
                 return string.Empty;
             }
 
-            text = hyperlink.Substring(hyperlinkTextSectionStart + 1, hyperlinkTextSectionEnd - hyperlinkTextSectionStart - 1);
+            textPart = hyperlink.Substring(hyperlinkTextSectionStart + 1, hyperlinkTextSectionEnd - hyperlinkTextSectionStart - 1);
 
-            return text.Trim();
+            return textPart.Trim();
         }
 
         /// <summary>
         ///     Converts the text containing hyperlink to the plain text.
         /// </summary>
         /// <remarks>
-        ///     The first hyperlink in the given text is replaced by its text part. The rest of the
-        ///     passed text stays the same.
+        ///     The first found hyperlink in the given text is replaced by its text part. The rest
+        ///     of the passed text stays the same.
+        ///     <para>
+        ///         Method searches for markdown hyperlink in the first place. If none was found it
+        ///         looks for html hyperlink.
+        ///     </para>
         /// </remarks>
-        /// <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
-        /// <returns> The passed text with it's first hyperlink converted. </returns>
-        // TODO: Implement searching for whole hyperlink pattern and getting text part from it
-        // TODO: Check if it is not markdown image
-        // TODO: Implement version for html hyperlinks
-        // TODO: Add text before AND AFTER hyperlink
-        public static string HyperlinkToText(string hyperlinkHeader)
+        /// <param name="text"> The text containing hyperlink. For example header. </param>
+        /// <returns>
+        ///     The passed text with the first found hyperlink converted. If given text doesn't
+        ///     contain any hyperlinks, it is returned in unchanged form.
+        /// </returns>
+        public static string HyperlinkToText(string text)
         {
-            if (string.IsNullOrWhiteSpace(hyperlinkHeader) || !ContainsMarkdownHyperlink(hyperlinkHeader))
+            if (string.IsNullOrWhiteSpace(text))
             {
-                return hyperlinkHeader;
+                return text;
             }
 
-            // add leading characters of hyperlinkHeader (characters before hyperlink, for example
-            // header specifiers)
-            int hyperlinkStart = hyperlinkHeader.IndexOf('[');
-            StringBuilder textHeader = new StringBuilder(hyperlinkHeader, 0, hyperlinkStart, hyperlinkHeader.Length);
+            string hyperlink = ExtractMarkdownHyperlink(text);
+            if (hyperlink == string.Empty)
+            {
+                Match match = _htmlHyperlinkRegex.Match(text);
 
-            // add text part of hyperlink
-            textHeader.Append(GetText(hyperlinkHeader));
+                if (match.Success)
+                {
+                    hyperlink = match.Value;
+                }
+            }
 
-            return textHeader.ToString().Trim();
+            if (hyperlink != string.Empty)
+            {
+                return text.Replace(hyperlink, GetText(hyperlink));
+            }
+            else
+            {
+                return text;
+            }
         }
 
         /// <summary>
@@ -207,17 +245,132 @@ namespace MdFilesMerger.Domain.Common
 
         private static bool ContainsHtmlHyperlink(string text)
         {
-            return text.Contains("<a") && text.Contains("href") && text.Contains("</a>");
+            return _htmlHyperlinkRegex.Match(text).Success;
+            //return text.Contains("<a") && text.Contains("href") && text.Contains("</a>");
         }
 
         private static bool ContainsHtmlImg(string text)
         {
-            return text.Contains("<img") && text.Contains("src") && text.Contains("alt") && text.Contains('>');
+            return _htmlImgRegex.Match(text).Success;
+            //return text.Contains("<img") && text.Contains("src") && text.Contains("alt") && text.Contains('>');
         }
 
-        private static bool ContainsMarkdownHyperlink(string text)
+        private static string ExtractMarkdownHyperlink(string text)
         {
-            return text.Contains('[') && text.Contains("](") && text.Contains(')');
+            int middle = 0;
+            while (middle < text.Length && (middle = text.IndexOf("](", middle, StringComparison.Ordinal)) != -1)
+            {
+                int begin = -1;
+                int bracketsToFind = 1;
+
+                // find beginning
+                for (int i = middle - 1; i >= 0; i--)
+                {
+                    if (text[i] == ']')
+                    {
+                        bracketsToFind++;
+                    }
+                    else if (text[i] == '[')
+                    {
+                        bracketsToFind--;
+                        if (bracketsToFind == 0)
+                        {
+                            // make sure it's not an image
+                            if (i == 0 || text[i - 1] != '!')
+                            {
+                                begin = i;
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+                // if beginning found, find end
+                if (begin != -1)
+                {
+                    bracketsToFind = 1;
+                    for (int i = middle + 2; i < text.Length; i++)
+                    {
+                        if (text[i] == '(')
+                        {
+                            bracketsToFind++;
+                        }
+                        else if (text[i] == ')')
+                        {
+                            bracketsToFind--;
+
+                            // if end found, return hyperlink
+                            if (bracketsToFind == 0)
+                            {
+                                return text[begin..(i + 1)];
+                            }
+                        }
+                    }
+                }
+
+                middle += 2;
+            }
+
+            return string.Empty;
+        }
+
+        private static string ExtractMarkdownImg(string text)
+        {
+            int begin = 0;
+
+            while (begin < text.Length && (begin = text.IndexOf("![", begin, StringComparison.Ordinal)) != -1)
+            {
+                // find middle - "]("
+                int middle = -1;
+                int bracketsToFind = 1;
+                for (int i = begin + 2; i < text.Length; i++)
+                {
+                    if (text[i] == '[')
+                    {
+                        bracketsToFind++;
+                    }
+                    else if (text[i] == ']')
+                    {
+                        bracketsToFind--;
+                        if (bracketsToFind == 0)
+                        {
+                            if (i < text.Length - 2 && text[i + 1] == '(')
+                            {
+                                middle = i;
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+                // if middle found, find end
+                if (middle != -1)
+                {
+                    bracketsToFind = 1;
+                    for (int i = middle + 2; i < text.Length; i++)
+                    {
+                        if (text[i] == '(')
+                        {
+                            bracketsToFind++;
+                        }
+                        else if (text[i] == ')')
+                        {
+                            bracketsToFind--;
+                            // if end found, return img
+                            if (bracketsToFind == 0)
+                            {
+                                return text[begin..(i + 1)];
+                            }
+                        }
+                    }
+                }
+
+                begin += 2;
+            }
+
+            return string.Empty;
         }
 
         private static string GetQuoteText(string text, int startIndex)

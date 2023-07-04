@@ -543,31 +543,43 @@
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.ContainsHyperlink(System.String)">
             <summary>
-                Determines whether the specified text contains hyperlink.
+                Determines whether the specified text contains hyperlink or image.
             </summary>
             <param name="text"> The text. </param>
             <returns>
-                <see langword="true"/> if the specified text contains hyperlink; otherwise, <see langword="false"/>.
+                <see langword="true"/> if the specified text contains hyperlink or image; otherwise,
+                <see langword="false"/>.
             </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.GetLink(System.String)">
             <summary>
-                Gets the link part of the first hyperlink (underlying destination, where link points
-                and directs to after clicking).
+                Gets the link part of the first found hyperlink/image (underlying destination, where
+                link points and directs to after clicking or from which image is taken).
             </summary>
-            <param name="hyperlink"> The text containing hyperlink. </param>
+            <remarks>
+                Method looks for the markdown hiperlinks in the first place. If non was found it
+                searches in sequance for markdown image, html hyperlink and html image. Returned
+                link belongs to the first found hyperlink/image.
+            </remarks>
+            <param name="text"> The text containing hyperlink/image. </param>
             <returns>
-                String with the link, if passed value contained hyperlink; otherwise <see cref="F:System.String.Empty"/>.
+                String with the link, if passed value contained hyperlink or image; otherwise <see cref="F:System.String.Empty"/>.
             </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.GetText(System.String)">
             <summary>
-                Gets the text part of the first hyperlink (text that will be displayed as link).
+                Gets the text part of the first found hyperlink/image (text that will be displayed
+                as link or is image's alternative text).
             </summary>
-            <param name="hyperlink"> The text containing hyperlink. </param>
+            <remarks>
+                Method looks for the markdown hiperlinks in the first place. If none was found it
+                searches in sequance for markdown image, html hyperlink and html image. Returned
+                text belongs to the first found hyperlink/image.
+            </remarks>
+            <param name="text"> The text containing hyperlink/image. </param>
             <returns>
-                String with the link description (visible text), if passed value contained
-                hyperlink; otherwise <see cref="F:System.String.Empty"/>.
+                If hyperlink was found, returns its visible text; if image was found, returns its
+                alternative text; otherwise returns <see cref="F:System.String.Empty"/>.
             </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.HyperlinkToText(System.String)">
@@ -575,11 +587,18 @@
                 Converts the text containing hyperlink to the plain text.
             </summary>
             <remarks>
-                The first hyperlink in the given text is replaced by its text part. The rest of the
-                passed text stays the same.
+                The first found hyperlink in the given text is replaced by its text part. The rest
+                of the passed text stays the same.
+                <para>
+                    Method searches for markdown hyperlink in the first place. If none was found it
+                    looks for html hyperlink.
+                </para>
             </remarks>
-            <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
-            <returns> The passed text with it's first hyperlink converted. </returns>
+            <param name="text"> The text containing hyperlink. For example header. </param>
+            <returns>
+                The passed text with the first found hyperlink converted. If given text doesn't
+                contain any hyperlinks, it is returned in unchanged form.
+            </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.TextToHyperlink(System.String)">
             <summary>
