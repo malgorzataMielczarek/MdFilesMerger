@@ -76,16 +76,34 @@ namespace MdFilesMerger.App.Concrete
                         }
                     }
 
-                    // Enter title if exists
+                    // Enter title if exists, if first line in text is a header containing
+                    // hyperlink, exchange links text to title
                     if (!string.IsNullOrWhiteSpace(appendedFile!.Title))
                     {
                         string firstLine = "## " + appendedFile.Title;
-                        streamWriter.WriteLine(firstLine);
-
-                        if (line != null && Hyperlinks.GetText(line).ToLower() == appendedFile.Title.ToLower())
+                        if (line != null && line[0] == '#')
                         {
-                            line = copyFileStream.ReadLine();
+                            StringBuilder trimLine = new StringBuilder(line[1..]);
+                            while (trimLine[0] == '#')
+                            {
+                                trimLine.Remove(0, 1);
+                            }
+
+                            if (Hyperlinks.ContainsHyperlink(line))
+                            {
+                                string text = Hyperlinks.GetText(line);
+                                trimLine.Replace(text, appendedFile.Title, 0, 1);
+
+                                firstLine = "## " + trimLine.ToString().Trim();
+                                line = copyFileStream.ReadLine();
+                            }
+                            else if (trimLine.ToString().Trim().ToLower() == appendedFile.Title.ToLower())
+                            {
+                                line = copyFileStream.ReadLine();
+                            }
                         }
+
+                        streamWriter.WriteLine(firstLine);
                     }
 
                     while (line != null)
