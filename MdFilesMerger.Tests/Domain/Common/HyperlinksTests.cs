@@ -243,7 +243,7 @@ namespace MdFilesMerger.Tests.Domain.Common
         [InlineData("href='pretext' <a href=\"link\">text</a>", "href='pretext' text")]
         [InlineData("pretext<a href='link'>text</a>post-text", "pretexttextpost-text")]
         [InlineData("<a href='link' target=\"_blank\">text</a> post-text", "text post-text")]
-        [InlineData("<a href='link'>text</a>between<a href='link2'>text2</a>", "textbetween<a href='link2'>text2</a>")]
+        [InlineData("<a href='link'>te</axt</a>between<a href='link2'>text2</a>", "te</axtbetween<a href='link2'>text2</a>")]
         public void HyperlinkToText_StringWithHtmlHyperlink_ReturnsTextWithFirstHyperlinkChangedToPlainText(string text, string expectedResult)
         {
             // Arrange Act
