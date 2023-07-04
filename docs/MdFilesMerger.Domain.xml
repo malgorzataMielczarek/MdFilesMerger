@@ -555,7 +555,7 @@
                 Gets the link part of the first hyperlink (underlying destination, where link points
                 and directs to after clicking).
             </summary>
-            <param name="hyperlink"> The text containing hyperlink. </param>
+            <param name="text"> The text containing hyperlink. </param>
             <returns>
                 String with the link, if passed value contained hyperlink; otherwise <see cref="F:System.String.Empty"/>.
             </returns>
@@ -564,7 +564,7 @@
             <summary>
                 Gets the text part of the first hyperlink (text that will be displayed as link).
             </summary>
-            <param name="hyperlink"> The text containing hyperlink. </param>
+            <param name="text"> The text containing hyperlink. </param>
             <returns>
                 String with the link description (visible text), if passed value contained
                 hyperlink; otherwise <see cref="F:System.String.Empty"/>.
@@ -578,7 +578,7 @@
                 The first hyperlink in the given text is replaced by its text part. The rest of the
                 passed text stays the same.
             </remarks>
-            <param name="hyperlinkHeader"> The text containing hyperlink. For example header. </param>
+            <param name="text"> The text containing hyperlink. For example header. </param>
             <returns> The passed text with it's first hyperlink converted. </returns>
         </member>
         <member name="M:MdFilesMerger.Domain.Common.Hyperlinks.TextToHyperlink(System.String)">
