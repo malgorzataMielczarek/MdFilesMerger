@@ -79,7 +79,7 @@
 
   <h1 id="MdFilesMerger_Domain_Common_Hyperlinks" data-uid="MdFilesMerger.Domain.Common.Hyperlinks" class="text-break">
     Class Hyperlinks
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -147,10 +147,10 @@
 
   <h3 id="MdFilesMerger_Domain_Common_Hyperlinks_ContainsHyperlink_System_String_" data-uid="MdFilesMerger.Domain.Common.Hyperlinks.ContainsHyperlink(System.String)">
   ContainsHyperlink(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines whether the specified text contains hyperlink.</p>
+  <div class="markdown level1 summary"><p>Determines whether the specified text contains hyperlink or image.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -168,7 +168,8 @@
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified text contains hyperlink; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified text contains hyperlink or image; otherwise,
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 </dd>
   </dl>
 
@@ -186,29 +187,29 @@
 
   <h3 id="MdFilesMerger_Domain_Common_Hyperlinks_GetLink_System_String_" data-uid="MdFilesMerger.Domain.Common.Hyperlinks.GetLink(System.String)">
   GetLink(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the link part of the first hyperlink (underlying destination, where link points
-and directs to after clicking).</p>
+  <div class="markdown level1 summary"><p>Gets the link part of the first found hyperlink/image (underlying destination, where
+link points and directs to after clicking or from which image is taken).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetLink(string hyperlink)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetLink(string text)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>hyperlink</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The text containing hyperlink.</p>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text containing hyperlink/image.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>String with the link, if passed value contained hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string.empty">Empty</a>.</p>
+    <dd><p>String with the link, if passed value contained hyperlink or image; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string.empty">Empty</a>.</p>
 </dd>
   </dl>
 
@@ -218,6 +219,11 @@ and directs to after clicking).</p>
 
 
 
+  <h4 class="section" id="MdFilesMerger_Domain_Common_Hyperlinks_GetLink_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Method looks for the markdown hiperlinks in the first place. If non was found it
+searches in sequance for markdown image, html hyperlink and html image. Returned
+link belongs to the first found hyperlink/image.</p>
+</div>
 
 
 
@@ -226,29 +232,30 @@ and directs to after clicking).</p>
 
   <h3 id="MdFilesMerger_Domain_Common_Hyperlinks_GetText_System_String_" data-uid="MdFilesMerger.Domain.Common.Hyperlinks.GetText(System.String)">
   GetText(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the text part of the first hyperlink (text that will be displayed as link).</p>
+  <div class="markdown level1 summary"><p>Gets the text part of the first found hyperlink/image (text that will be displayed
+as link or is image's alternative text).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetText(string hyperlink)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetText(string text)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>hyperlink</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The text containing hyperlink.</p>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text containing hyperlink/image.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>String with the link description (visible text), if passed value contained
-hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string.empty">Empty</a>.</p>
+    <dd><p>If hyperlink was found, returns its visible text; if image was found, returns its
+alternative text; otherwise returns <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string.empty">Empty</a>.</p>
 </dd>
   </dl>
 
@@ -258,6 +265,11 @@ hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/ap
 
 
 
+  <h4 class="section" id="MdFilesMerger_Domain_Common_Hyperlinks_GetText_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Method looks for the markdown hiperlinks in the first place. If none was found it
+searches in sequance for markdown image, html hyperlink and html image. Returned
+text belongs to the first found hyperlink/image.</p>
+</div>
 
 
 
@@ -266,7 +278,7 @@ hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/ap
 
   <h3 id="MdFilesMerger_Domain_Common_Hyperlinks_HyperlinkToText_System_String_" data-uid="MdFilesMerger.Domain.Common.Hyperlinks.HyperlinkToText(System.String)">
   HyperlinkToText(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L157"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the text containing hyperlink to the plain text.</p>
@@ -274,12 +286,12 @@ hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/ap
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string HyperlinkToText(string hyperlinkHeader)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string HyperlinkToText(string text)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>hyperlinkHeader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>The text containing hyperlink. For example header.</p>
 </dd>
   </dl>
@@ -287,7 +299,8 @@ hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/ap
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The passed text with it's first hyperlink converted.</p>
+    <dd><p>The passed text with the first found hyperlink converted. If given text doesn't
+contain any hyperlinks, it is returned in unchanged form.</p>
 </dd>
   </dl>
 
@@ -298,8 +311,12 @@ hyperlink; otherwise <a class="xref" href="https://learn.microsoft.com/dotnet/ap
 
 
   <h4 class="section" id="MdFilesMerger_Domain_Common_Hyperlinks_HyperlinkToText_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>The first hyperlink in the given text is replaced by its text part. The rest of the
-passed text stays the same.</p>
+  <div class="markdown level1 remarks"><p>The first found hyperlink in the given text is replaced by its text part. The rest
+of the passed text stays the same.</p>
+<p>
+    Method searches for markdown hyperlink in the first place. If none was found it
+    looks for html hyperlink.
+</p>
 </div>
 
 
@@ -309,7 +326,7 @@ passed text stays the same.</p>
 
   <h3 id="MdFilesMerger_Domain_Common_Hyperlinks_TextToHyperlink_System_String_" data-uid="MdFilesMerger.Domain.Common.Hyperlinks.TextToHyperlink(System.String)">
   TextToHyperlink(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts text to Markdown hyperlink leading to appropriate section of the file that
@@ -331,7 +348,7 @@ it will be placed in.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Prepared hyperlink.</p>
+    <dd><p>Prepared hyperlink. If given text is unlinkable, given text (without any changes) is returned</p>
 </dd>
   </dl>
 
@@ -355,7 +372,7 @@ in). Name of the section is the same as the text.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/malgorzataMielczarek/MdFilesMerger/blob/master/MdFilesMerger.Domain/Common/Hyperlinks.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
         
