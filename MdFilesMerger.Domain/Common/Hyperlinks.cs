@@ -8,17 +8,18 @@ namespace MdFilesMerger.Domain.Common
     /// </summary>
     public static class Hyperlinks
     {
-        // TODO: Fix hyperlinks regex to work correctly when there are few hyperlinks in the string
-        private static readonly Regex _htmlHyperlinkRegex = new Regex(@"<a\b(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\bhref\b\s*=\s*(("".*"")|('.*'))\s*(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*>.*</\s*\ba>", RegexOptions.Compiled);   // <a href="link">text</a>
-
-        private static readonly Regex _htmlImgRegex = new Regex(@"<img\b(?=(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\bsrc\b\s*=\s*(("".*"")|('.*')))(?=(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*\balt\b\s*=\s*(("".*"")|('.*')))(\s*[a-zA-Z]+\s*=\s*(("".*"")|('.*'))\s*)*\s*((/\s*>)|(><\s*/\s*\bimg>))", RegexOptions.Compiled); // <img src="link" alt="text"/>
+        private const string PROPERTY_PATERN = @"(\s*\b[a-zA-Z]+\b" + PROPERTY_VALUE_PATERN + ")";
+        private const string PROPERTY_VALUE_PATERN = @"\s*=\s*((""[\w\s]*"")|('[\w\s]*'))\s*";
+        private static readonly Regex _htmlHyperlinkRegex = new Regex(@"<a\b" + PROPERTY_PATERN + @"*\s*\bhref\b" + PROPERTY_VALUE_PATERN + PROPERTY_PATERN + @"*>.*?<\s*/\s*\ba>", RegexOptions.Compiled);   // <a href="link">text</a>
+        private static readonly Regex _htmlImgRegex = new Regex(@"<img\b(?=" + PROPERTY_PATERN + @"*\s*\bsrc\b" + PROPERTY_VALUE_PATERN + @")(?=" + PROPERTY_PATERN + @"*\s*\balt\b" + PROPERTY_VALUE_PATERN + ")" + PROPERTY_PATERN + @"*\s*((/\s*>)|(><\s*/\s*\bimg>))", RegexOptions.Compiled); // <img src="link" alt="text"/>
 
         /// <summary>
-        ///     Determines whether the specified text contains hyperlink.
+        ///     Determines whether the specified text contains hyperlink or image.
         /// </summary>
         /// <param name="text"> The text. </param>
         /// <returns>
-        ///     <see langword="true"/> if the specified text contains hyperlink; otherwise, <see langword="false"/>.
+        ///     <see langword="true"/> if the specified text contains hyperlink or image; otherwise,
+        ///     <see langword="false"/>.
         /// </returns>
         public static bool ContainsHyperlink(string? text)
         {
@@ -31,12 +32,17 @@ namespace MdFilesMerger.Domain.Common
         }
 
         /// <summary>
-        ///     Gets the link part of the first hyperlink (underlying destination, where link points
-        ///     and directs to after clicking).
+        ///     Gets the link part of the first found hyperlink/image (underlying destination, where
+        ///     link points and directs to after clicking or from which image is taken).
         /// </summary>
-        /// <param name="text"> The text containing hyperlink. </param>
+        /// <remarks>
+        ///     Method looks for the markdown hiperlinks in the first place. If non was found it
+        ///     searches in sequance for markdown image, html hyperlink and html image. Returned
+        ///     link belongs to the first found hyperlink/image.
+        /// </remarks>
+        /// <param name="text"> The text containing hyperlink/image. </param>
         /// <returns>
-        ///     String with the link, if passed value contained hyperlink; otherwise <see cref="string.Empty"/>.
+        ///     String with the link, if passed value contained hyperlink or image; otherwise <see cref="string.Empty"/>.
         /// </returns>
         public static string GetLink(string text)
         {
@@ -74,12 +80,18 @@ namespace MdFilesMerger.Domain.Common
         }
 
         /// <summary>
-        ///     Gets the text part of the first hyperlink (text that will be displayed as link).
+        ///     Gets the text part of the first found hyperlink/image (text that will be displayed
+        ///     as link or is image's alternative text).
         /// </summary>
-        /// <param name="text"> The text containing hyperlink. </param>
+        /// <remarks>
+        ///     Method looks for the markdown hiperlinks in the first place. If none was found it
+        ///     searches in sequance for markdown image, html hyperlink and html image. Returned
+        ///     text belongs to the first found hyperlink/image.
+        /// </remarks>
+        /// <param name="text"> The text containing hyperlink/image. </param>
         /// <returns>
-        ///     String with the link description (visible text), if passed value contained
-        ///     hyperlink; otherwise <see cref="string.Empty"/>.
+        ///     If hyperlink was found, returns its visible text; if image was found, returns its
+        ///     alternative text; otherwise returns <see cref="string.Empty"/>.
         /// </returns>
         public static string GetText(string text)
         {
@@ -130,11 +142,18 @@ namespace MdFilesMerger.Domain.Common
         ///     Converts the text containing hyperlink to the plain text.
         /// </summary>
         /// <remarks>
-        ///     The first hyperlink in the given text is replaced by its text part. The rest of the
-        ///     passed text stays the same.
+        ///     The first found hyperlink in the given text is replaced by its text part. The rest
+        ///     of the passed text stays the same.
+        ///     <para>
+        ///         Method searches for markdown hyperlink in the first place. If none was found it
+        ///         looks for html hyperlink.
+        ///     </para>
         /// </remarks>
         /// <param name="text"> The text containing hyperlink. For example header. </param>
-        /// <returns> The passed text with it's first hyperlink converted. </returns>
+        /// <returns>
+        ///     The passed text with the first found hyperlink converted. If given text doesn't
+        ///     contain any hyperlinks, it is returned in unchanged form.
+        /// </returns>
         public static string HyperlinkToText(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
