@@ -117,6 +117,12 @@ namespace MdFilesMerger.Tests.App.Concrete
             builder.Append(newLine);
             builder.Append("### [Title of file 10](#title-of-file-10-1)");
             builder.Append(newLine);
+            builder.Append("### d4");
+            builder.Append(newLine);
+            builder.Append("#### [Title of file 11](#title-of-file-11-1)");
+            builder.Append(newLine);
+            builder.Append("#### [Title of file 12](#title-of-file-12-1)");
+            builder.Append(newLine);
 
             return builder.ToString();
         }
@@ -156,6 +162,12 @@ namespace MdFilesMerger.Tests.App.Concrete
             builder.Append(newLine);
             builder.Append("### Title of file 10");
             builder.Append(newLine);
+            builder.Append("### d4");
+            builder.Append(newLine);
+            builder.Append("#### Title of file 11");
+            builder.Append(newLine);
+            builder.Append("#### Title of file 12");
+            builder.Append(newLine);
 
             return builder.ToString();
         }
@@ -173,6 +185,8 @@ namespace MdFilesMerger.Tests.App.Concrete
             selectedFiles.Add(new SelectedFile() { Id = 8, Name = "d2/d2b/File8.md", Title = "Title of file 8" });
             selectedFiles.Add(new SelectedFile() { Id = 9, Name = "d2/d2b/File9.md", Title = "Title of file 9" });
             selectedFiles.Add(new SelectedFile() { Id = 10, Name = "d3/File10.md", Title = "Title of file 10" });
+            selectedFiles.Add(new SelectedFile() { Id = 11, Name = "d4/File11.md", Title = "Title of file 11" });
+            selectedFiles.Add(new SelectedFile() { Id = 12, Name = "d4/File12.md", Title = "Title of file 12" });
 
             return selectedFiles;
         }

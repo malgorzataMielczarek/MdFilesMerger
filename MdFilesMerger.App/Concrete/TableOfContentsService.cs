@@ -63,10 +63,11 @@ namespace MdFilesMerger.App.Concrete
             }
 
             ISelectedFile? file = files.Dequeue();
+            ISelectedFile? nextFile = null;
+            bool lastElement = false;
             do
             {
                 // Get next file with not null Title
-                ISelectedFile? nextFile = null;
                 while (files.Count > 0 && nextFile == null)
                 {
                     nextFile = files.Dequeue();
@@ -149,7 +150,20 @@ namespace MdFilesMerger.App.Concrete
                     appendedDirectories.Clear();
                 }
 
+                if (lastElement)
+                {
+                    break;
+                }
+
+                var tempFile = file;
                 file = nextFile;
+                nextFile = null;
+
+                if (files.Count == 0)
+                {
+                    nextFile = tempFile;
+                    lastElement = true;
+                }
             }
             while (files.Count > 0 || file != null);
 
