@@ -1,0 +1,5 @@
+{
+  1: "Main menu",
+  2: "Create table of contents for generated .md file",
+  3: "Merge chosen files"
+}

@@ -718,7 +718,7 @@
             </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
-        <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.#ctor">
+        <member name="M:MdFilesMerger.Controller.Concrete.MenuActionManager.#ctor(System.String)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.Controller.Concrete.MenuActionManager"/> class and all it's properties.
             </summary>

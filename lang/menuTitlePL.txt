@@ -1,0 +1,5 @@
+{
+  1: "Menu główne",
+  2: "Utwórz spis treści dla tworzonego pliku .md",
+  3: "Połącz wybrane pliki"
+}

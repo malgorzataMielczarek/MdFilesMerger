@@ -870,7 +870,7 @@
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Entity.MenuAction"> MdFilesMerger.Domain.Entity.MenuAction </seealso>
         </member>
-        <member name="M:MdFilesMerger.App.Concrete.MenuActionService.#ctor">
+        <member name="M:MdFilesMerger.App.Concrete.MenuActionService.#ctor(System.String)">
             <summary>
                 Initializes a new instance of the <see cref="T:MdFilesMerger.App.Concrete.MenuActionService"/> class and fills
                 <see cref="F:MdFilesMerger.App.Concrete.MenuActionService._actions"/> list.

@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 3,
+    "Name": "Change main directory",
+    "Menu": 1,
+    "NextMenu": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Display list of files to merge",
+    "Menu": 1,
+    "NextMenu": 1
+  },
+  {
+    "Id": 5,
+    "Name": "Create table of contents",
+    "Menu": 1,
+    "NextMenu": 2
+  },
+  {
+    "Id": 6,
+    "Name": "Merge files",
+    "Menu": 1,
+    "NextMenu": 3
+  },
+  {
+    "Id": 7,
+    "Name": "Plain text table of contents",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 8,
+    "Name": "A table of contents consisting of hyperlinks to the relevant paragraphs",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 9,
+    "Name": "Without a table of contents",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 10,
+    "Name": "Rename created file",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 11,
+    "Name": "Change directory path",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 12,
+    "Name": "Change heading",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 13,
+    "Name": "Merge files",
+    "Menu": 3,
+    "NextMenu": 1
+  }
+]

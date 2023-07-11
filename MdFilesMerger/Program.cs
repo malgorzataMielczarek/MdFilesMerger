@@ -9,7 +9,23 @@ namespace MdFilesMerger
     {
         private static void Main(string[] args)
         {
-            MenuActionManager menuActionManager = new MenuActionManager();
+            string lang = "EN";
+            string langDirPath = File.ReadAllText("langPath.txt");
+            var languages = File.ReadAllText(Path.Combine(langDirPath, "languages.csv")).ToUpper().Split(',');
+            if (languages.Length > 0)
+            {
+                Console.Write(File.ReadAllText(Path.Combine(langDirPath, "chooseLang.txt")));
+                Console.Write(" (" + string.Join('/', languages) + "): ");
+                string? chosenLang = Console.ReadLine()?.ToUpper();
+                if (chosenLang != null && languages.Contains(chosenLang))
+                {
+                    lang = chosenLang;
+                }
+            }
+
+            Console.Clear();
+
+            MenuActionManager menuActionManager = new MenuActionManager(lang);
             UserManager userMenager = new UserManager();
             IMergedFileManager mergedFileManager = userMenager.MergedFileManager;
             IMainDirectoryManager mainDirManager = mergedFileManager.MainDirectoryManager;
@@ -35,9 +51,9 @@ namespace MdFilesMerger
 
                 Console.Clear();
 
-                switch (action?.Name)
+                switch (action?.Id)
                 {
-                    case "Zmień katalog główny":
+                    case 3:
                         mainDirManager.DisplayTitle();
                         mainDirManager.Delete();
                         mainDirManager.Create(mergedFileManager.SelectedItem);
@@ -45,7 +61,7 @@ namespace MdFilesMerger
                         Console.Clear();
                         break;
 
-                    case "Wyświetl listę plików do scalenia":
+                    case 4:
                         selectedFileMenager.DisplayTitle();
                         selectedFileMenager.Select(mainDirManager.SelectedItem);
                         menuActionManager.EnterOrEsc();
@@ -55,10 +71,10 @@ namespace MdFilesMerger
 
                 if (action?.Menu == MenuType.TableOfContents)
                 {
-                    TableOfContents tableOfContents = action?.Name switch
+                    TableOfContents tableOfContents = action?.Id switch
                     {
-                        "Spis treści będący zwykłym tekstem" => TableOfContents.Text,
-                        "Spis treści złożony z hiperlinków do odpowiednich paragrafów" => TableOfContents.Hyperlink,
+                        7 => TableOfContents.Text,
+                        8 => TableOfContents.Hyperlink,
                         _ => TableOfContents.None
                     };
 
@@ -72,21 +88,21 @@ namespace MdFilesMerger
                     Console.WriteLine("Ustawienia");
                     mergedFileManager.Display();
 
-                    switch (action.Name)
+                    switch (action.Id)
                     {
-                        case "Zmień nazwę tworzonego pliku":
+                        case 10:
                             mergedFileManager.UpdateFileName();
                             break;
 
-                        case "Zmień ścieżkę katalogu":
+                        case 11:
                             mergedFileManager.UpdateParentDirectory();
                             break;
 
-                        case "Zmień nagłówek":
+                        case 12:
                             mergedFileManager.UpdateTitle();
                             break;
 
-                        case "Scal pliki":
+                        case 13:
                             mergedFileManager.Merge();
                             break;
                     }

@@ -4,6 +4,7 @@ using MdFilesMerger.Controller.Common;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.App.Concrete;
+using Newtonsoft.Json;
 
 namespace MdFilesMerger.Controller.Concrete
 {
@@ -25,6 +26,8 @@ namespace MdFilesMerger.Controller.Concrete
     /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
     public sealed class MenuActionManager : BaseManager<IMenuAction, IMenuActionService>, IMenuActionManager
     {
+        private string _lang;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="MenuActionManager"/> class and all it's properties.
         /// </summary>
@@ -33,9 +36,10 @@ namespace MdFilesMerger.Controller.Concrete
         ///     cref="MenuActionService"/> object and <see cref="BaseManager{T,
         ///     TService}.SelectedItem"/> to <see langword="2"/> ("DisplayMainMenu" menu action).
         /// </remarks>
-        public MenuActionManager() : base(new MenuActionService())
+        public MenuActionManager(string lang = "EN") : base(new MenuActionService(lang))
         {
             SelectedItem = 2;
+            _lang = lang;
         }
 
         /// <summary>
@@ -45,13 +49,14 @@ namespace MdFilesMerger.Controller.Concrete
         public override void DisplayTitle()
         {
             MenuType menuType = Service.ReadById(SelectedItem)?.NextMenu ?? MenuType.Main;
-            string title = menuType switch
-            {
-                MenuType.Main => "Menu główne",
-                MenuType.TableOfContents => "Utwórz spis treści dla tworzonego pliku .md",
-                MenuType.MergedFile => "Połącz wybrane pliki",
-                _ => string.Empty,
-            };
+
+            string langPath = File.ReadAllText("langPath.txt");
+            string fileName = "menuTitle" + _lang + ".txt";
+            using StreamReader sr = File.OpenText(Path.Combine(langPath, fileName));
+            using JsonReader reader = new JsonTextReader(sr);
+            JsonSerializer serializer = new JsonSerializer();
+            var titles = serializer.Deserialize<Dictionary<MenuType, string>>(reader);
+            string title = titles?.GetValueOrDefault(menuType) ?? string.Empty;
 
             DisplayTitle(title);
         }

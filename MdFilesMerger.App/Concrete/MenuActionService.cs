@@ -2,6 +2,8 @@
 using MdFilesMerger.Domain.Abstract;
 using MdFilesMerger.Domain.Common;
 using MdFilesMerger.Domain.Entity;
+using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace MdFilesMerger.App.Concrete
 {
@@ -24,10 +26,10 @@ namespace MdFilesMerger.App.Concrete
         ///     Initializes a new instance of the <see cref="MenuActionService"/> class and fills
         ///     <see cref="_actions"/> list.
         /// </summary>
-        public MenuActionService()
+        public MenuActionService(string lang = "EN")
         {
             _actions = new List<IMenuAction>();
-            Initialization();
+            Initialization(lang);
         }
 
         /// <summary>
@@ -41,12 +43,7 @@ namespace MdFilesMerger.App.Concrete
         /// </returns>
         public IMenuAction? ReadById(int id)
         {
-            if (id > 0 && _actions.Count >= id && _actions[id - 1].Id == id)
-            {
-                return _actions[id - 1];
-            }
-
-            return null;
+            return _actions.FirstOrDefault(a => a.Id == id);
         }
 
         /// <inheritdoc/>
@@ -65,30 +62,23 @@ namespace MdFilesMerger.App.Concrete
             return result;
         }
 
-        private void Add(string description, MenuType menu, MenuType nextMenu)
-        {
-            int id = _actions.Count + 1;
-            _actions.Add(new MenuAction(id, description, menu, nextMenu));
-        }
-
-        private void Initialization()
+        private void Initialization(string lang = "EN")
         {
             _actions.Add(new MenuAction(1, "Exit", 0, 0));
             _actions.Add(new MenuAction(2, "DisplayMainMenu", 0, MenuType.Main));
 
-            Add("Zmień katalog główny", MenuType.Main, MenuType.Main);
-            Add("Wyświetl listę plików do scalenia", MenuType.Main, MenuType.Main);
-            Add("Utwórz spis treści", MenuType.Main, MenuType.TableOfContents);
-            Add("Scal pliki", MenuType.Main, MenuType.MergedFile);
+            string dirPath = File.ReadAllText("langPath.txt");
+            string fileName = "menu" + lang.ToUpper() + ".txt";
+            using StreamReader sr = File.OpenText(Path.Combine(dirPath, fileName));
+            using JsonReader reader = new JsonTextReader(sr);
 
-            Add("Spis treści będący zwykłym tekstem", MenuType.TableOfContents, MenuType.Main);
-            Add("Spis treści złożony z hiperlinków do odpowiednich paragrafów", MenuType.TableOfContents, MenuType.Main);
-            Add("Bez spisu treści", MenuType.TableOfContents, MenuType.Main);
+            JsonSerializer serializer = new JsonSerializer();
+            var list = serializer.Deserialize<List<MenuAction>>(reader);
 
-            Add("Zmień nazwę tworzonego pliku", MenuType.MergedFile, MenuType.MergedFile);
-            Add("Zmień ścieżkę katalogu", MenuType.MergedFile, MenuType.MergedFile);
-            Add("Zmień nagłówek", MenuType.MergedFile, MenuType.MergedFile);
-            Add("Scal pliki", MenuType.MergedFile, MenuType.Main);
+            if (list != null)
+            {
+                _actions.AddRange(list);
+            }
         }
     }
 }

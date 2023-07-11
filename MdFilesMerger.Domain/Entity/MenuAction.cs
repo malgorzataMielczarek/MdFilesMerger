@@ -15,6 +15,10 @@ namespace MdFilesMerger.Domain.Entity
     /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
     public sealed class MenuAction : BaseItem, IMenuAction
     {
+        public MenuAction()
+        {
+        }
+
         /// <summary>
         ///     Sets <see cref="BaseItem.Id"> Id </see> to <see langword="0"/>, <see
         ///     cref="BaseItem.Name"> Name </see> to <paramref name="description"/>, <see

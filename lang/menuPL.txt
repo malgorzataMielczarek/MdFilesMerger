@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 3,
+    "Name": "Zmień katalog główny",
+    "Menu": 1,
+    "NextMenu": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Wyświetl listę plików do scalenia",
+    "Menu": 1,
+    "NextMenu": 1
+  },
+  {
+    "Id": 5,
+    "Name": "Utwórz spis treści",
+    "Menu": 1,
+    "NextMenu": 2
+  },
+  {
+    "Id": 6,
+    "Name": "Scal pliki",
+    "Menu": 1,
+    "NextMenu": 3
+  },
+  {
+    "Id": 7,
+    "Name": "Spis treści będący zwykłym tekstem",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 8,
+    "Name": "Spis treści złożony z hiperlinków do odpowiednich paragrafów",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 9,
+    "Name": "Bez spisu treści",
+    "Menu": 2,
+    "NextMenu": 1
+  },
+  {
+    "Id": 10,
+    "Name": "Zmień nazwę tworzonego pliku",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 11,
+    "Name": "Zmień ścieżkę katalogu",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 12,
+    "Name": "Zmień nagłówek",
+    "Menu": 3,
+    "NextMenu": 3
+  },
+  {
+    "Id": 13,
+    "Name": "Scal pliki",
+    "Menu": 3,
+    "NextMenu": 1
+  }
+]
