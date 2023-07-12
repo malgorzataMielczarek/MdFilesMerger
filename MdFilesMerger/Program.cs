@@ -9,21 +9,7 @@ namespace MdFilesMerger
     {
         private static void Main(string[] args)
         {
-            string lang = "EN";
-            string langDirPath = File.ReadAllText("langPath.txt");
-            var languages = File.ReadAllText(Path.Combine(langDirPath, "languages.csv")).ToUpper().Split(',');
-            if (languages.Length > 0)
-            {
-                Console.Write(File.ReadAllText(Path.Combine(langDirPath, "chooseLang.txt")));
-                Console.Write(" (" + string.Join('/', languages) + "): ");
-                string? chosenLang = Console.ReadLine()?.ToUpper();
-                if (chosenLang != null && languages.Contains(chosenLang))
-                {
-                    lang = chosenLang;
-                }
-            }
-
-            Console.Clear();
+            string lang = ChooseLanguage();
 
             MenuActionManager menuActionManager = new MenuActionManager(lang);
             UserManager userMenager = new UserManager();
@@ -110,6 +96,27 @@ namespace MdFilesMerger
                     Console.Clear();
                 }
             }
+        }
+
+        private static string ChooseLanguage()
+        {
+            string lang = "EN";
+            string langDirPath = File.ReadAllText("langPath.txt");
+            var languages = File.ReadAllText(Path.Combine(langDirPath, "languages.csv")).ToUpper().Split(',');
+            if (languages.Length > 0)
+            {
+                Console.Write(File.ReadAllText(Path.Combine(langDirPath, "chooseLang.txt")));
+                Console.Write(" (" + string.Join('/', languages) + "): ");
+                string? chosenLang = Console.ReadLine()?.ToUpper();
+                if (chosenLang != null && languages.Contains(chosenLang))
+                {
+                    lang = chosenLang;
+                }
+            }
+
+            Console.Clear();
+
+            return lang;
         }
     }
 }
