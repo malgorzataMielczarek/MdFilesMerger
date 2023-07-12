@@ -15,6 +15,10 @@ namespace MdFilesMerger.Domain.Entity
     /// <seealso cref="IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
     public sealed class MenuAction : BaseItem, IMenuAction
     {
+        /// <summary>
+        ///     Base parameterless constructor. Initializes all parameters with values default for
+        ///     their data types.
+        /// </summary>
         public MenuAction()
         {
         }
