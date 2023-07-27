@@ -231,7 +231,7 @@ namespace MdFilesMerger.Controller.Concrete
         /// <inheritdoc/>
         public void UpdateTitle()
         {
-            if (SelectedItem != 1)
+            if (SelectedItem != -1)
             {
                 Console.Write("Podaj nagłówek (tytuł) tworzonego pliku: ");
                 Service.UpdateTitle(SelectedItem, Console.ReadLine());

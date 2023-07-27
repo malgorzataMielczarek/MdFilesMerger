@@ -1014,6 +1014,12 @@
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IItem"> MdFilesMerger.Domain.Abstract.IItem </seealso>
             <seealso cref="T:MdFilesMerger.Domain.Abstract.IMenuAction"> MdFilesMerger.Domain.Abstract.IMenuAction </seealso>
         </member>
+        <member name="M:MdFilesMerger.Domain.Entity.MenuAction.#ctor">
+            <summary>
+                Base parameterless constructor. Initializes all parameters with values default for
+                their data types.
+            </summary>
+        </member>
         <member name="M:MdFilesMerger.Domain.Entity.MenuAction.#ctor(System.String,MdFilesMerger.Domain.Common.MenuType,MdFilesMerger.Domain.Common.MenuType)">
             <summary>
                 Sets <see cref="P:MdFilesMerger.Domain.Common.BaseItem.Id"> Id </see> to <see langword="0"/>, <see
